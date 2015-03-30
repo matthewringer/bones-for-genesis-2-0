@@ -82,7 +82,7 @@ grunt
 <li>Enable Genesis 2.0 HTML5 support</li>
 <li>Enable Genesis 2.0 responsive viewport support (disabled by default)</li>
 <li>Unregister default Genesis layouts (template, disabled by default)</li>
-<li>Unregister default Genesis widgets  (template, disabled by default)</li>
+<li>Unregister default Genesis widgets (template, disabled by default)</li>
 <li>Remove Genesis 'Layout Settings' meta boxes (template, disabled by default)</li>
 <li>Various other hooks to tweak Genesis's setup, such as footer widget count, menu names, post format support, etc.</li>
 </ul>
@@ -237,6 +237,16 @@ grunt
 
 <h2>
 <a id="changelog" class="anchor" href="#changelog" aria-hidden="true"><span class="octicon octicon-link"></span></a>Changelog</h2>
+
+<h3>
+<a id="233-march-27-2015" class="anchor" href="#233-march-27-2015" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.3.3 (March 27, 2015)</h3>
+
+<ul>
+<li>Trim extra spaces</li>
+<li>Include <code>autoprefixer</code> in <code>Gruntfile.js</code> <code>watch</code>
+</li>
+<li>Set <code>nonull</code> to <code>true</code> on <code>grunt:concat</code>, so warn about missing source files</li>
+</ul>
 
 <h3>
 <a id="232-march-26-2015" class="anchor" href="#232-march-26-2015" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.3.2 (March 26, 2015)</h3>
@@ -818,7 +828,7 @@ grunt
 <li>Added child theme definitions (<code>CHILD_THEME_NAME</code>, <code>CHILD_THEME_URL</code>, <code>CHILD_THEME_VERSION</code>)</li>
 <li>Commented out <code>text-shadow: none;</code> from <code>::selection</code>, since this prevents all selection styling unless <code>background-color</code> is also specified</li>
 <li>Removed <code>_grid.scss</code> responsive styling, since it was causing awkward breakpoint issues on non-responsive sites.</li>
-<li>Commented out <code>body { text-rendering:  optimizeLegibility; }</code>, since this can cause display issues on poorly generated fonts.</li>
+<li>Commented out <code>body { text-rendering: optimizeLegibility; }</code>, since this can cause display issues on poorly generated fonts.</li>
 <li>Removed default floats in <code>_layout.scss</code>
 </li>
 <li>Added skeleton selectors for more HTML5 input types</li>
