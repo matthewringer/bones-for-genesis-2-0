@@ -227,6 +227,23 @@ grunt
 <a id="changelog" class="anchor" href="#changelog" aria-hidden="true"><span class="octicon octicon-link"></span></a>Changelog</h2>
 
 <h3>
+<a id="2311-june-27-2015" class="anchor" href="#2311-june-27-2015" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.3.11 (June 27, 2015)</h3>
+
+<ul>
+<li>Remove <code>bfg_custom_template_body_class</code> from <code>page_custom.php</code>. (I like using the auto-generated template <code>&lt;body&gt;</code> classes.)</li>
+<li>Make theme strings translatable, with a consistent <code>CHILD_THEME_TEXT_DOMAIN</code> domain</li>
+<li>Add <code>bfg_schema_empty()</code> and hooks to remove some schema attributes added by Genesis (disabled by default)</li>
+<li>Set default credit text for <code>bfg_admin_footer_text()</code>
+</li>
+<li>Block XMLRPC_REQUEST by default and delete <code>xmlrpc.php</code> on core upgrade</li>
+<li>Better, environment-aware <code>add_editor_style()</code>, disabled by default</li>
+<li>Remove <code>bfg_query_stats()</code> and <code>bfg_maintenance_mode()</code> helper functions. There are much better plugins for both.</li>
+<li>Disable comment feed RSS in <code>&lt;head&gt;</code> by default</li>
+<li>Remove <code>&lt;meta name="referrer" content="origin"&gt;</code>, since it causes a redirect bug with password-protected posts</li>
+<li>Use WordPress SEO's breadcrumbs when available, falling back to Genesis's method</li>
+</ul>
+
+<h3>
 <a id="2310-june-7-2015" class="anchor" href="#2310-june-7-2015" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.3.10 (June 7, 2015)</h3>
 
 <ul>
