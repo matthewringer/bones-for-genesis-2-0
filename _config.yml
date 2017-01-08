@@ -1,0 +1,8 @@
+title: Bones for Genesis 2.0
+description: A starting point for new Genesis projects. Built for Genesis 2.3+ and WordPress 4.7+.
+google_analytics: UA-41596634-1
+show_downloads: true
+theme: jekyll-theme-cayman
+
+gems:
+  - jekyll-mentions
