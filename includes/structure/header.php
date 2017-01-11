@@ -245,12 +245,30 @@ function bfg_load_favicons() {
  *
  * @since 2.0.9
  */
-// remove_action( 'genesis_header', 'genesis_do_header' );
+//remove_action( 'genesis_header', 'genesis_do_header' );
 
 /*
  * Remove the site title and/or description
  *
  * @since 2.0.9
  */
-// remove_action( 'genesis_site_title', 'genesis_seo_site_title' );
-// remove_action( 'genesis_site_description', 'genesis_seo_site_description' );
+ //remove_action( 'genesis_site_title', 'genesis_seo_site_title' );
+ //remove_action( 'genesis_site_description', 'genesis_seo_site_description' );
+
+
+/* 
+* Register before header widget area
+*/
+genesis_register_sidebar( array(
+	'id'          => 'before-header',
+	'name'        => __( 'Before Header', 'theme-name' ),
+	'description' => __( 'This is the before header widget area.', 'theme-name' ),
+) );
+
+add_action( 'genesis_before_header', 'bg_before_header_widget_area' );
+function bg_before_header_widget_area() {
+	genesis_widget_area( 'before-header', array(
+		'before' => '<div class="before-header widget-area"><div class="wrap">',
+		'after'  => '</div></div>',
+	) );
+}
