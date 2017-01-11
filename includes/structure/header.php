@@ -245,7 +245,7 @@ function bfg_load_favicons() {
  *
  * @since 2.0.9
  */
-//remove_action( 'genesis_header', 'genesis_do_header' );
+remove_action( 'genesis_header', 'genesis_do_header' );
 
 /*
  * Remove the site title and/or description
