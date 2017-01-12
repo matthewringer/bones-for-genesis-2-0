@@ -1,6 +1,10 @@
 Deny from all
 
-<Files "favicon.ico">
+<Files "favicon.ico" >
+	Order Allow,Deny
+	Allow from all
+</Files>
+<Files "logo.svg" >
 	Order Allow,Deny
 	Allow from all
 </Files>

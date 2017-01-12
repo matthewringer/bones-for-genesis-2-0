@@ -10,6 +10,31 @@ BREAKPOINTS
 // Use pixels for include-media-export compatibility. 'zero' breakpoint ensures the breakpoints are printed on all screen widths.
 $breakpoints: ( zero: (1 * 16px), phone: (35 * 16px), portrait: (48 * 16px), admin-bar: (48.875 * 16px), landscape: (64 * 16px), desktop: (80 * 16px) );
 
+
+// breakpoints
+$XS:    500px;
+$S:     768px;   
+$M:     1024px;     
+$L:     1600px;   
+
+// media queries
+
+@mixin MQ($canvas) {
+  @if $canvas == XS {
+   @media only screen and (min-width: $XS) { @content; } 
+  }
+  @if $canvas == S {
+   @media only screen and (min-width: $S) { @content; } 
+  }
+  @else if $canvas == M {
+   @media only screen and (min-width: $M) { @content; } 
+  }
+  @else if $canvas == L {
+   @media only screen and (min-width: $L) { @content; } 
+  }
+}
+
+
 /*********************
 COLORS
 *********************/

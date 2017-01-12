@@ -1,40 +1,81 @@
+
+.screen-reader-text {
+	position: absolute;
+    top: -9999px;
+    left: -9999px;
+}
+
+.nav-primary {
+	width: 80%;
+    float: left;
+}
 .genesis-nav-menu {
-	@extend %clearfix;
-	clear: both;
+	position: fixed;
+	top: 0;
+	left: 0;
 	width: 100%;
+	@include transform(translateY(-100%));
+	@include transition(transform .3s);
+
 	text-align: center;
-
-	// Applied to all menu <li>s
-	.menu-item {
-		a {
-			position: relative;
-			display: block;
-		}
+	background: $black;
+	font-family: $sans;
+  	font-weight: 800;
+  	text-transform: uppercase;
+	
+	li.menu-item a {
+		color: $white;
+		border-color: lighten($black, 5%);
+		display: block;
+		font-size: 1.8rem;
+		padding: 1em 0;
+		border-bottom-width: 1px;
+		border-style: solid;
+		text-decoration: none;
+		white-space: nowrap;
 	}
 
-	// First level
-	> .menu-item {
-		position: relative;
-		display: inline-block;
-		text-align: left;
+	li:first-of-type a {
+		border-top-width: 1px;
+	}
+	
+	@include MQ(M) {
+		position: static;
+		display: table;
+		@include transform(translateY(0));
+		width: auto;
+		height: 80px;
+		background: transparent;
+		padding: 0;
+		text-align: center;
 
-		&:hover,
-		&:focus {
-			> .sub-menu {
-				left: auto;
-				opacity: 1;
+		li.menu-item {
+			display: table-cell;
+			vertical-align: middle;
+			padding: 0 1em;
+		}
+
+		li.menu-item a {
+			display: inline-block;
+			font-size: 1.6rem;
+			padding: .4em .2em;
+			border: none;
+			@include transition(all .2s);
+
+			&.selected {
+				color: $grey;
+				box-shadow: 0 2px 0 $yellow;
+			}
+
+			&.no-touch &:hover {
+				color: $yellow;
 			}
 		}
 
-		&.current-menu-item {
-			> a {
-			}
-		}
-
-		> a {
+		li:first-of-type a {
+			border-top: none;
 		}
 	}
-
 	// Sublevels
 	.sub-menu {
 		position: absolute;
@@ -54,3 +95,94 @@
 		}
 	}
 }
+
+.cd-nav-trigger span {
+	/* hamburger menu */
+	background-color: $white;
+
+	&::before,
+	&::after {
+		/* upper and lower lines */
+		background-color: $white;
+	}
+}
+
+.nav-is-visible {
+	opacity: 1;
+}
+
+.nav-is-visible .cd-nav-trigger span {
+	/* hide line in the center on mobile when nav is visible */
+	background-color: rgba($white, 0);
+
+	&::before, &::after {
+		/* preserve visibility of upper and lower lines - close icon */
+		background-color: rgba($white, 1);
+	}
+}
+
+.cd-nav-trigger {
+	display: block;
+	position: absolute;
+	right: 0;
+	top: 0;
+	height: 100%;
+	width: 50px;
+	overflow: hidden;
+	white-space: nowrap;
+	color: transparent;
+
+	span {
+		position: absolute;
+		height: 4px;
+		width: 20px;
+		top: 50%;
+		margin-top: -1px;
+		left: 50%;
+		margin-left: -10px;
+		@include transition(background-color .3s .3s);
+
+		&::before, &::after {
+			content: '';
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			/* Force Hardware Acceleration in WebKit */
+			@include transform(translateZ(0));
+			-webkit-backface-visibility: hidden;
+			backface-visibility: hidden;
+			will-change: transform;
+			@include transition(transform .3s .3s);
+		}
+
+		&::before {
+			@include transform(translateY(-6px));
+		}
+
+		&::after {
+			@include transform(translateY(6px));
+		}
+	}
+
+	@include MQ(M) {
+		display: none;
+	}
+}
+
+.nav-is-visible {
+	.cd-nav-trigger span {
+
+		&::before {
+			@include transform(translateY(0) rotate(-45deg));
+		}
+
+		&::after {
+			@include transform(translateY(0) rotate(45deg));
+		}
+	}
+
+	.genesis-nav-menu {
+		@include transform(translateY(0));
+	}
+}
+

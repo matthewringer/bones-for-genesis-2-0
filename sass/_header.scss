@@ -1,13 +1,62 @@
+.before-header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 10em;
+	width: 100%;
+	text-align: center;
+	background-color: $yellow;
+}
+
 .site-header {
-	> .wrap {
+	position: fixed;
+	top: 10em;
+	left: 0;
+	width: 100%;
+	box-shadow: 0 1px 1px rgba(#000, .1);
+	z-index: 10;
+
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -moz-flex;
+	display: -webkit-flex;
+	display: flex;
+	
+	& .wrap {
+		width: 100%;
+		background-color: $black;
+		
+		//todo: js to update the header opacity
+		opacity: .60;
+
+		& p {
+			font-style: italic;
+			font-weight: 600;
+			color: $yellow;
+		}
 	}
 }
 
+// hide the SEO title and description
 .title-area {
-	float: left;
+	width: 80%;
+    top: 40%;
+    float: right;
+    position: relative;
+    text-align: center;
+	white-space: nowrap;
+
+	@include MQ(M) {
+		position: absolute;
+    	top: -9999px;
+    	left: -9999px; 
+	}
 }
 
 .site-title {
+	position: absolute;
+    top: -9999px;
 	a {
 		&:hover,
 		&:focus {
@@ -25,9 +74,41 @@
 	}
 }
 
-.before-header {
-	padding-bottom: 20px;
-	padding-top: 20px;
-	text-align: center;
-	background-color: $yellow;
+.cd-logo {
+	/* logo box style */
+	background-color: transparent;
+	width: 20%;
+	height: 100px;
+	float: left;
+	left:0;
+	position: relative;
+
+	img {
+		position: absolute;
+		display: block;
+		top: 50%;
+		left: 70%;
+		width: 2em;
+		min-width: 80px;
+		height: auto;
+		@include transform(translateX(-50%) translateY(-50%));
+
+		@include MQ(S) {
+			top: 50%;
+			left: 70%;
+		}
+
+		@include MQ(M) {
+			left: 75%;
+			width: 2em;
+			min-width: 100px;
+		}
+		
+		@include MQ(L) {
+			margin-left: 5%;
+		}
+	}
+
+	
 }
+

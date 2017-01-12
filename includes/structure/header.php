@@ -245,7 +245,7 @@ function bfg_load_favicons() {
  *
  * @since 2.0.9
  */
-remove_action( 'genesis_header', 'genesis_do_header' );
+//remove_action( 'genesis_header', 'genesis_do_header' );
 
 /*
  * Remove the site title and/or description
@@ -255,6 +255,9 @@ remove_action( 'genesis_header', 'genesis_do_header' );
  //remove_action( 'genesis_site_title', 'genesis_seo_site_title' );
  //remove_action( 'genesis_site_description', 'genesis_seo_site_description' );
 
+
+//* Remove the header right widget area for full size header
+unregister_sidebar( 'header-right' );
 
 /* 
 * Register before header widget area

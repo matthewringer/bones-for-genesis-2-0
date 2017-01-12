@@ -1,6 +1,8 @@
 html,
 body {
 	// min-width: $site-width; // Prevents backgrounds on these elements from being truncated on smaller screens on fixed-width sites
+	//font-size: 62.5%;
+	font-size: 80%;
 }
 
 html.admin-bar-showing {
@@ -38,8 +40,8 @@ body {
 }
 
 a {
-	text-decoration: underline;
-	transition: all .15s ease-in-out;
+	text-decoration: none;
+	//transition: all .15s ease-in-out;
 
 	&:hover,
 	&:focus {

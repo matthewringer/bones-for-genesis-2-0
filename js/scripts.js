@@ -8,4 +8,9 @@
 	// Enable FitVids on the content area
 	fitvids('.content');
 
+	//open navigation on mobile
+	$('.cd-nav-trigger').on('click', function(){
+		$('header').toggleClass('nav-is-visible');
+	});
+
 })( window.jQuery );
