@@ -8,13 +8,14 @@
     "tests"
   ],
   "dependencies": {
-    "bourbon":"*",
+    "bourbon": "*",
     "brand-colors": "reimertz/brand-colors",
     "colors-sass": "mrmrs/colors-sass",
     "include-media-export": "*",
     "include-media": "*",
     "js-cookie": "js-cookie/js-cookie",
     "normalize-css": "necolas/normalize.css",
-    "vanilla-fitvids": "rosszurowski/vanilla-fitvids"
+    "vanilla-fitvids": "rosszurowski/vanilla-fitvids",
+    "components-font-awesome": "^4.7.0"
   }
 }

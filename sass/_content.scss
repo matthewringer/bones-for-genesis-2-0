@@ -168,10 +168,10 @@
     background-size: cover;
     background-repeat: no-repeat;
     color: white;
-    height: 20em;
+    height: 12em;
 
 	@include MQ(XS) {
-		height: 25em;
+		height: 20em;
 	}
 
 	@include MQ(S) {
@@ -345,15 +345,16 @@
 			margin: .3em;
 			height: 30px;
 			width: 30px;
-			font-size: 1.13em;
+			font-size: 1.8em;
 			
 			span {
 					font-weight: 600;
-					font-size: 1.6rem;
+					font-size: 1rem;
 					color: $black;
 					position: relative;
+					display: inline-block;
 					left: 35px;
-					top: 6px;
+					top: 4px;
 				}
 		}
 

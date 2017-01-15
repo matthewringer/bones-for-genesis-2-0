@@ -1,1 +1,6 @@
 Deny from all
+
+<Files "load-more.js" >
+	Order Allow,Deny
+	Allow from all
+</Files>

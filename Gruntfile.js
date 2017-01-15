@@ -161,12 +161,22 @@ module.exports = function(grunt) {
 					spawn: false
 				}
 			}
-		}
+		},
 
+		copy: {
+			main: {
+				nonull:true,
+				expand: true,
+				cwd: 'bower_components/components-font-awesome/fonts/',
+				src: '*',
+				dest: 'build/fonts/',
+			},
+		}
 	});
 
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-contrib-concat');
+	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-imagemin');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-sass');
@@ -178,7 +188,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-notify');
 	grunt.loadNpmTasks('grunt-postcss');
 
-	grunt.registerTask('default', ['clean', 'imagemin', 'sass', 'concat', 'postcss:css', 'watch']);
-	grunt.registerTask('build', ['clean', 'imagemin', 'csscomb', 'postcss:scss', 'sass', 'jshint', 'concat', 'uglify', 'postcss:css', 'csso']);
+	grunt.registerTask('default', ['clean', 'imagemin', 'sass', 'copy', 'concat', 'postcss:css', 'watch']);
+	grunt.registerTask('build', ['clean', 'imagemin', 'csscomb', 'postcss:scss', 'sass', 'copy', 'jshint', 'concat', 'uglify', 'postcss:css', 'csso']);
 
 };

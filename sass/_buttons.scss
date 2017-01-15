@@ -17,3 +17,61 @@
 	&:focus {
 	}
 }
+
+.social-buttons li {
+	position: relative;
+	color: $white;
+	
+	&.btn-facebook {
+		background-color: $bc-facebook;
+	} 
+
+	&.btn-twitter {
+		background-color: $bc-twitter;
+	}
+
+	&.btn-tumblr {
+		background: $bc-tumblr;
+	}
+
+	&.btn-youtube {
+		background-color: $bc-youtube;
+	} 
+	
+	&.btn-email, &.btn-print {
+		background-color: darken($grey, 50%);
+	}
+
+	&.btn-message {
+		background-color: $black;
+	}
+
+	&.btn-instagram {
+		background-color: $bc-instagram;
+	}
+
+	&.btn-linkedin {
+		background-color: $bc-linkedin;
+	}
+
+	border-radius: 50px;
+
+	& i {
+		position: absolute;
+
+		&.fa-facebook, &.fa-tumblr {
+			top: 25%;
+			left: 33%;
+		}
+
+		&.fa-youtube, &.fa-instagram, &.fa-twitter, &.fa-linkedin {
+			top: 20%;
+			left: 25%
+		}
+
+		&.fa-envelope, &.fa-print, &.fa-comment {
+			top: 20%;
+			left: 21%
+		}
+	}
+}
