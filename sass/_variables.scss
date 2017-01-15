@@ -34,6 +34,53 @@ $L:     1600px;
   }
 }
 
+/*********************
+Offsets
+*********************/
+
+//TOP
+
+@mixin lb-ad-offset() {
+  top: 60px;
+	
+  @include MQ(XS) {
+		top: 60px;
+	}
+	
+	@include MQ(S) {
+		top: 60px;
+	}
+	
+	@include MQ(M) {
+		top: 120px;
+	}
+
+  @include MQ(L) {
+		top: 120px;
+	}
+}
+
+@mixin lb-ad-height() {
+  height: 60px;
+
+	@include MQ(XS) {
+		height: 60px;
+	}
+	
+	@include MQ(S) {
+		height: 60px;
+	}
+	
+	@include MQ(M) {
+		height: 120px;
+	}
+
+  @include MQ(L) {
+		height: 120px;
+	}
+}
+
+
 
 /*********************
 COLORS

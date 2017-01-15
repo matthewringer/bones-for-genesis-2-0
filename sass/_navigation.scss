@@ -5,16 +5,59 @@
     left: -9999px;
 }
 
+.cd-logo {
+	/* logo box style */
+	background-color: transparent;
+	width: 20%;
+	height: 50px;
+	float: left;
+	left:0;
+	position: relative;
+
+	@include MQ(M){
+		height: 100px;
+	}
+
+	img {
+		position: absolute;
+		display: block;
+		top: 35%;
+		left: 70%;
+		width: 2em;
+		min-width: 50px;
+		height: auto;
+		@include transform(translateX(-50%) translateY(-50%));
+
+		@include MQ(S) {
+			min-width: 80px;
+		}
+
+		@include MQ(M) {
+			top: 50%;
+			left: 75%;
+			width: 2em;
+			min-width: 100px;
+		}
+		
+		@include MQ(L) {
+			margin-left: 5%;
+		}
+	}
+}
+
+
 .nav-primary {
 	width: 80%;
     float: left;
 }
+
 .genesis-nav-menu {
+	@include lb-ad-offset();
+
 	position: fixed;
-	top: 0;
 	left: 0;
 	width: 100%;
-	@include transform(translateY(-100%));
+	@include transform(translateY(-120%));
 	@include transition(transform .3s);
 
 	text-align: center;
@@ -27,12 +70,16 @@
 		color: $white;
 		border-color: lighten($black, 5%);
 		display: block;
-		font-size: 1.8rem;
+		font-size: .5rem;
 		padding: 1em 0;
 		border-bottom-width: 1px;
 		border-style: solid;
 		text-decoration: none;
 		white-space: nowrap;
+		
+		span {
+			opacity: 1;
+		}
 	}
 
 	li:first-of-type a {
@@ -52,7 +99,7 @@
 		li.menu-item {
 			display: table-cell;
 			vertical-align: middle;
-			padding: 0 1em;
+			padding: 0 .6em;
 		}
 
 		li.menu-item a {
@@ -108,7 +155,9 @@
 }
 
 .nav-is-visible {
-	opacity: 1;
+	& .wrap {
+		opacity: 1;
+	}
 }
 
 .nav-is-visible .cd-nav-trigger span {
@@ -125,7 +174,7 @@
 	display: block;
 	position: absolute;
 	right: 0;
-	top: 0;
+	top: 30%;
 	height: 100%;
 	width: 50px;
 	overflow: hidden;
@@ -136,7 +185,7 @@
 		position: absolute;
 		height: 4px;
 		width: 20px;
-		top: 50%;
+		top: 20%;
 		margin-top: -1px;
 		left: 50%;
 		margin-left: -10px;

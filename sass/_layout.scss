@@ -11,6 +11,8 @@
 
 .site-inner {
 	word-wrap: break-word;
+	position: relative;
+	@include lb-ad-offset();
 }
 
 .content-sidebar-wrap {

@@ -18,7 +18,7 @@ if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  */
 function rvamag_header_logo() {
 	printf( '
-	<div class="cd-logo"><a href="#top">
+	<div class="cd-logo"><a href="'. get_site_url() .'">
 		<img src="'. get_stylesheet_directory_uri() .'/images/logo.svg" alt="RVA Mag Logo" />
 	</a></div> ');
 }

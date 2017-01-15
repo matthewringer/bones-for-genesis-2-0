@@ -1,16 +1,19 @@
 .before-header {
+	@include lb-ad-height();
+	//height:60px;
 	position: fixed;
 	top: 0;
 	left: 0;
-	height: 10em;
 	width: 100%;
 	text-align: center;
 	background-color: $yellow;
+	z-index: 999;
 }
 
 .site-header {
+	@include lb-ad-offset();
+	//top: 60px;
 	position: fixed;
-	top: 10em;
 	left: 0;
 	width: 100%;
 	box-shadow: 0 1px 1px rgba(#000, .1);
@@ -28,7 +31,7 @@
 		background-color: $black;
 		
 		//todo: js to update the header opacity
-		opacity: .60;
+		opacity: .80;
 
 		& p {
 			font-style: italic;
@@ -40,14 +43,27 @@
 
 // hide the SEO title and description
 .title-area {
-	width: 80%;
+	font-size: .6em;
+	width: 90%;
     top: 40%;
     float: right;
     position: relative;
     text-align: center;
 	white-space: nowrap;
 
+	@include MQ(XS) {
+		width: 100%;
+		font-size: 1em;
+	}
+	
+	@include MQ(S) {
+		font-size: 1.8em;
+	}
+	
 	@include MQ(M) {
+		
+		width: 0;
+    	top: 0;
 		position: absolute;
     	top: -9999px;
     	left: -9999px; 
@@ -72,43 +88,5 @@
 
 	.widget {
 	}
-}
-
-.cd-logo {
-	/* logo box style */
-	background-color: transparent;
-	width: 20%;
-	height: 100px;
-	float: left;
-	left:0;
-	position: relative;
-
-	img {
-		position: absolute;
-		display: block;
-		top: 50%;
-		left: 70%;
-		width: 2em;
-		min-width: 80px;
-		height: auto;
-		@include transform(translateX(-50%) translateY(-50%));
-
-		@include MQ(S) {
-			top: 50%;
-			left: 70%;
-		}
-
-		@include MQ(M) {
-			left: 75%;
-			width: 2em;
-			min-width: 100px;
-		}
-		
-		@include MQ(L) {
-			margin-left: 5%;
-		}
-	}
-
-	
 }
 

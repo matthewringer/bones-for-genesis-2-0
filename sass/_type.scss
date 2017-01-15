@@ -2,7 +2,9 @@ html,
 body {
 	// min-width: $site-width; // Prevents backgrounds on these elements from being truncated on smaller screens on fixed-width sites
 	//font-size: 62.5%;
-	font-size: 80%;
+	@include MQ(S){
+		font-size: 80%;
+	}
 }
 
 html.admin-bar-showing {
@@ -41,11 +43,13 @@ body {
 
 a {
 	text-decoration: none;
+	color: $black;
 	//transition: all .15s ease-in-out;
 
 	&:hover,
 	&:focus {
-		text-decoration: none;
+		text-decoration: underline;
+		//color: $yellow;
 	}
 }
 
@@ -88,3 +92,4 @@ hr {
 	border-collapse: collapse;
 	border-top: 1px solid $grey;
 }
+

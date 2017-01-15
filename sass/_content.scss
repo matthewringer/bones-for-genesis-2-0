@@ -78,3 +78,303 @@
 	.entry-tags {
 	}
 }
+
+.article-title {
+	font-size: 1.8rem;
+	line-height: .9;
+	font-weight: 800;
+	margin: 0 0 .4em;
+	padding: 0 .5em 0 .1em;
+	color: $yellow;
+	background-color: $black;
+	
+	a {
+		color: darken($yellow, 5%);
+	}
+
+	@include MQ(S) {
+		font-size: 2rem;
+	}
+
+	@include MQ(M) {
+		font-size: 4rem;
+	}
+}
+
+.author {
+	font-family: $serif;
+	font-style: italic;
+	font-weight: 600;
+	font-size: 1.2rem;
+	line-height: 1.8;
+	margin: 1em 0;
+	padding: 0 .5em;
+	color: $yellow;
+	background-color: $black;
+
+	a {
+		color: darken($yellow, 5%);
+	}
+
+	@include MQ(S) {
+		font-size: 1.8rem;
+		margin: 1em 0 1.8em;
+	}
+
+	@include MQ(M) {
+		font-size: 3rem;
+	}
+
+	/* by before the author's name */
+	span::before {
+		content: 'by ';
+		font-style: normal;
+		font-weight: 400;
+		color: darken($grey, 15%);
+	}
+}
+
+.title-block {
+	text-align: left;
+	position: relative;
+	-webkit-align-self: flex-end; 
+	align-self: flex-end;
+	left: 5%;
+	bottom: 10%;
+	max-width: 90%;
+	
+	h2 {
+		display: inline;
+	}
+
+	p {
+		display: inline;
+		max-width:80%;
+	}
+}
+
+.cd-hero-box {
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -moz-flex;
+	display: -webkit-flex;
+	display: flex;
+	flex-wrap: wrap;
+
+    width: 100%;
+    background-image: url(../img/rva_street_fest.jpg);
+    background-position: 0% 25%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+    height: 20em;
+
+	@include MQ(XS) {
+		height: 25em;
+	}
+
+	@include MQ(S) {
+		height: 30em;
+	}
+
+	@include MQ(M) {
+		height: 40em;
+		& h3 {
+			font-size: 2.4rem;
+		}
+	}
+
+	@include MQ(L) {
+		height: 60em;
+		& h3 {
+			font-size: 3.8rem;
+		}
+	}
+}
+
+.section-title 
+{
+	width: 100%;
+	text-align: center;
+	border-top: 2px solid $grey;
+	margin-top: 2em;
+	min-height: 61px;
+
+	h2 {
+		top: -15px;
+		display: inline-block;
+		position: relative;
+		background-color: $white;
+		padding: 0 10px;
+
+		@include MQ(S) {
+			top: -10px;
+		}
+	}
+}
+
+.cd-gutter-box {
+	margin-left: 5%;
+	margin-right: 5%;
+	overflow: hidden;
+}
+
+.cd-2x1-box {
+
+	& article {
+		padding: 0 0 2em 0;
+	}
+
+	@include MQ(S) {
+		float: left;
+		width: 100%;
+
+		& article:nth-of-type(1)  {
+			padding: 0 .5em 2em 0;
+		}
+
+		& article:nth-of-type(2) {
+			padding: 0 0 2em .5em;
+		}
+		
+		& article {
+				float: left;
+				width: 50%;
+		}
+	}
+}
+
+.cd-3x3-box {
+
+	& article {
+		padding: 0 0 1em 0;
+
+		@include MQ(S) {
+			float: left;
+			width: 33.3%;
+			padding-right: 1em;
+		}
+	}
+	
+}
+
+.entry-thumbnail {
+
+	& h3 {
+		padding-top: 1em;
+	}
+	
+	& div.text-block {
+		height: 12em;
+		overflow: hidden;
+	}
+
+	@include MQ(M) {
+		font-size: 1.6em;
+	}
+}
+
+.article-image {
+			height: 10em;
+			background-position: 0% 25%;
+			background-size: cover;
+			background-repeat: no-repeat;
+			padding-top: 75%;
+}
+
+.cd-sidebar {
+	@include MQ(S) {
+		float: left;
+		width: 75%;
+	}
+
+}
+
+.widesky-sidebar {
+	display: none;
+
+	@include MQ(S) {
+		display: block;
+
+		h2 {
+    		font-size: 1.6rem;
+		}
+	}
+
+	@include MQ(S) {
+		h2 {
+    		font-size: initial;
+		}
+	}
+
+
+	overflow: hidden;
+
+	& div.widesky-ad {
+		background-color: $yellow;
+		width: 100%;
+		padding-top: 200%;
+		position: relative;
+		text-align: center;
+
+		p {
+			background-color: $yellow;
+			position: absolute;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			right: 0;
+			padding-top: 10%;
+		}
+	}
+	
+	& div.social-buttons {
+		margin-top: 1em;
+		padding: 1em;
+		background-color: $grey;
+	}
+
+	// todo: social button scss is a mess. 
+	& ul.social-buttons {
+		border-left: .3em solid $black;
+
+		padding: 0 0 0 .5em;
+		
+		li { 
+			margin: .3em;
+			height: 30px;
+			width: 30px;
+			font-size: 1.13em;
+			
+			span {
+					font-weight: 600;
+					font-size: 1.6rem;
+					color: $black;
+					position: relative;
+					left: 35px;
+					top: 6px;
+				}
+		}
+
+		@include MQ(L) {
+			padding: 0 0 0.5em 1em;
+
+			li { 
+				margin: .3em;
+				height: 40px;
+				width: 40px;
+				font-size: 1.45em;
+
+				span {
+					font-weight: 600;
+					font-size: 1.8rem;
+					color: $black;
+					position: relative;
+					left: 50px;
+					top: 8px;
+				}
+			}
+		}
+	}
+}
