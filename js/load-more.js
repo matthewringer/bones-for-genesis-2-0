@@ -25,6 +25,9 @@ jQuery(function($){
 					page: page,
 					query: rvaloadmore.query,
 				};
+
+                console.log(data);
+
 				$.post(rvaloadmore.url, data, function(res) {
 					if( res.success) {
 						$('.post-listing').append( res.data );

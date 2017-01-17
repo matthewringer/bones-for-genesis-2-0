@@ -95,11 +95,11 @@ add_theme_support( 'genesis-responsive-viewport' );
  *
  * @since 1.x
  */
-// genesis_unregister_layout( 'content-sidebar' );
-// genesis_unregister_layout( 'sidebar-content' );
-// genesis_unregister_layout( 'content-sidebar-sidebar' );
-// genesis_unregister_layout( 'sidebar-sidebar-content' );
-// genesis_unregister_layout( 'sidebar-content-sidebar' );
+genesis_unregister_layout( 'content-sidebar' );
+genesis_unregister_layout( 'sidebar-content' );
+genesis_unregister_layout( 'content-sidebar-sidebar' );
+genesis_unregister_layout( 'sidebar-sidebar-content' );
+genesis_unregister_layout( 'sidebar-content-sidebar' );
 // genesis_unregister_layout( 'full-width-content' );
 
 /**
@@ -139,7 +139,7 @@ function bfg_remove_genesis_widgets() {
 
 }
 
-// add_action( 'init', 'bfg_remove_layout_meta_boxes' );
+add_action( 'init', 'bfg_remove_layout_meta_boxes' );
 /**
  * Remove the Genesis 'Layout Settings' meta box for posts and/or pages.
  *
@@ -159,7 +159,7 @@ function bfg_remove_layout_meta_boxes() {
  */
 remove_theme_support( 'genesis-archive-layouts' );
 
-// add_action( 'init', 'bfg_remove_scripts_meta_boxes' );
+add_action( 'init', 'bfg_remove_scripts_meta_boxes' );
 /**
  * Remove the Genesis 'Scripts' meta box for posts and/or pages.
  *
