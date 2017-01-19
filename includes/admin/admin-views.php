@@ -318,10 +318,10 @@ function bfg_hide_admin_help_button() {
  *
  * @since 2.2.8
  */
-// add_filter( 'theme_page_templates', 'bfg_deregister_page_templates' );
+add_filter( 'theme_page_templates', 'bfg_deregister_page_templates' );
 function bfg_deregister_page_templates( $templates ) {
 
-	unset($templates['page_archive.php'], $templates['page_blog.php']);
+	unset($templates['page_archive.php'], $templates['page_blog.php'], $templates['category.php'], $templates['single.php']);
 
 	return $templates;
 

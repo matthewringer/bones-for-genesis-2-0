@@ -24,6 +24,11 @@ add_action( 'wp_enqueue_scripts', 'rva_load_more_args' );
 remove_action( 'genesis_loop', 'genesis_do_loop' );
 add_action( 'genesis_loop', 'rvamag_categorypage_loop' );
 
+add_action('genesis_before_content', 'rvamag_singlepage_loop');
+function rvamag_singlepage_loop() {
+	echo '<div class="rva-before-content"></div>';
+}
+
 //* Remove the post content (requires HTML5 theme support)
 remove_action( 'genesis_entry_content', 'genesis_do_post_content' );
 remove_action( 'genesis_entry_header', 'genesis_do_post_title' );

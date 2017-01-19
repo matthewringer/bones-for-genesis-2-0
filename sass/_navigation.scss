@@ -1,117 +1,82 @@
 
 .screen-reader-text {
 	position: absolute;
-    top: -9999px;
-    left: -9999px;
+	top: -9999px;
+	left: -9999px;
 }
 
 .cd-logo {
-	/* logo box style */
-	background-color: transparent;
-	width: 20%;
-	height: 50px;
-	float: left;
-	left:0;
-	position: relative;
-
-	@include MQ(M){
+	@include MQ(M) {
 		height: 100px;
 	}
+	position: relative;
+	left: 0;
+	float: left;
+	width: 20%;
+	height: 50px;
+	/* logo box style */
+	background-color: transparent;
 
 	img {
-		position: absolute;
-		display: block;
-		top: 35%;
-		left: 70%;
-		width: 2em;
-		min-width: 50px;
-		height: auto;
 		@include transform(translateX(-50%) translateY(-50%));
-
 		@include MQ(S) {
 			min-width: 80px;
 		}
-
 		@include MQ(M) {
 			top: 50%;
 			left: 75%;
-			width: 2em;
 			min-width: 100px;
+			width: 2em;
 		}
-		
 		@include MQ(L) {
 			margin-left: 5%;
 		}
+		position: absolute;
+		top: 35%;
+		left: 70%;
+		display: block;
+		min-width: 50px;
+		width: 2em;
+		height: auto;
 	}
 }
 
 
 .nav-primary {
+	float: left;
 	width: 80%;
-    float: left;
 }
 
 .genesis-nav-menu {
 	@include lb-ad-offset();
-
-	position: fixed;
-	left: 0;
-	width: 100%;
 	@include transform(translateY(-120%));
 	@include transition(transform .3s);
-
-	text-align: center;
-	background: $black;
-	font-family: $sans;
-  	font-weight: 800;
-  	text-transform: uppercase;
-	
-	li.menu-item a {
-		color: $white;
-		border-color: lighten($black, 5%);
-		display: block;
-		font-size: .5rem;
-		padding: 1em 0;
-		border-bottom-width: 1px;
-		border-style: solid;
-		text-decoration: none;
-		white-space: nowrap;
-		
-		span {
-			opacity: 1;
-		}
-	}
-
-	li:first-of-type a {
-		border-top-width: 1px;
-	}
-	
 	@include MQ(M) {
+		@include transform(translateY(0));
 		position: static;
 		display: table;
-		@include transform(translateY(0));
+		padding: 0;
 		width: auto;
 		height: 80px;
 		background: transparent;
-		padding: 0;
 		text-align: center;
 
 		li.menu-item {
 			display: table-cell;
-			vertical-align: middle;
 			padding: 0 .6em;
+			vertical-align: middle;
 		}
 
 		li.menu-item a {
+			@include transition(all .2s);
 			display: inline-block;
-			font-size: 1.6rem;
 			padding: .4em .2em;
 			border: none;
-			@include transition(all .2s);
+			font-size: 1.6rem;
 
 			&.selected {
-				color: $grey;
 				box-shadow: 0 2px 0 $yellow;
+				color: $grey;
 			}
 
 			&.no-touch &:hover {
@@ -122,6 +87,34 @@
 		li:first-of-type a {
 			border-top: none;
 		}
+	}
+	position: fixed;
+	left: 0;
+	width: 100%;
+	background: $black;
+	text-align: center;
+	text-transform: uppercase;
+	font-weight: 800;
+	font-family: $sans;
+
+	li.menu-item a {
+		display: block;
+		padding: 1em 0;
+		border-style: solid;
+		border-color: lighten($black, 5%);
+		border-bottom-width: 1px;
+		color: $white;
+		text-decoration: none;
+		white-space: nowrap;
+		font-size: .5rem;
+
+		span {
+			opacity: 1;
+		}
+	}
+
+	li:first-of-type a {
+		border-top-width: 1px;
 	}
 	// Sublevels
 	.sub-menu {
@@ -164,44 +157,50 @@
 	/* hide line in the center on mobile when nav is visible */
 	background-color: rgba($white, 0);
 
-	&::before, &::after {
+	&::before,
+	&::after {
 		/* preserve visibility of upper and lower lines - close icon */
 		background-color: rgba($white, 1);
 	}
 }
 
 .cd-nav-trigger {
-	display: block;
+	@include MQ(M) {
+		display: none;
+	}
 	position: absolute;
-	right: 0;
 	top: 30%;
-	height: 100%;
-	width: 50px;
+	right: 0;
+	display: block;
 	overflow: hidden;
-	white-space: nowrap;
+	width: 50px;
+	height: 100%;
 	color: transparent;
+	white-space: nowrap;
 
 	span {
-		position: absolute;
-		height: 4px;
-		width: 20px;
-		top: 20%;
-		margin-top: -1px;
-		left: 50%;
-		margin-left: -10px;
 		@include transition(background-color .3s .3s);
+		position: absolute;
+		top: 20%;
+		left: 50%;
+		margin-top: -1px;
+		margin-left: -10px;
+		width: 20px;
+		height: 4px;
 
-		&::before, &::after {
-			content: '';
+		&::before,
+		&::after {
+			/* Force Hardware Acceleration in WebKit */
+			@include transform(translateZ(0));
+			@include transition(transform .3s .3s);
 			position: absolute;
 			width: 100%;
 			height: 100%;
-			/* Force Hardware Acceleration in WebKit */
-			@include transform(translateZ(0));
-			-webkit-backface-visibility: hidden;
+			content: '';
 			backface-visibility: hidden;
+
+			-webkit-backface-visibility: hidden;
 			will-change: transform;
-			@include transition(transform .3s .3s);
 		}
 
 		&::before {
@@ -212,15 +211,10 @@
 			@include transform(translateY(6px));
 		}
 	}
-
-	@include MQ(M) {
-		display: none;
-	}
 }
 
 .nav-is-visible {
 	.cd-nav-trigger span {
-
 		&::before {
 			@include transform(translateY(0) rotate(-45deg));
 		}
@@ -234,4 +228,3 @@
 		@include transform(translateY(0));
 	}
 }
-

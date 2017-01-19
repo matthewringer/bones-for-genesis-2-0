@@ -10,9 +10,28 @@
 }
 
 .site-inner {
-	word-wrap: break-word;
+	//@include lb-ad-offset();
 	position: relative;
-	@include lb-ad-offset();
+	word-wrap: break-word;
+}
+
+.rva-before-content {
+	background-color: $black;
+
+	@include MQ(XS) {
+		height: 190px;
+	}
+	@include MQ(S) {
+		height: 190px;
+	}
+	@include MQ(M) {
+		height: 190px;
+	}
+	@include MQ(L) {
+		height: 190px;
+	}
+	
+	height: 130px;
 }
 
 .content-sidebar-wrap {

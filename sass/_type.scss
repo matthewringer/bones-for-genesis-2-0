@@ -2,7 +2,7 @@ html,
 body {
 	// min-width: $site-width; // Prevents backgrounds on these elements from being truncated on smaller screens on fixed-width sites
 	//font-size: 62.5%;
-	@include MQ(S){
+	@include MQ(S) {
 		font-size: 80%;
 	}
 }
@@ -42,8 +42,8 @@ body {
 }
 
 a {
-	text-decoration: none;
 	color: $black;
+	text-decoration: none;
 	//transition: all .15s ease-in-out;
 
 	&:hover,
@@ -92,4 +92,3 @@ hr {
 	border-collapse: collapse;
 	border-top: 1px solid $grey;
 }
-

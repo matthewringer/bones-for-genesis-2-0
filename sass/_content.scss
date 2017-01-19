@@ -1,6 +1,11 @@
 .breadcrumbs {
 }
 
+.content {
+	text-align: center;
+}
+
+
 .entry-title {
 	overflow: hidden;
 	word-wrap: break-word;
@@ -15,6 +20,7 @@
 }
 
 .entry-content {
+	
 	p {
 		@extend %type;
 	}
@@ -80,80 +86,95 @@
 }
 
 .article-title {
-	font-size: 1.8rem;
-	line-height: .9;
-	font-weight: 800;
-	margin: 0 0 .4em;
-	padding: 0 .5em 0 .1em;
-	color: $yellow;
-	background-color: $black;
-	
-	a {
-		color: darken($yellow, 5%);
-	}
-
 	@include MQ(S) {
 		font-size: 2rem;
 	}
-
 	@include MQ(M) {
 		font-size: 4rem;
+	}
+	margin: 0 0 .4em;
+	padding: 0 .5em 0 .1em;
+	background-color: $black;
+	color: $yellow;
+	font-weight: 800;
+	font-size: 1.8rem;
+	line-height: .9;
+
+	a {
+		color: darken($yellow, 5%);
 	}
 }
 
 .author {
-	font-family: $serif;
-	font-style: italic;
-	font-weight: 600;
-	font-size: 1.2rem;
-	line-height: 1.8;
+	@include MQ(S) {
+		margin: 1em 0 1.8em;
+		font-size: 1.8rem;
+	}
+	@include MQ(M) {
+		font-size: 3rem;
+	}
 	margin: 1em 0;
 	padding: 0 .5em;
-	color: $yellow;
 	background-color: $black;
+	color: $yellow;
+	font-weight: 600;
+	font-style: italic;
+	font-size: 1.2rem;
+	font-family: $serif;
+	line-height: 1.8;
 
 	a {
 		color: darken($yellow, 5%);
 	}
 
-	@include MQ(S) {
-		font-size: 1.8rem;
-		margin: 1em 0 1.8em;
-	}
-
-	@include MQ(M) {
-		font-size: 3rem;
-	}
-
 	/* by before the author's name */
 	span::before {
-		content: 'by ';
-		font-style: normal;
-		font-weight: 400;
 		color: darken($grey, 15%);
+		content: 'by ';
+		font-weight: 400;
+		font-style: normal;
 	}
 }
 
 .title-block {
-	text-align: left;
 	position: relative;
-	-webkit-align-self: flex-end; 
-	align-self: flex-end;
-	left: 5%;
 	bottom: 10%;
+	left: 5%;
+	align-self: flex-end;
 	max-width: 90%;
-	
+	text-align: left;
+
+	-webkit-align-self: flex-end;
+
 	h2 {
 		display: inline;
 	}
 
 	p {
 		display: inline;
-		max-width:80%;
+		max-width: 80%;
 	}
 }
 
 .cd-hero-box {
+	@include MQ(XS) {
+		height: 20em;
+	}
+	@include MQ(S) {
+		height: 30em;
+	}
+	@include MQ(M) {
+		height: 40em;
+		& h3 {
+			font-size: 2.4rem;
+		}
+	}
+	@include MQ(L) {
+		height: 60em;
+		& h3 {
+			font-size: 3.8rem;
+		}
+	}
 	display: -webkit-box;
 	display: -moz-box;
 	display: -ms-flexbox;
@@ -161,126 +182,94 @@
 	display: -webkit-flex;
 	display: flex;
 	flex-wrap: wrap;
-
-    width: 100%;
-    background-image: url(../img/rva_street_fest.jpg);
-    background-position: 0% 25%;
-    background-size: cover;
-    background-repeat: no-repeat;
-    color: white;
-    height: 12em;
-
-	@include MQ(XS) {
-		height: 20em;
-	}
-
-	@include MQ(S) {
-		height: 30em;
-	}
-
-	@include MQ(M) {
-		height: 40em;
-		& h3 {
-			font-size: 2.4rem;
-		}
-	}
-
-	@include MQ(L) {
-		height: 60em;
-		& h3 {
-			font-size: 3.8rem;
-		}
-	}
+	width: 100%;
+	height: 12em;
+	background-image: url(../img/rva_street_fest.jpg);
+	background-position: 0 25%;
+	background-size: cover;
+	background-repeat: no-repeat;
+	color: white;
 }
 
-.section-title 
-{
-	width: 100%;
-	text-align: center;
-	border-top: 2px solid $grey;
+.section-title {
 	margin-top: 2em;
 	min-height: 61px;
+	width: 100%;
+	border-top: 2px solid $grey;
+	text-align: center;
 
 	h2 {
-		top: -15px;
-		display: inline-block;
-		position: relative;
-		background-color: $white;
-		padding: 0 10px;
-
 		@include MQ(S) {
 			top: -10px;
 		}
+		position: relative;
+		top: -15px;
+		display: inline-block;
+		padding: 0 10px;
+		background-color: $white;
 	}
 }
 
 .cd-gutter-box {
-	margin-left: 5%;
-	margin-right: 5%;
 	overflow: hidden;
+	margin-right: 5%;
+	margin-left: 5%;
 }
 
 .cd-2x1-box {
-
-	& article {
-		padding: 0 0 2em 0;
-	}
-
 	@include MQ(S) {
 		float: left;
 		width: 100%;
 
-		& article:nth-of-type(1)  {
+		& article:nth-of-type(1) {
 			padding: 0 .5em 2em 0;
 		}
 
 		& article:nth-of-type(2) {
 			padding: 0 0 2em .5em;
 		}
-		
+
 		& article {
-				float: left;
-				width: 50%;
+			float: left;
+			width: 50%;
 		}
+	}
+	& article {
+		padding: 0 0 2em 0;
 	}
 }
 
 .cd-3x3-box {
-
 	& article {
-		padding: 0 0 1em 0;
-
 		@include MQ(S) {
 			float: left;
-			width: 33.3%;
 			padding-right: 1em;
+			width: 33.3%;
 		}
+		padding: 0 0 1em 0;
 	}
-	
 }
 
 .entry-thumbnail {
-
+	@include MQ(M) {
+		font-size: 1.6em;
+	}
 	& h3 {
 		padding-top: 1em;
 	}
-	
-	& div.text-block {
-		height: 12em;
-		overflow: hidden;
-	}
 
-	@include MQ(M) {
-		font-size: 1.6em;
+	& div.text-block {
+		overflow: hidden;
+		height: 12em;
 	}
 }
 
 .article-image {
-			height: 10em;
-			background-position: 0% 25%;
-			background-size: cover;
-			background-repeat: no-repeat;
-			padding-top: 75%;
+	padding-top: 75%;
+	height: 10em;
+	background-position: 0 25%;
+	background-size: cover;
+	background-repeat: no-repeat;
 }
 
 .cd-sidebar {
@@ -288,47 +277,42 @@
 		float: left;
 		width: 75%;
 	}
-
 }
 
 .widesky-sidebar {
-	display: none;
-
 	@include MQ(S) {
 		display: block;
 
 		h2 {
-    		font-size: 1.6rem;
+			font-size: 1.6rem;
 		}
 	}
-
 	@include MQ(S) {
 		h2 {
-    		font-size: initial;
+			font-size: initial;
 		}
 	}
-
-
+	display: none;
 	overflow: hidden;
 
 	& div.widesky-ad {
-		background-color: $yellow;
-		width: 100%;
-		padding-top: 200%;
 		position: relative;
+		padding-top: 200%;
+		width: 100%;
+		background-color: $yellow;
 		text-align: center;
 
 		p {
-			background-color: $yellow;
 			position: absolute;
 			top: 0;
-			left: 0;
-			bottom: 0;
 			right: 0;
+			bottom: 0;
+			left: 0;
 			padding-top: 10%;
+			background-color: $yellow;
 		}
 	}
-	
+
 	& div.social-buttons {
 		margin-top: 1em;
 		padding: 1em;
@@ -337,44 +321,42 @@
 
 	// todo: social button scss is a mess. 
 	& ul.social-buttons {
-		border-left: .3em solid $black;
-
-		padding: 0 0 0 .5em;
-		
-		li { 
-			margin: .3em;
-			height: 30px;
-			width: 30px;
-			font-size: 1.8em;
-			
-			span {
-					font-weight: 600;
-					font-size: 1rem;
-					color: $black;
-					position: relative;
-					display: inline-block;
-					left: 35px;
-					top: 4px;
-				}
-		}
-
 		@include MQ(L) {
-			padding: 0 0 0.5em 1em;
+			padding: 0 0 .5em 1em;
 
-			li { 
+			li {
 				margin: .3em;
-				height: 40px;
 				width: 40px;
+				height: 40px;
 				font-size: 1.45em;
 
 				span {
+					position: relative;
+					top: 8px;
+					left: 50px;
+					color: $black;
 					font-weight: 600;
 					font-size: 1.8rem;
-					color: $black;
-					position: relative;
-					left: 50px;
-					top: 8px;
 				}
+			}
+		}
+		padding: 0 0 0 .5em;
+		border-left: .3em solid $black;
+
+		li {
+			margin: .3em;
+			width: 30px;
+			height: 30px;
+			font-size: 1.8em;
+
+			span {
+				position: relative;
+				top: 4px;
+				left: 35px;
+				display: inline-block;
+				color: $black;
+				font-weight: 600;
+				font-size: 1rem;
 			}
 		}
 	}

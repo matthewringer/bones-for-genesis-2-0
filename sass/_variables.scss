@@ -12,26 +12,34 @@ $breakpoints: ( zero: (1 * 16px), phone: (35 * 16px), portrait: (48 * 16px), adm
 
 
 // breakpoints
-$XS:    500px;
-$S:     768px;   
-$M:     1024px;     
-$L:     1600px;   
+$XS: 500px;
+$S: 768px;
+$M: 1024px;
+$L: 1600px;
 
 // media queries
 
 @mixin MQ($canvas) {
-  @if $canvas == XS {
-   @media only screen and (min-width: $XS) { @content; } 
-  }
-  @if $canvas == S {
-   @media only screen and (min-width: $S) { @content; } 
-  }
-  @else if $canvas == M {
-   @media only screen and (min-width: $M) { @content; } 
-  }
-  @else if $canvas == L {
-   @media only screen and (min-width: $L) { @content; } 
-  }
+	@if $canvas == XS {
+		@media only screen and (min-width: $XS) {
+			@content;
+		}
+	}
+	@if $canvas == S {
+		@media only screen and (min-width: $S) {
+			@content;
+		}
+	}
+	@else if $canvas == M {
+		@media only screen and (min-width: $M) {
+			@content;
+		}
+	}
+	@else if $canvas == L {
+		@media only screen and (min-width: $L) {
+			@content;
+		}
+	}
 }
 
 /*********************
@@ -41,43 +49,35 @@ Offsets
 //TOP
 
 @mixin lb-ad-offset() {
-  top: 60px;
-	
-  @include MQ(XS) {
+	@include MQ(XS) {
 		top: 60px;
 	}
-	
 	@include MQ(S) {
 		top: 60px;
 	}
-	
 	@include MQ(M) {
 		top: 120px;
 	}
-
-  @include MQ(L) {
+	@include MQ(L) {
 		top: 120px;
 	}
+	top: 60px;
 }
 
 @mixin lb-ad-height() {
-  height: 60px;
-
 	@include MQ(XS) {
 		height: 60px;
 	}
-	
 	@include MQ(S) {
 		height: 60px;
 	}
-	
 	@include MQ(M) {
 		height: 120px;
 	}
-
-  @include MQ(L) {
+	@include MQ(L) {
 		height: 120px;
 	}
+	height: 60px;
 }
 
 
@@ -85,17 +85,15 @@ Offsets
 /*********************
 COLORS
 *********************/
-$black: 	#0d0d0d;
-$yellow: 	#fff200;
-$red: 	#ee1c25;
-$green: 	#6fce72;
-$grey: 	#e6e6e6;
-$white: 	#ffffff;
-
+$black: #0d0d0d;
+$yellow: #fff200;
+$red: #ee1c25;
+$green: #6fce72;
+$grey: #e6e6e6;
+$white: #fff;
 $success: $green;
 $alert: $red;
-
-$twitter:   $bc-twitter;
+$twitter: $bc-twitter;
 
 // Social Media colors TBD
 

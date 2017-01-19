@@ -20,11 +20,12 @@
 
 .social-buttons li {
 	position: relative;
+	border-radius: 50px;
 	color: $white;
-	
+
 	&.btn-facebook {
 		background-color: $bc-facebook;
-	} 
+	}
 
 	&.btn-twitter {
 		background-color: $bc-twitter;
@@ -36,9 +37,10 @@
 
 	&.btn-youtube {
 		background-color: $bc-youtube;
-	} 
-	
-	&.btn-email, &.btn-print {
+	}
+
+	&.btn-email,
+	&.btn-print {
 		background-color: darken($grey, 50%);
 	}
 
@@ -54,24 +56,28 @@
 		background-color: $bc-linkedin;
 	}
 
-	border-radius: 50px;
-
 	& i {
 		position: absolute;
 
-		&.fa-facebook, &.fa-tumblr {
+		&.fa-facebook,
+		&.fa-tumblr {
 			top: 25%;
 			left: 33%;
 		}
 
-		&.fa-youtube, &.fa-instagram, &.fa-twitter, &.fa-linkedin {
+		&.fa-youtube,
+		&.fa-instagram,
+		&.fa-twitter,
+		&.fa-linkedin {
 			top: 20%;
-			left: 25%
+			left: 25%;
 		}
 
-		&.fa-envelope, &.fa-print, &.fa-comment {
+		&.fa-envelope,
+		&.fa-print,
+		&.fa-comment {
 			top: 20%;
-			left: 21%
+			left: 21%;
 		}
 	}
 }

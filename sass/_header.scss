@@ -4,10 +4,10 @@
 	position: fixed;
 	top: 0;
 	left: 0;
-	width: 100%;
-	text-align: center;
-	background-color: $yellow;
 	z-index: 999;
+	width: 100%;
+	background-color: $yellow;
+	text-align: center;
 }
 
 .site-header {
@@ -15,64 +15,58 @@
 	//top: 60px;
 	position: fixed;
 	left: 0;
-	width: 100%;
-	box-shadow: 0 1px 1px rgba(#000, .1);
 	z-index: 10;
-
 	display: -webkit-box;
 	display: -moz-box;
 	display: -ms-flexbox;
 	display: -moz-flex;
 	display: -webkit-flex;
 	display: flex;
-	
+	width: 100%;
+	box-shadow: 0 1px 1px rgba(#000, .1);
+
 	& .wrap {
 		width: 100%;
 		background-color: $black;
-		
 		//todo: js to update the header opacity
 		opacity: .80;
 
 		& p {
-			font-style: italic;
-			font-weight: 600;
 			color: $yellow;
+			font-weight: 600;
+			font-style: italic;
 		}
 	}
 }
 
 // hide the SEO title and description
 .title-area {
-	font-size: .6em;
-	width: 90%;
-    top: 40%;
-    float: right;
-    position: relative;
-    text-align: center;
-	white-space: nowrap;
-
 	@include MQ(XS) {
 		width: 100%;
 		font-size: 1em;
 	}
-	
 	@include MQ(S) {
 		font-size: 1.8em;
 	}
-	
 	@include MQ(M) {
-		
-		width: 0;
-    	top: 0;
 		position: absolute;
-    	top: -9999px;
-    	left: -9999px; 
+		top: 0;
+		top: -9999px;
+		left: -9999px;
+		width: 0;
 	}
+	position: relative;
+	top: 40%;
+	float: right;
+	width: 90%;
+	text-align: center;
+	white-space: nowrap;
+	font-size: .6em;
 }
 
 .site-title {
 	position: absolute;
-    top: -9999px;
+	top: -9999px;
 	a {
 		&:hover,
 		&:focus {
@@ -89,4 +83,3 @@
 	.widget {
 	}
 }
-
