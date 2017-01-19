@@ -75,6 +75,13 @@
 }
 
 .site-description {
+	top: 25px;
+  position: relative;
+
+	@include MQ(XS){
+		top: initial;
+		position: initial;
+	}
 }
 
 .header-widget-area {

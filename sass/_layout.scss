@@ -15,6 +15,16 @@
 	word-wrap: break-word;
 }
 
+.rva-fp-before-content {
+	background-color: $black;
+
+	@include MQ(XS) {
+		height: 60px;
+	}
+	
+	height: 120px;
+}
+
 .rva-before-content {
 	background-color: $black;
 
@@ -25,10 +35,10 @@
 		height: 190px;
 	}
 	@include MQ(M) {
-		height: 190px;
+		height: 220px;
 	}
 	@include MQ(L) {
-		height: 190px;
+		height: 220px;
 	}
 	
 	height: 130px;

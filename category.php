@@ -20,12 +20,14 @@ function rva_load_more_args() {
 }
 add_action( 'wp_enqueue_scripts', 'rva_load_more_args' );
 
+//rva_infinite_scroll();
+
 // Add our custom loop
 remove_action( 'genesis_loop', 'genesis_do_loop' );
 add_action( 'genesis_loop', 'rvamag_categorypage_loop' );
 
-add_action('genesis_before_content', 'rvamag_singlepage_loop');
-function rvamag_singlepage_loop() {
+add_action('genesis_before_content', 'rvamag_before_content');
+function rvamag_before_content() {
 	echo '<div class="rva-before-content"></div>';
 }
 
