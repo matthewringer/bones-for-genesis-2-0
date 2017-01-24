@@ -12,7 +12,6 @@
 
 .site-header {
 	@include lb-ad-offset();
-	//top: 60px;
 	position: fixed;
 	left: 0;
 	z-index: 10;
@@ -28,8 +27,6 @@
 	& .wrap {
 		width: 100%;
 		background-color: $black;
-		//todo: js to update the header opacity
-		opacity: .80;
 
 		& p {
 			color: $yellow;

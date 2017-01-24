@@ -71,7 +71,6 @@
 			@include transition(all .2s);
 			display: inline-block;
 			padding: .4em .2em;
-			border: none;
 			font-size: 1.6rem;
 
 			&.selected {
@@ -100,9 +99,7 @@
 	li.menu-item a {
 		display: block;
 		padding: 1em 0;
-		border-style: solid;
-		border-color: lighten($black, 5%);
-		border-bottom-width: 1px;
+		border: none;
 		color: $white;
 		text-decoration: none;
 		white-space: nowrap;

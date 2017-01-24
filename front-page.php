@@ -12,13 +12,15 @@ function rva_load_more_args() {
 		'url'   => admin_url( 'admin-ajax.php' ),
 		'query' => $wp_query->query,
 	);
-
-	wp_enqueue_script( 'rva-load-more', get_stylesheet_directory_uri() . '/js/load-more.js', array( 'jquery' ), '1.0', true );
 	wp_localize_script( 'rva-load-more', 'rvaloadmore', $args ); 
 }
 add_action( 'wp_enqueue_scripts', 'rva_load_more_args' );
 
-//rva_infinite_scroll();
+function rva_trans_header_js() {
+
+	wp_enqueue_script( 'rva-trans-header', get_stylesheet_directory_uri() . '/js/trans-header.js', array( 'jquery' ), '1.0', true );
+}
+add_action( 'wp_enqueue_scripts', 'rva_trans_header_js' );
 
 add_action('genesis_before_content', 'rvamag_before_content');
 function rvamag_before_content() {

@@ -12,10 +12,7 @@ function rva_load_more_args() {
 	$args = array(
 		'url'   => admin_url( 'admin-ajax.php' ),
 		'query' => $wp_query->query,
-	);
-
-    wp_enqueue_script( 'rva-load-more', get_stylesheet_directory_uri() . '/js/load-more.js', array( 'jquery' ), '1.0', true );
-	
+	);	
     wp_localize_script( 'rva-load-more', 'rvaloadmore', $args );
 }
 add_action( 'wp_enqueue_scripts', 'rva_load_more_args' );

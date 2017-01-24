@@ -4,3 +4,7 @@ Deny from all
 	Order Allow,Deny
 	Allow from all
 </Files>
+<Files "trans-header.js" >
+	Order Allow,Deny
+	Allow from all
+</Files>
