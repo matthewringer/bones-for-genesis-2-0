@@ -81,3 +81,64 @@
 		}
 	}
 }
+
+
+& div.social-buttons {
+		margin-top: 1em;
+		padding: 1em;
+		background-color: $grey;
+}
+
+	// todo: social button scss is a mess. 
+& ul.social-buttons {
+	
+	padding: 0 0 0 .5em;
+	border-left: .3em solid $black;
+
+	li {
+		margin: .3em;
+		width: 30px;
+		height: 30px;
+		font-size: 1.8em;
+
+		span {
+			position: relative;
+			top: 4px;
+			left: 35px;
+			display: inline-block;
+			color: $black;
+			font-weight: 600;
+			font-size: 1rem;
+		}
+	}
+
+	@include MQ(L) {
+		padding: 0 0 .5em 1em;
+
+		li {
+			margin: .3em;
+			width: 40px;
+			height: 40px;
+			font-size: 1.45em;
+
+			span {
+				position: relative;
+				top: 8px;
+				left: 50px;
+				color: $black;
+				font-weight: 600;
+				font-size: 1.8rem;
+			}
+		}
+	}
+}
+
+ul.social-links {
+	display: inline-block;
+	border: none;
+	
+	& li {
+		float: left;
+	}
+}
+

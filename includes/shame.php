@@ -124,7 +124,7 @@ function hero_story() {
 		echo	'<div class="title-block" >';
 		echo		'<h2 class="article-title"><a href="' . get_the_permalink() .'">'. get_the_title() . '</a></h2>';
 		echo		'<br/>';
-		echo		'<p class="author"><span>' . get_the_author() . '</span></p>';
+		echo		'<p class="author">' . do_shortcode('[post_author_posts_link]') . '</p>';
 		echo	'</div>';
 		echo '</div>';
 	}

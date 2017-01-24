@@ -32,17 +32,18 @@ function rvamag_after_content() {
 	echo '</div> <!-- / cd-gutterbox -->';
 }
 
-add_action('genesis_before_entry_content', 'rvamag_after_entry_content');
-function rvamag_after_entry_content() {
-	//echo '<div style="height:40px; background-color:yellow;"> fuck DJT </div>';
-	echo	'<ul class="cd-box cd-icons social-buttons">';
-	echo	'<li class="btn-facebook"><i class="fa fa-facebook" ></i></li>';
-	echo	'<li class="btn-twitter"><i class="fa fa-twitter"></i></li>';
-	echo	'<li class="btn-linkedin"><i class="fa fa-linkedin"></i></li>';
-	echo	'<li class="btn-email"><i class="fa fa-envelope"></i></li>';
-	echo	'<li class="btn-print"><i class="fa fa-print"></i></li>';
-	echo	'<li class="btn-message"><i class="fa fa-comment"></i></li>';
+add_action('genesis_before_entry_content', 'rvamag_post_header');
+function rvamag_post_header() {
+	//echo '<div style="height:40px; background-color:yellow;"> fuck DJT ';
+	echo	'<ul class="social-buttons social-links">';
+	echo		'<li class="btn-facebook"><i class="fa fa-facebook" ></i></li>';
+	echo		'<li class="btn-twitter"><i class="fa fa-twitter"></i></li>';
+	echo		'<li class="btn-linkedin"><i class="fa fa-linkedin"></i></li>';
+	echo		'<li class="btn-email"><i class="fa fa-envelope"></i></li>';
+	echo		'<li class="btn-print"><i class="fa fa-print"></i></li>';
+	echo		'<li class="btn-message"><i class="fa fa-comment"></i></li>';
 	echo	'</ul>';
+	//echo	'</div>';
 }
 
 

@@ -28,7 +28,7 @@ add_action( 'genesis_loop', 'rvamag_categorypage_loop' );
 
 add_action('genesis_before_content', 'rvamag_before_content');
 function rvamag_before_content() {
-	echo '<div class="rva-before-content"></div>';
+	echo '<div id="top" class="rva-before-content"></div>';
 }
 
 //* Remove the post content (requires HTML5 theme support)

@@ -22,7 +22,7 @@ add_action( 'wp_enqueue_scripts', 'rva_load_more_args' );
 
 add_action('genesis_before_content', 'rvamag_before_content');
 function rvamag_before_content() {
-	echo '<div class="rva-fp-before-content"></div>';
+	echo '<div id="top" class="rva-fp-before-content"></div>';
 }
 
 // Add our custom loop
