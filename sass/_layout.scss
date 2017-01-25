@@ -7,6 +7,8 @@
 // .full-width-content
 
 .site-container {
+	max-width: $site-width;
+	margin: auto;
 }
 
 .site-inner {
@@ -26,23 +28,41 @@
 }
 
 .rva-before-content {
-	background-color: $black;
+	//background-color: $black;
+	height: 120px;
 
 	@include MQ(XS) {
-		height: 190px;
+		height: 125px;
+		//height: 190px;
 	}
 	@include MQ(S) {
-		height: 190px;
+		height: 130px;
+		//height: 190px;
+	}
+	// @include MQ(M) {
+	// 	height: 220px;
+	// }
+	// @include MQ(L) {
+
+	// 	height: 220px;
+	// }
+}
+
+.rva-category-before-content {
+	
+	height: 120px;
+
+	@include MQ(XS) {
+		height: 130px;
+	}
+	@include MQ(S) {
+		//height: 125px;
 	}
 	@include MQ(M) {
-		height: 220px;
+		height: 200px;
 	}
-	@include MQ(L) {
-		height: 220px;
-	}
-	
-	height: 130px;
 }
+
 
 .content-sidebar-wrap {
 	@extend %clearfix;

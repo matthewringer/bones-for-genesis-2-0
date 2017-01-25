@@ -97,7 +97,11 @@ function rva_infinite_scroll() {
 
 function start_section($title) {
 	echo '<div class="cd-gutter-box">';
-	echo	'<div class="section-title">';
+	if($title) {
+		echo	'<div class="section-title">';
+	} else {
+		echo	'<div>';
+	}
 	echo		'<h2>'.$title.'</h2>';
 	echo	'</div>';
 }

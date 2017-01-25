@@ -25,7 +25,7 @@ add_action( 'genesis_loop', 'rvamag_categorypage_loop' );
 
 add_action('genesis_before_content', 'rvamag_before_content');
 function rvamag_before_content() {
-	echo '<div id="top" class="rva-before-content"></div>';
+	echo '<div id="top" class="rva-category-before-content"></div>';
 }
 
 //* Remove the post content (requires HTML5 theme support)
@@ -52,7 +52,7 @@ function rvamag_categorypage_loop() {
 	$idObj = get_category_by_slug($wp_query->query["category_name"]); 
   	$title = $idObj->cat_name;
 
-    start_section($title);
+    start_section("");
         echo '<div class="post-listing cd-3x3-box" ></div>';
     close_section();
 

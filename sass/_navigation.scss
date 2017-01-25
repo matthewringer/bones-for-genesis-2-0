@@ -51,42 +51,7 @@
 	@include lb-ad-offset();
 	@include transform(translateY(-120%));
 	@include transition(transform .3s);
-	@include MQ(M) {
-		@include transform(translateY(0));
-		position: static;
-		display: table;
-		padding: 0;
-		width: auto;
-		height: 80px;
-		background: transparent;
-		text-align: center;
-
-		li.menu-item {
-			display: table-cell;
-			padding: 0 .6em;
-			vertical-align: middle;
-		}
-
-		li.menu-item a {
-			@include transition(all .2s);
-			display: inline-block;
-			padding: .4em .2em;
-			font-size: 1.6rem;
-
-			&.selected {
-				box-shadow: 0 2px 0 $yellow;
-				color: $grey;
-			}
-
-			&.no-touch &:hover {
-				color: $yellow;
-			}
-		}
-
-		li:first-of-type a {
-			border-top: none;
-		}
-	}
+	
 	position: fixed;
 	left: 0;
 	width: 100%;
@@ -129,6 +94,43 @@
 		}
 
 		.sub-menu {
+		}
+	}
+
+	@include MQ(M) {
+		@include transform(translateY(0));
+		position: static;
+		display: table;
+		padding: 0;
+		width: auto;
+		height: 80px;
+		background: transparent;
+		text-align: center;
+
+		li.menu-item {
+			display: table-cell;
+			padding: 0 .6em;
+			vertical-align: middle;
+		}
+
+		li.menu-item a {
+			@include transition(all .2s);
+			display: inline-block;
+			padding: .4em .2em;
+			font-size: 1.6rem;
+
+			&.selected {
+				box-shadow: 0 2px 0 $yellow;
+				color: $grey;
+			}
+
+			&.no-touch &:hover {
+				color: $yellow;
+			}
+		}
+
+		li:first-of-type a {
+			border-top: none;
 		}
 	}
 }

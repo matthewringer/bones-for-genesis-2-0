@@ -3,6 +3,14 @@
 
 .content {
 	text-align: center;
+
+	@include MQ(S) {
+		font-size: 90%;
+	}
+
+	@include MQ(S) {
+		font-size: 100%;
+	}
 }
 
 
@@ -84,6 +92,7 @@
 
 	.entry-categories,
 	.entry-tags {
+		font-weight: 300;
 	}
 }
 
@@ -283,6 +292,8 @@
 
 .widesky-sidebar {
 	@include MQ(S) {
+		float:right; 
+		width: 25%;
 		display: block;
 
 		h2 {
@@ -294,15 +305,23 @@
 			font-size: initial;
 		}
 	}
-	display: none;
+	
+	width: 100%;
+	//display: inline-block;
+	float: none;
 	overflow: hidden;
 
 	& div.widesky-ad {
+
 		position: relative;
-		padding-top: 200%;
+		padding-top: 100%;
 		width: 100%;
 		background-color: $yellow;
 		text-align: center;
+
+		@include MQ(S) {
+			padding-top: 200%;
+		}
 
 		p {
 			position: absolute;

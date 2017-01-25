@@ -67,20 +67,19 @@ function bfg_post_info() {
 
 }
 
-// remove_action( 'genesis_entry_footer', 'genesis_post_meta' );
+remove_action( 'genesis_entry_footer', 'genesis_post_meta' );
+add_action( 'genesis_before_entry_content', 'genesis_post_meta', 11);
 add_filter( 'genesis_post_meta', 'bfg_post_meta' );
 /**
  * Customize the post meta text.
  *
- * See:http://www.briangardner.com/code/customize-post-meta/
+ * return '[post_categories before="' . __( 'Filed Under: ', CHILD_THEME_TEXT_DOMAIN ) . '"] [post_tags before="' . __( 'Tagged: ', CHILD_THEME_TEXT_DOMAIN ) . '"]';
  *
  * @since 2.0.0
  */
 function bfg_post_meta() {
 
-	return '[post_categories before="' . __( 'Filed Under: ', CHILD_THEME_TEXT_DOMAIN ) . '"] [post_tags before="' . __( 'Tagged: ', CHILD_THEME_TEXT_DOMAIN ) . '"]';
-
-	//return 'TAGS: [post_tags]';
+	return 'Topics: [post_tags before="' . __( ' ', CHILD_THEME_TEXT_DOMAIN ) . '"]';
 
 }
 
