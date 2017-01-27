@@ -178,12 +178,29 @@ function widesky_sidebar() {
 	echo 	'<div class="social-buttons" >';
 	echo 		'<h2>Follow RVA Mag</h2>';
 	echo 		'<ul class="social-buttons">';
-	echo 			'<li class="btn-facebook"><i class="fa fa-facebook" ></i><span>Facebook</span></li>';
-	echo 			'<li class="btn-twitter"><i class="fa fa-twitter"></i><span>Twitter</span></li>';
-	echo 			'<li class="btn-tumblr"><i class="fa fa-tumblr"></i><span>Tumblr</span></li>';
-	echo 			'<li class="btn-youtube"><i class="fa fa-youtube"></i><span>YouTube</span></li>';
-	echo 			'<li class="btn-instagram"><i class="fa fa-instagram"></i><span>Instagram</span></li>';
+	echo 			'<li class="btn-facebook"><a target="_blank" href="'.genesis_get_option('facebook_url').'"><i class="fa fa-facebook" ></i><span>Facebook</span></a></li>';
+	echo 			'<li class="btn-twitter"><a target="_blank" href="'.genesis_get_option('twitter_url').'"><i class="fa fa-twitter"></i><span>Twitter</span></a></li>';
+	echo 			'<li class="btn-tumblr"><a target="_blank" href="'.genesis_get_option('tumblr_url').'"><i class="fa fa-tumblr"></i><span>Tumblr</span></a></li>';
+	echo 			'<li class="btn-youtube"><a target="_blank" href="'.genesis_get_option('youtube_url').'"><i class="fa fa-youtube"></i><span>YouTube</span></a></li>';
+	echo 			'<li class="btn-instagram"><a target="_blank" href="'.genesis_get_option('instagram_url').'"><i class="fa fa-instagram"></i><span>Instagram</span></a></li>';
 	echo 		'</ul>';
 	echo 	'</div>';
 	echo '</aside>';
+}
+
+function rva_entry_share_links($post) {
+	echo	'<ul class="social-buttons social-links">';
+	echo		'<li class="btn-facebook"><a target="_blank" href="'.genesis_get_option('share_facebook_url').get_permalink($post).'"><i class="fa fa-facebook" ></i></a></li>';
+	echo		'<li class="btn-twitter"><a target="_blank" href="'.genesis_get_option('share_twitter_url').get_permalink($post).'"><i class="fa fa-twitter" ></i></a></li>';
+	echo		'<li class="btn-linkedin"><a target="_blank" href="'.genesis_get_option('share_linkedin_url').get_permalink($post).'"><i class="fa fa-linkedin" ></i></a></li>';
+	echo		'<li class="btn-email"><a target="_blank" href="'.genesis_get_option('share_email_url').get_permalink($post).'"><i class="fa fa-envelope" ></i></a></li>';
+	echo		'<li class="btn-print"><a target="_blank" href="'.genesis_get_option('share_print_url').get_permalink($post).'"><i class="fa fa-print" ></i></a></li>';
+	echo		'<li class="btn-message"><a target="_blank" href="'.genesis_get_option('share_message_url').get_permalink($post).'"><i class="fa fa-comment" ></i></a></li>';
+	echo	'</ul>';
+}
+
+function get_the_tagline(){
+	$post_id = get_the_ID();
+    $field = 'rva_post_tagline';
+    return get_post_meta( $post_id, $field, true );
 }

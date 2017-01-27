@@ -28,24 +28,15 @@
 }
 
 .rva-before-content {
-	//background-color: $black;
+	
 	height: 120px;
 
 	@include MQ(XS) {
 		height: 125px;
-		//height: 190px;
 	}
 	@include MQ(S) {
 		height: 130px;
-		//height: 190px;
 	}
-	// @include MQ(M) {
-	// 	height: 220px;
-	// }
-	// @include MQ(L) {
-
-	// 	height: 220px;
-	// }
 }
 
 .rva-category-before-content {
@@ -55,11 +46,8 @@
 	@include MQ(XS) {
 		height: 130px;
 	}
-	@include MQ(S) {
-		//height: 125px;
-	}
 	@include MQ(M) {
-		height: 200px;
+		height: 230px;
 	}
 }
 

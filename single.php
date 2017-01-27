@@ -32,17 +32,8 @@ function rva_after_content() {
 	echo '</div> <!-- / cd-gutterbox -->';
 }
 
-add_action('genesis_before_entry_content', 'rva_entry_social_links', 9);
-function rva_entry_social_links() {
-	echo	'<ul class="social-buttons social-links">';
-	echo		'<li class="btn-facebook"><i class="fa fa-facebook" ></i></li>';
-	echo		'<li class="btn-twitter"><i class="fa fa-twitter"></i></li>';
-	echo		'<li class="btn-linkedin"><i class="fa fa-linkedin"></i></li>';
-	echo		'<li class="btn-email"><i class="fa fa-envelope"></i></li>';
-	echo		'<li class="btn-print"><i class="fa fa-print"></i></li>';
-	echo		'<li class="btn-message"><i class="fa fa-comment"></i></li>';
-	echo	'</ul>';
-}
+add_action('genesis_before_entry_content', 'rva_entry_share_links', 9);
+
 
 add_action('genesis_before_entry_content', 'rva_entry_header_hr', 12);
 function rva_entry_header_hr() {
@@ -53,7 +44,6 @@ function rva_entry_header_hr() {
 add_action('genesis_before_entry_content', 'rva_ad_widesky', 15);
 function rva_ad_widesky() {
 	echo '<div style="">';
-	//widesky_sidebar();
 	echo '<aside class="widesky-sidebar">';
 	echo 	'<div class="widesky-ad ">';
 	echo 		'<p class="ad-text">WideSky Ad <br> (<span></span>)</p>';
@@ -64,7 +54,7 @@ function rva_ad_widesky() {
 
 add_action('genesis_entry_header', 'rva_post_excerpt');
 function rva_post_excerpt(){
-	echo get_the_excerpt();
+	echo get_the_tagline();
 }
 
 genesis();
