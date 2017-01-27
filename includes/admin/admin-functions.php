@@ -215,7 +215,7 @@ function bfg_remove_files_on_upgrade() {
 
 /**
  * Add Photographer Name and URL fields to media uploader
- *
+ * Creates DB fields: rva_photographer_name, and rva_photographer_url
  * @param $form_fields array, fields to include in attachment form
  * @param $post object, attachment record in database
  * @return $form_fields, modified form fields
