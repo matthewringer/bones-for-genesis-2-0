@@ -3,6 +3,7 @@
 
 .content {
 	text-align: center;
+
 	> img {
 		width:100%;
 	}
@@ -19,6 +20,7 @@
 .entry-title {
 	overflow: hidden;
 	word-wrap: break-word;
+	padding-top: 1em;
 
 	a {
 		color: inherit;
@@ -29,10 +31,19 @@
 	}
 }
 
+.entry-tagline {
+	overflow: hidden;
+	word-wrap: break-word;
+	font-weight: 300;
+
+}
+
 .entry-content {
-	
+
 	p {
 		@extend %type;
+		text-align: left;
+		//padding: 0 .5em;
 	}
 
 	ol,
@@ -82,7 +93,8 @@
 }
 
 .entry-meta {
-	clear: both;
+	//clear: both;
+	//text-align: center;
 	text-transform: uppercase;
 	font-weight: 900;
 
@@ -173,6 +185,16 @@
 	text-align: right;
 }
 
+.rva-content-horizon{
+	clear: none;
+	width: 50%; 
+	margin-left: 15%; 
+	height: 1px; 
+	border: none; 
+	//color: $grey; 
+	background-color: $grey;
+}
+
 .cd-hero-box {
 	@include MQ(XS) {
 		height: 20em;
@@ -225,6 +247,36 @@
 		padding: 0 10px;
 		background-color: $white;
 	}
+}
+
+ul.social-links {
+	display: inline-block;
+	border: none;
+	padding: 2em 0;
+
+	& li {
+		float: left;
+	}
+}
+
+.rva-prev-link, .rva-next-link {
+	display: none;
+	text-align: center;
+	@include MQ(S){
+		font-size: 2em;
+		display: block;
+		position: fixed;
+		top: 60%;
+		width: 5%;
+	}
+}
+
+.rva-prev-link {
+	left:0;
+}
+
+.rva-next-link {
+	right:0;
 }
 
 .cd-gutter-box {
@@ -296,21 +348,31 @@
 	}
 }
 
+.widesky-sidebar::before{
+	content: "Advertizement";
+	display: block;
+	padding-top: 1.5em;
+}
+
 .widesky-sidebar {
+	padding: 0 0 1em 1em;
+	
 	@include MQ(S) {
 		float:right; 
 		width: 25%;
 		display: block;
 
 		h2 {
-			font-size: 1.6rem;
+			// font-size: 1.6rem;
+			// font-size: initial;
 		}
 	}
-	@include MQ(S) {
-		h2 {
-			font-size: initial;
-		}
-	}
+
+	// @include MQ(S) {
+	// 	h2 {
+	// 		font-size: initial;
+	// 	}
+	// }
 	
 	width: 100%;
 	//display: inline-block;
@@ -338,5 +400,19 @@
 			padding-top: 10%;
 			background-color: $yellow;
 		}
+	}
+}
+
+.collapse-hidden {
+	display: none;
+	@include MQ(S) {
+		display: initial;
+	}
+}
+
+.collapse-shown {
+	display: initial;
+	@include MQ(S) {
+		display: none;
 	}
 }

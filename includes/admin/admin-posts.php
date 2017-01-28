@@ -55,7 +55,7 @@ function genesis_inpost_tagline_save( $post_id, $post ) {
     return $post_id;
 
   /* Get the posted data and sanitize it for use as an HTML class. */
-  $new_meta_value = ( isset( $_POST['post_tagline'] ) ? sanitize_html_class( $_POST['post_tagline'] ) : '' );
+  $new_meta_value = ( isset( $_POST['post_tagline'] ) ? sanitize_text_field( $_POST['post_tagline'] ) : '' );
 
   /* Get the meta key. */
   $meta_key = 'rva_post_tagline';
