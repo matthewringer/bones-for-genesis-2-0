@@ -12,6 +12,20 @@ jQuery(function($){
 	    delay: 400 //(milliseconds) adjust to the highest acceptable value
 	};
 
+	$.post(rvaloadmore.url, 
+		{
+			action: 'rva_posts_in_category',
+			nonce: rvaloadmore.nonce,
+			page: page,
+			query: rvaloadmore.query,
+			cat_id: '1',
+		}
+	, function(res){
+		console.log(res);
+		console.log("I'm here!");
+	});
+
+
 	$(window).scroll(function(){
 		if( ! loading && scrollHandling.allow ) {
 			scrollHandling.allow = false;
@@ -26,15 +40,12 @@ jQuery(function($){
 					query: rvaloadmore.query,
 				};
 
-                console.log(data);
-
 				$.post(rvaloadmore.url, data, function(res) {
 					if( res.success) {
 						$('.post-listing').append( res.data );
 						$('.post-listing').append( button );
 						page = page + 1;
 						loading = false;
-                        console.log(res);
 					} else {
 						 console.log(res);
 					}

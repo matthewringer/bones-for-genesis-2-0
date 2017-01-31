@@ -46,6 +46,81 @@ function rva_post_thumbnails() {
 			echo '</article>';
 }
 
+/**
+ * Count number of posts of a post type and if user has permissions to view.
+ *
+ * This function provides an efficient method of finding the amount of post's
+ * type a blog has. Another method is to count the amount of items in
+ * get_posts(), but that method has a lot of overhead with doing so. Therefore,
+ * when developing for 2.5+, use this function instead.
+ *
+ * The $perm parameter checks for 'readable' value and if the user can read
+ * private posts, it will display that for the user that is signed in.
+ *
+ * @since 2.5.0
+ *
+ * @global wpdb $wpdb WordPress database abstraction object.
+ *
+ * @param string $type Optional. Post type to retrieve count. Default 'post'.
+ * @param string $perm Optional. 'readable' or empty. Default empty.
+ * @return object Number of posts for each status.
+ */
+function rva_count_posts_in_category( $cat_id = '0', $perm = '' ) {
+	global $wpdb;
+
+	if ( ! post_type_exists( $type ) )
+		return new stdClass;
+
+	$cache_key = _count_posts_cache_key( $type, $perm );
+
+	$counts = wp_cache_get( $cache_key, 'counts' );
+	if ( false !== $counts ) {
+		/** This filter is documented in wp-includes/post.php */
+		return apply_filters( 'wp_count_posts', $counts, $type, $perm );
+	}
+
+	$query = "SELECT post_status, COUNT( * ) AS num_posts FROM {$wpdb->posts} WHERE cat_ID = %s";
+	if ( 'readable' == $perm && is_user_logged_in() ) {
+		$post_type_object = get_post_type_object($type);
+		if ( ! current_user_can( $post_type_object->cap->read_private_posts ) ) {
+			$query .= $wpdb->prepare( " AND (post_status != 'private' OR ( post_author = %d AND post_status = 'private' ))",
+				get_current_user_id()
+			);
+		}
+	}
+	$query .= ' GROUP BY post_status';
+
+	$results = (array) $wpdb->get_results( $wpdb->prepare( $query, $cat_id ), ARRAY_A );
+	
+	return $results;
+	
+	// $counts = array_fill_keys( get_post_stati(), 0 );
+
+	// foreach ( $results as $row ) {
+	// 	$counts[ $row['post_status'] ] = $row['num_posts'];
+	// }
+
+	// $counts = (object) $counts;
+	// wp_cache_set( $cache_key, $counts, 'counts' );
+
+	// return apply_filters( 'rva_count_posts_in_category', $counts, $type, $perm );
+}
+
+function rva_posts_in_category() {
+		$args = isset( $_POST['query'] ) ? array_map( 'esc_attr', $_POST['query' ] ) : array();
+		$args['cat_ID'] = isset( $args['cat_id'] ) ? esc_attr( $args['cat_id'] ) : '0'; 
+		$num_posts = rva_count_posts_in_category( $args['cat_ID'] );
+
+		$ret = array();
+		$ret['hello'] = "hello";
+		$ret['count'] = $num_posts;
+		wp_send_json_success( $ret );
+		wp_die();
+}
+add_action( 'wp_ajax_rva_posts_in_category', 'rva_posts_in_category' );
+add_action( 'wp_ajax_nopriv_rva_posts_in_category', 'rva_posts_in_category' );
+
+
 function rva_ajax_load_more() {
 	$args = isset( $_POST['query'] ) ? array_map( 'esc_attr', $_POST['query'] ) : array();
 	$args['post_type'] = isset( $args['post_type'] ) ? esc_attr( $args['post_type'] ) : 'post';
@@ -60,6 +135,7 @@ function rva_ajax_load_more() {
 	wp_send_json_success( $data );
 	wp_die();
 }
+
 add_action( 'wp_ajax_rva_ajax_load_more', 'rva_ajax_load_more' );
 add_action( 'wp_ajax_nopriv_rva_ajax_load_more', 'rva_ajax_load_more' );
 
@@ -158,11 +234,13 @@ function cb_3x6($title, $args, $sidebar = false) {
 
 		while( $loop->have_posts() ): $loop->the_post();
 			echo '<article class="entry-thumbnail">';
+			echo '<a href="' . get_the_permalink() .'">';
 			echo 	'<div class="article-image" style="background-image:url('.get_the_post_thumbnail_url().');" > </div>';
 			echo 	'<div class="text-block">';
-			echo 		'<h3><a href="' . get_the_permalink() .'">'. get_the_title() . '</a></h3>';
+			echo 		'<h3>'. get_the_title() . '</h3>';
 			echo 		'<p>' . get_the_excerpt() . '</p>';
 			echo 	'</div>';
+			echo  '</a>';
 			echo '</article>';
 		endwhile;
 		echo '</div>';
