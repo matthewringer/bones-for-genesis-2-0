@@ -140,10 +140,16 @@ function bfg_load_assets() {
 		wp_dequeue_script( 'comment-reply' );
 	}
 
-	// Override WP default self-hosted jQuery with version from Google's CDN
-	wp_deregister_script( 'jquery' );
-	$src = $use_production_assets ? '//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js' : '//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.js';
-	wp_register_script( 'jquery', $src, array(), null, true );
+
+	if( defined('DEV_OFFLINE') ) { // && constant('DEV_OFFLINE') ) {
+		// do offline stuff.
+		//     $connected = @fsockopen("www.google.com", 80); //website, port  (try 80 or 443)
+	} else {
+		// Override WP default self-hosted jQuery with version from Google's CDN
+		wp_deregister_script( 'jquery' );
+		$src = $use_production_assets ? '//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js' : '//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.js';
+		wp_register_script( 'jquery', $src, array(), null, true );
+	}
 
 	// Main script file (in footer)
 	$src = $use_production_assets ? '/build/js/scripts.min.js' : '/build/js/scripts.js';
