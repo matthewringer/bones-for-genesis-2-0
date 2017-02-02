@@ -44,57 +44,37 @@ remove_action('genesis_footer', 'genesis_footer_markup_close', 15);
 
 function rvamag_frontpage_loop() {
 
-	hero_story();
+
+	$args = array(
+		'orderby'       => 'post_date',
+		'order'         => 'DESC',
+		'posts_per_page'=> '1', // overrides posts per page in theme settings
+		'category_name' => 'feature',
+	);
+
+	$loop = new WP_Query( $args );
+	if( $loop->have_posts() ) {
+		hero_story($loop->the_post());
+		wp_reset_postdata();
+    }
 	
 	$args = array(
 		'orderby'       => 'post_date',
 		'order'         => 'DESC',
 		'posts_per_page'=> '6',
-		'category__not_in' => '11',
+		'category__not_in' => '11', //TODO: fix hardcoded reference
 	);
-
 	cb_3x6("LATEST", $args, widesky_sidebar);
 
+	rva_1_over_2_box("READ", 'read');
 
-	$args = array(
-		'orderby'       => 'post_date',
-		'order'         => 'DESC',
-		'posts_per_page'=> '6',
-		'category_name' => 'read',
-	);
-	cb_3x6("READ", $args);
+	rva_1_over_2_box("MUSIC", 'music');
 
-	$args = array(
-		'orderby'       => 'post_date',
-		'order'         => 'DESC',
-		'posts_per_page'=> '6',
-		'category_name' => 'music',
-	);
-	cb_3x6("MUSIC", $args);
+	rva_1_over_2_box("ART", 'art');
 
-	$args = array(
-		'orderby'       => 'post_date',
-		'order'         => 'DESC',
-		'posts_per_page'=> '6',
-		'category_name' => 'art',
-	);
-	cb_3x6("MUSIC", $args);
+	rva_1_over_2_box("PHOTO", 'photo');
 
-	$args = array(
-		'orderby'       => 'post_date',
-		'order'         => 'DESC',
-		'posts_per_page'=> '6',
-		'category_name' => 'photo',
-	);
-	cb_3x6("PHOTO", $args);
-
-	$args = array(
-		'orderby'       => 'post_date',
-		'order'         => 'DESC',
-		'posts_per_page'=> '6',
-		'category_name' => 'eatdrink',
-	);
-	cb_3x6("EAT DRINK", $args);
+	rva_1_over_2_box("EAT DRINK", 'eatdrink');
 
 	$args = array(
 		'orderby'       => 'post_date',

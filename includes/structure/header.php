@@ -13,7 +13,7 @@ remove_action( 'wp_head', 'start_post_rel_link', 10, 0 );				// Start post rel l
 remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0 );	// Adjacent post rel link
 remove_action( 'wp_head', 'wp_generator' );								// WP Version
 remove_action( 'wp_head', 'wlwmanifest_link');							// WLW Manifest
-// remove_action( 'wp_head', 'feed_links', 2 ); 						// Remove feed links
+remove_action( 'wp_head', 'feed_links', 2 ); 						// Remove feed links
 remove_action( 'wp_head', 'feed_links_extra', 3 ); 						// Remove comment feed links
 remove_action( 'wp_head', 'wp_shortlink_wp_head', 10, 0 );				// Remove shortlink
 
@@ -149,6 +149,8 @@ function bfg_load_assets() {
 		wp_deregister_script( 'jquery' );
 		$src = $use_production_assets ? '//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js' : '//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.js';
 		wp_register_script( 'jquery', $src, array(), null, true );
+
+	
 	}
 
 	// Main script file (in footer)
@@ -191,7 +193,19 @@ function bfg_ajax_url_attribute( $atts ) {
 
 }
 
-// add_filter( 'genesis_pre_load_favicon', 'bfg_pre_load_favicon' );
+/**
+ * Simple favicon override to specify your favicon's location.
+ *
+ * @since 2.0.0
+ */
+function rva_load_favicons() {
+	$favicon_build_path = $stylesheet_dir . '/build/images/favicons';
+
+	echo '<link rel="icon" href="' . $favicon_build_path . '/favicon.ico?v=1.1" >';
+}
+add_action('wp_head', 'rva_load_favicons');
+
+//add_filter( 'genesis_pre_load_favicon', 'bfg_pre_load_favicon' );
 /**
  * Simple favicon override to specify your favicon's location.
  *
@@ -199,12 +213,13 @@ function bfg_ajax_url_attribute( $atts ) {
  */
 function bfg_pre_load_favicon() {
 
-	return get_stylesheet_directory_uri() . '/images/favicon.ico';
+	return get_stylesheet_directory_uri() . '/images/favicon/favicon.ico';
 
 }
 
 remove_action( 'wp_head', 'genesis_load_favicon' );
-// add_action( 'wp_head', 'bfg_load_favicons' );
+
+//add_action( 'wp_head', 'bfg_load_favicons' );
 /**
  * Show the best favicon, within reason.
  *
@@ -219,7 +234,7 @@ function bfg_load_favicons() {
 	$favicon_build_path = $stylesheet_dir . '/build/images/favicons';
 
 	// Set to false to disable, otherwise set to a hex color
-	$color = false;
+	$color = '#000';
 
 	// Use a 192px X 192px PNG for the homescreen for Chrome on Android
 	echo '<link rel="icon" type="image/png" href="' . $favicon_build_path . '/favicon-192.png" sizes="192x192">';
@@ -261,23 +276,6 @@ function bfg_load_favicons() {
  //remove_action( 'genesis_site_title', 'genesis_seo_site_title' );
  //remove_action( 'genesis_site_description', 'genesis_seo_site_description' );
 
-
 //* Remove the header right widget area for full size header
 unregister_sidebar( 'header-right' );
 
-/* 
-* Register before header widget area
-*/
-genesis_register_sidebar( array(
-	'id'          => 'before-header',
-	'name'        => __( 'Before Header', 'theme-name' ),
-	'description' => __( 'This is the before header widget area.', 'theme-name' ),
-) );
-
-add_action( 'genesis_before_header', 'bg_before_header_widget_area' );
-function bg_before_header_widget_area() {
-	genesis_widget_area( 'before-header', array(
-		'before' => '<div class="before-header widget-area"><div class="wrap">',
-		'after'  => '</div></div>',
-	) );
-}

@@ -13,4 +13,29 @@
 		$('header').toggleClass('nav-is-visible');
 	});
 
+
+	var type_elements = $('.ad-text').toArray();
+	var dict = [];
+
+	type_elements.forEach(function(element) {
+		var last = dict.push({
+    		element:		$(element).parent().eq(0),
+    		description: 	$(element).find( "span" ).eq(0)  //.children('span').eq(0)
+		});
+		setAdRatios(dict[last-1].element, dict[last-1].description);
+	}, this);
+	
+	$(window).on('resize', function(){
+		dict.forEach(function(element) {
+			setAdRatios(element.element, element.description);
+		}, this);
+	});
+
+	function setAdRatios(element, textElement) {
+		var height = element.css('height'),
+			width = element.css('width');
+		textElement.text('H: '+height + ' x '+ 'W: '+width);
+	}
+
+
 })( window.jQuery );

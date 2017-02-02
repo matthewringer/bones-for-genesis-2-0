@@ -7,14 +7,14 @@ if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  *
  * @since 2.0.10
  */
-// remove_action( 'genesis_sidebar', 'genesis_do_sidebar' );
+remove_action( 'genesis_sidebar', 'genesis_do_sidebar' );
 
 /*
  * Remove the secondarysidebar
  *
  * @since 2.2.24
  */
-// remove_action( 'genesis_sidebar_alt', 'genesis_do_sidebar_alt' );
+remove_action( 'genesis_sidebar_alt', 'genesis_do_sidebar_alt' );
 
 /*
  * Allow shortcodes in text widgets
@@ -35,5 +35,8 @@ function bfg_remove_recent_comments_widget_styles() {
 	if (isset($wp_widget_factory->widgets['WP_Widget_Recent_Comments'])) {
 		remove_action( 'wp_head', array($wp_widget_factory->widgets['WP_Widget_Recent_Comments'], 'recent_comments_style'));
 	}
-
 }
+
+
+unregister_sidebar('sidebar');
+unregister_sidebar('sidebar-alt');

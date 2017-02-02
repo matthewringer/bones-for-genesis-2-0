@@ -1,0 +1,90 @@
+
+.widesky-sidebar::before{
+	content: "Advertizement";
+	display: block;
+	padding-top: 1.5em;
+}
+
+.widesky-sidebar {
+	padding: 0 0 1em 1em;
+	
+	@include MQ(S) {
+		float:right; 
+		width: 25%;
+		display: block;
+	}
+	
+	width: 100%;
+	float: none;
+	overflow: hidden;
+
+	& div.widesky-ad {
+
+		position: relative;
+		padding-top: 100%;
+		width: 100%;
+		background-color: $yellow;
+		text-align: center;
+
+		@include MQ(S) {
+			padding-top: 200%;
+		}
+
+		p {
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			padding-top: 10%;
+			background-color: $yellow;
+		}
+	}
+}
+
+.ad-bigboy-block {
+
+    display: inline-block;
+
+	@include MQ(S) {
+		float: left; //todo: suspicious
+		width: 100%;
+	}
+
+	& div.ad-big-boy::before {
+		content:"advertizement";
+		position: relative; 
+		top: -10px;
+	}
+
+	.ad-container {
+		width: 100%;
+		padding-top: 89.5%; /* 1:.896 Aspect Ratio */
+		position: relative; /* If you want text inside of it */
+	}
+
+	& div.ad-big-boy {
+		text-align: center;
+        width: 50%;
+        float: left;
+        padding: 0 .2em 2em .2em; 
+
+		@include MQ(S) {
+			width: 25%;
+		}
+
+		& p {
+			background-color: $yellow;
+			position: absolute;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			right: 0;
+			padding-top: 10%;
+		}
+	}
+
+	// & div.ad-big-boy:nth-of-type(2) {
+	// 	display: none;
+	// }
+}
