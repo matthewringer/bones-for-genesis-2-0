@@ -20,34 +20,47 @@
 .rva-fp-before-content {
 	background-color: $black;
 
+	height: 120px;
+
+	@include admin-offset-fix(120);
+
 	@include MQ(XS) {
 		height: 60px;
+		@include admin-offset-fix(60);
 	}
-	
-	height: 120px;
 }
 
 .rva-before-content {
 	
 	height: 120px;
+	@include admin-offset-fix(120);
 
 	@include MQ(XS) {
 		height: 125px;
+		@include admin-offset-fix(125);
 	}
 	@include MQ(S) {
 		height: 130px;
+		@include admin-offset-fix(130);
 	}
 }
 
 .rva-category-before-content {
 	
 	height: 120px;
+	@include admin-offset-fix(120);
 
 	@include MQ(XS) {
-		height: 130px;
+		height: 125px;
+		@include admin-offset-fix(125);
+	}
+	@include MQ(S) {
+		height: 170px;
+		@include admin-offset-fix(170);
 	}
 	@include MQ(M) {
-		height: 230px;
+		height: 200px;
+		@include admin-offset-fix(200);
 	}
 }
 

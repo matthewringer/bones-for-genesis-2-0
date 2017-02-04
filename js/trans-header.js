@@ -12,9 +12,9 @@
 			topMargin = actual.css('marginTop').replace('px', '');
 
 		if ( ( parseInt(actual.offset().top +  actualHeight - topMargin - actualHeight * .5 )  < $(window).scrollTop() +1 ) ) {
-				$('.site-header ').css('opacity', 1);
+				$('.site-header').css('background-color', 'rgba(13, 13, 13, 1)');
 			} else {
-				$('.site-header ').css('opacity', .6);
+				$('.site-header').css('background-color', 'rgba(13, 13, 13, .6)');
 			}
 	}
 })(window.jQuery);

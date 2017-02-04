@@ -6,24 +6,23 @@
 }
 
 .cd-logo {
-	@include MQ(M) {
-		height: 100px;
-	}
 	position: relative;
 	left: 0;
 	float: left;
 	width: 20%;
 	height: 50px;
 	/* logo box style */
-	background-color: transparent;
+	//background-color: transparent;
 
 	img {
+		
 		@include transform(translateX(-50%) translateY(-50%));
 		@include MQ(S) {
 			min-width: 80px;
 		}
+		
 		@include MQ(M) {
-			top: 50%;
+			top: 80%;
 			left: 75%;
 			min-width: 100px;
 			width: 2em;
@@ -48,9 +47,14 @@
 }
 
 .genesis-nav-menu {
-	@include lb-ad-offset();
-	@include transform(translateY(-120%));
-	@include transition(transform .3s);
+	
+	top: 60px;
+	@include admin-offset-fix(60);
+
+	@include MQ(S) {
+		top: 90px;
+		@include admin-offset-fix(90);
+	}
 	
 	position: fixed;
 	left: 0;
@@ -60,6 +64,10 @@
 	text-transform: uppercase;
 	font-weight: 800;
 	font-family: $sans;
+
+	@include transform(translateY(-120%));
+	@include transition(transform .3s);
+	
 
 	li.menu-item a {
 		display: block;
@@ -98,6 +106,7 @@
 	}
 
 	@include MQ(M) {
+
 		@include transform(translateY(0));
 		position: static;
 		display: table;

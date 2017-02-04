@@ -24,13 +24,14 @@ require_once CHILD_DIR . '/includes/admin/admin-options.php';	// For adding/edit
 require_once CHILD_DIR . '/includes/admin/admin-socialmedia.php';	// For adding/editing socialmedia options to RVA
 require_once CHILD_DIR . '/includes/admin/admin-posts.php';	    // For adding/editing custom post options to RVA
 require_once CHILD_DIR . '/includes/admin/admin-ajax.php';	    // For adding/editing ajax API endpoints
-
+require_once CHILD_DIR . '/includes/admin/admin-menu.php';	    // For adding/editing ajax API endpoints
 
 // Structure (corresponds to Genesis's lib/structure)
 require_once CHILD_DIR . '/includes/structure/advertizing.php';
 require_once CHILD_DIR . '/includes/structure/archive.php';
 require_once CHILD_DIR . '/includes/structure/comments.php';
 require_once CHILD_DIR . '/includes/structure/footer.php';
+require_once CHILD_DIR . '/includes/structure/forms.php';
 require_once CHILD_DIR . '/includes/structure/header.php';
 require_once CHILD_DIR . '/includes/structure/layout.php';
 require_once CHILD_DIR . '/includes/structure/loops.php';

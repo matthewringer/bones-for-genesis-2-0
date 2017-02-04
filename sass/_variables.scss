@@ -12,8 +12,8 @@ $breakpoints: ( zero: (1 * 16px), phone: (35 * 16px), portrait: (48 * 16px), adm
 
 
 // breakpoints
-$XS: 500px;
-$S: 768px;
+$XS: 469px; //500
+$S: 729px;  //768
 $M: 1024px;
 $L: 1600px;
 
@@ -48,39 +48,20 @@ Offsets
 
 //TOP
 
-@mixin lb-ad-offset() {
-	@include MQ(XS) {
-		top: 60px;
-	}
-	@include MQ(S) {
-		top: 60px;
-	}
-	@include MQ(M) {
-		top: 120px;
-	}
-	@include MQ(L) {
-		top: 120px;
-	}
-	top: 60px;
+@mixin admin-offset-fix( $offset: 0 ) {
+  $narrow-offset: 0; //46px;
+  $wide-offset: 32px;
+  @if $offset != 0 and type-of($offset) == 'number' {
+    $narrow-offset: $narrow-offset + $offset;
+    $wide-offset: $wide-offset + $offset;
+  }
+  .admin-bar & {
+    top: $narrow-offset;
+    @media screen and (min-width: 783px) {
+      top: $wide-offset;
+    }
+  }
 }
-
-@mixin lb-ad-height() {
-	@include MQ(XS) {
-		height: 60px;
-	}
-	@include MQ(S) {
-		height: 60px;
-	}
-	@include MQ(M) {
-		height: 120px;
-	}
-	@include MQ(L) {
-		height: 120px;
-	}
-	height: 60px;
-}
-
-
 
 /*********************
 COLORS

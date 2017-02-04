@@ -12,10 +12,32 @@ input[type='number'],
 textarea {
 	max-width: 100%;
 	width: 100%;
-	border-radius: 0;		 // Removes the border radius on iOS
+	border: 1px solid $grey;
+	border-radius: .25em;
+	background: $white;
 	color: $black;
+	vertical-align: top; // make align with buttons
+	padding: .6em 1em;
+	box-shadow: inset 1px 1px rgba(#000, .03);
+	
 	-webkit-appearance: none; // Removes the shadow on iOS
 	-moz-appearance: none;
+	
+	&.success {
+		border-color: $success;
+		box-shadow: 0 0 6px rgba($success, .2);
+	}
+
+	&.alert {
+		border-color: $alert;
+		box-shadow: 0 0 6px rgba($alert, .2);
+	}
+
+	&:focus {
+		outline: none;
+		border-color: $yellow;
+		box-shadow: 0 0 6px rgba($yellow, .2);
+	}
 }
 
 // Hide the spinner on input[type="number"] in Firefox
@@ -79,5 +101,63 @@ input[type='search'] {
 .post-password-form {
 	input[type='password'] {
 		flex: 1 1 auto;
+	}
+}
+
+.cd-subscribe-box {
+	//padding: 0 .2em 2em .2em;
+
+	text-align: center;
+
+	& input {
+		margin-bottom: 1em;
+	}
+
+	@include MQ(S) {
+		float: left;
+		width: 50%;
+
+		& input {
+			margin-bottom: 0;
+		}
+	}
+
+	form {
+		margin: 0 auto;
+		background-color: $grey;
+		padding: 15pt 0;
+		//margin: 1em 0;
+		border-radius: .25em;
+	}
+
+	& fieldset {
+		border: none;
+	}
+
+	& input[type=text] {
+		width: 50%;
+	}
+}
+
+.cd-subscribe-block {
+
+	& div.cd-subscribe-box:nth-of-type(2n) {
+		form {
+			margin: 2em .2em 2em 0;
+		}
+
+		@include MQ(S){
+			padding-right: 1em;
+		}
+	}
+
+	& div.cd-subscribe-box:nth-of-type(3n) {
+		form {
+			margin: 0 0 2em .2em;
+		}
+
+		@include MQ(S){
+			padding-left: 1em;
+		}
 	}
 }

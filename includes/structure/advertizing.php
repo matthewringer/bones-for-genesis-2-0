@@ -3,18 +3,20 @@
 /* 
 * Register before header widget area
 */
-genesis_register_sidebar( array(
-	'id'          => 'before-header',
-	'name'        => __( 'Before Header Leaderboard Ad', 'rvamag' ),
-	'description' => __( 'Leaderboard Ad position before Header', 'rvamag' ),
-) );
+// genesis_register_sidebar( array(
+// 	'id'          => 'before-header',
+// 	'name'        => __( 'Before Header Leaderboard Ad', 'rvamag' ),
+// 	'description' => __( 'Leaderboard Ad position before Header', 'rvamag' ),
+// ) );
 
 add_action( 'genesis_before_header', 'bg_before_header_widget_area' );
 function bg_before_header_widget_area() {
-	genesis_widget_area( 'before-header', array(
-		'before' => '<div class="before-header widget-area"><div class="wrap">',
-		'after'  => '</div></div>',
-	) );
+	// genesis_widget_area( 'before-header', array(
+	// 	'before' => '<div class="before-header widget-area"><div class="wrap">',
+	// 	'after'  => '</div></div>',
+	// ) );
+	echo '<div class="before-header"><div class="wrap ad-leaderboard ">';
+	echo '</div></div>';
 }
 
 /**

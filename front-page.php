@@ -82,7 +82,15 @@ function rvamag_frontpage_loop() {
 		'posts_per_page'=> '6',
 		'category_name' => 'watch',
 	);
-	cb_3x6("WATCH", $args);
+	cb_3x6("WATCH", $args); // Todo: restyle watch
+
+	// TODO: GayRva content...
+
+	/*
+	 * Output subscription box
+	 */
+	
+	rva_subscribtion_form();
 
 	start_section('READ MORE');
 		echo '<div class="post-listing cd-3x3-box" ></div>';

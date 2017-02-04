@@ -1,4 +1,24 @@
 
+
+.ad-leaderboard {  
+	// Leaderboard 728 x 90 -> Full Banner 468 x 60 -> Half Banner 234 x 60
+	height: 60px;
+	width: 234px;
+	margin: auto;
+	padding: 0;
+	background: yellow;
+	
+	@include MQ(XS) {
+		height: 60px;
+		width: 468px;
+	}
+
+	@include MQ(S) {
+		height: 90px;
+		width: 728px;
+	}
+}
+
 .widesky-sidebar::before{
 	content: "Advertizement";
 	display: block;

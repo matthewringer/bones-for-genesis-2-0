@@ -1,20 +1,63 @@
 .btn {
 	display: inline-block;
-	padding: 0;
+	padding: 3pt 10pt;
 	width: auto;
 	border: none;
-	border-radius: 0;
+	border-radius: .25em;
 	background-color: transparent;
 	text-align: center;
+	text-transform: uppercase;
 	white-space: nowrap;
 	line-height: 1;
 	cursor: pointer;
 	transition: all .15s ease-in-out;
 	-webkit-appearance: none;
 	-moz-appearance: none;
+	
+
+	font: {
+		weight: 800;
+	}
 
 	&:hover,
 	&:focus {
+		outline: none;
+	}
+
+	.no-touch &:hover {
+		background: lighten($yellow, 5%);
+	}
+
+	&.btn-success {
+		background: $success;
+		color: $white;
+		.no-touch &:hover {
+			background: lighten($success, 5%);
+		}
+	}
+
+	&.btn-alert {
+		background: $alert;
+		color: $yellow;
+		.no-touch &:hover {
+			background: lighten($alert, 5%);
+		}
+	}
+
+	&.btn-outline {
+		color: $black;
+		background: transparent;
+		box-shadow: inset 0 0 0 1px $black;
+
+		.no-touch &:hover {
+			color: $white;
+			background: $yellow;
+		}
+	}
+
+	@include MQ(S) {
+		font-size: 1.6rem;
+		padding: 7pt 10pt;
 	}
 }
 
