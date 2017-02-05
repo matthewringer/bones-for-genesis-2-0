@@ -1,6 +1,8 @@
 <?php
 
 function rva_subscribtion_form() {
+
+    $options = get_option('rva_admin_options');
 ?>
     <div class="cd-gutter-box cd-subscribe-block" >
         <div class="section-title">
@@ -8,7 +10,10 @@ function rva_subscribtion_form() {
         </div>
         <div class="cd-subscribe-box">
             <div class="ar-scale-box">
-                <img class="ar-content" src="img/rva_street_fest.jpg">
+            <?php printf(
+                '<img class="ar-content" src="%s">',
+                isset( $options['subscribe_magazine_image'] ) ? wp_get_attachment_url( esc_attr( $options['subscribe_magazine_image']) ) : ''
+            ); ?>
             </div>
             <form>
                 <h2>Subscribe to the print edition of RVA Magazine</h2>
@@ -26,7 +31,10 @@ function rva_subscribtion_form() {
                 </fieldset>
             </form>
             <div class="ar-scale-box">
-                <img class="ar-content" src="img/rva_street_fest.jpg">
+            <?php printf(
+                '<img class="ar-content" src="%s">',
+                isset( $options['subscribe_email_image'] ) ? wp_get_attachment_url( esc_attr( $options['subscribe_email_image']) ) : ''
+            ); ?>
             </div>
         </div>
     </div>

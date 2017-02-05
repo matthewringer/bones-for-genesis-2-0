@@ -6,7 +6,12 @@
 // .sidebar-content
 // .full-width-content
 
+body{
+	background-color: $grey;
+}
+
 .site-container {
+	background-color: $white;
 	max-width: $site-width;
 	margin: auto;
 }

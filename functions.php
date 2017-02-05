@@ -21,11 +21,11 @@ require_once CHILD_DIR . '/includes/admin/admin-functions.php';	// Customization
 require_once CHILD_DIR . '/includes/admin/admin-views.php';		// Customizations to the admin area display
 require_once CHILD_DIR . '/includes/admin/admin-branding.php';	// Admin view customizations that specifically involve branding
 require_once CHILD_DIR . '/includes/admin/admin-options.php';	// For adding/editing theme options to Genesis
-require_once CHILD_DIR . '/includes/admin/admin-socialmedia.php';	// For adding/editing socialmedia options to RVA
+require_once CHILD_DIR . '/includes/admin/admin-socialmedia.php';	// For adding/editing socialmedia options to RVA TODO: needs to be moved to the RVA settings section
 require_once CHILD_DIR . '/includes/admin/admin-posts.php';	    // For adding/editing custom post options to RVA
 require_once CHILD_DIR . '/includes/admin/admin-ajax.php';	    // For adding/editing ajax API endpoints
-require_once CHILD_DIR . '/includes/admin/admin-menu.php';	    // For adding/editing ajax API endpoints
-//require_once CHILD_DIR . '/includes/admin/my-settings.php';
+require_once CHILD_DIR . '/includes/admin/admin-menu-page.php';	// RVA Magazine Global settings top level page
+require_once CHILD_DIR . '/includes/admin/admin-menu-settings.php'; //TODO: placeholder
 
 // Structure (corresponds to Genesis's lib/structure)
 require_once CHILD_DIR . '/includes/structure/advertizing.php';
