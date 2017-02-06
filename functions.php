@@ -25,7 +25,7 @@ require_once CHILD_DIR . '/includes/admin/admin-socialmedia.php';	// For adding/
 require_once CHILD_DIR . '/includes/admin/admin-posts.php';	    // For adding/editing custom post options to RVA
 require_once CHILD_DIR . '/includes/admin/admin-ajax.php';	    // For adding/editing ajax API endpoints
 require_once CHILD_DIR . '/includes/admin/admin-menu-page.php';	// RVA Magazine Global settings top level page
-require_once CHILD_DIR . '/includes/admin/admin-menu-settings.php'; //TODO: placeholder
+require_once CHILD_DIR . '/includes/admin/admin-settings.php';  // RVA Magazine Theme settings
 
 // Structure (corresponds to Genesis's lib/structure)
 require_once CHILD_DIR . '/includes/structure/advertizing.php';

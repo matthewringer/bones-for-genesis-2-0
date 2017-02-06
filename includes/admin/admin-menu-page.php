@@ -6,10 +6,6 @@
 add_action( 'admin_enqueue_scripts', 'enqueue_scripts' );
 function enqueue_scripts($hook) {
 
-    // if ( 'admin.php' != $hook ) { //admin.php?page=rvamag-admin
-    //     return;
-    // }
-
     wp_enqueue_script( 'rva_admin_js', get_stylesheet_directory_uri() . '/build/js/admin.js', array( 'jquery' ), '1.0', true );
 }
 
@@ -30,8 +26,8 @@ class RvaAdminSettingsPage
     private $options;
 
     private $option_name = 'rva_admin_options';
-    private $option_group = "rva_admin_option_group";
-
+    private $option_group = 'rva_admin_option_group';
+    private $hook = '';
     
     /**
      * Start up
@@ -61,12 +57,13 @@ class RvaAdminSettingsPage
     public function add_menu_page()
     {
         // This will be a toplevel menu in the second spot.
-        add_menu_page( $this->page_title, 
-        $this->menu_title, 
-        $this->capability, 
-        $this->menu_slug, 
-        array( $this, $this->function ), 
-        $this->icon_url, $this->position );
+       $this->hook =  add_menu_page( $this->page_title, 
+            $this->menu_title, 
+            $this->capability, 
+            $this->menu_slug, 
+            array( $this, $this->function ), 
+            $this->icon_url, $this->position 
+        );
     }
 
     /**
@@ -76,7 +73,6 @@ class RvaAdminSettingsPage
     {
         // Set class property
         $this->options = get_option( $this->option_name );
-
         ?>
         <div class="wrap">
             <h1> <?php $this->page_title; ?> </h1>

@@ -223,7 +223,7 @@ function bfg_remove_files_on_upgrade() {
  
 function rva_attachment_field_credit( $form_fields, $post ) {
 	$form_fields['rva-photographer-name'] = array(
-		'label' => 'Photographer Name',
+		'label' => 'Photo Credit',
 		'input' => 'text',
 		'value' => get_post_meta( $post->ID, 'rva_photographer_name', true ),
 		'helps' => 'If provided, photo credit will be displayed',
@@ -233,7 +233,7 @@ function rva_attachment_field_credit( $form_fields, $post ) {
 		'label' => 'Photographer URL',
 		'input' => 'text',
 		'value' => get_post_meta( $post->ID, 'rva_photographer_url', true ),
-		'helps' => 'Add Photographer URL',
+		'helps' => '',
 	);
 
 	return $form_fields;
