@@ -26,7 +26,6 @@ jQuery(function($){
 			var offset = $(button).offset().top - $(window).scrollTop();
 
 			if( 2000 > offset && max_pages >= page || max_pages == -1 ){
-				console.log("call")
 				loading = true;
 				$('.load-more').toggle(loading);
 				var data = {
@@ -37,20 +36,17 @@ jQuery(function($){
 				};
 				$.post(rvaloadmore.url, data, function(res) {
 					if( res.success) {
-						console.log(page); console.log(max_pages);
 						$('.post-listing').append( res.data.thumbs );
 						$('.post-listing').append( button ); // move the load target to the bottom of the page.
 						page = page + 1;
 						max_pages = res.data.max_pages;
 						loading = false;
 						$('.load-more').toggle(loading);
-						console.log(res);
 					} else {
 						 console.log(res);
 					}
 				}).fail(function(xhr, textStatus, e) {
 					console.log(xhr.responseText);
-					console.log(data);
 				});
 
 			}
