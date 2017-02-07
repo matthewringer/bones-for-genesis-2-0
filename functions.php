@@ -41,6 +41,7 @@ require_once CHILD_DIR . '/includes/structure/post.php';
 require_once CHILD_DIR . '/includes/structure/schema.php';
 require_once CHILD_DIR . '/includes/structure/search.php';
 require_once CHILD_DIR . '/includes/structure/sidebar.php';
+require_once CHILD_DIR . '/includes/structure/socialmedia.php';
 
 // Activation and deactivation handlers
 //require_once CHILD_DIR . '/includes/activate_deactivate.php';

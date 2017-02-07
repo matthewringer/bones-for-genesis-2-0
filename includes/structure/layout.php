@@ -147,3 +147,29 @@ function rva_1_over_2_box($title, $slug){
 
     close_section();
 }
+
+function widesky_sidebar() {
+	echo '<aside class="widesky-sidebar">';
+		if ( is_active_sidebar( 'widesky_ad' ) ) {
+			dynamic_sidebar( 'widesky_ad' );
+		}
+		rva_social_follow_buttons();
+	echo '</aside>';
+}
+
+function rva_social_follow_buttons() {
+	$options =  get_option( RVA_SETTINGS_FIELD ); 
+	?>
+	<div class="social-buttons" >
+		<h2>Follow RVA Mag</h2>
+		<ul class="social-buttons">
+
+			<li class="btn-facebook"><a target="_blank" href="<?php echo esc_attr( $options['rva_socialmedia_facebook_url'] ); ?> "><i class="fa fa-facebook" ></i><span>Facebook</span></a></li>
+			<li class="btn-twitter"><a target="_blank" href="<?php echo esc_attr( $options['rva_socialmedia_twitter_url'] ); ?>"><i class="fa fa-twitter"></i><span>Twitter</span></a></li>
+			<li class="btn-tumblr"><a target="_blank" href="<?php echo esc_attr( $options['rva_socialmedia_tumblr_url'] ); ?>"><i class="fa fa-tumblr"></i><span>Tumblr</span></a></li>
+			<li class="btn-youtube"><a target="_blank" href="<?php echo esc_attr( $options['rva_socialmedia_youtube_url'] ); ?>"><i class="fa fa-youtube"></i><span>YouTube</span></a></li>
+			<li class="btn-instagram"><a target="_blank" href="<?php echo esc_attr( $options['rva_socialmedia_instagram_url'] ); ?>"><i class="fa fa-instagram"></i><span>Instagram</span></a></li>
+		</ul>
+	</div>
+	<?php 
+}

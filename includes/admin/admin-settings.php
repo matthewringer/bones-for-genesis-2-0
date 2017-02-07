@@ -36,6 +36,7 @@ function rva_default_theme_options() {
         'rva_subscribe_email_image'     => '1',
         'rva_subscribe_magazine_image'  => '1',
 
+        
 
      );
      return apply_filters('rva_default_theme_options', $options);

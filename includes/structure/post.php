@@ -150,3 +150,4 @@ function bfg_password_form( $post = 0 ) {
 	return $output;
 
 }
+
