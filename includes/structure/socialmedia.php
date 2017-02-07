@@ -15,7 +15,12 @@ function get_current_page_url() {
 	return $pageURL;
 }
 
-function facebook_share_meta() {
+/*
+ * Facebook Open Graph Meta
+ *
+ * @since 1.0.0
+ */
+function facebook_og_meta() {
     ?>
         <!-- Facebook Open Graph Tags -->
         <meta property="og:url"           content="<?php echo get_current_page_url(); ?>" />
@@ -26,7 +31,13 @@ function facebook_share_meta() {
     <?php
 }
 
+/*
+ * Facebook JS SDK
+ *
+ * @since 1.0.0
+ */
 function facebook_js_sdk() {
+    $app_id = genesis_get_option('rva_facebook_appid' ,RVA_SETTINGS_FIELD);
     ?>
         <!-- Load Facebook SDK for JavaScript -->
         <div id="fb-root"></div>
@@ -34,12 +45,17 @@ function facebook_js_sdk() {
             var js, fjs = d.getElementsByTagName(s)[0];
             if (d.getElementById(id)) return;
             js = d.createElement(s); js.id = id;
-            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=1636311590010567";  //TODO: hardcoded app id...
+            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8<?php echo (isset( $app_id )) ? '&appId='.$app_id : ''; ?>" ;  //TODO: hardcoded app id...
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));</script>
     <?php
 }
 
+/*
+ * Facebook Share Button
+ *
+ * @since 1.0.0
+ */
 function facebook_share_btn() {
     ?>
         <!-- Your share button code -->
@@ -53,33 +69,66 @@ function facebook_share_btn() {
     <?php
 }
 
-
 /*
  * Sharing links for Posts
  *
- * @since 2.2.18
+ * @since 1.0.0
  */
 function rva_entry_share_links($post) {
 	$options = get_option( RVA_SETTINGS_FIELD );
 
     ?>
         <ul class="social-buttons social-links">
-            <li id="fb-share-btn"class="btn-facebook"><i class="fa fa-facebook" ></i></li>
+            <li id="fb-share-btn"class="btn-facebook"><i class="fa fa-facebook" ></i>
+                <script>
+                    document.getElementById('fb-share-btn').onclick = function() {
+                        FB.ui({
+                            method: 'share',
+                            display: 'iframe',
+                            mobile_iframe: 'true',
+                            href: '<?php echo get_current_page_url(); ?>',
+                        }, function(response){});
+                    }
+                </script>
+            </li>
             <li class="btn-twitter"><a target="_blank" href="'.genesis_get_option('share_twitter_url').get_permalink($post).'"><i class="fa fa-twitter" ></i></a></li>
             <li class="btn-linkedin"><a target="_blank" href="'.genesis_get_option('share_linkedin_url').get_permalink($post).'"><i class="fa fa-linkedin" ></i></a></li>
             <li class="btn-email"><a target="_blank" href="'.genesis_get_option('share_email_url').get_permalink($post).'"><i class="fa fa-envelope" ></i></a></li>
             <li class="btn-print"><a target="_blank" href="'.genesis_get_option('share_print_url').get_permalink($post).'"><i class="fa fa-print" ></i></a></li>
             <li class="btn-message"><a target="_blank" href="'.genesis_get_option('share_message_url').get_permalink($post).'"><i class="fa fa-comment" ></i></a></li>
         </ul>
-        <script>
-            document.getElementById('fb-share-btn').onclick = function() {
-                FB.ui({
-                    method: 'share',
-                    display: 'iframe',
-                    mobile_iframe: 'true',
-                    href: '<?php echo get_current_page_url(); ?>',
-                }, function(response){});
-            }
-        </script>
+        
 	<?php
+}
+
+/**
+ * This function displays social sharing buttons based on the options selected by the user.
+ *
+ * @since 1.0.0
+ */
+function rva_social_sharing_buttons() {
+
+	$perm  = get_permalink();
+	$title = get_the_title();
+	if ( genesis_get_option( 'rva_facebook_like_btn', RVA_SETTINGS_FIELD ) ) {
+		?> 
+        <div class="ctsettings-fb-like ctsettings-social-share"> <div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like href="'.$perm.'" send="false" layout="button_count" width="120" show_faces="false" action="like" font="lucida grande"></fb:like> </div>
+        <?php
+	}
+	if ( genesis_get_option( 'rva_twitter_tweet_btn', RVA_SETTINGS_FIELD ) ) {
+		?>
+        <div class="ctsettings-tweet ctsettings-social-share"> <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-url="'.$perm.'" data-text="'.$title.'">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script> </div>
+        <?php
+	}
+	if ( genesis_get_option( 'rva_google_plus_btn', RVA_SETTINGS_FIELD ) ) {
+		?> 
+        <div class="ctsettings-google ctsettings-social-share"> <g:plusone size="medium" href="'.$perm.'"></g:plusone><script type="text/javascript">
+			(function() {
+   			var po = document.createElement("script"); po.type = "text/javascript"; po.async = true;
+    		po.src = "https://apis.google.com/js/plusone.js";
+    		var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(po, s);
+  			})();
+		</script></div>
+        <?php
+	}
 }

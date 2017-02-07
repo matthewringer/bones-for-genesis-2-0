@@ -26,6 +26,7 @@ define( 'RVA_SETTINGS_FIELD', 'rva-magazine-settings');
  */
 function rva_default_theme_options() {
      $options = array(
+        // Social Media Profile links
         'rva_socialmedia_twitter_url'   => 'http://twitter.com/RVAMAG',
 	    'rva_socialmedia_facebook_url'  => 'https://www.facebook.com/RVAMAG/',
         'rva_socialmedia_instagram_url' => 'http://instagram.com/rvamag',
@@ -33,10 +34,17 @@ function rva_default_theme_options() {
         'rva_socialmedia_pintrest_url'  => 'http://pinterest.com/rvamag',
         'rva_socialmedia_youtube_url'   => 'https://www.youtube.com/user/hellorva',
 
+        // Like Buttons
+        'rva_facebook_like_btn' => 0,
+		'rva_google_plus_btn'   => 0,
+		'rva_twitter_tweet_btn' => 0,
+
+        // Facebook
+        'rva_facebook_appid' => '1636311590010567',
+
+        //Front Page
         'rva_subscribe_email_image'     => '1',
         'rva_subscribe_magazine_image'  => '1',
-
-        
 
      );
      return apply_filters('rva_default_theme_options', $options);
@@ -181,6 +189,9 @@ function rva_social_metabox() {
 	<p>Facebook URL:<br />
 	<input type="text" name="<?php echo RVA_SETTINGS_FIELD; ?>[rva_socialmedia_facebook_url]" value="<?php echo esc_attr( genesis_get_option('rva_socialmedia_facebook_url', RVA_SETTINGS_FIELD ) ); ?>" size="50" /> </p>
 
+    <p>Facebook AppId:<br />
+	<input type="text" name="<?php echo RVA_SETTINGS_FIELD; ?>[rva_facebook_appid]" value="<?php echo esc_attr( genesis_get_option('rva_facebook_appid', RVA_SETTINGS_FIELD ) ); ?>" size="50" /> </p>
+
     <p>Instagam URL:<br />
 	<input type="text" name="<?php echo RVA_SETTINGS_FIELD; ?>[rva_socialmedia_instagram_url]" value="<?php echo esc_attr( genesis_get_option('rva_socialmedia_instagram_url', RVA_SETTINGS_FIELD ) ); ?>" size="50" /> </p>
 
@@ -195,17 +206,17 @@ function rva_social_metabox() {
 		<tbody>
 			<tr valign="top">
 				<th scope="row">
-					<input type="checkbox" name="<?php echo CTSETTINGS_SETTINGS_FIELD; ?>[ctsettings_facebook_link]" id="<?php echo CTSETTINGS_SETTINGS_FIELD; ?>[ctsettings_facebook_link]" value="1" <?php checked( 1, genesis_get_option( 'ctsettings_facebook_link', CTSETTINGS_SETTINGS_FIELD ) ); ?> /> <label for="<?php echo CTSETTINGS_SETTINGS_FIELD; ?>[ctsettings_facebook_link]"><?php _e( 'Include a Facebook Like button on your posts?', 'genesis' ); ?></label>
+					<input type="checkbox" name="<?php echo RVA_SETTINGS_FIELD; ?>[rva_facebook_like_btn]" id="<?php echo RVA_SETTINGS_FIELD; ?>[rva_facebook_like_btn]" value="1" <?php checked( 1, genesis_get_option( 'rva_facebook_like_btn', RVA_SETTINGS_FIELD ) ); ?> /> <label for="<?php echo RVA_SETTINGS_FIELD; ?>[rva_facebook_like_btn]"><?php _e( 'Include a Facebook Like button on your posts?', 'genesis' ); ?></label>
 				</th>
 			</tr>
 			<tr valign="top">
 				<th scope="row">
-					<input type="checkbox" name="<?php echo CTSETTINGS_SETTINGS_FIELD; ?>[ctsettings_twitter_link]" id="<?php echo CTSETTINGS_SETTINGS_FIELD; ?>[ctsettings_twitter_link]" value="1" <?php checked( 1, genesis_get_option( 'ctsettings_twitter_link', CTSETTINGS_SETTINGS_FIELD ) ); ?> /> <label for="<?php echo CTSETTINGS_SETTINGS_FIELD; ?>[ctsettings_twitter_link]"><?php _e( 'Include a Twitter Tweet button on your posts?', 'genesis' ); ?></label>
+					<input type="checkbox" name="<?php echo RVA_SETTINGS_FIELD; ?>[rva_twitter_tweet_btn]" id="<?php echo RVA_SETTINGS_FIELD; ?>[rva_twitter_tweet_btn]" value="1" <?php checked( 1, genesis_get_option( 'rva_twitter_tweet_btn', RVA_SETTINGS_FIELD ) ); ?> /> <label for="<?php echo RVA_SETTINGS_FIELD; ?>[rva_twitter_tweet_btn]"><?php _e( 'Include a Twitter Tweet button on your posts?', 'genesis' ); ?></label>
 				</th>
 			</tr>
 			<tr valign="top">
 				<th scope="row">
-					<input type="checkbox" name="<?php echo CTSETTINGS_SETTINGS_FIELD; ?>[ctsettings_google_link]" id="<?php echo CTSETTINGS_SETTINGS_FIELD; ?>[ctsettings_google_link]" value="1" <?php checked( 1, genesis_get_option( 'ctsettings_google_link', CTSETTINGS_SETTINGS_FIELD ) ); ?> /> <label for="<?php echo CTSETTINGS_SETTINGS_FIELD; ?>[ctsettings_google_link]"><?php _e( 'Include a Google Plus button on your posts?', 'genesis' ); ?></label>
+					<input type="checkbox" name="<?php echo RVA_SETTINGS_FIELD; ?>[rva_google_plus_btn]" id="<?php echo RVA_SETTINGS_FIELD; ?>[rva_google_plus_btn]" value="1" <?php checked( 1, genesis_get_option( 'rva_google_plus_btn', RVA_SETTINGS_FIELD ) ); ?> /> <label for="<?php echo RVA_SETTINGS_FIELD; ?>[rva_google_plus_btn]"><?php _e( 'Include a Google Plus button on your posts?', 'genesis' ); ?></label>
 				</th>
 			</tr>
 		</tbody>

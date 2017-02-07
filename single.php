@@ -6,7 +6,7 @@ if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 	Template Name: Single Page Template
 */
 
-add_action('wp_head', 'facebook_share_meta');
+add_action('wp_head', 'facebook_og_meta');
 
 // remove javascript infinite scroll TODO: code smell
 remove_action( 'wp_enqueue_scripts', 'rva_load_more_js' );
@@ -61,6 +61,9 @@ add_action('genesis_before_entry_content', 'rva_ad_widesky_mobile', 15);
 function rva_ad_widesky_mobile(){
 	rva_ad_widesky("collapse-shown");
 }
+
+
+add_action( 'genesis_after_entry_content', 'rva_social_sharing_buttons' );
 
 function rva_ad_widesky($class) {
 	echo '<div class="">';
