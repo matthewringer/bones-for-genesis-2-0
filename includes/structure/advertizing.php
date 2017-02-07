@@ -9,14 +9,56 @@
 // 	'description' => __( 'Leaderboard Ad position before Header', 'rvamag' ),
 // ) );
 
-add_action( 'genesis_before_header', 'bg_before_header_widget_area' );
-function bg_before_header_widget_area() {
-	// genesis_widget_area( 'before-header', array(
-	// 	'before' => '<div class="before-header widget-area"><div class="wrap">',
-	// 	'after'  => '</div></div>',
-	// ) );
-	echo '<div class="before-header"><div class="wrap ad-leaderboard ">';
-	echo '</div></div>';
+add_action( 'genesis_before_header', 'rva_before_header' );
+/** 
+* Leaderboard ad
+*
+* @since 1.0.0
+*/
+function rva_before_header($placement) {
+	?>
+	<div class="before-header">
+		<?php echo rva_leaderboard_ad('todo:') ?>
+	</div>
+	<?php
+}
+
+
+/** 
+* Leaderboard ad
+*
+* @since 1.0.0
+*/
+function rva_leaderboard_ad($placement) {
+	?>
+	<div class="wrap ad-leaderboard "> 
+		<!-- TODO: insert ad here  -->
+	</div>
+	<?php
+}
+
+/** 
+* Leaderboard Ad 
+*
+*/
+function rva_square_ad($placement) {
+	?>
+	<div class="wrap ad-square "> 
+		<!-- TODO: insert ad here  -->
+	</div>
+	<?php
+}
+
+/** 
+* Leaderboard Ad 
+*
+*/
+function rva_skyscraper_ad($placement) {
+	?>
+	<div class="wrap ad-skyscraper "> 
+		<!-- TODO: insert ad here  -->
+	</div>
+	<?php
 }
 
 /**

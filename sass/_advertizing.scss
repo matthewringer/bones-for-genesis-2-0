@@ -19,6 +19,26 @@
 	}
 }
 
+.ad-skyscraper {
+	// 160 x 600, 120 x 600, 120 x 240, 240 x 400, 300 x 600
+
+	height: 600px;
+	width: 300px;
+	margin: auto;
+	padding: 0;
+	background: yellow;
+	
+	// @include MQ(XS) {
+	// 	height: 240px;
+	// 	width: 468px;
+	// }
+
+	// @include MQ(S) {
+	// 	height: 300px;
+	// 	width: 600px;
+	// }
+}
+
 .widesky-sidebar::before{
 	content: "Advertizement";
 	display: block;
@@ -38,7 +58,7 @@
 	float: none;
 	overflow: hidden;
 
-	& div.widesky-ad {
+	& div.ad-skyscraper {
 
 		position: relative;
 		padding-top: 100%;

@@ -68,7 +68,7 @@ add_action( 'genesis_after_entry_content', 'rva_social_sharing_buttons' );
 function rva_ad_widesky($class) {
 	echo '<div class="">';
 	echo '<aside class="widesky-sidebar '.$class.'">';
-	echo 	'<div class="widesky-ad ">';
+	echo 	'<div class="ad-skyscraper ">';
 	echo 		'<p class="ad-text">WideSky Ad <br> (<span></span>)</p>';
 	echo 	'</div>';
 	echo '</aside>';
