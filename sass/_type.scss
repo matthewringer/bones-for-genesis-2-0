@@ -5,6 +5,10 @@ body {
 	@include MQ(S) {
 		font-size: 80%;
 	}
+
+	@include MQ(M) {
+		font-size:100%;
+	}
 }
 
 html.admin-bar-showing {

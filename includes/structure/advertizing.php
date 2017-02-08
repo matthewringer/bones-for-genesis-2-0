@@ -33,6 +33,9 @@ function rva_leaderboard_ad($placement) {
 	?>
 	<div class="wrap ad-leaderboard "> 
 		<!-- TODO: insert ad here  -->
+		<?php if(!$placement) ?>
+			<p class="ad-text">Leaderboard Ad <br> (<span></span>)</p>
+		<?php end; ?>
 	</div>
 	<?php
 }
@@ -45,6 +48,9 @@ function rva_square_ad($placement) {
 	?>
 	<div class="wrap ad-square "> 
 		<!-- TODO: insert ad here  -->
+		<?php if(!$placement) ?>
+			<p class="ad-text">Square Ad  <br> (<span></span>)</p>
+		<?php end; ?>
 	</div>
 	<?php
 }
@@ -57,6 +63,9 @@ function rva_skyscraper_ad($placement) {
 	?>
 	<div class="wrap ad-skyscraper "> 
 		<!-- TODO: insert ad here  -->
+		<?php if(!$placement) ?>
+			<p class="ad-text">Skyscraper Ad  <br> (<span></span>)</p>
+		<?php end; ?>
 	</div>
 	<?php
 }

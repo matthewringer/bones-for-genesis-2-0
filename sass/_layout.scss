@@ -45,8 +45,16 @@ body{
 		@include admin-offset-fix(125);
 	}
 	@include MQ(S) {
-		height: 130px;
-		@include admin-offset-fix(130);
+		height: 160px;
+		@include admin-offset-fix(160);
+	}
+	@include MQ(M) {
+		height: 160px;
+		@include admin-offset-fix(160);
+	}
+	@include MQ(L) {
+		height: 170px;
+		@include admin-offset-fix(170);
 	}
 }
 

@@ -150,9 +150,11 @@ function rva_1_over_2_box($title, $slug){
 
 function widesky_sidebar() {
 	echo '<aside class="widesky-sidebar">';
-		if ( is_active_sidebar( 'widesky_ad' ) ) {
-			dynamic_sidebar( 'widesky_ad' );
-		}
+		// if ( is_active_sidebar( 'widesky_ad' ) ) {
+		// 	dynamic_sidebar( 'widesky_ad' );
+		// }
+		rva_skyscraper_ad('TODO:');
+		
 		rva_social_follow_buttons();
 	echo '</aside>';
 }

@@ -2,6 +2,10 @@
 
 if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
+
+add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_content_sidebar' );
+// Other possible layouts: __genesis_return_content_sidebar, __genesis_return_sidebar_content, __genesis_return_content_sidebar_sidebar, __genesis_return_sidebar_sidebar_content, __genesis_return_sidebar_content_sidebar, __genesis_return_full_width_content
+
 /*
 	Template Name: Single Page Template
 */
@@ -10,6 +14,28 @@ add_action('wp_head', 'facebook_og_meta');
 
 // remove javascript infinite scroll TODO: code smell
 remove_action( 'wp_enqueue_scripts', 'rva_load_more_js' );
+
+add_filter( 'genesis_attr_content', 'single_main_add_css_attr' );
+function single_main_add_css_attr( $attributes ) {
+ 
+ // add original plus extra CSS classes
+ $attributes['class'] .= ' single-main';
+ 
+ // return the attributes
+ return $attributes;
+ 
+}
+
+add_filter( 'genesis_attr_sidebar-primary', 'single_sidebar_add_css_attr' );
+function single_sidebar_add_css_attr( $attributes ) {
+ 
+ // add original plus extra CSS classes
+ $attributes['class'] .= ' single-sidebar';
+ 
+ // return the attributes
+ return $attributes;
+ 
+}
 
  // Remove Footer
 remove_action('genesis_footer', 'genesis_do_footer');
@@ -42,38 +68,20 @@ function rva_after_content() {
 	echo '</div> <!-- / cd-gutterbox -->';
 }
 
-add_action('genesis_before_entry_content', 'rva_entry_share_links', 9);
-
-
-add_action('genesis_before_entry_content', 'rva_entry_header_hr', 12);
+add_action('genesis_entry_header', 'rva_entry_header_hr', 14);
 function rva_entry_header_hr() {
 	echo '<hr class="rva-content-horizon">';
 }
 
-
-add_action('genesis_before_entry', 'rva_ad_widesky_desktop', 15);
+add_action('genesis_sidebar', 'rva_ad_widesky_desktop', 5);
 function rva_ad_widesky_desktop(){
-	rva_ad_widesky("collapse-hidden");
+	//echo '<aside class="widesky-sidebar '.$class.'">';
+		rva_skyscraper_ad(''); //"collapse-hidden");
+	//echo '</aside>';
 }
 
-
-add_action('genesis_before_entry_content', 'rva_ad_widesky_mobile', 15);
-function rva_ad_widesky_mobile(){
-	rva_ad_widesky("collapse-shown");
-}
-
-
+// TODO: 
 add_action( 'genesis_after_entry_content', 'rva_social_sharing_buttons' );
-
-function rva_ad_widesky($class) {
-	echo '<div class="">';
-	echo '<aside class="widesky-sidebar '.$class.'">';
-	echo 	'<div class="ad-skyscraper ">';
-	echo 		'<p class="ad-text">WideSky Ad <br> (<span></span>)</p>';
-	echo 	'</div>';
-	echo '</aside>';
-	echo '</div>';
-}
 
 add_action('genesis_entry_header', 'rva_post_excerpt');
 function rva_post_excerpt(){

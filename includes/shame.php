@@ -2,20 +2,6 @@
 
 if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-
-/* Code to Display Featured Image on top of the post */
-add_action( 'genesis_before_entry', 'featured_post_image', 8 );
-function featured_post_image() {
-  if ( !is_singular( array( 'post', 'page' ) ))  return;
-    
-		echo '<div class="rva-feature-image" >';
-			the_post_thumbnail('large');
-		echo '</div>';
-
-		$photog_name = get_post_meta( get_post_thumbnail_id(), 'rva_photographer_name', true );
-		echo '<p class="rva-photo-credit">'. $photog_name .'</p>'; 
-}
-
 /* Limit exerpt lenght */
 function custom_excerpt_length( $length ) {
 	return 20;
