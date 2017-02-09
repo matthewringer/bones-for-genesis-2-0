@@ -43,11 +43,6 @@
 	text-align: center;
 }
 
-.sidebar-primary {
-	//width: 1px;
-	//width: 1px !important;
-}
-
 .single-main {
 	width: 100%;
 	@include MQ(M){
@@ -178,7 +173,7 @@
 	padding: 20px;
 	margin: .4em 0;
 	
-	p {
+	p, a {
 		font-size: 2.4rem;
 		font-weight: 800;
 		line-height: 1.2;
@@ -191,6 +186,11 @@
 		@include MQ(M) {
 			font-size: 4rem;
 		}
+	}
+
+	a {
+		color: darken($yellow, 5%);
+		text-decoration: underline;
 	}
 	
 	p::before {
@@ -314,14 +314,6 @@
 .rva-photo-credit {
 	text-align: right;
 }
-
-// .rva-content-horizon{
-// 	clear: none;
-// 	margin: 20px 15%; 
-// 	height: 1px; 
-// 	border: none; 
-// 	background-color: $grey;
-// }
 
 .cd-hero-box {
 	display: -webkit-box;
