@@ -2,24 +2,6 @@
 
 if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-
-/**
- *
- * Code to Display Featured Image on top of the post 
- *
- */
-add_action( 'genesis_before_content', 'featured_post_image', 13 );
-function featured_post_image() {
-  if ( !is_singular( array( 'post', 'page' ) ))  return;
-    
-		echo '<div class="rva-feature-image" >';
-			the_post_thumbnail('large');
-		echo '</div>';
-
-		$photog_name = get_post_meta( get_post_thumbnail_id(), 'rva_photographer_name', true );
-		echo '<p class="rva-photo-credit">'. $photog_name .'</p>'; 
-}
-
 add_filter( 'gallery_style', 'bfg_gallery_style' );
 /**
  * Remove the injected styles for the [gallery] shortcode.
@@ -86,8 +68,6 @@ function bfg_post_info() {
 }
 
 //genesis_entry_header
-add_action('genesis_entry_header', 'rva_entry_share_links', 12);
-
 remove_action( 'genesis_entry_footer', 'genesis_post_meta' );
 add_action( 'genesis_entry_header', 'genesis_post_meta', 13);
 add_filter( 'genesis_post_meta', 'bfg_post_meta' );
