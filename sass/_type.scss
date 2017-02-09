@@ -93,7 +93,8 @@ hr {
 	clear: both;
 	margin: $spacer 0;
 	border: 0;
-	border-collapse: collapse;
-	border-top: 2px solid $grey;
-	margin-bottom: 2em;
+	margin: 2em 15%; 
+	//margin-bottom: 2em;
+	height: 1px;  
+	background-color: $grey;
 }

@@ -56,8 +56,9 @@
 }
 
 .single-sidebar {
-	z-index: 99;
-	text-align: center;
+	display: none;
+	//z-index: 99;
+	//text-align: center;
 	// position: fixed;
 	// top: 0;
 	// left:0;
@@ -72,6 +73,7 @@
 	// }
 
 	@include MQ(M){
+		display: block;
 		z-index: initial;
 		width: 30%;
 		float: right;
@@ -171,11 +173,41 @@
 	}
 
 	blockquote {
-		margin: 0;
+	border-top: 15px solid $grey;
+	border-bottom: 2px solid $grey;
+	padding: 20px;
+	margin: .4em 0;
+	
+	p {
+		font-size: 2.4rem;
+		font-weight: 800;
+		line-height: 1.2;
+		text-align: center;
 
-		p {
+		@include MQ(S) {
+			font-size: 3.2rem;
+		}
+
+		@include MQ(M) {
+			font-size: 4rem;
 		}
 	}
+	
+	p::before {
+		content: '"';
+		top: -.5em;
+    	position: relative;
+		display: inline-block;
+		-webkit-transform: rotate(180deg);
+		-moz-transform: rotate(180deg);
+		-o-transform: rotate(180deg);
+		-ms-transform: rotate(180deg);
+		transform: rotate(180deg);
+	}
+	p::after{
+		content: '"';
+	}
+}
 
 	table {
 		margin-bottom: 1.5em;
@@ -283,17 +315,15 @@
 	text-align: right;
 }
 
-.rva-content-horizon{
-	clear: none;
-	width: 100%; 
-	margin-left: 15%; 
-	height: 1px; 
-	border: none; 
-	background-color: $grey;
-}
+// .rva-content-horizon{
+// 	clear: none;
+// 	margin: 20px 15%; 
+// 	height: 1px; 
+// 	border: none; 
+// 	background-color: $grey;
+// }
 
 .cd-hero-box {
-	
 	display: -webkit-box;
 	display: -moz-box;
 	display: -ms-flexbox;
@@ -351,7 +381,7 @@
 ul.social-links {
 	display: inline-block;
 	border: none;
-	padding: 2em 0;
+	padding: .5em 0;
 
 	& li {
 		float: left;
