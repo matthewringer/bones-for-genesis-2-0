@@ -34,8 +34,8 @@ class RvaAdminSettingsPage
      */
     public function __construct()
     {
-        add_action( 'admin_menu', array( $this, 'add_menu_page' ) );
-        add_action( 'admin_init', array( $this, 'page_init' ) );
+        //add_action( 'admin_menu', array( $this, 'add_menu_page' ) );
+        //add_action( 'admin_init', array( $this, 'page_init' ) );
     }
 
 

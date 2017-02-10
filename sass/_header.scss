@@ -26,8 +26,8 @@
 	background-color: rgb(13, 13, 13);
 	background-color: rgba(13, 13, 13, 1); //TODO: screen flash on load.
 
-	top: 60px;
-	@include admin-offset-fix(60);
+	top: 50px;
+	@include admin-offset-fix(50);
 
 	@include MQ(S) {
 		top: 90px;

@@ -30,8 +30,8 @@ body{
 	@include admin-offset-fix(120);
 
 	@include MQ(XS) {
-		height: 60px;
-		@include admin-offset-fix(60);
+		height: 50px;
+		@include admin-offset-fix(50);
 	}
 }
 

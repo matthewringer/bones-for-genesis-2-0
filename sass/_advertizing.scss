@@ -1,29 +1,32 @@
 
 
 .ad-leaderboard {  
+	// 3 sizes also "large leaderboard" 970x90 -> 970x415 as a premium option
+	// adsense 320x50 for mobile 
 	// Leaderboard 728 x 90 -> Full Banner 468 x 60 -> Half Banner 234 x 60
-	height: 60px;
-	width: 234px;
+	width: 320px;
+	height: 50px;
 	margin: auto;
 	padding: 0;
 	background: yellow;
 	
-	@include MQ(XS) {
-		height: 60px;
-		width: 468px;
-	}
+	// @include MQ(XS) {
+	// 	width: 468px;
+	// 	height: 60px;
+	// }
 
 	@include MQ(S) {
-		height: 90px;
 		width: 728px;
+		height: 90px;
 	}
 }
 
 .ad-skyscraper {
 	// 160 x 600, 120 x 600, 120 x 240, 240 x 400, 300 x 600
 
-	height: 400px;
-	width: 240px;
+	//width: 160px;
+	width: 300px;
+	height: 600px;
 	margin: auto;
 	padding: 0;
 	background: yellow;
@@ -44,49 +47,42 @@
 	// }
 }
 
+.ad-skyscraper::before{
+	content:"Advertizement";
+	margin: auto;
+	position: relative; 
+	top: -1em;
+}
+
+.ad-square {
+	// Sizes: 336 x 280, or 125 x 125
+	//width: 336px;
+	//width: 336px;
+	//height: 280px;
+	width: 336px;
+	height: 280px;
+	margin: 10px auto;
+	padding: 0;
+	background: yellow;
+	//flex: .5;
+}
+
+.ad-square::before {
+	content:"Advertizement";
+	margin: auto;
+	position: relative; 
+	top: -1em;
+}
+
 .ad-bigboy-block {
 
-    display: inline-block;
+    display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	width: 100%;
 
-	@include MQ(S) {
-		float: left; //todo: suspicious
-		width: 100%;
-	}
-
-	& div.ad-big-boy::before {
-		content:"advertizement";
-		position: relative; 
-		top: -10px;
-	}
-
-	.ad-container {
-		width: 100%;
-		padding-top: 89.5%; /* 1:.896 Aspect Ratio */
-		position: relative; /* If you want text inside of it */
-	}
-
-	& div.ad-big-boy {
-		text-align: center;
-        width: 50%;
-        float: left;
-        padding: 0 .2em 2em .2em; 
-
-		@include MQ(S) {
-			width: 25%;
-		}
-
-		& p {
-			background-color: $yellow;
-			position: absolute;
-			top: 0;
-			left: 0;
-			bottom: 0;
-			right: 0;
-			padding-top: 10%;
-		}
-	}
-
-	// & div.ad-big-boy:nth-of-type(2) {
-	// 	display: none;
+	// @include MQ(S) {
+	// 	width: 100%;
 	// }
 }

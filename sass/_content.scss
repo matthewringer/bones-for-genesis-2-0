@@ -38,15 +38,19 @@
 }
 
 .content {
-	float:left;
+	//float:left;
 	//width:50%;
 	text-align: center;
 }
 
 .single-main {
+	float:left;
 	width: 100%;
+	@include MQ(S){
+		width: 54%;
+	}
 	@include MQ(M){
-		width: 70%;
+		width: 65%;
 	}
 }
 
@@ -67,10 +71,10 @@
 	// 	left: 30%;
 	// }
 
-	@include MQ(M){
+	@include MQ(S){
 		display: block;
 		z-index: initial;
-		width: 30%;
+		//width: 45%;
 		float: right;
 		position: relative;
 		z-index: 0;
@@ -129,7 +133,8 @@
 	* { 
 		clear: none; 
 		text-align: left;
-		font-size: 18px;
+		//font-size: 18px;
+		font-size: 1.15rem;
 
 		@include MQ(M) { //TODO: fishy
 		//font-size: 1.5rem;
@@ -406,6 +411,12 @@ ul.social-links {
 	margin-left: 5%;
 }
 
+.flex {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
 .cd-2x1-box {
 
 	@include MQ(S) {
@@ -450,7 +461,7 @@ ul.social-links {
 
 .entry-thumbnail {
 	@include MQ(M) {
-		font-size: 1.6em;
+		font-size: 1.15rem;
 	}
 	& h3 {
 		padding-top: 1em;
@@ -480,59 +491,50 @@ ul.social-links {
 }
 
 .cd-sidebar {
-	
-	padding-top: 1em;
-	
-	@include MQ(S) {
+
+	$S_C:  729px; //729px;  //768
+	$M_C:  820px;
+	$L_C:  1024px;
+
+	@include MQ_C($S_C) {
 		float: left;
-		width: 60%;
+		width: 54%;
 	}
 
-	@include MQ(M) {
+	@include MQ_C($M_C) {
 		float: left;
-		width: 75%;
+		width: 58%;
 	}
-}
 
-.widesky-sidebar::before{
-	content: "Advertizement";
-	display: block;
-	//padding-top: 1.5em;
+	@include MQ_C($L_C) {
+		float: left;
+		width: 66%;
+	}
+
+	& article {
+
+		width:100%;
+		float: left;
+		padding: 0 .5em 2em .5em;
+
+		@include MQ_C($S_C) {
+			width: 50%;
+		}
+
+		// @include MQ_C($M_C) {
+		// 	width: 33.333%;
+		// }
+	}
+
+	
 }
 
 .widesky-sidebar {
-	padding: 0 0 1em 1em;
-	
+	width: 100%;
 	@include MQ(S) {
-		float:right; 
-		width: 40%;
-		display: block;
+		width: auto;
 	}
-
-	@include MQ(M) {
-		//float: left;
-		width: 25%;
-	}
-	
-	//width: 100%;
-	float: none;
-	overflow: hidden;
-
-	& div.ad-skyscraper {
-		
-		position: relative;
-		margin: auto;
-
-		p {
-			position: absolute;
-			top: 0;
-			right: 0;
-			bottom: 0;
-			left: 0;
-			padding-top: 10%;
-			background-color: $yellow;
-		}
-	}
+	//display: inline-block;
 }
 
 .collapse-hidden {

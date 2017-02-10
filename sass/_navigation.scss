@@ -48,9 +48,9 @@
 }
 
 .genesis-nav-menu {
-	
-	top: 60px;
-	@include admin-offset-fix(60);
+
+	top: 50px;
+	@include admin-offset-fix(50);
 
 	@include MQ(S) {
 		top: 90px;
@@ -77,11 +77,11 @@
 		color: $white;
 		text-decoration: none;
 		white-space: nowrap;
-		//font-size: .5rem;
 
 		span {
 			opacity: 1;
 		}
+
 	}
 
 	li:first-of-type a {
@@ -91,8 +91,6 @@
 	.sub-menu {
 		position: absolute;
 		top: 100%;
-		///left: -9999px;
-		//z-index: 99;
 		opacity: 0;
 		transition: opacity .4s ease-in-out;
 
@@ -103,6 +101,12 @@
 		}
 
 		.sub-menu {
+		}
+	}
+
+	@include MQ(S){
+		li.menu-item a {
+			font-size: 1.8em;
 		}
 	}
 
@@ -127,6 +131,7 @@
 			@include transition(all .2s);
 			display: inline-block;
 			padding: .4em .2em;
+			font-size: initial;
 
 			&.selected {
 				box-shadow: 0 2px 0 $yellow;

@@ -21,7 +21,7 @@ function bfg_gallery_style( $css ) {
  */
 // add_post_type_support( 'page', 'excerpt' );
 
-add_filter( 'the_content_more_link', 'bfg_more_tag_excerpt_link' );
+//add_filter( 'the_content_more_link', 'bfg_more_tag_excerpt_link' );
 /**
  * Customize the excerpt text, when using the <!--more--> tag.
  *
@@ -36,7 +36,7 @@ function bfg_more_tag_excerpt_link() {
 }
 
 add_filter( 'excerpt_more', 'bfg_truncated_excerpt_link' );
-add_filter( 'get_the_content_more_link', 'bfg_truncated_excerpt_link' );
+//add_filter( 'get_the_content_more_link', 'bfg_truncated_excerpt_link' );
 /**
  * Customize the excerpt text, when using automatic truncation.
  *
@@ -46,7 +46,7 @@ add_filter( 'get_the_content_more_link', 'bfg_truncated_excerpt_link' );
  */
 function bfg_truncated_excerpt_link() {
 
-	return '... <a class="more-link" href="' . get_permalink() . '">' . __( 'Read more &rarr;', CHILD_THEME_TEXT_DOMAIN ) . '</a>';
+	return '...';
 
 }
 

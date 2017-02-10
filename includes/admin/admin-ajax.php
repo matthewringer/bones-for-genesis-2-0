@@ -13,6 +13,7 @@ function rva_ajax_load_more() {
 		rva_post_thumbnail();
 	endwhile; endif; wp_reset_postdata();
 	rva_bigboy_block(); // todo: linked to shame
+	echo '<hr>';
 	$response = array();
 	$response['thumbs'] = ob_get_clean();
 	$response['count'] = $count;

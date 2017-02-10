@@ -18,7 +18,7 @@ add_action( 'genesis_before_header', 'rva_before_header' );
 function rva_before_header($placement) {
 	?>
 	<div class="before-header">
-		<?php echo rva_leaderboard_ad('todo:') ?>
+		<?php echo rva_leaderboard_ad('') ?>
 	</div>
 	<?php
 }
@@ -33,7 +33,7 @@ function rva_leaderboard_ad($placement) {
 	?>
 	<div class="wrap ad-leaderboard "> 
 		<!-- TODO: insert ad here  -->
-		<?php if (!$placement): ?>
+		<?php if ('' == $placement): ?>
 			<p class="ad-text">Leaderboard Ad <br> (<span></span>)</p>
 		<?php endif; ?>
 	</div>
@@ -48,7 +48,7 @@ function rva_square_ad($placement) {
 	?>
 	<div class="wrap ad-square "> 
 		<!-- TODO: insert ad here  -->
-		<?php if(!$placement): ?>
+		<?php if('' == $placement): ?>
 			<p class="ad-text">Square Ad  <br> (<span></span>)</p>
 		<?php endif; ?>
 	</div>
@@ -63,7 +63,7 @@ function rva_skyscraper_ad($placement) {
 	?>
 	<div class="wrap ad-skyscraper "> 
 		<!-- TODO: insert ad here  -->
-		<?php if(!$placement): ?>
+		<?php if('' == $placement): ?>
 			<p class="ad-text">Skyscraper Ad  <br> (<span></span>)</p>
 		<?php endif; ?>
 	</div>
@@ -91,15 +91,21 @@ add_action( 'widgets_init', 'rva_ad_widgets_init' );
 function rva_bigboy_block() {
 	echo '<hr>';
 	echo '<div class="ad-bigboy-block">';
-		rva_bigboy_ad();
-		rva_bigboy_ad();
-		rva_bigboy_ad();
-		rva_bigboy_ad();
+		rva_square_ad('');
+		rva_square_ad('');
+		// rva_square_ad('');
+		// rva_square_ad('');
 	echo '</div>';
 }
 
 function rva_bigboy_ad(){
-	echo '<div class="ad-big-boy"><div class="ad-container"><p class="ad-text">Medium Ad BigBoy <br> (1:.896 Aspect Ratio) <br> (<span></span>)</p></div></div>';
+	?>
+	<div class="ad-big-boy">
+		<div class="ad-container">
+			<p class="ad-text">Medium Ad BigBoy <br> (1:.896 Aspect Ratio) <br> (<span></span>)</p>
+		</div>
+	</div>
+	<?php
 }
 
 /*	Big Boy All 300x250

@@ -61,7 +61,7 @@ add_action( 'genesis_settings_sanitizer_init', 'rva_register_social_sanitization
 function rva_register_social_settings_box( $_genesis_theme_settings_pagehook ) {
 	add_meta_box('rva-social-settings', 'Social Links', 'rva_social_settings_box', $_genesis_theme_settings_pagehook, 'main', 'high');
 }
-add_action('genesis_theme_settings_metaboxes', 'rva_register_social_settings_box');
+//add_action('genesis_theme_settings_metaboxes', 'rva_register_social_settings_box');
 /**
  * Create Metabox
  *

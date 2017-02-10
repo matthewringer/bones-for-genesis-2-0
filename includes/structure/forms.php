@@ -2,7 +2,9 @@
 
 function rva_subscribtion_form() {
 
-    $options = get_option('rva_admin_options');
+    $email_image = esc_attr( genesis_get_option('rva_subscribe_email_image', RVA_SETTINGS_FIELD ) );
+
+    $magazine_image = esc_attr( genesis_get_option('rva_subscribe_magazine_image', RVA_SETTINGS_FIELD ) );
 ?>
     <div class="cd-gutter-box cd-subscribe-block" >
         <div class="section-title">
@@ -12,7 +14,7 @@ function rva_subscribtion_form() {
             <div class="ar-scale-box">
             <?php printf(
                 '<img class="ar-content" src="%s">',
-                isset( $options['subscribe_magazine_image'] ) ? wp_get_attachment_url( esc_attr( $options['subscribe_magazine_image']) ) : ''
+                isset( $magazine_image ) ? wp_get_attachment_url( $magazine_image ) : ''
             ); ?>
             </div>
             <form>
@@ -33,7 +35,7 @@ function rva_subscribtion_form() {
             <div class="ar-scale-box">
             <?php printf(
                 '<img class="ar-content" src="%s">',
-                isset( $options['subscribe_email_image'] ) ? wp_get_attachment_url( esc_attr( $options['subscribe_email_image']) ) : ''
+                isset( $email_image ) ? wp_get_attachment_url( $email_image ) : ''
             ); ?>
             </div>
         </div>

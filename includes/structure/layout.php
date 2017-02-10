@@ -37,8 +37,8 @@ function hero_story($post) {
  * 
  */
 
-function start_section($title) {
-	echo '<div class="cd-gutter-box">';
+function start_section($title, $classes) {
+	echo '<div class="cd-gutter-box '.$classes.' ">';
 	if($title) {
 		echo	'<div class="section-title">';
 	} else {
@@ -68,7 +68,7 @@ function rva_post_thumbnail() {
         echo '<a href="' . get_the_permalink() .'">';
         echo 	'<div class="rva-article-image" style="background-image:url('.get_the_post_thumbnail_url().');" > </div>';
         echo 	'<div class="text-block">';
-        echo 		'<h3>'. get_the_title() . '</h3>';
+        echo 		'<h2>'. get_the_title() . '</h2>';
         echo 		'<p>' . get_the_excerpt() . '</p>';
         echo 	'</div>';
         echo  '</a>';
@@ -86,7 +86,7 @@ function cb_3x6($title, $args, $sidebar = false) {
 	if( $loop->have_posts() ) {
 		// loop through posts
 
-		start_section($title);
+		start_section($title, "flex");
 		
 		$sidebar_class = "";
 		
@@ -153,7 +153,7 @@ function widesky_sidebar() {
 		// if ( is_active_sidebar( 'widesky_ad' ) ) {
 		// 	dynamic_sidebar( 'widesky_ad' );
 		// }
-		rva_skyscraper_ad('TODO:');
+		rva_skyscraper_ad('');
 		
 		rva_social_follow_buttons();
 	echo '</aside>';
