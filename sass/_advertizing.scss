@@ -1,77 +1,58 @@
 
 
-.ad-leaderboard {  
+.ad-leaderboard {
 	// 3 sizes also "large leaderboard" 970x90 -> 970x415 as a premium option
 	// adsense 320x50 for mobile 
 	// Leaderboard 728 x 90 -> Full Banner 468 x 60 -> Half Banner 234 x 60
-	width: 320px;
-	height: 50px;
+	display: none;
 	margin: auto;
 	padding: 0;
-	background: yellow;
-	
-	// @include MQ(XS) {
-	// 	width: 468px;
-	// 	height: 60px;
-	// }
+	color: $yellow;
 
 	@include MQ(S) {
+		display: inline-block;
 		width: 728px;
 		height: 90px;
 	}
 }
 
-.ad-skyscraper {
-	// 160 x 600, 120 x 600, 120 x 240, 240 x 400, 300 x 600
-
-	//width: 160px;
-	width: 300px;
-	height: 600px;
+.m-ad-leaderboard {
+	color: $yellow;
+	width: 320px;
+	height: 50px;
 	margin: auto;
 	padding: 0;
-	background: yellow;
-	
-	// @include MQ(S) {
-	// 	width: 120px;
-	// 	height: 240px;
-	// }
 
-	// @include MQ(M) {
-	// 	width: 160px;
-	// 	height: 600px;
-	// }
-
-	// @include MQ(L) {
-	// 	width: 300px;
-	// 	height: 600px;
-	// }
+	@include MQ(S) {
+		display: none;
+	}
 }
 
-.ad-skyscraper::before{
-	content:"Advertizement";
+.ad-skyscraper {
+	// 160 x 600, 120 x 600, 120 x 240, 240 x 400, 300 x 600
+	width: 300px;
+	min-height: 600px;
 	margin: auto;
-	position: relative; 
-	top: -1em;
+	position: relative;
+}
+
+.ad-skyscraper::before {
+	content: "Advertizement";
+	position: absolute;
+	margin: auto;
+	width:300px;
+    top: -1.1em;
 }
 
 .ad-square {
-	// Sizes: 336 x 280, or 125 x 125
-	//width: 336px;
-	//width: 336px;
-	//height: 280px;
 	width: 336px;
-	height: 280px;
+	min-height: 280px;
 	margin: 10px auto;
-	padding: 0;
-	background: yellow;
-	//flex: .5;
 }
 
 .ad-square::before {
 	content:"Advertizement";
-	margin: auto;
-	position: relative; 
-	top: -1em;
+	text-align: center;
 }
 
 .ad-bigboy-block {

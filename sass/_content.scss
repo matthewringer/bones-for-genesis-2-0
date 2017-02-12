@@ -460,6 +460,7 @@ ul.social-links {
 }
 
 .entry-thumbnail {
+	position: relative;
 	@include MQ(M) {
 		font-size: 1.15rem;
 	}
@@ -472,6 +473,12 @@ ul.social-links {
 		height: 12em;
 	}
 }
+// .entry-thumbnail::before {
+// 	content: "THE Sponsor";
+// 	position: absolute;
+//     right: 5px;
+//     top: -1.1em;
+// }
 
 .rva-top-spacing {
 
@@ -533,8 +540,8 @@ ul.social-links {
 	width: 100%;
 	@include MQ(S) {
 		width: auto;
+		margin-left: .5em;
 	}
-	//display: inline-block;
 }
 
 .collapse-hidden {

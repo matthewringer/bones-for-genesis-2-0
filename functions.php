@@ -27,6 +27,10 @@ require_once CHILD_DIR . '/includes/admin/admin-ajax.php';	    // For adding/edi
 require_once CHILD_DIR . '/includes/admin/admin-menu-page.php';	// RVA Magazine Global settings top level page
 require_once CHILD_DIR . '/includes/admin/admin-settings.php';  // RVA Magazine Theme settings
 
+require_once CHILD_DIR . '/includes/admin/taxonomy-single-term/class.taxonomy-single-term.php';  // 
+require_once CHILD_DIR . '/includes/admin/taxonomy-single-term/walker.taxonomy-single-term.php';  // 
+
+
 // Structure (corresponds to Genesis's lib/structure)
 require_once CHILD_DIR . '/includes/structure/advertizing.php';
 require_once CHILD_DIR . '/includes/structure/archive.php';

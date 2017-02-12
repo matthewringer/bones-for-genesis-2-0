@@ -260,3 +260,21 @@ update_post_meta( $post['ID'], 'rva_photographer_url', esc_url( $attachment['rva
 }
 
 add_filter( 'attachment_fields_to_save', 'rva_attachment_field_credit_save', 10, 2 );
+
+
+add_action( 'admin_init', 'single_term_taxonomies');
+/**
+ * Restrict Post Category to a single term. TODO: Blog post...
+ */
+function single_term_taxonomies() {
+
+	$taxes = get_taxonomies();
+	
+	foreach ( $taxes as $tax ) {
+		if ( is_taxonomy_hierarchical( $tax ) ) {
+			$custom_tax_mb = new Taxonomy_Single_Term( $tax, array(), 'select' );
+			$custom_tax_mb ->set( 'force_selection', true );
+			$custom_tax_mb->set( 'allow_new_terms', true );
+		}
+	}
+}
