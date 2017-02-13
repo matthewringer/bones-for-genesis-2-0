@@ -1,0 +1,43 @@
+<html>
+    <head>
+    </head>
+    <body>
+        <textarea  rows='50' cols="100">
+            googletag.cmd.push(function() {
+                googletag.defineSlot('/53299010/Big_Boy_All', [300, 280], 'div-gpt-ad-1486844719982-0').addService(googletag.pubads());
+                googletag.defineSlot('/53299010/Big_Boy_H0', [300, 600], 'div-gpt-ad-1486844719982-1').addService(googletag.pubads());
+                googletag.defineSlot('/53299010/Big_Boy_H1', [300, 280], 'div-gpt-ad-1486844719982-2').addService(googletag.pubads());
+                googletag.defineSlot('/53299010/Big_Boy_H2', [300, 280], 'div-gpt-ad-1486844719982-3').addService(googletag.pubads());
+                googletag.defineSlot('/53299010/Big_Boy_H3', [300, 280], 'div-gpt-ad-1486844719982-4').addService(googletag.pubads());
+                googletag.defineSlot('/53299010/Leaderboard', [728, 90], 'div-gpt-ad-1486844719982-5').addService(googletag.pubads());
+                googletag.defineSlot('/53299010/Partner', [140, 140], 'div-gpt-ad-1486844719982-6').addService(googletag.pubads());
+                googletag.defineSlot('/53299010/Skyscraper', [120, 600], 'div-gpt-ad-1486844719982-7').addService(googletag.pubads());
+                googletag.defineSlot('/53299010/Spud', [125, 125], 'div-gpt-ad-1486844719982-8').addService(googletag.pubads());
+                googletag.pubads().enableSingleRequest();
+                googletag.enableServices();
+            });
+
+        </textarea>
+        <div style='background-color:red; height: 50px; width: 70px; text-align: center; padding-top:10pt;'>convert</div>
+    </body>
+    <script>
+        const button = document.querySelector('div');
+        const textarea = document.querySelector('textarea');
+        button.addEventListener('click', updateText);
+
+        function updateText(e){
+            const lines = textarea.value.split('\n');
+            // lines.forEach( line => {
+            //     console.log(line);
+            // });
+
+            lines.map( line => {
+                if(line.match(/defineSlot/g)){
+                    console.log(line);
+                }
+                
+            });
+        }
+
+    </script>
+</html>
