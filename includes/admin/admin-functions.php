@@ -302,48 +302,6 @@ function log_menu_items( $items, $menu, $args ) {
     return $items;
 }
 
-
-
-add_action( 'admin_init', 'rva_create_primary_memu');
-function rva_create_primary_memu() {
-
-	$top_menu_items = [
-		'read' => 'READ',
-		'music' => 'MUSIC',
-		'art' => 'ART',
-		'photo' => 'PHOTO',
-		'eatdrink' => 'EAT DRINK',
-		'watch' => 'WATCH',
-		'events' => 'EVENTS',
-		'magazine' => 'MAGAZINE'
-	];
-	
-    //give your menu a name
-    $menu_name = 'RVA Primary Menu';
-	$menu = wp_get_nav_menu_object( $menu_name );
-	if(!$menu) {
-		$menu_id = wp_create_nav_menu($menu_name);
-		$menu = get_term_by( 'id', $menu_id , 'nav_menu' );
-		write_log('Menu Created name: '. $menu->title);
-
-		// Insert top level menu items.
-		foreach ( $top_menu_items as $key => $value ) {
-			wp_update_nav_menu_item($menu->term_id, 0, array(
-			'menu-item-title' =>  __($value),
-			//'menu-item-classes' => 'home',
-			'menu-item-url' => home_url( '/'.$key ), 
-			'menu-item-status' => 'publish'));
-		}
-	
-		//then you set the wanted theme  location
-		$locations = get_theme_mod('nav_menu_locations');
-		write_log($locations);
-		$locations['primary'] = $menu->term_id;
-		set_theme_mod( 'nav_menu_locations', $locations );
-	}
-		// // then update the menu_check option to make sure this code only runs once
-}
-
 // Ensure Menu Items are created
 
 
