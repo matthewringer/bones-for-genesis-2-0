@@ -24,19 +24,30 @@
         const button = document.querySelector('div');
         const textarea = document.querySelector('textarea');
         button.addEventListener('click', updateText);
-
+        var slots = [];
         function updateText(e){
             const lines = textarea.value.split('\n');
-            // lines.forEach( line => {
-            //     console.log(line);
-            // });
+            console.clear();
 
-            lines.map( line => {
+             slots = lines.map( line => {
                 if(line.match(/defineSlot/g)){
-                    console.log(line);
+
+                    // /"([^"]*)"/g
+                    //const regex = /"([^"]|\\.|\\\n)*"|'([^']|\\.|\\\n)*'|\[([^[\\]|\\.|\\\n)*\]/g
+                    const regex = /'([^"]*?)'|\[([^[\\]|\\.|\\\n)*\]/g ;
+                    var selected = line.match( regex );
+                    //return selected;
+                    const name_network = selected[0].split('/');
+                    return {
+                        name: name_network[2].replace('\'',''),
+                        network: name_network[1],
+                        size: selected[1],
+                        id: selected[2]
+                    }
                 }
-                
-            });
+            }).filter(x=>x != undefined);
+
+            console.log(slots);
         }
 
     </script>
