@@ -37,7 +37,7 @@ function hero_story($post) {
  * 
  */
 
-function start_section($title, $classes) {
+function start_section($title, $classes = '') {
 	echo '<div class="cd-gutter-box '.$classes.' ">';
 	if($title) {
 		echo	'<div class="section-title">';

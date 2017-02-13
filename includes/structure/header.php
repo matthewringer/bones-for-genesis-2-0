@@ -193,17 +193,19 @@ function bfg_ajax_url_attribute( $atts ) {
 
 }
 
+add_action('wp_head', 'rva_load_favicons');
 /**
  * Simple favicon override to specify your favicon's location.
  *
  * @since 2.0.0
  */
 function rva_load_favicons() {
-	$favicon_build_path = $stylesheet_dir . '/build/images/favicons';
 
+	$stylesheet_dir     = get_stylesheet_directory_uri();
+	$favicon_build_path = $stylesheet_dir . '/build/images/favicons';
 	echo '<link rel="icon" href="' . $favicon_build_path . '/favicon.ico?v=1.1" >';
 }
-add_action('wp_head', 'rva_load_favicons');
+
 
 //add_filter( 'genesis_pre_load_favicon', 'bfg_pre_load_favicon' );
 /**

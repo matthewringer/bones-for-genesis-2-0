@@ -125,6 +125,7 @@ function bfg_get_image_sizes( $size = '' ) {
 
 }
 
+// add_filter( 'wp_generate_attachment_metadata', 'bfg_downsize_uploaded_image', 99 );
 /*
  * Downsize the original uploaded image if it's too large
  *
@@ -132,7 +133,6 @@ function bfg_get_image_sizes( $size = '' ) {
  *
  * @since 2.3.6
  */
-// add_filter( 'wp_generate_attachment_metadata', 'bfg_downsize_uploaded_image', 99 );
 function bfg_downsize_uploaded_image( $image_data ) {
 
 	$max_image_size_name = 'large';
@@ -197,12 +197,12 @@ function bfg_remove_xmlrpc_pingback_ping( $methods ) {
  */
 if( defined( 'XMLRPC_REQUEST' ) && XMLRPC_REQUEST ) exit;
 
+add_action( '_core_updated_successfully', 'bfg_remove_files_on_upgrade' );
 /*
  * Automatically remove readme.html (and optionally xmlrpc.php) after a WP core update
  *
  * @since 2.2.26
  */
-add_action( '_core_updated_successfully', 'bfg_remove_files_on_upgrade' );
 function bfg_remove_files_on_upgrade() {
 
 	if( file_exists(ABSPATH . 'readme.html') )
@@ -220,7 +220,6 @@ function bfg_remove_files_on_upgrade() {
  * @param $post object, attachment record in database
  * @return $form_fields, modified form fields
  */
- 
 function rva_attachment_field_credit( $form_fields, $post ) {
 	$form_fields['rva-photographer-name'] = array(
 		'label' => 'Photo Credit',
@@ -248,7 +247,6 @@ add_filter( 'attachment_fields_to_edit', 'rva_attachment_field_credit', 10, 2 );
  * @param $attachment array, attachment fields from $_POST form
  * @return $post array, modified post data
  */
-
 function rva_attachment_field_credit_save( $post, $attachment ) {
 	if( isset( $attachment['rva-photographer-name'] ) )
 		update_post_meta( $post['ID'], 'rva_photographer_name', $attachment['rva-photographer-name'] );
@@ -278,3 +276,74 @@ function single_term_taxonomies() {
 		}
 	}
 }
+
+/**
+ *	Write to the debug log.
+ */
+if ( ! function_exists('write_log')) {
+   function write_log ( $log )  {
+	  if ( is_array( $log ) || is_object( $log )) {
+         error_log( print_r( $log, true ) );
+      } else {
+         error_log( $log );
+      }
+   }
+}
+
+//add_filter( 'wp_get_nav_menu_items', 'log_menu_items', null, 3 );
+function log_menu_items( $items, $menu, $args ) {
+    // Iterate over the items to search and destroy
+	$menu = get_term_by( 'name', 'main-nav', 'nav_menu' );
+	write_log('Log menu items name: '. print_r($menu, true));
+	foreach ( $items as $key => $item ) {
+        //write_log($item);
+    }
+
+    return $items;
+}
+
+
+
+add_action( 'admin_init', 'rva_create_primary_memu');
+function rva_create_primary_memu() {
+
+	$top_menu_items = [
+		'read' => 'READ',
+		'music' => 'MUSIC',
+		'art' => 'ART',
+		'photo' => 'PHOTO',
+		'eatdrink' => 'EAT DRINK',
+		'watch' => 'WATCH',
+		'events' => 'EVENTS',
+		'magazine' => 'MAGAZINE'
+	];
+	
+    //give your menu a name
+    $menu_name = 'RVA Primary Menu';
+	$menu = wp_get_nav_menu_object( $menu_name );
+	if(!$menu) {
+		$menu_id = wp_create_nav_menu($menu_name);
+		$menu = get_term_by( 'id', $menu_id , 'nav_menu' );
+		write_log('Menu Created name: '. $menu->title);
+
+		// Insert top level menu items.
+		foreach ( $top_menu_items as $key => $value ) {
+			wp_update_nav_menu_item($menu->term_id, 0, array(
+			'menu-item-title' =>  __($value),
+			//'menu-item-classes' => 'home',
+			'menu-item-url' => home_url( '/'.$key ), 
+			'menu-item-status' => 'publish'));
+		}
+	
+		//then you set the wanted theme  location
+		$locations = get_theme_mod('nav_menu_locations');
+		write_log($locations);
+		$locations['primary'] = $menu->term_id;
+		set_theme_mod( 'nav_menu_locations', $locations );
+	}
+		// // then update the menu_check option to make sure this code only runs once
+}
+
+// Ensure Menu Items are created
+
+
