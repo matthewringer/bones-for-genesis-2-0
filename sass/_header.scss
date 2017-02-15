@@ -1,6 +1,6 @@
 
 .before-header {
-	//height:90px;
+	height:50px;
 	padding: 0;
 	margin: 0;
 	position: fixed;
@@ -9,10 +9,13 @@
 	width: 100%;
 	max-width: $site-width;
 	background: $black;
-	//background: transparent;
 	text-align: center;
 	border-top: 1px;
 	
+	@include MQ(S) {
+		height: 90px;
+	}
+
 	top: 0;
 	@include admin-offset-fix
 }

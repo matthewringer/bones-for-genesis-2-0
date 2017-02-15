@@ -105,7 +105,7 @@ function cb_3x6($title, $args, $sidebar = false) {
 			$sidebar();
 		}
 		
-		rva_bigboy_block();
+		//rva_bigboy_block();
 
 		close_section();
 	}
