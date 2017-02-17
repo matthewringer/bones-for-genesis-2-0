@@ -1,5 +1,5 @@
 <?php
-
+// TODO: Move to Plugin
 add_shortcode ('geturl', 'get_current_page_url');
 function get_current_page_url() {
 	$pageURL = 'http';

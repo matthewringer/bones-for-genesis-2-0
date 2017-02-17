@@ -21,7 +21,26 @@ add_action( 'wp_enqueue_scripts', 'rva_load_more_args' );
 remove_action( 'genesis_loop', 'genesis_do_loop' );
 add_action( 'genesis_loop', 'rvamag_categorypage_loop' );
 
+
+add_action( 'genesis_before_header', 'rva_before_header' );
+/** 
+* print pre-header content
+*
+* @since 1.0.0
+*/ 
+function rva_before_header() {
+	?>
+		<div class="before-header">
+			<?php echo do_shortcode('[rva_ad_leaderboard name="Leaderboard"]'); ?>
+		</div>
+	<?php
+}
+
 add_action('genesis_before_content', 'rvamag_before_content');
+/**
+ * 
+ *
+ */
 function rvamag_before_content() {
 	echo '<div id="top" class="rva-category-before-content"></div>';
 }
@@ -55,5 +74,3 @@ function rvamag_categorypage_loop() {
     close_section();
 
 }
-
-genesis();

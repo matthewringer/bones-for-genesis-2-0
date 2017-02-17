@@ -19,12 +19,11 @@ add_filter('single_template', function($template) {
     if ( $new_template ) {
         $new_template = locate_template( $new_template );
         if($new_template) {
-            echo 'hello';
             return $new_template;
         }
     }
 
-    $new_template = locate_template( 'includes/templates/single.php');
+    $new_template = locate_template( 'includes/templates/single-default.php');
     $template = ($new_template) ? $new_template : $template;
 
     return $template;
@@ -40,6 +39,7 @@ add_filter('category_template', function($template) {
     $category_templates = [
         //slug  to  path
         'read' => 'includes/templates/category-read.php',
+        'events' => 'includes/templates/category-events.php',
     ];
     // Get the current queried post id
     $term = get_queried_object();
@@ -47,12 +47,11 @@ add_filter('category_template', function($template) {
     if ( $new_template ) {
         $new_template = locate_template( $new_template );
         if($new_template) {
-            echo 'hello';
             return $new_template;
         }
     }
 
-    $new_template = locate_template( 'includes/templates/category.php');
+    $new_template = locate_template( 'includes/templates/category-default.php');
     $template = ($new_template) ? $new_template : $template;
 
     return $template;

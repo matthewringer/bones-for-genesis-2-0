@@ -77,6 +77,16 @@ body{
 	}
 }
 
+.flex-container {
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-direction: row;
+	flex-direction: row;
+}
+
+.pad-bottom {
+	padding-bottom: 2em;
+}
 
 .content-sidebar-wrap {
 	@extend %clearfix;

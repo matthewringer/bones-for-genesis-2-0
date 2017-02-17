@@ -10,78 +10,80 @@ if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  * @since 2.3.38
  */
 add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
-// Other possible layouts: __genesis_return_content_sidebar, __genesis_return_sidebar_content, __genesis_return_content_sidebar_sidebar, __genesis_return_sidebar_sidebar_content, __genesis_return_sidebar_content_sidebar, __genesis_return_full_width_content
 
-
-/*
+/**
  *  Hero Story Box
  * 
  * 
  */
-
 function hero_story($post) {
-    //echo get_the_post_thumbnail();
-    echo '<div class="cd-hero-box fx-paralax" style = "background-image: url(' . get_the_post_thumbnail_url($post) . ');" >';
-    echo	'<div class="title-block" >';
-    echo		'<h2 class="article-title"><a href="' . get_the_permalink($post) .'">'. get_the_title($post) . '</a></h2>';
-    echo		'<br/>';
-    echo		'<p class="author">' . do_shortcode('[post_author_posts_link]') . '</p>';
-    echo	'</div>';
-    echo '</div>';
+	?>
+    	<div class="cd-hero-box fx-paralax" style = "background-image: url(' <?php echo get_the_post_thumbnail_url($post); ?> '); " >
+    		<div class="title-block" >';
+    			<h2 class="article-title"><a href="<?php echo get_the_permalink($post); ?>"> <?php echo get_the_title($post); ?> </a></h2>
+    			<br/>
+    			<p class="author"><?php echo do_shortcode('[post_author_posts_link]'); ?> </p>
+    		</div>
+    	</div>
+	<?php
 }
 
 
-/*
+/**
  *  Open an Fullwidth Gutterbox div
  * 
  * 
  */
-
 function start_section($title, $classes = '') {
-	echo '<div class="cd-gutter-box '.$classes.' ">';
-	if($title) {
-		echo	'<div class="section-title">';
-	} else {
-		echo	'<div>';
-	}
-	echo		'<h2>'.$title.'</h2>';
-	echo	'</div>';
+?>
+	<div class="cd-gutter-box <?php echo $classes; ?>">
+		<div class="section-title">
+			<h2><?php echo $title; ?></h2>
+		</div>
+<?php
 }
 
-/*
+/**
  *  Close a div
  * 
  * 
  */
-
 function close_section() {
-	echo '</div> <!-- End Gutter Box Section -->';
+	?> </div> <!-- End Gutter Box Section --> <?php
 }
 
-/*
+function rva_gutter_box_shortcode($atts, $content) {
+	start_section($atts['title'], $atts['classes']);
+	echo do_shortcode($content);
+	close_section();
+}
+add_shortcode( 'rva_gutter_box', 'rva_gutter_box_shortcode' );
+
+/**
  * Get the post thumbnail markup
  *
  *
  */
 function rva_post_thumbnail() {
-  		echo '<article class="entry-thumbnail">';
-        echo '<a href="' . get_the_permalink() .'">';
-        echo 	'<div class="rva-article-image" style="background-image:url('.get_the_post_thumbnail_url().');" > </div>';
-        echo 	'<div class="text-block">';
-        echo 		'<h2>'. get_the_title() . '</h2>';
-        echo 		'<p>' . get_the_excerpt() . '</p>';
-        echo 	'</div>';
-        echo  '</a>';
-        echo '</article>';
+	?>
+	<article class="entry-thumbnail ">
+		<a href="<?php echo get_the_permalink(); ?>">
+			<div class="rva-article-image " style="background-image:url(<?php echo get_the_post_thumbnail_url()?>);" ></div>
+			<div class="text-block ">
+				<h2><?php echo get_the_title() ?></h2>
+				<p> <?php echo get_the_excerpt() ?> </p>
+			</div>
+		</a>
+	</article>
+	<?php
 }
 
-/*
+/**
  * 3 by 6 post thumbnail box
  * 
  * 
 */
-
-function cb_3x6($title, $args, $sidebar = false) {
+function cb_3x6($title, $args, $sidebar = '') {
 	$loop = new WP_Query( $args );
 	if( $loop->have_posts() ) {
 		// loop through posts
@@ -100,9 +102,8 @@ function cb_3x6($title, $args, $sidebar = false) {
 			rva_post_thumbnail();
 		endwhile;
 		echo '</div>';
-		if ($sidebar) {
-			//call_user_func($sidebar);
-			$sidebar();
+		if ($sidebar != '') {
+			echo do_shortcode($sidebar);
 		}
 		
 		//rva_bigboy_block();
@@ -114,13 +115,12 @@ function cb_3x6($title, $args, $sidebar = false) {
 }
 
 
-/*
+/**
  * 1 over 2 post thumbnail box
  * 
  * 
 */
-
-function rva_1_over_2_box($title, $slug){
+function rva_1_over_2_box($title, $slug, $ad_html = '') {
     
     $args = array(
 		'orderby'       => 'post_date',
@@ -130,39 +130,52 @@ function rva_1_over_2_box($title, $slug){
 	);
 
     $loop = new WP_Query( $args );
-    
     start_section($title);
-
-	if( $loop->have_posts() ) {
-		hero_story( $loop->the_post());
-        //needs padding here
-        $loop->post; // skip one
-        echo '<div class="cd-2x1-box rva-top-spacing ">';
-        while( $loop->have_posts() ): $loop->the_post();
-            rva_post_thumbnail();
-        endwhile;
-        echo '</div>';
-    }
-    wp_reset_postdata();
-
+	//flex container 
+	?> 
+	<div class="flex-container"> 
+		<?php if($ad_html != ''): ?>
+		<div style="flex: 0 1 120px; margin-right:1em;"> <?php echo $ad_html; ?> </div>
+		<?php endif; ?>
+		<div style="flex: 1;"> 
+			<?php if( $loop->have_posts() ) :
+			//Display hero
+			hero_story( $loop->the_post() ); $loop->post; ?>
+			<div class="cd-2x1-box rva-top-spacing ">
+				<?php while( $loop->have_posts() ) { $loop->the_post(); rva_post_thumbnail(); } ?>
+			</div>
+			<?php endif;
+			wp_reset_postdata(); ?>
+		</div> 
+	</div> 
+	<?php
     close_section();
 }
 
-function widesky_sidebar() {
-	echo '<aside class="widesky-sidebar">';
-		// if ( is_active_sidebar( 'widesky_ad' ) ) {
-		// 	dynamic_sidebar( 'widesky_ad' );
-		// }
-		rva_skyscraper_ad('');
+/**
+ *
+ */
+function rva_big_boy_h0_sidebar_shortcode($attrs, $content) {
+	?> 
+	<aside class="big-boy-h0-sidebar"> 
+	<?php
 		
+		echo do_shortcode('[rva_ad name="Big_Boy_H0" class="wrap ad-big-boy"]');
 		rva_social_follow_buttons();
-	echo '</aside>';
+		echo do_shortcode($content);
+	?> 
+	</aside> 
+	<?php
 }
+add_shortcode( 'rva_big_boy_h0_sidebar', 'rva_big_boy_h0_sidebar_shortcode' );
 
+/**
+ *
+ */
 function rva_social_follow_buttons() {
 	$options =  get_option( RVA_SETTINGS_FIELD ); 
 	?>
-	<div class="social-buttons" >
+	<div class="social-buttons pad-bottom" >
 		<h2>Follow RVA Mag</h2>
 		<ul class="social-buttons">
 

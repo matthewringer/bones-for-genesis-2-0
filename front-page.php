@@ -6,44 +6,66 @@ if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 	Template Name: Front Page Template
 */
 
-function rva_load_more_args() {
-	global $wp_query;
-	$args = array(
-		'url'   => admin_url( 'admin-ajax.php' ),
-		'query' => $wp_query->query,
-	);
-	wp_localize_script( 'rva-load-more', 'rvaloadmore', $args ); 
-}
-add_action( 'wp_enqueue_scripts', 'rva_load_more_args' );
-
-function rva_trans_header_js() {
-
-	wp_enqueue_script( 'rva-trans-header', get_stylesheet_directory_uri() . '/js/trans-header.js', array( 'jquery' ), '1.0', true );
-}
-add_action( 'wp_enqueue_scripts', 'rva_trans_header_js' );
-
-add_action('genesis_before_content', 'rvamag_before_content');
-function rvamag_before_content() {
-	echo '<div id="top" class="rva-fp-before-content"></div>';
-}
-
-// Add our custom loop
-remove_action( 'genesis_loop', 'genesis_do_loop' );
-add_action( 'genesis_loop', 'rvamag_frontpage_loop' );
-
 //* Remove the post content (requires HTML5 theme support)
 remove_action( 'genesis_entry_content', 'genesis_do_post_content' );
 remove_action( 'genesis_entry_header', 'genesis_do_post_title' );
+
+// Remove main loop genesis loop.
+remove_action( 'genesis_loop', 'genesis_do_loop' );
+
  // Remove Footer
 remove_action('genesis_footer', 'genesis_do_footer');
 remove_action('genesis_footer', 'genesis_footer_markup_open', 5);
 remove_action('genesis_footer', 'genesis_footer_markup_close', 15);
 
-//* Force full-width-content layout setting
-//add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
+add_action( 'wp_enqueue_scripts', 'frontpage_scripts' );
+/**
+ * enqueue scripts for infinite page scrolling 
+ *
+ *
+ */
+function frontpage_scripts() {
+	global $wp_query;
+	$args = array(
+		'url'   => admin_url( 'admin-ajax.php' ),
+		'query' => $wp_query->query,
+	);
+	wp_localize_script( 'rva-load-more', 'rvaloadmore', $args );
 
+	wp_enqueue_script( 'rva-trans-header', get_stylesheet_directory_uri() . '/js/trans-header.js', array( 'jquery' ), '1.0', true );
+}
+
+add_action( 'genesis_before_header', 'rva_before_header' );
+/** 
+* print pre-header content
+*
+* @since 1.0.0
+*/ 
+function rva_before_header() {
+	?>
+		<div class="before-header">
+			<?php echo do_shortcode('[rva_ad_leaderboard name="m_home_header"]'); ?>
+		</div>
+	<?php
+}
+
+add_action('genesis_before_content', 'rvamag_before_content');
+/**
+ * Pre-page content menu standoff.
+ *
+ */
+function rvamag_before_content() {
+	?>
+		<div id="top" class="rva-fp-before-content"></div>
+	<?php
+}
+
+add_action( 'genesis_loop', 'rvamag_frontpage_loop' );
+/**
+ *
+ *
+ */
 function rvamag_frontpage_loop() {
-
 
 	$args = array(
 		'orderby'       => 'post_date',
@@ -58,21 +80,27 @@ function rvamag_frontpage_loop() {
 		wp_reset_postdata();
     }
 	
-	$args = array(
-		'orderby'       => 'post_date',
-		'order'         => 'DESC',
-		'posts_per_page'=> '6',
-		'category__not_in' => '11', //TODO: fix hardcoded reference
+	cb_3x6("LATEST", 
+		array(
+			'orderby'       => 'post_date',
+			'order'         => 'DESC',
+			'posts_per_page'=> '6',
+			'category__not_in' => '11', 
+			//TODO: fix hardcoded reference
+		), 
+		'[rva_big_boy_h0_sidebar][rva_ad name="Big_Boy_H1" class="wrap ad-big-boy"][/rva_big_boy_h0_sidebar]'
 	);
-	cb_3x6("LATEST", $args, widesky_sidebar);
+	
+	//echo do_shortcode('[dfp_ads name="Big_Boy_All"] [dfp_ads name="Big_Boy_H1"]'); 
+	//echo do_shortcode('[dfp_ads name="Big_Boy_H2"] [dfp_ads name="Big_Boy_H3"]');	
+	
+	rva_1_over_2_box("READ", 'read', do_shortcode('[rva_ad name="Skyscraper" class="wrap ad-skyscraper"]'));
 
-	rva_1_over_2_box("READ", 'read');
+	rva_1_over_2_box("MUSIC", 'music', do_shortcode('[rva_ad name="Spud" class="wrap ad-spud"]'));
 
-	rva_1_over_2_box("MUSIC", 'music');
+	rva_1_over_2_box("ART", 'art', do_shortcode('[rva_ad name="Big_Boy_H2" class="wrap ad-big-boy"]'));
 
-	rva_1_over_2_box("ART", 'art');
-
-	rva_1_over_2_box("PHOTO", 'photo');
+	rva_1_over_2_box("PHOTO", 'photo', do_shortcode('[rva_ad name="Big_Boy_H3" class="wrap ad-big-boy"]'));
 
 	rva_1_over_2_box("EAT DRINK", 'eatdrink');
 
@@ -92,9 +120,15 @@ function rvamag_frontpage_loop() {
 	
 	rva_subscribtion_form();
 
-	start_section('READ MORE');
-		echo '<div class="post-listing cd-3x3-box" ></div>';
-	close_section();
+	echo do_shortcode(
+		'[rva_gutter_box title="READ MORE"]'
+			.'<div class="post-listing cd-3x3-box" ></div>'
+		.'[/rva_gutter_box]'
+	);
+
+	// start_section('READ MORE');
+	// 	echo '<div class="post-listing cd-3x3-box" ></div>';
+	// close_section();
 
 }
 

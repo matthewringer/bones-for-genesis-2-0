@@ -17,10 +17,12 @@ function rva_subscribtion_form() {
                 isset( $magazine_image ) ? wp_get_attachment_url( $magazine_image ) : ''
             ); ?>
             </div>
-            <form>
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
                 <h2>Subscribe to the print edition of RVA Magazine</h2>
                 <fieldset>
-                    <button class="btn btn-alert">BUY NOW</button>
+					<input type="hidden" name="cmd" value="_s-xclick">
+					<input type="hidden" name="hosted_button_id" value="QGUWHR8MA4KWU">
+                    <button class="btn btn-alert" name="submit" alt="Subscribe to RVA Magazine" >BUY NOW</button>
                 </fieldset>
             </form>
         </div>
@@ -29,7 +31,7 @@ function rva_subscribtion_form() {
                 <h2>RVA Weekly Email Newsletter to your inbox.</h2>
                 <fieldset>
                     <input type="text">
-                    <button class="btn btn-alert">SUBMIT</button>
+                    <button class="btn btn-alert">SUBSCRIBE</button>
                 </fieldset>
             </form>
             <div class="ar-scale-box">

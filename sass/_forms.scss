@@ -105,7 +105,10 @@ input[type='search'] {
 }
 
 .cd-subscribe-box {
-	//padding: 0 .2em 2em .2em;
+	* img {
+		height: auto;
+    	width: 100%;
+	}
 
 	text-align: center;
 
@@ -136,6 +139,8 @@ input[type='search'] {
 
 	& input[type=text] {
 		width: 50%;
+		padding-bottom: .5em;
+    	transform: translateY(-1.5px);
 	}
 }
 
