@@ -149,6 +149,7 @@ function rva_1_over_2_box($title, $slug, $ad_html = '') {
 		</div> 
 	</div> 
 	<?php
+	echo do_shortcode('[rva_ad name="Leaderboard" class="wrap ad-leaderboard"]');
     close_section();
 }
 
@@ -175,7 +176,7 @@ add_shortcode( 'rva_big_boy_h0_sidebar', 'rva_big_boy_h0_sidebar_shortcode' );
 function rva_social_follow_buttons() {
 	$options =  get_option( RVA_SETTINGS_FIELD ); 
 	?>
-	<div class="social-buttons pad-bottom" >
+	<div class="pad-bottom margin-bottom social-buttons " >
 		<h2>Follow RVA Mag</h2>
 		<ul class="social-buttons">
 

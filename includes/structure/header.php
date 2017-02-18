@@ -150,7 +150,6 @@ function bfg_load_assets() {
 		$src = $use_production_assets ? '//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js' : '//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.js';
 		wp_register_script( 'jquery', $src, array(), null, true );
 
-	
 	}
 
 	// Main script file (in footer)
@@ -280,4 +279,15 @@ function bfg_load_favicons() {
 
 //* Remove the header right widget area for full size header
 unregister_sidebar( 'header-right' );
+
+add_filter( 'genesis_attr_site-header', 'rva_set_header_classes' );
+/**
+ * Hook header class
+ */
+function rva_set_header_classes($attrs) {
+	
+	$attrs['class'] .= ' site-header-offset';
+	
+	return $attrs;
+}
 

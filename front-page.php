@@ -88,7 +88,10 @@ function rvamag_frontpage_loop() {
 			'category__not_in' => '11', 
 			//TODO: fix hardcoded reference
 		), 
-		'[rva_big_boy_h0_sidebar][rva_ad name="Big_Boy_H1" class="wrap ad-big-boy"][/rva_big_boy_h0_sidebar]'
+		'[rva_big_boy_h0_sidebar]
+			[rva_ad name="Big_Boy_H1" class="wrap ad-big-boy pad-bottom"]
+			[rva_ad name="Big_Boy_H2" class="wrap ad-big-boy "]
+		[/rva_big_boy_h0_sidebar]'
 	);
 	
 	//echo do_shortcode('[dfp_ads name="Big_Boy_All"] [dfp_ads name="Big_Boy_H1"]'); 
@@ -96,11 +99,11 @@ function rvamag_frontpage_loop() {
 	
 	rva_1_over_2_box("READ", 'read', do_shortcode('[rva_ad name="Skyscraper" class="wrap ad-skyscraper"]'));
 
-	rva_1_over_2_box("MUSIC", 'music', do_shortcode('[rva_ad name="Spud" class="wrap ad-spud"]'));
+	rva_1_over_2_box("MUSIC", 'music', do_shortcode('[rva_ad name="Skyscraper" class="wrap ad-skyscraper"]'));
 
-	rva_1_over_2_box("ART", 'art', do_shortcode('[rva_ad name="Big_Boy_H2" class="wrap ad-big-boy"]'));
+	rva_1_over_2_box("ART", 'art', do_shortcode('[rva_ad name="Spud" class="wrap ad-spud"]'));
 
-	rva_1_over_2_box("PHOTO", 'photo', do_shortcode('[rva_ad name="Big_Boy_H3" class="wrap ad-big-boy"]'));
+	rva_1_over_2_box("PHOTO", 'photo', do_shortcode('[rva_ad name="Spud" class="wrap ad-spud"]'));
 
 	rva_1_over_2_box("EAT DRINK", 'eatdrink');
 

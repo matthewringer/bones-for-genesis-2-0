@@ -1,33 +1,3 @@
-
-
-.ad-leaderboard {
-	// 3 sizes also "large leaderboard" 970x90 -> 970x415 as a premium option
-	// adsense 320x50 for mobile 
-	// Leaderboard 728 x 90 -> Full Banner 468 x 60 -> Half Banner 234 x 60
-	display: none;
-	margin: auto;
-	padding: 0;
-	color: $yellow;
-
-	@include MQ(S) {
-		display: inline-block;
-		width: 728px;
-		height: 90px;
-	}
-}
-
-.m-ad-leaderboard {
-	color: $yellow;
-	width: 320px;
-	height: 50px;
-	margin: auto;
-	padding: 0;
-
-	@include MQ(S) {
-		display: none;
-	}
-}
-
 .ad-prefix {
 	content: "Advertizement";
 	position: absolute;
@@ -39,6 +9,24 @@
 	margin: auto;
 	position: relative;
 	text-align: center;
+}
+
+.ad-leaderboard {
+	@extend .ad-centered;
+	width:320px;
+
+	@include MQ(S) {
+		width: 728px;
+	}
+}
+
+.ad-leaderboard::before {
+	@extend .ad-prefix;
+	width:320px;
+
+	@include MQ(S) {
+		width: 728px;
+	}
 }
 
 .ad-big-boy {

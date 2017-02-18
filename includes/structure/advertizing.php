@@ -4,7 +4,6 @@
 
 if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-//add_action( 'genesis_before_header', 'rva_before_header' );
 /** 
 * Prints Ad Unit : Leaderboard
 *
@@ -42,7 +41,6 @@ function rva_ad_big_boy_shortcode($atts) {
 }
 add_shortcode( 'rva_ad_big_boy', 'rva_ad_big_boy_shortcode' );
 
-
 /**
  * Display Shortcode Halfpage "Big Boy H0"
  *
@@ -62,13 +60,30 @@ function rva_ad_shortcode($atts) {
 		} ?>
 	</div>
 	<?php
+	$name = $atts['name'];
+
+		error_log('this happened');
+	add_filter('insert_dfp_repeat_ad_position', function ($r) {
+		array_push( $r, $name );
+		return $r;
+	});
+
 	return ob_get_clean();
 }
 add_shortcode( 'rva_ad', 'rva_ad_shortcode' );
 
 
+// add_filter('insert_dfp_repeat_ad_position', function ($r) {
+// 		$new_item = "something";
+// 		array_push($r, $new_item);
+// 		echo("dumb shit");
+// 		return $r;
+// 	});
 
-//[dfp_ads name="Skyscraper"]
+// return function() use ($who) {
+//                   echo "Hello $who";
+//               };
+
 
 /** 
 * Square Ad 

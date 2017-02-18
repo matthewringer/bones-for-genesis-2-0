@@ -6,9 +6,9 @@ if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 require_once get_template_directory() . '/lib/init.php';
 
 // Child theme definitions
-define( 'CHILD_THEME_NAME', 'Bones for Genesis 2.0' );
-define( 'CHILD_THEME_URL', 'http://bonesforgenesis.com/' );
-define( 'CHILD_THEME_TEXT_DOMAIN', 'bfg' );
+define( 'CHILD_THEME_NAME', 'RVA Magazine' );
+define( 'CHILD_THEME_URL', 'http://rvamag.com/' );
+define( 'CHILD_THEME_TEXT_DOMAIN', 'rva' );
 
 // Developer Tools
 require_once CHILD_DIR . '/includes/developer-tools.php';

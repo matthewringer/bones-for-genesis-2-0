@@ -35,7 +35,7 @@ body{
 	}
 }
 
-.rva-before-content {
+.rva-before-content { //TODO: code smell
 	
 	height: 120px;
 	@include admin-offset-fix(120);
@@ -86,6 +86,18 @@ body{
 
 .pad-bottom {
 	padding-bottom: 2em;
+}
+
+.pad-top {
+	padding-top: 2em;
+}
+
+.margin-bottom {
+	margin-bottom: 2em;
+}
+
+.margin-top {
+	margin-top: 2em;
 }
 
 .content-sidebar-wrap {

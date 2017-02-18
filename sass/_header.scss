@@ -24,11 +24,7 @@
 	bottom: 0 !important;
 }
 
-.site-header {
-
-	background-color: rgb(13, 13, 13);
-	background-color: rgba(13, 13, 13, 1); //TODO: screen flash on load.
-
+.site-header-offset {
 	top: 50px;
 	@include admin-offset-fix(50);
 
@@ -36,6 +32,12 @@
 		top: 90px;
 		@include admin-offset-fix(90);
 	}
+}
+
+.site-header {
+
+	background-color: rgb(13, 13, 13);
+	background-color: rgba(13, 13, 13, 1); //TODO: screen flash on load.
 
 	position: fixed;
 	z-index: 10;
@@ -98,7 +100,7 @@
 
 .site-description {
 	top: 25px;
-  position: relative;
+	position: relative;
 
 	@include MQ(XS){
 		top: initial;
