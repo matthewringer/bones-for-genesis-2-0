@@ -12,6 +12,7 @@
 	text-align: center;
 	border-top: 1px;
 	
+	overflow: hidden;
 	@include MQ(S) {
 		height: 90px;
 	}
