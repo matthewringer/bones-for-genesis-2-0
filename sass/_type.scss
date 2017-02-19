@@ -2,7 +2,8 @@ html,
 body {
 	min-width: 300px; //$site-width; // Prevents backgrounds on these elements from being truncated on smaller screens on fixed-width sites
 	//font-size: 62.5%;
-	//font-size: 80%;
+	font-size: 80%;
+	line-height: 1.5%;
 	// @include MQ(S) {
 	// 	font-size: 80%;
 	// }

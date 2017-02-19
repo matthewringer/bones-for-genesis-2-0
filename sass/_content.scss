@@ -211,26 +211,20 @@
 	color: $yellow;
 	font-weight: 800;
 	font-size: 1.5rem;
-	line-height: 1.15;
+	line-height: 1.34;
 	@include MQ(S) {
 		font-size: 2rem;
 	}
-	@include MQ(M) {
-		//font-size: 3rem;
-	}
+	// @include MQ(M) {
+	// 	//font-size: 3rem;
+	// }
 	a {
 		color: darken($yellow, 5%);
 	}
 }
 
 .author {
-	@include MQ(S) {
-		margin: 1em 0 1.8em;
-		font-size: 1.8rem;
-	}
-	@include MQ(M) {
-		font-size: 3rem;
-	}
+	
 	margin: 1em 0;
 	padding: 0 .5em;
 	background-color: $black;
@@ -240,6 +234,14 @@
 	font-size: 1.2rem;
 	font-family: $serif;
 	line-height: 1.8;
+
+	// @include MQ(S) {
+	// 	margin: 1em 0 1.8em;
+	// 	font-size: 1.8rem;
+	// }
+	// @include MQ(M) {
+	// 	font-size: 3rem;
+	// }
 
 	a {
 		color: darken($yellow, 5%);
@@ -296,23 +298,23 @@
 	@include MQ(S) {
 		height: 600px;
 	}
-	@include MQ(M) {
-		& h2.article-title {
-			font-size: 2.4rem;
-		}
-		& span.entry-author-name, ::before {
-			font-size: 2rem;
-		}
-	}
-	@include MQ(L) {
-		& h2.article-title {
-			font-size: 3.4rem;
-		}
-		& span.entry-author-name,::before {
-			font-size: 3rem;
-		}
+	// @include MQ(M) {
+	// 	& h2.article-title {
+	// 		font-size: 2.4rem;
+	// 	}
+	// 	& span.entry-author-name, ::before {
+	// 		font-size: 2rem;
+	// 	}
+	// }
+	// @include MQ(L) {
+	// 	& h2.article-title {
+	// 		font-size: 3.4rem;
+	// 	}
+	// 	& span.entry-author-name,::before {
+	// 		font-size: 3rem;
+	// 	}
 		
-	}
+	// }
 }
 
 .rva-demi-hero {

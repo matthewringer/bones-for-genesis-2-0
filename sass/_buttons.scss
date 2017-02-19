@@ -144,6 +144,7 @@ div.social-buttons {
 		margin: .3em;
 		width: 30px;
 		height: 30px;
+		font-size: 1.6em;
 
 		i {
 			color: white;
@@ -155,41 +156,11 @@ div.social-buttons {
 			left: 35px;
 			display: inline-block;
 			color: $black;
-			font-weight: 600;
+			font-weight: 800;
 			font-size: 1rem;
 		}
-	}
 	
-	@include MQ(S) {
-		li {
-			font-size: 1.6em;
-		}
-	}
-
-	@include MQ(M) {
-		li {
-			font-size: initial;
-		}
-	}
 	
-	@include MQ(L) {
-		padding: 0 0 .5em 1em;
-
-		li {
-			margin: .3em;
-			width: 40px;
-			height: 40px;
-			font-size: 1.6em;
-
-			span {
-				position: relative;
-				top: 8px;
-				left: 50px;
-				color: $black;
-				font-weight: 600;
-				font-size: 1.8rem;
-			}
-		}
 	}
 }
 
