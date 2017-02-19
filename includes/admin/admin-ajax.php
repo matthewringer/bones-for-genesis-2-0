@@ -12,8 +12,10 @@ function rva_ajax_load_more() {
 	if( $loop->have_posts() ): while( $loop->have_posts() ): $loop->the_post();
 		rva_post_thumbnail();
 	endwhile; endif; wp_reset_postdata();
-	//rva_bigboy_block(); // todo: linked to shame
-	//echo '<hr>';
+	
+	echo '<hr>';
+	echo do_shortcode('[rva_ad name="Leaderboard" class="wrap ad-leaderboard"]');
+	echo '<hr>';
 	$response = array();
 	$response['thumbs'] = ob_get_clean();
 	$response['count'] = $count;

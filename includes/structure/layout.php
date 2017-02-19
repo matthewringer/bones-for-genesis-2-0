@@ -16,18 +16,24 @@ add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_c
  * 
  * 
  */
-function hero_story($post) {
+function hero_story($atts) {
+	$class = ( is_array($atts) && array_key_exists ( 'class' , $atts ) ) ? $atts['class'] : 'cd-hero-box fx-paralax';
 	?>
-    	<div class="cd-hero-box fx-paralax" style = "background-image: url(' <?php echo get_the_post_thumbnail_url($post); ?> '); " >
-    		<div class="title-block" >';
-    			<h2 class="article-title"><a href="<?php echo get_the_permalink($post); ?>"> <?php echo get_the_title($post); ?> </a></h2>
+    	<div class="<?php echo $class; ?>" style = "background-image: url(' <?php echo get_the_post_thumbnail_url(); ?> '); " >
+    		<div class="title-block" >
+    			<h2 class="article-title"><a href="<?php echo get_the_permalink(); ?>"> <?php echo get_the_title(); ?> </a></h2>
     			<br/>
     			<p class="author"><?php echo do_shortcode('[post_author_posts_link]'); ?> </p>
     		</div>
     	</div>
 	<?php
 }
+add_shortcode('rva_hero_box', 'hero_story');
 
+function demi_hero_story($atts) {
+	do_shortcode('[rva_hero_box class="rva-demi-hero"]');
+}
+add_shortcode('rva_demihero_box', 'demi_hero_story');
 
 /**
  *  Open an Fullwidth Gutterbox div
@@ -140,7 +146,9 @@ function rva_1_over_2_box($title, $slug, $ad_html = '') {
 		<div style="flex: 1;"> 
 			<?php if( $loop->have_posts() ) :
 			//Display hero
-			hero_story( $loop->the_post() ); $loop->post; ?>
+			$loop->the_post(); 
+			echo do_shortcode('[rva_demihero_box]');
+			$loop->post; ?>
 			<div class="cd-2x1-box rva-top-spacing ">
 				<?php while( $loop->have_posts() ) { $loop->the_post(); rva_post_thumbnail(); } ?>
 			</div>
@@ -177,15 +185,17 @@ function rva_social_follow_buttons() {
 	$options =  get_option( RVA_SETTINGS_FIELD ); 
 	?>
 	<div class="pad-bottom margin-bottom social-buttons " >
-		<h2>Follow RVA Mag</h2>
-		<ul class="social-buttons">
+		<div>
+			<h2>Follow RVA Mag</h2>
+			<ul class="social-buttons">
 
-			<li class="btn-facebook"><a target="_blank" href="<?php echo esc_attr( $options['rva_socialmedia_facebook_url'] ); ?> "><i class="fa fa-facebook" ></i><span>Facebook</span></a></li>
-			<li class="btn-twitter"><a target="_blank" href="<?php echo esc_attr( $options['rva_socialmedia_twitter_url'] ); ?>"><i class="fa fa-twitter"></i><span>Twitter</span></a></li>
-			<li class="btn-tumblr"><a target="_blank" href="<?php echo esc_attr( $options['rva_socialmedia_tumblr_url'] ); ?>"><i class="fa fa-tumblr"></i><span>Tumblr</span></a></li>
-			<li class="btn-youtube"><a target="_blank" href="<?php echo esc_attr( $options['rva_socialmedia_youtube_url'] ); ?>"><i class="fa fa-youtube"></i><span>YouTube</span></a></li>
-			<li class="btn-instagram"><a target="_blank" href="<?php echo esc_attr( $options['rva_socialmedia_instagram_url'] ); ?>"><i class="fa fa-instagram"></i><span>Instagram</span></a></li>
-		</ul>
+				<li class="btn-facebook"><a target="_blank" href="<?php echo esc_attr( $options['rva_socialmedia_facebook_url'] ); ?> "><i class="fa fa-facebook" ></i><span>Facebook</span></a></li>
+				<li class="btn-twitter"><a target="_blank" href="<?php echo esc_attr( $options['rva_socialmedia_twitter_url'] ); ?>"><i class="fa fa-twitter"></i><span>Twitter</span></a></li>
+				<li class="btn-tumblr"><a target="_blank" href="<?php echo esc_attr( $options['rva_socialmedia_tumblr_url'] ); ?>"><i class="fa fa-tumblr"></i><span>Tumblr</span></a></li>
+				<li class="btn-youtube"><a target="_blank" href="<?php echo esc_attr( $options['rva_socialmedia_youtube_url'] ); ?>"><i class="fa fa-youtube"></i><span>YouTube</span></a></li>
+				<li class="btn-instagram"><a target="_blank" href="<?php echo esc_attr( $options['rva_socialmedia_instagram_url'] ); ?>"><i class="fa fa-instagram"></i><span>Instagram</span></a></li>
+			</ul>
+		</div>
 	</div>
 	<?php 
 }

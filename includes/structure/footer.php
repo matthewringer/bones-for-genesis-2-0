@@ -11,15 +11,12 @@ add_filter( 'genesis_footer_output', 'bfg_footer_creds_text' );
 function bfg_footer_creds_text($content) {
 	ob_start();
 	?>
-	<hr>
-		[rva_ad name="Partner" class="wrap"] 
-		<hr>
-		[rva_ad name="Partner" class="wrap"] 
-<hr>
+	<div 
 		[rva_ad name="Partner" class="wrap"]
-		<hr> 
 		[rva_ad name="Partner" class="wrap"]
-		<hr>
+		[rva_ad name="Partner" class="wrap"]
+		[rva_ad name="Partner" class="wrap"]
+		[rva_ad name="Partner" class="wrap"]
 		
 	<?php
 	$contents = ob_get_clean();

@@ -117,7 +117,7 @@
 		display: table;
 		padding: 0;
 		width: auto;
-		height: 80px;
+		height: 90px;
 		background: transparent;
 		text-align: center;
 
@@ -178,20 +178,20 @@
 }
 
 .cd-nav-trigger {
-	@include MQ(M) {
-		display: none;
-	}
-
 	position: fixed;
 	
-	top: 80px;
 	right: 10px;
-	@include admin-offset-fix(80);
+	top: 70px;
+	@include admin-offset-fix(70);
 
 	@include MQ(S) {
-		top: 110px;
+		top: 120px;
 		right: 20px;
-		@include admin-offset-fix(110);
+		@include admin-offset-fix(120);
+	}
+
+	@include MQ(M) {
+		display: none;
 	}
 
 	display: block;

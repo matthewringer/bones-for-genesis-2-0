@@ -1,12 +1,14 @@
 .ad-prefix {
 	content: "Advertizement";
 	position: absolute;
-	margin: auto;
+	margin-left: auto;
+	margin-right: auto;
 	top: -1.1em;
 }
 
 .ad-centered {
-	margin: auto;
+	margin-left: auto;
+	margin-right: auto;
 	position: relative;
 	text-align: center;
 }

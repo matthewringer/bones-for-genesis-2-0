@@ -126,12 +126,7 @@ function bfg_load_assets() {
 
 	// Google Fonts
 	// Consider async loading: https://github.com/typekit/webfontloader
- 	// wp_enqueue_style(
- 	// 	'google-fonts',
- 	// 	'//fonts.googleapis.com/css?family=Open+Sans:300,400,700%7CLato',		// Open Sans (light, normal, and bold) and Lato regular, for example
- 	// 	array(),
- 	// 	null
- 	// );
+ 	wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css?family=Open+Sans:400,800', array(), null );
 
  	// Dequeue comment-reply if no active comments on page
 	if( ( is_single() || is_page() || is_attachment() ) && comments_open() & (int) get_option( 'thread_comments' ) === 1 && !is_front_page() ) {

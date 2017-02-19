@@ -76,7 +76,10 @@ function rvamag_frontpage_loop() {
 
 	$loop = new WP_Query( $args );
 	if( $loop->have_posts() ) {
-		hero_story($loop->the_post());
+
+		$loop->the_post();
+		echo do_shortcode('[rva_hero_box]');
+		
 		wp_reset_postdata();
     }
 	
@@ -84,19 +87,18 @@ function rvamag_frontpage_loop() {
 		array(
 			'orderby'       => 'post_date',
 			'order'         => 'DESC',
-			'posts_per_page'=> '6',
+			'posts_per_page'=> '8',
 			'category__not_in' => '11', 
 			//TODO: fix hardcoded reference
 		), 
 		'[rva_big_boy_h0_sidebar]
 			[rva_ad name="Big_Boy_H1" class="wrap ad-big-boy pad-bottom"]
-			[rva_ad name="Big_Boy_H2" class="wrap ad-big-boy "]
 		[/rva_big_boy_h0_sidebar]'
 	);
-	
-	//echo do_shortcode('[dfp_ads name="Big_Boy_All"] [dfp_ads name="Big_Boy_H1"]'); 
-	//echo do_shortcode('[dfp_ads name="Big_Boy_H2"] [dfp_ads name="Big_Boy_H3"]');	
-	
+	echo '<div class="flex" >';
+	echo do_shortcode('[rva_ad name="Big_Boy_H2" class="wrap ad-big-boy pad-bottom"] [rva_ad name="Big_Boy_H3" class="wrap ad-big-boy"]');	
+	echo '</div>';
+
 	rva_1_over_2_box("READ", 'read', do_shortcode('[rva_ad name="Skyscraper" class="wrap ad-skyscraper"]'));
 
 	rva_1_over_2_box("MUSIC", 'music', do_shortcode('[rva_ad name="Skyscraper" class="wrap ad-skyscraper"]'));
