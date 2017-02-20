@@ -41,17 +41,17 @@ add_theme_support( 'genesis-responsive-viewport' );
  *
  * @since 2.0.9
  */
-// add_theme_support( 'post-formats', array(
-// 	'aside',
-// 	'chat',
-// 	'gallery',
-// 	'image',
-// 	'link',
-// 	'quote',
-// 	'status',
-// 	'video',
-// 	'audio'
-// ));
+add_theme_support( 'post-formats', array(
+	//'aside',
+	//'chat',
+	'gallery',
+	'image',
+	'link',
+	//'quote',
+	//'status',
+	'video',
+	'audio'
+));
 // add_theme_support( 'genesis-post-format-images' );
 
 /**

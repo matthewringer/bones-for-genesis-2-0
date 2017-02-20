@@ -43,7 +43,7 @@ add_action( 'genesis_before_header', 'rva_before_header' );
 function rva_before_header($ad_unit = 'Leaderboard') {
 	?>
 		<div class="before-header">
-			<?php echo do_shortcode('[rva_ad_leaderboard name="m_home_header"]'); ?>
+			<?php echo do_shortcode('[rva_ad name="m_home_header"]'); ?>
 		</div>
 	<?php
 }

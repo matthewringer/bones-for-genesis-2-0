@@ -384,15 +384,19 @@ ul.social-links {
 }
 
 .cd-2x1-box {
+	
+	& article {
+		padding: 0 0 2em 0;
+	}
 
 	@include MQ(XS) {
 
-		& article:nth-of-type(1) {
-			padding: 0 .5em 2em 0;
+		& article:nth-of-type(2n+0) {
+			padding: 0 0 2em .5em;
 		}
 
-		& article:nth-of-type(2) {
-			padding: 0 0 2em .5em;
+		& article:nth-of-type(2n+1) {
+			padding: 0 .5em 2em 0;
 		}
 
 		float: left;
@@ -402,9 +406,6 @@ ul.social-links {
 			float: left;
 			width: 50%;
 		}
-	}
-	& article {
-		padding: 0 0 2em 0;
 	}
 }
 
@@ -422,27 +423,12 @@ ul.social-links {
 		padding:0;
 	}
 	& .text-block {
-
+		overflow: auto;
 	}
 }
 
 .cd-3x3-box {
 	text-align: center;
-
-	& .entry-thumbnail { 
-		//width: 50%;
-		min-height: 200px;
-		float: left;
-		padding: 0 .5em 2em .5em;
-		& .rva-article-image {
-			width: 100%;
-			padding-top: 100%;
-			float: none;
-		}
-		& .text-block {
-
-		}
-	}
 
 	& :nth-of-type(1).entry-thumbnail,
 	& :nth-of-type(2).entry-thumbnail,
@@ -483,6 +469,18 @@ ul.social-links {
 				float: none;
 			}
 		}
+
+		& article { 
+			width: 50%;
+			min-height: 200px;
+			float: left;
+			padding: 0 .5em 2em .5em;
+			& .rva-article-image {
+				width: 100%;
+				padding-top: 100%;
+				float: none;
+			}
+		}
 	}
 
 	@include MQ(M) {
@@ -504,13 +502,23 @@ ul.social-links {
 				float: none;
 			}
 		}
+		
+		// style all other articles in the container. 
+		& article { 
+			width: 33.333%;
+			min-height: 200px;
+			float: left;
+			padding: 0 .5em 2em .5em;
+			& .rva-article-image {
+				width: 100%;
+				padding-top: 100%;
+				float: none;
+			}
+		}
 	}
 }
 
 .entry-thumbnail {
-
-	//div.rva-article-image
-	//div.text-block
 
 	position: relative;
 	& div.text-block {
@@ -524,7 +532,6 @@ ul.social-links {
 		p {
 			display: none;
 		}
-		overflow: wrap;
 	}
 }
 

@@ -126,8 +126,12 @@ function cb_3x6($title, $args, $sidebar = '') {
  * 
  * 
 */
-function rva_1_over_2_box($title, $slug, $ad_html = '') {
+function rva_1_over_2_box($attr, $content) {
     
+	$title = $attr['title']; 
+	$slug = $attr['slug'];
+	$ad_html = do_shortcode($content);
+
     $args = array(
 		'orderby'       => 'post_date',
 		'order'         => 'DESC',
@@ -140,9 +144,7 @@ function rva_1_over_2_box($title, $slug, $ad_html = '') {
 	//flex container 
 	?> 
 	<div class="flex-container"> 
-		<?php if($ad_html != ''): ?>
-		<div style="flex: 0 1 120px; margin-right:1em;"> <?php echo $ad_html; ?> </div>
-		<?php endif; ?>
+		
 		<div style="flex: 1;"> 
 			<?php if( $loop->have_posts() ) :
 			//Display hero
@@ -154,17 +156,21 @@ function rva_1_over_2_box($title, $slug, $ad_html = '') {
 			</div>
 			<?php endif;
 			wp_reset_postdata(); ?>
-		</div> 
+		</div>
+		<?php if($ad_html != ''): ?>
+		<div style="flex: 0 1 120px; margin-left:1em;"> <?php echo $ad_html; ?> </div>
+		<?php endif; ?>
 	</div> 
 	<?php
 	echo do_shortcode('[rva_ad name="Leaderboard" class="wrap ad-leaderboard"]');
     close_section();
 }
+add_shortcode('rva_1x2','rva_1_over_2_box');
 
 /**
  *
  */
-function rva_big_boy_h0_sidebar_shortcode($attrs, $content) {
+function rva_social_sidebar_shortcode($attrs, $content) {
 	?> 
 	<aside class="big-boy-h0-sidebar"> 
 	<?php
@@ -176,7 +182,7 @@ function rva_big_boy_h0_sidebar_shortcode($attrs, $content) {
 	</aside> 
 	<?php
 }
-add_shortcode( 'rva_big_boy_h0_sidebar', 'rva_big_boy_h0_sidebar_shortcode' );
+add_shortcode( 'rva_social_sidebar', 'rva_social_sidebar_shortcode' );
 
 /**
  *
