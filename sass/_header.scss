@@ -41,7 +41,7 @@
 
 	//background-color: rgb(13, 13, 13);
 	//background-color: rgba(13, 13, 13, 1); //TODO: screen flash on load.
-	background-color: rgba($black, .6);
+	background-color: rgba($dark-grey, .6);
 	position: fixed;
 	z-index: 10;
 	display: -webkit-box;
@@ -52,7 +52,7 @@
 	display: flex;
 	width: 100%;
 	max-width: $site-width;
-	box-shadow: 0 1px 1px rgba(#000, .1);
+	box-shadow: 0 1px 1px rgba($dark-grey, .1);
 
 	& .wrap {
 		width: 100%;
@@ -67,7 +67,7 @@
 }
 
 .rva-header-trans {
-	background-color: rgba($black, 1); // !important;
+	background-color: rgba($dark-grey, 1); // !important;
 }
 
 // hide the SEO title and description
@@ -79,7 +79,6 @@
 	width: 90%;
 	text-align: center;
 	white-space: nowrap;
-	//font-size: .6em;
 
 	@include MQ(XS) {
 		width: 100%;
@@ -90,7 +89,7 @@
 	}
 	@include MQ(M) {
 		position: absolute;
-		top: 0;
+
 		top: -9999px;
 		left: -9999px;
 		width: 0;
@@ -109,12 +108,6 @@
 
 .site-description {
 	top: 25px;
-	position: relative;
-
-	@include MQ(XS){
-		top: initial;
-		position: initial;
-	}
 }
 
 .header-widget-area {
