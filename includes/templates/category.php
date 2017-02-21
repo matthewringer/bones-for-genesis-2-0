@@ -17,6 +17,10 @@ function rva_load_more_args() {
 }
 add_action( 'wp_enqueue_scripts', 'rva_load_more_args' );
 
+
+/** 
+
+*/
 // Add our custom loop
 remove_action( 'genesis_loop', 'genesis_do_loop' );
 add_action( 'genesis_loop', 'rvamag_categorypage_loop' );

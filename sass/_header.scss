@@ -25,6 +25,8 @@
 	bottom: 0 !important;
 }
 
+
+
 .site-header-offset {
 	top: 50px;
 	@include admin-offset-fix(50);
@@ -37,9 +39,9 @@
 
 .site-header {
 
-	background-color: rgb(13, 13, 13);
-	background-color: rgba(13, 13, 13, 1); //TODO: screen flash on load.
-
+	//background-color: rgb(13, 13, 13);
+	//background-color: rgba(13, 13, 13, 1); //TODO: screen flash on load.
+	background-color: rgba($black, .6);
 	position: fixed;
 	z-index: 10;
 	display: -webkit-box;
@@ -64,6 +66,10 @@
 	}
 }
 
+.rva-header-trans {
+	background-color: rgba($black, 1); // !important;
+}
+
 // hide the SEO title and description
 .title-area {
 	@include MQ(XS) {
@@ -86,7 +92,7 @@
 	width: 90%;
 	text-align: center;
 	white-space: nowrap;
-	font-size: .6em;
+	//font-size: .6em;
 }
 
 .site-title {
@@ -100,13 +106,13 @@
 }
 
 .site-description {
-	top: 25px;
-	position: relative;
+	//top: 25px;
+	//position: relative;
 
-	@include MQ(XS){
-		top: initial;
-		position: initial;
-	}
+	// @include MQ(XS){
+	// 	top: initial;
+	// 	position: initial;
+	// }
 }
 
 .header-widget-area {
