@@ -74,7 +74,7 @@
 .title-area {
 
 	position: relative;
-	top: 55%;
+	top: 40%;
 	float: right;
 	width: 90%;
 	text-align: center;
@@ -108,13 +108,13 @@
 }
 
 .site-description {
-	//top: 25px;
-	//position: relative;
+	top: 25px;
+	position: relative;
 
-	// @include MQ(XS){
-	// 	top: initial;
-	// 	position: initial;
-	// }
+	@include MQ(XS){
+		top: initial;
+		position: initial;
+	}
 }
 
 .header-widget-area {
