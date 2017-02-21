@@ -1,6 +1,7 @@
 
 .before-header {
 	height:50px;
+	min-height: 50px;
 	padding: 0;
 	margin: 0;
 	position: fixed;
@@ -107,7 +108,8 @@
 }
 
 .site-description {
-	top: 25px;
+	position: relative;
+	//top: 25px;
 }
 
 .header-widget-area {
