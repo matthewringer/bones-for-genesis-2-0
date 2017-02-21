@@ -72,6 +72,15 @@
 
 // hide the SEO title and description
 .title-area {
+
+	position: relative;
+	top: 40%;
+	float: right;
+	width: 90%;
+	text-align: center;
+	white-space: nowrap;
+	//font-size: .6em;
+
 	@include MQ(XS) {
 		width: 100%;
 		font-size: 1em;
@@ -86,13 +95,6 @@
 		left: -9999px;
 		width: 0;
 	}
-	position: relative;
-	top: 40%;
-	float: right;
-	width: 90%;
-	text-align: center;
-	white-space: nowrap;
-	//font-size: .6em;
 }
 
 .site-title {
@@ -106,8 +108,8 @@
 }
 
 .site-description {
-	top: 40%;
-	position: relative;
+	//top: 25px;
+	//position: relative;
 
 	// @include MQ(XS){
 	// 	top: initial;
