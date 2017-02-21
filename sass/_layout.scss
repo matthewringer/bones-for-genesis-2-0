@@ -23,11 +23,10 @@ body{
 }
 
 .rva-fp-before-content {
-	background-color: $black;
+	//background-color: $black;
 
-	height: 120px;
-
-	@include admin-offset-fix(120);
+	height: 50px;
+	//@include admin-offset-fix(40);
 
 	@include MQ(XS) {
 		height: 50px;
