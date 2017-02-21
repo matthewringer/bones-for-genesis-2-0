@@ -46,7 +46,7 @@ add_theme_support( 'post-formats', array(
 	//'chat',
 	'gallery',
 	'image',
-	'link',
+	//'link',
 	//'quote',
 	//'status',
 	'video',

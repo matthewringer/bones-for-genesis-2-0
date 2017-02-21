@@ -35,25 +35,23 @@ body{
 }
 
 .rva-before-content { //TODO: code smell
-	
-	height: 120px;
-	@include admin-offset-fix(120);
+	margin-bottom: 2em;
+	height: 100px;
+	@include admin-offset-fix(100);
 
-	@include MQ(XS) {
-		height: 125px;
-		@include admin-offset-fix(125);
-	}
 	@include MQ(S) {
-		height: 160px;
-		@include admin-offset-fix(160);
+		height: 157px;
+		@include admin-offset-fix(157);
 	}
+
 	@include MQ(M) {
-		height: 160px;
-		@include admin-offset-fix(160);
+		height: 177px;
+		@include admin-offset-fix(177);
 	}
+
 	@include MQ(L) {
-		height: 170px;
-		@include admin-offset-fix(170);
+		height: 197px;
+		@include admin-offset-fix(197);
 	}
 }
 

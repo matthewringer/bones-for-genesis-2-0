@@ -7,14 +7,20 @@ if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 */
 
 // Modifications to Genesis 
-remove_action('genesis_footer', 'genesis_do_footer');
-remove_action('genesis_footer', 'genesis_footer_markup_open', 5);
-remove_action('genesis_footer', 'genesis_footer_markup_close', 15);
+//remove_action('genesis_footer', 'genesis_do_footer');
+//remove_action('genesis_footer', 'genesis_footer_markup_open', 5);
+//remove_action('genesis_footer', 'genesis_footer_markup_close', 15);
 
 /**
 * Add Facebook Open Graph Meta Data Header
 */
 add_action('wp_head', 'facebook_og_meta');
+
+function single_scripts() {
+
+	wp_enqueue_script( 'rva-trans-header', get_stylesheet_directory_uri() . '/js/trans-header.js', array( 'jquery' ), '1.0', true );
+}
+add_action( 'wp_enqueue_scripts', 'single_scripts' );
 
 /**
 * Remove javascript infinite scroll 
@@ -48,6 +54,27 @@ function rva_before_header($ad_unit = 'Leaderboard') {
 	<?php
 }
 
+
+add_action('genesis_before_content', 'rva_before_content');
+/**
+*
+*	Top spacing to offset content to compensate for leaderboard ad and header height
+*	Previous and next post buttons.
+*
+*/
+function rva_before_content() {
+	?> 
+	<div class="rva-before-content"></div>
+	<?php 
+		if(get_previous_post(TRUE))
+			previous_post_link( '<div class="rva-prev-link">%link</div>', '<i class="fa fa-chevron-left" ></i>', TRUE );
+		if(get_next_post(TRUE))
+			next_post_link( '<div class="rva-next-link">%link</div>', '<i class="fa fa-chevron-right" ></i>', TRUE );
+	?>
+	<div class="cd-gutter-box article" >
+	<?php
+}
+
 add_action( 'genesis_before_content', 'featured_post_image', 13 );
 /**
 * Display Featured Image at top of the post 
@@ -57,7 +84,7 @@ function featured_post_image() {
 	if ( !is_singular( array( 'post', 'page' ) ))  return;
 
 	?> 
-		<div class="rva-feature-image" > 
+		<div id="top" class="rva-feature-image" > 
 			<?php the_post_thumbnail('large'); ?> 
 		</div> 
 		<?php $photog_name = get_post_meta( get_post_thumbnail_id(), 'rva_photographer_name', true ); ?> 
@@ -97,26 +124,6 @@ function single_sidebar_add_css_attr( $attributes ) {
 }
 
 add_action('genesis_before', 'facebook_js_sdk');
-
-add_action('genesis_before_content', 'rva_before_content');
-/**
-*
-*	Top spacing to offset content to compensate for leaderboard ad and header height
-*	Previous and next post buttons.
-*
-*/
-function rva_before_content() {
-	?> 
-	<div class="rva-before-content"></div>
-	<?php 
-		if(get_previous_post(TRUE))
-			previous_post_link( '<div class="rva-prev-link">%link</div>', '<i class="fa fa-chevron-left" ></i>', TRUE );
-		if(get_next_post(TRUE))
-			next_post_link( '<div class="rva-next-link">%link</div>', '<i class="fa fa-chevron-right" ></i>', TRUE );
-	?>
-	<div class="cd-gutter-box article" >
-	<?php
-}
 
 add_action('genesis_after_content', 'rva_after_content');
 /**

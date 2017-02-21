@@ -14,6 +14,8 @@ function rva_load_more_args() {
 		'query' => $wp_query->query,
 	);	
     wp_localize_script( 'rva-load-more', 'rvaloadmore', $args );
+
+	wp_enqueue_script( 'rva-trans-header', get_stylesheet_directory_uri() . '/js/trans-header.js', array( 'jquery' ), '1.0', true );
 }
 add_action( 'wp_enqueue_scripts', 'rva_load_more_args' );
 
@@ -46,7 +48,9 @@ add_action('genesis_before_content', 'rvamag_before_content');
  *
  */
 function rvamag_before_content() {
-	echo '<div id="top" class="rva-category-before-content"></div>';
+	?>
+	<div id="top" class="rva-category-before-content"></div>
+	<?php
 }
 
 //* Remove the post content (requires HTML5 theme support)

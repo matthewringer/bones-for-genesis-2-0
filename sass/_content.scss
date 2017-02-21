@@ -296,9 +296,17 @@
 	color: white;
 
 	@include MQ(S) {
+		height: 500px;
+	}
+	
+	@include MQ(M) {
 		height: 600px;
 	}
-	// @include MQ(M) {
+
+	@include MQ(M) {
+		height: 600px;
+	}
+
 	// 	& h2.article-title {
 	// 		font-size: 2.4rem;
 	// 	}
@@ -428,7 +436,7 @@ ul.social-links {
 }
 
 .cd-3x3-box {
-	text-align: center;
+	text-align: left;
 
 	& :nth-of-type(1).entry-thumbnail,
 	& :nth-of-type(2).entry-thumbnail,
@@ -445,6 +453,7 @@ ul.social-links {
 	& :nth-of-type(7).entry-thumbnail,
 	& :nth-of-type(8).entry-thumbnail, {
 		@extend .rva-hrz-thumb;
+
 		& .rva-article-image {
 			float: left;
 		}
@@ -474,7 +483,7 @@ ul.social-links {
 			width: 50%;
 			min-height: 200px;
 			float: left;
-			padding: 0 .5em 2em .5em;
+			padding: 0; // .5em 2em .5em;
 			& .rva-article-image {
 				width: 100%;
 				padding-top: 100%;
@@ -502,13 +511,12 @@ ul.social-links {
 				float: none;
 			}
 		}
-		
 		// style all other articles in the container. 
 		& article { 
 			width: 33.333%;
 			min-height: 200px;
 			float: left;
-			padding: 0 .5em 2em .5em;
+			padding: 0; // .5em 2em .5em;
 			& .rva-article-image {
 				width: 100%;
 				padding-top: 100%;
@@ -524,10 +532,15 @@ ul.social-links {
 	& div.text-block {
 		@include MQ(S) {
 			height: 12em;
+			text-align: center;
 		}
 
 		& h2 {
-			padding: .5em;
+			padding: 0 .5em;
+
+			@include MQ(S){
+				padding: 0;
+			}
 		}
 		p {
 			display: none;
