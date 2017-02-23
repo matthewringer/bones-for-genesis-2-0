@@ -10,19 +10,18 @@ input[type='email'],
 input[type='url'],
 input[type='number'],
 textarea {
+	padding: .6em 1em;
 	max-width: 100%;
 	width: 100%;
 	border: 1px solid $grey;
 	border-radius: .25em;
 	background: $white;
+	box-shadow: inset 1px 1px rgba(#000, .03);
 	color: $black;
 	vertical-align: top; // make align with buttons
-	padding: .6em 1em;
-	box-shadow: inset 1px 1px rgba(#000, .03);
-	
 	-webkit-appearance: none; // Removes the shadow on iOS
 	-moz-appearance: none;
-	
+
 	&.success {
 		border-color: $success;
 		box-shadow: 0 0 6px rgba($success, .2);
@@ -105,17 +104,6 @@ input[type='search'] {
 }
 
 .cd-subscribe-box {
-	* img {
-		height: auto;
-    	width: 100%;
-	}
-
-	text-align: center;
-
-	& input {
-		margin-bottom: 1em;
-	}
-
 	@include MQ(S) {
 		float: left;
 		width: 50%;
@@ -124,13 +112,22 @@ input[type='search'] {
 			margin-bottom: 0;
 		}
 	}
+	text-align: center;
+	* img {
+		width: 100%;
+		height: auto;
+	}
+
+	& input {
+		margin-bottom: 1em;
+	}
 
 	form {
 		margin: 0 auto;
-		background-color: $grey;
 		padding: 15pt 0;
 		//margin: 1em 0;
 		border-radius: .25em;
+		background-color: $grey;
 	}
 
 	& fieldset {
@@ -138,31 +135,28 @@ input[type='search'] {
 	}
 
 	& input[type=text] {
-		width: 50%;
 		padding-bottom: .5em;
-    	transform: translateY(-1.5px);
+		width: 50%;
+		transform: translateY(-1.5px);
 	}
 }
 
 .cd-subscribe-block {
-
 	& div.cd-subscribe-box:nth-of-type(2n) {
+		@include MQ(S) {
+			padding-right: 1em;
+		}
 		form {
 			margin: 2em .2em 2em 0;
-		}
-
-		@include MQ(S){
-			padding-right: 1em;
 		}
 	}
 
 	& div.cd-subscribe-box:nth-of-type(3n) {
+		@include MQ(S) {
+			padding-left: 1em;
+		}
 		form {
 			margin: 0 0 2em .2em;
-		}
-
-		@include MQ(S){
-			padding-left: 1em;
 		}
 	}
 }

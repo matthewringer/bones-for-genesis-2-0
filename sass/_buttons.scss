@@ -1,6 +1,6 @@
 .btn {
 	display: inline-block;
-//	padding: 7pt 10pt;
+	//	padding: 7pt 10pt;
 	padding: .6em 1em;
 	width: auto;
 	border: none;
@@ -9,15 +9,14 @@
 	text-align: center;
 	text-transform: uppercase;
 	white-space: nowrap;
+	font:  {
+		weight: 800;
+	}
 	line-height: 1;
 	cursor: pointer;
 	transition: all .15s ease-in-out;
 	-webkit-appearance: none;
 	-moz-appearance: none;
-
-	font: {
-		weight: 800;
-	}
 
 	&:hover,
 	&:focus {
@@ -45,20 +44,20 @@
 	}
 
 	&.btn-outline {
-		color: $black;
 		background: transparent;
 		box-shadow: inset 0 0 0 1px $black;
+		color: $black;
 
 		.no-touch &:hover {
-			color: $white;
 			background: $yellow;
+			color: $white;
 		}
 	}
 }
 
 div.social-buttons {
-	margin-left: auto;
 	margin-right: auto;
+	margin-left: auto;
 }
 
 .social-buttons li {
@@ -127,16 +126,15 @@ div.social-buttons {
 
 
 & div.social-buttons {
-		width: 300px;
-		//margin: auto;
-		margin-top: 1em;
-		padding: 1em;
-		background-color: $grey;
+	//margin: auto;
+	margin-top: 1em;
+	padding: 1em;
+	width: 300px;
+	background-color: $grey;
 }
 
-	// todo: social button scss is a mess. 
+// todo: social button scss is a mess. 
 & ul.social-buttons {
-	
 	padding: 0 0 0 .5em;
 	border-left: .3em solid $black;
 
@@ -159,8 +157,5 @@ div.social-buttons {
 			font-weight: 800;
 			font-size: 1rem;
 		}
-	
-	
 	}
 }
-

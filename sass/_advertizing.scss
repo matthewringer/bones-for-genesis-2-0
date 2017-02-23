@@ -1,34 +1,32 @@
 .ad-prefix {
-	content: "Advertizement";
 	position: absolute;
-	margin-left: auto;
-	margin-right: auto;
 	top: -1.1em;
+	margin-right: auto;
+	margin-left: auto;
+	content: 'Advertizement';
 }
 
 .ad-centered {
-	margin-left: auto;
-	margin-right: auto;
 	position: relative;
+	margin-right: auto;
+	margin-left: auto;
 	text-align: center;
 }
 
 .ad-leaderboard {
 	@extend .ad-centered;
-	width:320px;
-
 	@include MQ(S) {
 		width: 728px;
 	}
+	width: 320px;
 }
 
 .ad-leaderboard::before {
 	@extend .ad-prefix;
-	width:320px;
-
 	@include MQ(S) {
 		width: 728px;
 	}
+	width: 320px;
 }
 
 .ad-big-boy {
@@ -38,7 +36,7 @@
 
 .ad-big-boy::before {
 	@extend .ad-prefix;
-	width:300px;
+	width: 300px;
 }
 
 .ad-skyscraper {
@@ -48,7 +46,7 @@
 
 .ad-skyscraper::before {
 	@extend .ad-prefix;
-	width:120px;
+	width: 120px;
 }
 
 .ad-spud {
@@ -58,7 +56,7 @@
 
 .ad-spud::before {
 	@extend .ad-prefix;
-	width:125px;
+	width: 125px;
 }
 
 .ad-partner {
@@ -68,7 +66,7 @@
 
 .ad-partner::before {
 	@extend .ad-prefix;
-	width:140px;
+	width: 140px;
 }
 
 .ad-square {
@@ -82,14 +80,14 @@
 }
 
 .ad-sidebar-flex {
-	flex: 0 1 auto; 
+	flex: 0 1 auto;
 	//margin-right:1em;
 }
 
 .ad-bigboy-block {
-    display: flex;
+	display: flex;
+	flex-wrap: wrap;
 	justify-content: center;
 	align-items: center;
-	flex-wrap: wrap;
 	width: 100%;
 }

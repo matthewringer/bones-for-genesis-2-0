@@ -4,25 +4,24 @@
 .rva-center-img {
 	img {
 		position: absolute;
-		left: -1000%;
-		right: -1000%;
 		top: -1000%;
+		right: -1000%;
 		bottom: -1000%;
+		left: -1000%;
 		margin: auto;
-		min-height: 100%;
 		min-width: 100%;
+		min-height: 100%;
 	}
 }
 
 // TODO: I like this should make this the goto.
 .rva-feature-image {
-	width: 100%;
-	padding-top: 60%;
+	@extend .rva-center-img;
+	position: relative;
 	overflow: hidden;
 	margin: 10px;
-	position: relative;
-	
-	@extend .rva-center-img;
+	padding-top: 60%;
+	width: 100%;
 }
 
 .content {
@@ -30,57 +29,53 @@
 }
 
 .single-main {
-	float:left;
-	width: 100%;
-	@include MQ(S){
+	@include MQ(S) {
 		width: 54%;
 	}
-	@include MQ(M){
+	@include MQ(M) {
 		width: 65%;
 	}
+	float: left;
+	width: 100%;
 }
 
 .single-sidebar {
-	display: none;
-
-	@include MQ(S){
-		display: block;
+	@include MQ(S) {
+		position: relative;
 		z-index: initial;
+		z-index: 0;
+		display: block;
 		//width: 45%;
 		float: right;
-		position: relative;
-		z-index: 0;
 		& * {
 			position: relative;
 			top: 0;
 		}
 	}
+	display: none;
 }
 
 .load-more {
+	margin: auto;
 	i {
-		@extend .fa; 
-		@extend .fa-circle-o-notch; 
+		@extend .fa;
+		@extend .fa-circle-o-notch;
 		@extend .fa-spin;
 		@extend .fa-fw;
 		@extend .fa-4x;
-		
 		color: $yellow;
 
 		// media queries for spinner size.
 		//font-size: 20em;
-
 	}
-	margin: auto;
-
 }
 
 .entry-title {
 	overflow: hidden;
-	word-wrap: break-word;
 	padding-top: 1em;
-	font-size: 2.4em;
+	word-wrap: break-word;
 	font-weight: 800;
+	font-size: 2.4em;
 	//font-size: initial;
 
 	a {
@@ -96,12 +91,11 @@
 	overflow: hidden;
 	word-wrap: break-word;
 	font-weight: 400;
-
 }
 
 .entry-content {
-	* { 
-		clear: none; 
+	* {
+		clear: none;
 		text-align: left;
 		//font-size: 18px;
 		font-size: 1.15rem;
@@ -109,7 +103,7 @@
 
 	p {
 		@extend %type;
-		
+
 		//padding: 0 .5em;
 	}
 
@@ -139,38 +133,40 @@
 	}
 
 	blockquote {
-	border-top: 15px solid $grey;
-	border-bottom: 2px solid $grey;
-	padding: 20px;
-	margin: .4em 0;
-	
-	p, a {
-		font-size: 2.4rem;
-		font-weight: 800;
-		line-height: 1.2;
-		text-align: center;
-	}
+		margin: .4em 0;
+		padding: 20px;
+		border-top: 15px solid $grey;
+		border-bottom: 2px solid $grey;
 
-	a {
-		color: darken($yellow, 5%);
-		text-decoration: underline;
+		p,
+		a {
+			text-align: center;
+			font-weight: 800;
+			font-size: 2.4rem;
+			line-height: 1.2;
+		}
+
+		a {
+			color: darken($yellow, 5%);
+			text-decoration: underline;
+		}
+
+		p::before {
+			position: relative;
+			top: -.5em;
+			display: inline-block;
+			content: '"';
+			transform: rotate(180deg);
+
+			-webkit-transform: rotate(180deg);
+			-moz-transform: rotate(180deg);
+			-ms-transform: rotate(180deg);
+			-o-transform: rotate(180deg);
+		}
+		p::after {
+			content: '"';
+		}
 	}
-	
-	p::before {
-		content: '"';
-		top: -.5em;
-    	position: relative;
-		display: inline-block;
-		-webkit-transform: rotate(180deg);
-		-moz-transform: rotate(180deg);
-		-o-transform: rotate(180deg);
-		-ms-transform: rotate(180deg);
-		transform: rotate(180deg);
-	}
-	p::after{
-		content: '"';
-	}
-}
 
 	table {
 		margin-bottom: 1.5em;
@@ -205,6 +201,9 @@
 }
 
 .article-title {
+	@include MQ(S) {
+		font-size: 2rem;
+	}
 	margin: 0 0 .4em;
 	padding: 0 .5em 0 .1em;
 	background-color: $black;
@@ -212,9 +211,6 @@
 	font-weight: 800;
 	font-size: 1.5rem;
 	line-height: 1.34;
-	@include MQ(S) {
-		font-size: 2rem;
-	}
 	// @include MQ(M) {
 	// 	//font-size: 3rem;
 	// }
@@ -224,7 +220,6 @@
 }
 
 .author {
-	
 	margin: 1em 0;
 	padding: 0 .5em;
 	background-color: $black;
@@ -281,6 +276,15 @@
 }
 
 .cd-hero-box {
+	@include MQ(S) {
+		height: 500px;
+	}
+	@include MQ(M) {
+		height: 600px;
+	}
+	@include MQ(M) {
+		height: 600px;
+	}
 	display: -webkit-box;
 	display: -moz-box;
 	display: -ms-flexbox;
@@ -294,18 +298,6 @@
 	background-size: cover;
 	background-repeat: no-repeat;
 	color: white;
-
-	@include MQ(S) {
-		height: 500px;
-	}
-	
-	@include MQ(M) {
-		height: 600px;
-	}
-
-	@include MQ(M) {
-		height: 600px;
-	}
 
 	// 	& h2.article-title {
 	// 		font-size: 2.4rem;
@@ -321,7 +313,7 @@
 	// 	& span.entry-author-name,::before {
 	// 		font-size: 3rem;
 	// 	}
-		
+
 	// }
 }
 
@@ -351,32 +343,33 @@
 
 ul.social-links {
 	display: inline-block;
-	border: none;
 	padding: .5em 0;
+	border: none;
 
 	& li {
 		float: left;
 	}
 }
 
-.rva-prev-link, .rva-next-link {
-	display: none;
-	text-align: center;
-	@include MQ(S){
-		font-size: 2em;
-		display: block;
+.rva-prev-link,
+.rva-next-link {
+	@include MQ(S) {
 		position: fixed;
 		top: 60%;
+		display: block;
 		width: 5%;
+		font-size: 2em;
 	}
+	display: none;
+	text-align: center;
 }
 
 .rva-prev-link {
-	left:0;
+	left: 0;
 }
 
 .rva-next-link {
-	right:0;
+	right: 0;
 }
 
 .cd-gutter-box {
@@ -387,18 +380,14 @@ ul.social-links {
 
 .flex {
 	display: flex;
-	justify-content: center;
 	flex-wrap: wrap;
+	justify-content: center;
 }
 
 .cd-2x1-box {
-	
-	& article {
-		padding: 0 0 2em 0;
-	}
-
 	@include MQ(XS) {
-
+		float: left;
+		width: 100%;
 		& article:nth-of-type(2n+0) {
 			padding: 0 0 2em .5em;
 		}
@@ -407,28 +396,28 @@ ul.social-links {
 			padding: 0 .5em 2em 0;
 		}
 
-		float: left;
-		width: 100%;
-
 		& article {
 			float: left;
 			width: 50%;
 		}
 	}
+	& article {
+		padding: 0 0 2em 0;
+	}
 }
 
 
 .rva-hrz-thumb {
-	width: 100%; //article takes up full row
-	min-height: 100px; //
 	padding: 0 .5em 1em .5em;
+	min-height: 100px; //
+	width: 100%; //article takes up full row
 	& .rva-article-image {
 		@extend .rva-center-img;
-		width: 40%;
-		height: 90px;
 		float: right;
 		//background-size: contain;
-		padding:0;
+		padding: 0;
+		width: 40%;
+		height: 90px;
 	}
 	& .text-block {
 		overflow: auto;
@@ -436,6 +425,7 @@ ul.social-links {
 }
 
 .cd-3x3-box {
+
 	text-align: left;
 
 	& :nth-of-type(1).entry-thumbnail,
@@ -444,11 +434,11 @@ ul.social-links {
 		@extend .rva-hrz-thumb;
 	}
 
-	& :nth-of-type(4).entry-thumbnail{
-		width: 100%;
+	& :nth-of-type(4).entry-thumbnail,
+	& :nth-of-type(5).entry-thumbnail {
+		width: 50%;
 	}
-	
-	& :nth-of-type(5).entry-thumbnail,
+
 	& :nth-of-type(6).entry-thumbnail,
 	& :nth-of-type(7).entry-thumbnail,
 	& :nth-of-type(8).entry-thumbnail, {
@@ -467,31 +457,30 @@ ul.social-links {
 		& :nth-of-type(5).entry-thumbnail,
 		& :nth-of-type(6).entry-thumbnail,
 		& :nth-of-type(7).entry-thumbnail,
-		& :nth-of-type(8).entry-thumbnail { 
-			width: 50%;
-			min-height: 200px;
+		& :nth-of-type(8).entry-thumbnail {
 			float: left;
 			padding: 0 .5em 2em .5em;
+			min-height: 200px;
+			width: 50%;
 			& .rva-article-image {
-				width: 100%;
-				padding-top: 100%;
 				float: none;
+				padding-top: 100%;
+				width: 100%;
 			}
 		}
 
-		& article { 
-			width: 50%;
-			min-height: 200px;
+		& article {
 			float: left;
 			padding: 0; // .5em 2em .5em;
+			min-height: 200px;
+			width: 50%;
 			& .rva-article-image {
-				width: 100%;
-				padding-top: 100%;
 				float: none;
+				padding-top: 100%;
+				width: 100%;
 			}
 		}
 	}
-
 	@include MQ(M) {
 		& :nth-of-type(1).entry-thumbnail,
 		& :nth-of-type(2).entry-thumbnail,
@@ -500,34 +489,33 @@ ul.social-links {
 		& :nth-of-type(5).entry-thumbnail,
 		& :nth-of-type(6).entry-thumbnail,
 		& :nth-of-type(7).entry-thumbnail,
-		& :nth-of-type(8).entry-thumbnail { 
-			width: 33.333%;
-			min-height: 200px;
+		& :nth-of-type(8).entry-thumbnail {
 			float: left;
 			padding: 0 .5em 2em .5em;
+			min-height: 200px;
+			width: 33.333%;
 			& .rva-article-image {
-				width: 100%;
-				padding-top: 100%;
 				float: none;
+				padding-top: 100%;
+				width: 100%;
 			}
 		}
 		// style all other articles in the container. 
-		& article { 
-			width: 33.333%;
-			min-height: 200px;
+		& article {
 			float: left;
 			padding: 0; // .5em 2em .5em;
+			min-height: 200px;
+			width: 33.333%;
 			& .rva-article-image {
-				width: 100%;
-				padding-top: 100%;
 				float: none;
+				padding-top: 100%;
+				width: 100%;
 			}
 		}
 	}
 }
 
 .entry-thumbnail {
-
 	position: relative;
 	& div.text-block {
 		@include MQ(S) {
@@ -536,11 +524,10 @@ ul.social-links {
 		}
 
 		& h2 {
-			padding: 0 .5em;
-
-			@include MQ(S){
+			@include MQ(S) {
 				padding: 0;
 			}
+			padding: 0 .5em;
 		}
 		p {
 			display: none;
@@ -557,56 +544,46 @@ ul.social-links {
 }
 
 .cd-sidebar {
-
-	$S_C:  729px; //729px;  //768
-	$M_C:  820px;
-	$L_C:  1024px;
-
+	$S_C: 729px; //729px;  //768
+	$M_C: 820px;
+	$L_C: 1024px;
 	@include MQ_C($S_C) {
 		float: left;
 		width: 54%;
 	}
-
 	@include MQ_C($M_C) {
 		float: left;
 		width: 58%;
 	}
-
 	@include MQ_C($L_C) {
 		float: left;
 		width: 66%;
 	}
 
 	& article {
-		float: left;
-		padding: 0 .5em 2em .5em;
-
 		@include MQ_C($S_C) {
 			//height: 300px;
 			width: 50%;
 		}
+		float: left;
+		padding: 0 .5em 2em .5em;
 	}
-
-	
 }
 
 .big-boy-h0-sidebar {
-	width: 100%;
-    display: inline-flex;
-    flex-direction: column;
-    align-items: flex-start;
-
 	@include MQ(S) {
-		width: auto;
 		margin-left: .5em;
+		width: auto;
 	}
+	display: inline-flex;
+	flex-direction: column;
+	align-items: flex-start;
+	width: 100%;
 }
 
 .rva-top-spacing {
-
-	margin-top: 2em;
-
 	@include MQ(S) {
 		margin-top: 1em;
 	}
+	margin-top: 2em;
 }

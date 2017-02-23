@@ -153,7 +153,8 @@ function rva_settings_boxes() {
 	add_meta_box( 'rva-social-box', __( 'Social Sharing Settings', 'genesis' ), 'rva_social_metabox', $_rva_settings_pagehook, 'main' );
     add_meta_box( 'rva-subscription-box', __( 'Subscription Settings', 'genesis' ), 'rva_subscription_metabox', $_rva_settings_pagehook, 'main' );
 
-    add_meta_box( 'rva-ad-placement-box', __( 'DFP Placement Settings', 'genesis' ), 'rva_ad_placements_metabox', $_rva_settings_pagehook, 'main' );
+	//TODO: remove 
+    //add_meta_box( 'rva-ad-placement-box', __( 'DFP Placement Settings', 'genesis' ), 'rva_ad_placements_metabox', $_rva_settings_pagehook, 'main' );
 
 }
 

@@ -8,27 +8,24 @@
 .cd-logo {
 	position: relative;
 	left: 0;
+	z-index: 99;
 	float: left;
 	width: 20%;
 	height: 50px;
-	z-index: 99;
 	/* logo box style */
 	//background-color: transparent;
 
 	img {
-		
 		@include transform(translateX(-50%) translateY(-50%));
 		@include MQ(S) {
 			min-width: 80px;
 		}
-
 		@include MQ(M) {
 			top: 80%;
 			left: 75%;
 			min-width: 100px;
 			width: 2em;
 		}
-
 		position: absolute;
 		top: 35%;
 		left: 70%;
@@ -47,69 +44,23 @@
 
 .genesis-nav-menu {
 
-	top: 50px;
-	@include admin-offset-fix(50);
-
-	@include MQ(S) {
-		top: 90px;
-		@include admin-offset-fix(90);
-	}
-	
-	position: fixed;
-	left: 0;
-	width: 100%;
-	background: $black;
-	text-align: center;
-	text-transform: uppercase;
-	font-weight: 800;
-	font-family: $sans;
-
 	@include transform(translateY(-120%));
 	@include transition(transform .3s);
+	//@include admin-offset-fix(50);
 	
-
 	li.menu-item a {
-		display: block;
-		padding: 1em 0;
-		border: none;
-		color: $white;
-		text-decoration: none;
-		white-space: nowrap;
-
-		span {
-			opacity: 1;
-		}
-
-	}
-
-	li:first-of-type a {
-		border-top-width: 1px;
-	}
-	// Sublevels
-	.sub-menu {
-		position: absolute;
-		top: 100%;
-		opacity: 0;
-		transition: opacity .4s ease-in-out;
-
-		> .menu-item {
-			> a {
-				position: relative;
-			}
-		}
-
-		.sub-menu {
-		}
-	}
-
-	@include MQ(S){
-		li.menu-item a {
 			font-size: 1.8em;
 		}
+
+	
+	@include MQ(S) {
+		@include admin-offset-fix(90);
+		top: 90px;
 	}
-
+	
+	
+	
 	@include MQ(M) {
-
 		@include transform(translateY(0));
 		position: static;
 		display: table;
@@ -145,6 +96,49 @@
 			border-top: none;
 		}
 	}
+	position: fixed;
+	top: 50px;
+	left: 0;
+	width: 100%;
+	background: $black;
+	text-align: center;
+	text-transform: uppercase;
+	font-weight: 800;
+	font-family: $sans;
+
+
+	li.menu-item a {
+		display: block;
+		padding: 1em 0;
+		border: none;
+		color: $white;
+		text-decoration: none;
+		white-space: nowrap;
+
+		span {
+			opacity: 1;
+		}
+	}
+
+	li:first-of-type a {
+		border-top-width: 1px;
+	}
+	// Sublevels
+	.sub-menu {
+		position: absolute;
+		top: 100%;
+		opacity: 0;
+		transition: opacity .4s ease-in-out;
+
+		> .menu-item {
+			> a {
+				position: relative;
+			}
+		}
+
+		.sub-menu {
+		}
+	}
 }
 
 .cd-nav-trigger span {
@@ -160,7 +154,6 @@
 
 .nav-is-visible {
 	& .wrap {
-
 	}
 }
 
@@ -176,22 +169,18 @@
 }
 
 .cd-nav-trigger {
-	position: fixed;
-	
-	right: 10px;
-	top: 70px;
 	@include admin-offset-fix(70);
-
 	@include MQ(S) {
+		@include admin-offset-fix(120);
 		top: 120px;
 		right: 20px;
-		@include admin-offset-fix(120);
 	}
-
 	@include MQ(M) {
 		display: none;
 	}
-
+	position: fixed;
+	top: 70px;
+	right: 10px;
 	display: block;
 	overflow: hidden;
 	width: 35px;
@@ -235,10 +224,9 @@
 }
 
 .nav-is-visible {
-	
 	width: 100%;
 	height: 100%;
-	
+
 	.cd-nav-trigger span {
 		&::before {
 			@include transform(translateY(0) rotate(-45deg));
@@ -254,9 +242,9 @@
 		position: absolute;
 		top: 0;
 		left: 0;
-		width: 100%;
-		height: 100%;
 		overflow: auto;
 		padding-bottom: 100px;
+		width: 100%;
+		height: 100%;
 	}
 }

@@ -3,7 +3,7 @@ body {
 	min-width: 300px; //$site-width; // Prevents backgrounds on these elements from being truncated on smaller screens on fixed-width sites
 	//font-size: 62.5%;
 	font-size: 80%;
-	
+
 	// @include MQ(S) {
 	// 	font-size: 80%;
 	// }
@@ -97,9 +97,9 @@ iframe {
 hr {
 	clear: both;
 	margin: $spacer 0;
-	border: 0;
-	margin: 2em 15%; 
+	margin: 2em 15%;
 	//margin-bottom: 2em;
-	height: 1px;  
+	height: 1px;
+	border: 0;
 	background-color: $grey;
 }

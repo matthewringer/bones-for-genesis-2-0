@@ -13,7 +13,35 @@
 .site-footer {
 	height: 200px;
 	background-color: $grey;
-	border: 1px solid red;
+	//border: 1px solid red;
 	> .wrap {
+	}
+}
+
+.rva-footer-partners {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items: center;
+	padding: 2em;
+	width: 100%;
+	border: solid $grey;
+	border-width: 2px 0;
+	background-color: $white;
+}
+
+.rva-footer-links {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	padding: 2em;
+	background-color: $dark-grey;
+	height: 100px;
+}
+
+.rva-footer-logo {
+	& img {
+		opacity: .4;
+		height: 50px;
 	}
 }

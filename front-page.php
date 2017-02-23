@@ -44,7 +44,7 @@ add_action( 'genesis_before_header', 'rva_before_header' );
 function rva_before_header() {
 	?>
 		<div class="before-header">
-			<?php echo do_shortcode('[rva_ad name="m_home_header"]'); ?>
+			<?php echo do_shortcode('[rva_ad name="Leaderboard" class="wrap ad-leaderoard"]'); ?>
 		</div>
 	<?php
 }
@@ -91,14 +91,20 @@ function rvamag_frontpage_loop() {
 			'category__not_in' => '11', 
 			//TODO: fix hardcoded reference
 		), 
-		'[rva_social_sidebar]
-			[rva_ad name="Big_Boy_H1" class="wrap ad-big-boy pad-bottom"]
-		[/rva_social_sidebar]'
+		//Don't display the sidebar on mobile
+		'[notphone]
+			[rva_social_sidebar]
+				[rva_ad name="Big_Boy_H1" class="wrap ad-big-boy pad-bottom"]
+			[/rva_social_sidebar]
+		[/notphone]'
 	);
 	
 	echo do_shortcode('
 		<div class="flex" >
-			[rva_ad name="Big_Boy_H2" class="wrap ad-big-boy pad-bottom"] [rva_ad name="Big_Boy_H3" class="wrap ad-big-boy"]
+			[rva_ad name="Big_Boy_H2" class="wrap ad-big-boy pad-bottom"]
+			[notphone]
+				[rva_ad name="Big_Boy_H3" class="wrap ad-big-boy"]
+			[/notphone]
 		</div>');
 
 	echo do_shortcode('

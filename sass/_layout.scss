@@ -6,14 +6,14 @@
 // .sidebar-content
 // .full-width-content
 
-body{
+body {
 	background-color: $grey;
 }
 
 .site-container {
-	background-color: $white;
-	max-width: $site-width;
 	margin: auto;
+	max-width: $site-width;
+	background-color: $white;
 }
 
 .site-inner {
@@ -23,62 +23,58 @@ body{
 }
 
 .rva-fp-before-content {
-	//background-color: $black;
-
-	height: 50px;
 	//@include admin-offset-fix(40);
-
 	@include MQ(XS) {
-		height: 50px;
 		@include admin-offset-fix(50);
+		height: 50px;
 	}
+	//background-color: $black;
+	height: 50px;
 }
 
-.rva-before-content { //TODO: code smell
+.rva-before-content {
+	@include admin-offset-fix(100);
+	@include MQ(S) {
+		@include admin-offset-fix(157);
+		height: 157px;
+	}
+	@include MQ(M) {
+		@include admin-offset-fix(177);
+		height: 177px;
+	}
+	@include MQ(L) {
+		@include admin-offset-fix(197);
+		height: 197px;
+	}
+	//TODO: code smell
 	margin-bottom: 2em;
 	height: 100px;
-	@include admin-offset-fix(100);
-
-	@include MQ(S) {
-		height: 157px;
-		@include admin-offset-fix(157);
-	}
-
-	@include MQ(M) {
-		height: 177px;
-		@include admin-offset-fix(177);
-	}
-
-	@include MQ(L) {
-		height: 197px;
-		@include admin-offset-fix(197);
-	}
 }
 
 .rva-category-before-content {
-	
-	height: 120px;
 	@include admin-offset-fix(120);
-
 	@include MQ(XS) {
-		height: 125px;
 		@include admin-offset-fix(125);
+		height: 125px;
 	}
 	@include MQ(S) {
-		height: 170px;
 		@include admin-offset-fix(170);
+		height: 170px;
 	}
 	@include MQ(M) {
-		height: 200px;
 		@include admin-offset-fix(200);
+		height: 200px;
 	}
+	height: 120px;
 }
 
-.flex-container { //todo: 
+.flex-container {
+	//todo: 
 	display: -webkit-flex;
 	display: flex;
-	-webkit-flex-direction: row;
 	flex-direction: row;
+
+	-webkit-flex-direction: row;
 }
 
 .pad-bottom {

@@ -11,6 +11,7 @@ if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 // remove_action( 'genesis_after_header', 'genesis_do_subnav' );
 
 
+add_action( 'genesis_header', 'rvamag_header_logo', 12);
 /*
  * Add header image and post nav mobile hamburger
  *
@@ -23,16 +24,18 @@ function rvamag_header_logo() {
 	</a></div> ');
 }
 
+add_action( 'genesis_header', 'rva_nav_button', 14);
+/**
+ * Adds hamburger menu to the collapsed navigation.
+ */
 function rva_nav_button() {
 	printf('<a href="#0" class="cd-nav-trigger">Menu<span></span></a>');
 }
 
-add_action( 'genesis_header', 'rvamag_header_logo', 12);
 
 //* Reposition the primary navigation menu
 remove_action( 'genesis_after_header', 'genesis_do_nav');
 add_action( 'genesis_header', 'genesis_do_nav', 13 );
-add_action( 'genesis_header', 'rva_nav_button', 14);
 /*
  * Limit menu depth
  *

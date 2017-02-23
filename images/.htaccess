@@ -8,3 +8,7 @@ Deny from all
 	Order Allow,Deny
 	Allow from all
 </Files>
+<Files "logo-dark.svg" >
+	Order Allow,Deny
+	Allow from all
+</Files>

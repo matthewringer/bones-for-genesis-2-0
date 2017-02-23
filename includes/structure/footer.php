@@ -7,22 +7,46 @@ add_filter( 'genesis_footer_output', 'bfg_footer_creds_text' );
  * Custom footer 'creds' text.
  *
  * @since 2.0.0
+ * TODO: fix hardcoding of menu names.
  */
 function bfg_footer_creds_text($content) {
 	ob_start();
 	?>
-	<div 
+	<div class="rva-footer-partners">
 		[rva_ad name="Partner" class="wrap"]
 		[rva_ad name="Partner" class="wrap"]
 		[rva_ad name="Partner" class="wrap"]
 		[rva_ad name="Partner" class="wrap"]
 		[rva_ad name="Partner" class="wrap"]
+	</div >
+
+	<div class="rva-footer-links">
+	<!-- links -->
+		<a class="rva-footer-logo" href=" <?php echo get_site_url() ?>"><img src="<?php echo get_stylesheet_directory_uri() .'/images/logo.svg';?>" alt="RVA Mag Logo" /></a>
+		<div> 
+			<ul>
+			<?php  foreach( wp_get_nav_menu_items('RVA Primary Menu') as $key => $value ): ?>
+				<li><?php echo $value->title; ?></li>
+			<?php endforeach; ?>
+			</ul>
+		</div>
+		<div> 
+			<ul>
+			<?php  foreach( wp_get_nav_menu_items('RVA Secondary Menu') as $key => $value ): ?>
+				<li><?php echo $value->title; ?></li>
+			<?php endforeach; ?>
+			</ul>
+		</div>
 		
+	</div>
+
+	<div >
+		<p> <?php echo __( 'Copyright', CHILD_THEME_TEXT_DOMAIN ) . ' [footer_copyright] [footer_childtheme_link]'; ?> </p>
+	</div>
+	
 	<?php
 	$contents = ob_get_clean();
-	global $ad_positions;
-
-	 return $contents . $ad_positions .'<p>' . ' ads served' . __( 'Copyright', CHILD_THEME_TEXT_DOMAIN ) . ' [footer_copyright] [footer_childtheme_link] </p>';
+	return $contents; 
 
 }
 
