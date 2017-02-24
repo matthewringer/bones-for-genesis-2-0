@@ -24,12 +24,12 @@ body {
 
 .rva-fp-before-content {
 	//@include admin-offset-fix(40);
-	@include MQ(XS) {
-		@include admin-offset-fix(50);
-		height: 50px;
-	}
 	//background-color: $black;
 	height: 50px;
+	@include MQ(XS) {
+		@include admin-offset-fix(0);
+		height: 0;
+	}
 }
 
 .rva-before-content {

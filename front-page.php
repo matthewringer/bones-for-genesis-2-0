@@ -137,7 +137,7 @@ function rvamag_frontpage_loop() {
 	 * Output subscription box
 	 */
 	
-	rva_subscribtion_form();
+	echo rva_subscribtion_form();
 
 	echo do_shortcode(
 		'[rva_gutter_box title="READ MORE"]'

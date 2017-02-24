@@ -13,6 +13,7 @@ textarea {
 	padding: .6em 1em;
 	max-width: 100%;
 	width: 100%;
+	height: 24px;
 	border: 1px solid $grey;
 	border-radius: .25em;
 	background: $white;
@@ -54,6 +55,10 @@ textarea {
 	resize: vertical; // Allow only vertical resizing of textareas.
 }
 
+fieldset {
+		border: none;
+}
+
 select {
 	width: 100%;
 }
@@ -67,6 +72,14 @@ input[type='button'],
 input[type='reset'],
 input[type='submit'] {
 	@extend .btn;
+}
+
+input[type=text] {
+	box-sizing: border-box; // Overrides normalize.css
+	
+	//padding-bottom: .5em;
+	width: 50%;
+	//transform: translateY(-1.5px);
 }
 
 input[type='search'] {
@@ -104,6 +117,8 @@ input[type='search'] {
 }
 
 .cd-subscribe-box {
+	text-align: center;
+	
 	@include MQ(S) {
 		float: left;
 		width: 50%;
@@ -112,37 +127,29 @@ input[type='search'] {
 			margin-bottom: 0;
 		}
 	}
-	text-align: center;
+
 	* img {
 		width: 100%;
 		height: auto;
+		border-radius: .25em;
 	}
 
 	& input {
 		margin-bottom: 1em;
 	}
 
-	form {
+	& form {
+		height: 100px;
 		margin: 0 auto;
 		padding: 15pt 0;
-		//margin: 1em 0;
 		border-radius: .25em;
 		background-color: $grey;
-	}
-
-	& fieldset {
-		border: none;
-	}
-
-	& input[type=text] {
-		padding-bottom: .5em;
-		width: 50%;
-		transform: translateY(-1.5px);
 	}
 }
 
 .cd-subscribe-block {
-	& div.cd-subscribe-box:nth-of-type(2n) {
+
+	& div:nth-of-type(2).cd-subscribe-box {
 		@include MQ(S) {
 			padding-right: 1em;
 		}
@@ -151,7 +158,7 @@ input[type='search'] {
 		}
 	}
 
-	& div.cd-subscribe-box:nth-of-type(3n) {
+	& div:nth-of-type(3).cd-subscribe-box {
 		@include MQ(S) {
 			padding-left: 1em;
 		}

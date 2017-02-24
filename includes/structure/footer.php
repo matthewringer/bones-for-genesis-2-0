@@ -37,7 +37,12 @@ function bfg_footer_creds_text($content) {
 			<?php endforeach; ?>
 			</ul>
 		</div>
-		
+		<div> 
+			[rva_social_accounts]
+		</div>
+		<div>
+			[rva_mail_form]
+		</div>
 	</div>
 
 	<div >

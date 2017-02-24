@@ -132,3 +132,61 @@ function rva_social_sharing_buttons() {
         <?php
 	}
 }
+
+/**
+ *
+ */
+function rva_social_sidebar_shortcode($attrs, $content) {
+	ob_start();
+    ?> 
+	<aside class="big-boy-h0-sidebar"> 
+	<?php
+		
+		echo do_shortcode('[rva_ad name="Big_Boy_H0" class="wrap ad-big-boy"]');
+		echo rva_social_account_buttons();
+		echo do_shortcode($content);
+	?> 
+	</aside> 
+	<?php
+    return do_shortcode(ob_get_clean());
+}
+add_shortcode( 'rva_social_sidebar', 'rva_social_sidebar_shortcode' );
+
+/**
+ *
+ */
+function rva_social_account_buttons() {
+	$options =  get_option( RVA_SETTINGS_FIELD );
+    ob_start();
+	?>
+	<div class="pad-bottom margin-bottom social-buttons " >
+		<div>
+			<h2>Follow RVA Mag</h2>
+            <ul class="social-buttons">
+                <li class="btn-facebook"><a target="_blank" href="<?php echo esc_attr( $options['rva_socialmedia_facebook_url'] ); ?> "><i class="fa fa-facebook" ></i><span>Facebook</span></a></li>
+                <li class="btn-twitter"><a target="_blank" href="<?php echo esc_attr( $options['rva_socialmedia_twitter_url'] ); ?>"><i class="fa fa-twitter"></i><span>Twitter</span></a></li>
+                <li class="btn-tumblr"><a target="_blank" href="<?php echo esc_attr( $options['rva_socialmedia_tumblr_url'] ); ?>"><i class="fa fa-tumblr"></i><span>Tumblr</span></a></li>
+                <li class="btn-youtube"><a target="_blank" href="<?php echo esc_attr( $options['rva_socialmedia_youtube_url'] ); ?>"><i class="fa fa-youtube"></i><span>YouTube</span></a></li>
+                <li class="btn-instagram"><a target="_blank" href="<?php echo esc_attr( $options['rva_socialmedia_instagram_url'] ); ?>"><i class="fa fa-instagram"></i><span>Instagram</span></a></li>
+            </ul>
+		</div>
+	</div>
+	<?php
+    return ob_get_clean();
+}
+
+function rva_social_accounts() {
+    $options =  get_option( RVA_SETTINGS_FIELD );
+    ob_start();
+    ?>
+    <ul>
+        <li class="btn-facebook"><a target="_blank" href="<?php echo esc_attr( $options['rva_socialmedia_facebook_url'] ); ?> "><i class="fa fa-facebook" ></i><span>Facebook</span></a></li>
+        <li class="btn-twitter"><a target="_blank" href="<?php echo esc_attr( $options['rva_socialmedia_twitter_url'] ); ?>"><i class="fa fa-twitter"></i><span>Twitter</span></a></li>
+        <li class="btn-tumblr"><a target="_blank" href="<?php echo esc_attr( $options['rva_socialmedia_tumblr_url'] ); ?>"><i class="fa fa-tumblr"></i><span>Tumblr</span></a></li>
+        <li class="btn-youtube"><a target="_blank" href="<?php echo esc_attr( $options['rva_socialmedia_youtube_url'] ); ?>"><i class="fa fa-youtube"></i><span>YouTube</span></a></li>
+        <li class="btn-instagram"><a target="_blank" href="<?php echo esc_attr( $options['rva_socialmedia_instagram_url'] ); ?>"><i class="fa fa-instagram"></i><span>Instagram</span></a></li>
+    </ul>
+    <?php
+    return ob_get_clean();
+}
+add_shortcode('rva_social_accounts','rva_social_accounts');

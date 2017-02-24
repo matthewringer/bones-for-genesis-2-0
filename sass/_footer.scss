@@ -32,11 +32,27 @@
 
 .rva-footer-links {
 	display: flex;
-	justify-content: space-around;
-	align-items: center;
-	padding: 2em;
+	flex-wrap: wrap;
+	justify-content: space-between; 
+	align-items: flex-start;
 	background-color: $dark-grey;
-	height: 100px;
+	min-height: 100px;
+
+	& div, a {
+		color: $yellow;
+		padding: 5px 5px;
+		font-weight: 800;
+		line-height: 1.5;
+	}
+
+	& i:before {
+
+		text-align: center;
+	}
+
+	i {
+		float: right;
+	}
 }
 
 .rva-footer-logo {
