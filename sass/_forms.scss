@@ -67,7 +67,6 @@ select {
 	text-overflow: ellipsis;
 }
 
-button,
 input[type='button'],
 input[type='reset'],
 input[type='submit'] {
@@ -76,9 +75,8 @@ input[type='submit'] {
 
 input[type=text] {
 	box-sizing: border-box; // Overrides normalize.css
-	
+	//width: 50%;
 	//padding-bottom: .5em;
-	width: 50%;
 	//transform: translateY(-1.5px);
 }
 
@@ -99,6 +97,8 @@ input[type='search'] {
 	align-items: center;
 
 	input[type='submit'] {
+		@extend .btn-alert;
+
 		flex: 0 0 auto;
 		margin-left: .25em;
 	}
@@ -135,7 +135,12 @@ input[type='search'] {
 	}
 
 	& input {
+		//font-size: 1rem;
 		margin-bottom: 1em;
+	}
+
+	& input[type="text"] {
+		width: 50%;
 	}
 
 	& form {

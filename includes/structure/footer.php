@@ -26,14 +26,14 @@ function bfg_footer_creds_text($content) {
 		<div> 
 			<ul>
 			<?php  foreach( wp_get_nav_menu_items('RVA Primary Menu') as $key => $value ): ?>
-				<li><?php echo $value->title; ?></li>
+				<li><a href="<?php echo $value->url; ?>" > <?php echo $value->title; ?> </a></li>
 			<?php endforeach; ?>
 			</ul>
 		</div>
 		<div> 
 			<ul>
 			<?php  foreach( wp_get_nav_menu_items('RVA Secondary Menu') as $key => $value ): ?>
-				<li><?php echo $value->title; ?></li>
+				<li><a href="<?php echo $value->url; ?>" > <?php echo $value->title; ?> </a></li>
 			<?php endforeach; ?>
 			</ul>
 		</div>

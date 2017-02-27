@@ -40,12 +40,12 @@ function rva_mail_list_shortcode($atts, $content) {
         <?php echo do_shortcode($content); ?>
         <fieldset class="">
             <input type="text" name="cm-wdhtd-wdhtd" id="wdhtd-wdhtd" size="25">
-            <button class="btn btn-alert" href="javascript:;" onclick="
+            <input type="button" class="btn btn-alert" href="javascript:;" value="SUBSCRIBE" onclick="
             (function(){
                 $('.rva-modal-close').click( ()=>{ $('#createsend-modal').toggle(false); } );
                 $('#createsend-modal').toggle(true);
                 $('#mailing_list').submit();
-                }())">SUBSCRIBE</button>
+                }())">
         </fieldset>
     </form>
     <div id="createsend-modal" class="rva-modal">
@@ -67,7 +67,7 @@ function rva_subscribe_btn_shortcode($atts, $content) {
         <fieldset>
             <input type="hidden" name="cmd" value="_s-xclick">
             <input type="hidden" name="hosted_button_id" value="QGUWHR8MA4KWU">
-            <button class="btn btn-alert" name="submit" alt="Subscribe to RVA Magazine" >BUY NOW</button>
+            <input type="button" class="btn btn-alert" name="submit" value="BUY NOW" alt="Subscribe to RVA Magazine">
         </fieldset>
     </form>
     <?php

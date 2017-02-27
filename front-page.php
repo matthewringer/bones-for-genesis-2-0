@@ -87,7 +87,7 @@ function rvamag_frontpage_loop() {
 		array(
 			'orderby'       => 'post_date',
 			'order'         => 'DESC',
-			'posts_per_page'=> '8',
+			'posts_per_page'=> '9',
 			'category__not_in' => '11', 
 			//TODO: fix hardcoded reference
 		), 

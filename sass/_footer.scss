@@ -39,19 +39,41 @@
 	min-height: 100px;
 
 	& div, a {
+		flex-grow: 1;
 		color: $yellow;
-		padding: 5px 5px;
+		padding: 5px 0;
 		font-weight: 800;
 		line-height: 1.5;
 	}
 
+	div:nth-of-type(3) {
+		max-width: 90px;
+	}
+	div:nth-of-type(4) {
+		//flex-grow: 2;
+		text-align: center;
+	}
+
+	ul {
+		margin-right: 5px;
+	}
+
 	& i:before {
 
-		text-align: center;
+		text-align: left;
+		//padding-right: 10px;
 	}
 
 	i {
 		float: right;
+	}
+
+	& input[type='text'] {
+		max-width: 50%;
+
+		@include MQ(S){
+			max-width: 68%;
+		}
 	}
 }
 

@@ -70,10 +70,10 @@
 .title-area {
 	@include MQ(XS) {
 		width: 100%;
-		font-size: 1em;
+		font-size: 1rem;
 	}
 	@include MQ(S) {
-		font-size: 1.8em;
+		font-size: 1.8rem;
 	}
 	@include MQ(M) {
 		position: absolute;

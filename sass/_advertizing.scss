@@ -7,10 +7,16 @@
 }
 
 .ad-centered {
+	//display: flex;
+	//align-items: center;
 	position: relative;
 	margin-right: auto;
 	margin-left: auto;
 	text-align: center;
+	height: 100%;
+	//background-color: $grey;
+	margin-bottom: 2em;
+
 }
 
 .ad-leaderboard {
