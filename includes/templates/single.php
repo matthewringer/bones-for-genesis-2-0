@@ -64,7 +64,7 @@ add_action('genesis_before_content', 'rva_before_content');
 */
 function rva_before_content() {
 	?> 
-	<div class="rva-before-content"></div>
+	<div class="rva-before-entry-content"></div>
 	<?php 
 		if(get_previous_post(TRUE))
 			previous_post_link( '<div class="rva-prev-link">%link</div>', '<i class="fa fa-chevron-left" ></i>', TRUE );

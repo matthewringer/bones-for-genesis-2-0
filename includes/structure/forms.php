@@ -32,6 +32,7 @@ function rva_subscribtion_form() {
     <?php
 return do_shortcode( ob_get_clean() );
 }
+add_shortcode("rva_subscribtion_form","rva_subscribtion_form");
 
 function rva_mail_list_shortcode($atts, $content) {
     ob_start();

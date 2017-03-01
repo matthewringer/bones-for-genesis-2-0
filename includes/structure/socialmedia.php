@@ -141,9 +141,8 @@ function rva_social_sidebar_shortcode($attrs, $content) {
     ?> 
 	<aside class="big-boy-h0-sidebar"> 
 	<?php
-		
-		echo do_shortcode('[rva_ad name="Big_Boy_H0" class="wrap ad-big-boy"]');
-		echo rva_social_account_buttons();
+		// echo do_shortcode('[rva_ad name="Big_Boy_H0" class="wrap ad-big-boy"]');
+		// echo rva_social_account_buttons();
 		echo do_shortcode($content);
 	?> 
 	</aside> 
@@ -174,6 +173,7 @@ function rva_social_account_buttons() {
 	<?php
     return ob_get_clean();
 }
+add_shortcode('rva_social_account_buttons','rva_social_account_buttons');
 
 function rva_social_accounts() {
     $options =  get_option( RVA_SETTINGS_FIELD );

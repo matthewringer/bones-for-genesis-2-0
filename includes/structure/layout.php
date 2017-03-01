@@ -13,8 +13,6 @@ add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_c
 
 /**
  *  Hero Story Box
- * 
- * 
  */
 function hero_story($atts) {
 	$class = ( is_array($atts) && array_key_exists ( 'class' , $atts ) ) ? $atts['class'] : 'cd-hero-box fx-paralax';
@@ -37,31 +35,28 @@ add_shortcode('rva_demihero_box', 'demi_hero_story');
 
 /**
  *  Open an Fullwidth Gutterbox div
- * 
- * 
+ *  $atts [title=>string, classes=>string]
+ * 	$content 
  */
-function start_section($title, $classes = '') {
-?>
-	<div class="cd-gutter-box <?php echo $classes; ?>">
+function start_section( $atts, $content) {
+	ob_start();
+	?>
+	<div class="cd-gutter-box <?php echo $atts['classes']; ?>">
+		<?php if($atts['title'] != '') : ?>
 		<div class="section-title">
-			<h2><?php echo $title; ?></h2>
+			<h2><?php echo $atts['title']; ?></h2>
 		</div>
-<?php
+		<?php endif; ?>
+		<?php echo do_shortcode($content); ?> 
+	</div> <!-- End Gutter Box Section --> 
+	<?php
+	//TODO: return not echo....
+	return ob_get_clean();
 }
-
-/**
- *  Close a div
- * 
- * 
- */
-function close_section() {
-	?> </div> <!-- End Gutter Box Section --> <?php
-}
+add_shortcode('rva_layout_section', 'start_section');
 
 function rva_gutter_box_shortcode($atts, $content) {
-	start_section($atts['title'], $atts['classes']);
-	echo do_shortcode($content);
-	close_section();
+	return start_section($atts, $content);
 }
 add_shortcode( 'rva_gutter_box', 'rva_gutter_box_shortcode' );
 
@@ -85,25 +80,29 @@ function rva_post_thumbnail() {
 }
 
 /**
- * 3 by 6 post thumbnail box
  * 
- * 
-*/
-function cb_3x6($title, $args, $sidebar = '') {
+ */
+function top_box($atts, $content) {
+
+	$title = $atts['title'];
+	$args = array(
+		'orderby'       => 'post_date',
+		'order'         => 'DESC',
+		'posts_per_page'=> '9',
+		//TODO: should be not in featured.... fix hardcoded reference!
+		'category__not_in' => get_cat_id_by_slug('feature')
+	);
+	$sidebar = $content;
+	
+	ob_start();
 	$loop = new WP_Query( $args );
 	if( $loop->have_posts() ) {
 		// loop through posts
-
-		start_section($title, "flex");
-		
 		$sidebar_class = "";
-		
-		if ($sidebar) {
-			$sidebar_class = "cd-sidebar";
+		if ($sidebar !='') {
+			$sidebar_class = "rva-sidebar";
 		}
-		
-		echo '<div class="cd-3x3-box ' . $sidebar_class . '">';
-
+		echo '<div class="rva-mobile-lead-box ' . $sidebar_class . '">';
 		while( $loop->have_posts() ): $loop->the_post();
 			rva_post_thumbnail();
 		endwhile;
@@ -111,15 +110,43 @@ function cb_3x6($title, $args, $sidebar = '') {
 		if ($sidebar != '') {
 			echo do_shortcode($sidebar);
 		}
-		
-		//rva_bigboy_block();
-
-		close_section();
 	}
-
 	wp_reset_postdata();
+	$content = ob_get_clean();
+	return start_section( array(title => $title, classes => "flex"), $content );
 }
+add_shortcode('rva_topbox', 'top_box');
 
+/**
+ * 3 by 6 post thumbnail box
+*/
+function rva_3x6($atts) {
+	
+	$title = $atts['title']; 
+	$slug = $atts['slug'];
+
+	$args = [
+		'orderby'       => 'post_date',
+		'order'         => 'DESC',
+		'posts_per_page'=> '6',
+		'category_name' => $slug 
+	];
+
+	ob_start();
+	$loop = new WP_Query( $args );
+	if( $loop->have_posts() ) {
+		// loop through posts
+		echo '<div class="rva-3x3-box">';
+		while( $loop->have_posts() ): $loop->the_post();
+			rva_post_thumbnail();
+		endwhile;
+		echo '</div>';
+	}
+	wp_reset_postdata();
+	$content = ob_get_clean();
+	return start_section( array(title => $title, classes => "flex"), $content );
+}
+add_shortcode('rva_3x6', 'rva_3x6');
 
 /**
  * 1 over 2 post thumbnail box
@@ -127,7 +154,7 @@ function cb_3x6($title, $args, $sidebar = '') {
  * 
 */
 function rva_1_over_2_box($attr, $content) {
-    
+
 	$title = $attr['title']; 
 	$slug = $attr['slug'];
 	$ad_html = do_shortcode($content);
@@ -140,7 +167,8 @@ function rva_1_over_2_box($attr, $content) {
 	);
 
     $loop = new WP_Query( $args );
-    start_section($title);
+
+	ob_start();
 	//flex container 
 	?> 
 	<div class="flex-container"> 
@@ -151,7 +179,7 @@ function rva_1_over_2_box($attr, $content) {
 			$loop->the_post(); 
 			echo do_shortcode('[rva_demihero_box]');
 			$loop->post; ?>
-			<div class="cd-2x1-box rva-top-spacing ">
+			<div class="rva-2x1-box rva-top-spacing ">
 				<?php while( $loop->have_posts() ) { $loop->the_post(); rva_post_thumbnail(); } ?>
 			</div>
 			<?php endif;
@@ -162,7 +190,8 @@ function rva_1_over_2_box($attr, $content) {
 		<?php endif; ?>
 	</div> 
 	<?php
-	echo do_shortcode('[rva_ad name="Leaderboard" class="wrap ad-leaderboard"]');
-    close_section();
+    $content = ob_get_clean();
+
+	return start_section(array(title=>$title, classes=>""), $content);
 }
 add_shortcode('rva_1x2','rva_1_over_2_box');
