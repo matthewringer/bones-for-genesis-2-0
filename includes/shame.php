@@ -14,7 +14,7 @@ add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
  */
 
 function rva_post_summary() {
-		echo '<div class="cd-hero-box fx-paralax" style = "background-image: url(' . get_the_post_thumbnail_url() . ');" >';
+		echo '<div class="rva-hero-box fx-paralax" style = "background-image: url(' . get_the_post_thumbnail_url() . ');" >';
 		echo	'<div class="title-block" >';
 		echo		'<h2 class="article-title"><a href="' . get_the_permalink() .'">'. get_the_title() . '</a></h2>';
 		echo		'<br/>';

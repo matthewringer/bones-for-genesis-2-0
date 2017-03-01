@@ -5,68 +5,84 @@
 	left: -9999px;
 }
 
-.cd-logo {
-	position: relative;
-	left: 0;
-	z-index: 99;
+.rva-logo {
 	float: left;
 	width: 20%;
-	height: 50px;
-	/* logo box style */
-	//background-color: transparent;
-
+	text-align: right;
+	padding-left: 1em;
 	img {
-		@include transform(translateX(-50%) translateY(-50%));
-		@include MQ(S) {
-			min-width: 80px;
-		}
-		@include MQ(M) {
-			top: 80%;
-			left: 75%;
-			min-width: 100px;
-			width: 2em;
-		}
-		position: absolute;
-		top: 35%;
-		left: 70%;
-		display: block;
-		min-width: 50px;
-		width: 2em;
-		height: auto;
+		height: 50px;
 	}
 }
 
-
 .nav-primary {
-	float: left;
-	width: 80%;
+	//position: absolute;
+	top: -9999px;
+	left: -9999px;
+
+	@include MQ(M) {
+		float: left;
+		width: 80%;
+	}
 }
 
 .genesis-nav-menu {
+	// position: fixed;
+	// top: 50px;
+	@include admin-offset-fix(50);
+	height: 50px;
 
-	@include transform(translateY(-120%));
-	@include transition(transform .3s);
-	//@include admin-offset-fix(50);
-	
+	@include transform(translateY(-1200%));
+	@include transition(transform .1s);
+	left: 0;
+	width: 100%;
+	background: $black;
+	text-align: center;
+	text-transform: uppercase;
+	font-weight: 800;
+	font-family: $sans;
+
 	li.menu-item a {
-			font-size: 1.8rem;
+		display: block;
+		padding: 1em 0;
+		border: none;
+		color: $white;
+		font-size: 1.8rem;
+		text-decoration: none;
+		white-space: nowrap;
+
+		span {
+			opacity: 1;
+		}
+	}
+
+	li:first-of-type a {
+		border-top-width: 1px;
+	}
+	// Sublevels
+	.sub-menu {
+		position: absolute;
+		top: 100%;
+		opacity: 0;
+		transition: opacity .4s ease-in-out;
+
+		> .menu-item {
+			> a {
+				position: relative;
+			}
 		}
 
-	
-	@include MQ(S) {
-		@include admin-offset-fix(90);
-		top: 90px;
+		.sub-menu {
+		}
 	}
-	
-	
-	
+
 	@include MQ(M) {
 		@include transform(translateY(0));
 		position: static;
 		display: table;
 		padding: 0;
 		width: auto;
-		height: 90px;
+		//height: 90px;
 		background: transparent;
 		text-align: center;
 
@@ -96,52 +112,10 @@
 			border-top: none;
 		}
 	}
-	position: fixed;
-	top: 50px;
-	left: 0;
-	width: 100%;
-	background: $black;
-	text-align: center;
-	text-transform: uppercase;
-	font-weight: 800;
-	font-family: $sans;
 
-
-	li.menu-item a {
-		display: block;
-		padding: 1em 0;
-		border: none;
-		color: $white;
-		text-decoration: none;
-		white-space: nowrap;
-
-		span {
-			opacity: 1;
-		}
-	}
-
-	li:first-of-type a {
-		border-top-width: 1px;
-	}
-	// Sublevels
-	.sub-menu {
-		position: absolute;
-		top: 100%;
-		opacity: 0;
-		transition: opacity .4s ease-in-out;
-
-		> .menu-item {
-			> a {
-				position: relative;
-			}
-		}
-
-		.sub-menu {
-		}
-	}
 }
 
-.cd-nav-trigger span {
+.rva-nav-trigger span {
 	/* hamburger menu */
 	background-color: $white;
 
@@ -157,7 +131,27 @@
 	}
 }
 
-.nav-is-visible .cd-nav-trigger span {
+.rva-site-description {
+	display: flex;
+	align-content: center;
+	justify-content: flex-start;
+	height: 50px;
+	float: left;
+    width: 80%;
+
+	span {
+		margin-left: 1em;
+		align-self: center;
+		color: $yellow;
+		font-weight: 600;
+		font-style: italic;
+	}
+	@include MQ(M){
+		display: none;
+	}
+}
+
+.nav-is-visible .rva-nav-trigger span {
 	/* hide line in the center on mobile when nav is visible */
 	background-color: rgba($white, 0);
 
@@ -168,33 +162,25 @@
 	}
 }
 
-.cd-nav-trigger {
-	@include admin-offset-fix(70);
-	@include MQ(S) {
-		@include admin-offset-fix(120);
-		top: 120px;
-		right: 20px;
-	}
+.rva-nav-trigger {
+	position: absolute;
+	top: 50%;
+	right: 10px;
+	color: transparent;
+	white-space: nowrap;
+
 	@include MQ(M) {
 		display: none;
 	}
-	position: fixed;
-	top: 70px;
-	right: 10px;
-	display: block;
-	overflow: hidden;
-	width: 35px;
-	height: 40px;
-	color: transparent;
-	white-space: nowrap;
 
 	span {
 		@include transition(background-color .3s .3s);
 		position: absolute;
-		top: 20%;
-		left: 50%;
-		margin-top: -1px;
-		margin-left: -10px;
+	
+		//top: 50%;
+		right: 10px;
+		// margin-top: -1px;
+		// margin-left: -10px;
 		width: 20px;
 		height: 4px;
 
@@ -227,13 +213,17 @@
 	width: 100%;
 	height: 100%;
 
-	.cd-nav-trigger span {
-		&::before {
-			@include transform(translateY(0) rotate(-45deg));
-		}
+	.rva-nav-trigger {
+		top: 40px;
+		right: 10px;
+		span {
+			&::before {
+				@include transform(translateY(0) rotate(-45deg));
+			}
 
-		&::after {
-			@include transform(translateY(0) rotate(45deg));
+			&::after {
+				@include transform(translateY(0) rotate(45deg));
+			}
 		}
 	}
 

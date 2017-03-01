@@ -34,7 +34,8 @@ function frontpage_scripts() {
 	wp_enqueue_script( 'rva-trans-header', get_stylesheet_directory_uri() . '/js/trans-header.js', array( 'jquery' ), '1.0', true );
 }
 
-add_action( 'genesis_before_header', 'rva_before_header' );
+//add_action( 'genesis_before_header', 'rva_before_header' );
+add_action( 'genesis_header_right', 'rva_before_header' );
 /** 
 * print pre-header content
 *
@@ -43,7 +44,7 @@ add_action( 'genesis_before_header', 'rva_before_header' );
 function rva_before_header() {
 	?>
 		<div class="before-header">
-			<?php echo do_shortcode('[rva_ad name="Leaderboard" class="wrap ad-leaderoard"]'); ?>
+			<?php echo do_shortcode('[rva_ad name="Leaderboard" class="ad-leaderboard"]'); ?>
 		</div>
 	<?php
 }

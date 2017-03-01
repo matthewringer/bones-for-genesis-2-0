@@ -272,7 +272,7 @@
 	text-align: right;
 }
 
-.cd-hero-box {
+.rva-hero-box {
 	
 	display: -webkit-box;
 	display: -moz-box;
@@ -301,7 +301,7 @@
 }
 
 .rva-demi-hero {
-	@extend .cd-hero-box;
+	@extend .rva-hero-box;
 	height: 300px;
 }
 
@@ -355,7 +355,7 @@ ul.social-links {
 	right: 0;
 }
 
-.cd-gutter-box {
+.rva-gutter-box {
 	overflow: hidden;
 	margin-right: 5%;
 	margin-left: 5%;
@@ -364,7 +364,7 @@ ul.social-links {
 .flex {
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: center;
+	justify-content: space-between;
 }
 
 .rva-2x1-box {

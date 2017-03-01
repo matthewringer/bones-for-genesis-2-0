@@ -71,7 +71,7 @@ function rva_before_content() {
 		if(get_next_post(TRUE))
 			next_post_link( '<div class="rva-next-link">%link</div>', '<i class="fa fa-chevron-right" ></i>', TRUE );
 	?>
-	<div class="cd-gutter-box article" >
+	<div class="rva-gutter-box article" >
 	<?php
 }
 
@@ -131,7 +131,7 @@ add_action('genesis_after_content', 'rva_after_content');
 */
 function rva_after_content() {
 	?>
-		</div> <!-- / cd-gutterbox -->'
+		</div> <!-- / rva-gutterbox -->'
 	<?php
 }
 

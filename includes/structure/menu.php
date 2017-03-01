@@ -18,24 +18,30 @@ add_action( 'genesis_header', 'rvamag_header_logo', 12);
  * @since 
  */
 function rvamag_header_logo() {
-	printf( '
-	<div class="cd-logo"><a href="'. get_site_url() .'">
-		<img src="'. get_stylesheet_directory_uri() .'/images/logo.svg" alt="RVA Mag Logo" />
-	</a></div> ');
+	?>
+	<a class="rva-logo" href="<?php echo get_site_url(); ?>">
+		<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo.svg" alt="RVA Mag Logo" />
+	</a>
+	<div class="rva-site-description">
+		<span><?php echo get_bloginfo( 'description' ); ?> </span>
+	</div>
+	<?php
 }
+
+//* Reposition the primary navigation menu
+remove_action( 'genesis_after_header', 'genesis_do_nav');
+add_action( 'genesis_header', 'genesis_do_nav', 13 );
 
 add_action( 'genesis_header', 'rva_nav_button', 14);
 /**
  * Adds hamburger menu to the collapsed navigation.
  */
 function rva_nav_button() {
-	printf('<a href="#0" class="cd-nav-trigger">Menu<span></span></a>');
+	?>
+	<a href="#0" class="rva-nav-trigger">Menu<span></span></a>
+	<?php
 }
 
-
-//* Reposition the primary navigation menu
-remove_action( 'genesis_after_header', 'genesis_do_nav');
-add_action( 'genesis_header', 'genesis_do_nav', 13 );
 /*
  * Limit menu depth
  *

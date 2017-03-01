@@ -1,8 +1,6 @@
 
 .before-header {
-	@include MQ(S) {
-		height: 90px;
-	}
+	
 	@include admin-offset-fix;
 	position: fixed;
 	top: 0;
@@ -17,21 +15,28 @@
 	border-top: 1px;
 	background: $black;
 	text-align: center;
+
+	@include MQ(S) {
+		height: 90px;
+	}
 }
 
 #wpadminbar {
 	bottom: 0 !important;
 }
 
-
+.header-widget-area{
+	width: 100%;
+	display: block;
+}
 
 .site-header-offset {
 	@include admin-offset-fix(50);
+	top: 50px;
 	@include MQ(S) {
 		@include admin-offset-fix(90);
 		top: 90px;
 	}
-	top: 50px;
 }
 
 .site-header {
@@ -45,15 +50,11 @@
 	display: flex;
 	max-width: $site-width;
 	width: 100%;
-	//background-color: rgb(13, 13, 13);
-	//background-color: rgba(13, 13, 13, 1); //TODO: screen flash on load.
 	background-color: rgba($dark-grey, .6);
 	box-shadow: 0 1px 1px rgba($dark-grey, .1);
 
 	& .wrap {
 		width: 100%;
-		//background-color: $black;
-
 		& p {
 			color: $yellow;
 			font-weight: 600;
@@ -68,25 +69,25 @@
 
 // hide the SEO title and description
 .title-area {
-	@include MQ(XS) {
-		width: 100%;
-		font-size: 1rem;
-	}
-	@include MQ(S) {
-		font-size: 1.8rem;
-	}
-	@include MQ(M) {
-		position: absolute;
-		top: -9999px;
-		left: -9999px;
-		width: 0;
-	}
-	position: relative;
-	top: 40%;
-	float: right;
-	width: 90%;
-	text-align: center;
-	white-space: nowrap;
+	// position: relative;
+	// top: 40%;
+	// float: right;
+	// width: 90%;
+	// text-align: center;
+	// white-space: nowrap;
+	// @include MQ(XS) {
+	// 	width: 100%;
+	// 	font-size: 1rem;
+	// }
+	// @include MQ(S) {
+	// 	font-size: 1.8rem;
+	// }
+	// @include MQ(M) {
+	// }
+	position: absolute;
+	top: -9999px;
+	left: -9999px;
+	width: 0;
 }
 
 .site-title {
@@ -100,17 +101,23 @@
 }
 
 .site-description {
+	// position: absolute;
+	// top: -9999px;
+	position: relative;
+	top: 25px;
 	@include MQ(XS) {
 		position: initial;
 		top: initial;
 	}
-	position: relative;
-	top: 25px;
+
+	//genesis_attr( 'site-description' )
 }
 
 .header-widget-area {
-	float: right;
+	//float: right;
 
 	.widget {
 	}
 }
+
+

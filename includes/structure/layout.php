@@ -15,7 +15,7 @@ add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_c
  *  Hero Story Box
  */
 function hero_story($atts) {
-	$class = ( is_array($atts) && array_key_exists ( 'class' , $atts ) ) ? $atts['class'] : 'cd-hero-box fx-paralax';
+	$class = ( is_array($atts) && array_key_exists ( 'class' , $atts ) ) ? $atts['class'] : 'rva-hero-box fx-paralax';
 	?>
     	<div class="<?php echo $class; ?>" style = "background-image: url(' <?php echo get_the_post_thumbnail_url(); ?> '); " >
     		<div class="title-block" >
@@ -41,7 +41,7 @@ add_shortcode('rva_demihero_box', 'demi_hero_story');
 function start_section( $atts, $content) {
 	ob_start();
 	?>
-	<div class="cd-gutter-box <?php echo $atts['classes']; ?>">
+	<div class="rva-gutter-box <?php echo $atts['classes']; ?>">
 		<?php if($atts['title'] != '') : ?>
 		<div class="section-title">
 			<h2><?php echo $atts['title']; ?></h2>

@@ -21,10 +21,17 @@
 
 .ad-leaderboard {
 	@extend .ad-centered;
+	width: 320px;
+	height: 50px;
+	
+	//overflow: hidden;
+	//position: absolute;
+	//clip: rect(0px,320px,50px,0px);
+
 	@include MQ(S) {
 		width: 728px;
+		height: 90px;
 	}
-	width: 320px;
 }
 
 .ad-leaderboard::before {

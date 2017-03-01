@@ -5,11 +5,11 @@ function rva_subscribtion_form() {
     $magazine_image = esc_attr( genesis_get_option('rva_subscribe_magazine_image', RVA_SETTINGS_FIELD ) );
     ob_start();
     ?>
-    <div class="cd-gutter-box cd-subscribe-block" >
+    <div class="rva-gutter-box rva-subscribe-block" >
         <div class="section-title">
             <h2>SUBSCRIBE</h2>
         </div>
-        <div class="cd-subscribe-box">
+        <div class="rva-subscribe-box">
             <div class="ar-scale-box">
             <?php printf(
                 '<img class="ar-content" src="%s">',
@@ -20,7 +20,7 @@ function rva_subscribtion_form() {
                 <h2>Subscribe to the print edition of RVA Magazine</h2>
             [/rva_subscribe_btn]
         </div>
-        <div class="cd-subscribe-box">
+        <div class="rva-subscribe-box">
                 [rva_mail_form]
                     <h2>RVA Weekly Email Newsletter to your inbox.</h2>
                 [/rva_mail_form]

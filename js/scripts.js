@@ -9,7 +9,7 @@
 	fitvids('.content');
 
 	//open navigation on mobile
-	$('.cd-nav-trigger').on('click', function(){
+	$('.rva-nav-trigger').on('click', function(){
 		$('header').toggleClass('nav-is-visible');
 	});
 

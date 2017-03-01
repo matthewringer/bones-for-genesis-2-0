@@ -116,7 +116,7 @@ input[type='search'] {
 	}
 }
 
-.cd-subscribe-box {
+.rva-subscribe-box {
 	text-align: center;
 	
 	@include MQ(S) {
@@ -152,9 +152,9 @@ input[type='search'] {
 	}
 }
 
-.cd-subscribe-block {
+.rva-subscribe-block {
 
-	& div:nth-of-type(2).cd-subscribe-box {
+	& div:nth-of-type(2).rva-subscribe-box {
 		@include MQ(S) {
 			padding-right: 1em;
 		}
@@ -163,7 +163,7 @@ input[type='search'] {
 		}
 	}
 
-	& div:nth-of-type(3).cd-subscribe-box {
+	& div:nth-of-type(3).rva-subscribe-box {
 		@include MQ(S) {
 			padding-left: 1em;
 		}

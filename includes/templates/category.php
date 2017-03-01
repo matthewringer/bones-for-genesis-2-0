@@ -26,7 +26,8 @@ add_action( 'wp_enqueue_scripts', 'rva_load_more_args' );
 remove_action( 'genesis_loop', 'genesis_do_loop' );
 add_action( 'genesis_loop', 'rvamag_categorypage_loop' );
 
-add_action( 'genesis_before_header', 'rva_before_header' );
+//add_action( 'genesis_before_header', 'rva_before_header' );
+add_action( 'genesis_header_right', 'rva_before_header' );
 /** 
 * print pre-header content
 *
@@ -35,14 +36,13 @@ add_action( 'genesis_before_header', 'rva_before_header' );
 function rva_before_header() {
 	?>
 		<div class="before-header">
-			<?php echo do_shortcode('[rva_ad name="Leaderboard"]'); ?>
+			<?php echo do_shortcode('[rva_ad name="Leaderboard" class="wrap ad-leaderoard"]'); ?>
 		</div>
 	<?php
 }
 
 add_action('genesis_before_content', 'rvamag_before_content');
 /**
- * 
  *
  */
 function rvamag_before_content() {
