@@ -7,40 +7,32 @@ if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  *
  * @since 2.0.9
  */
-// remove_action( 'genesis_after_header', 'genesis_do_nav' );
+
+//* Reposition the primary navigation menu
+remove_action( 'genesis_after_header', 'genesis_do_nav');
 // remove_action( 'genesis_after_header', 'genesis_do_subnav' );
 
-
-add_action( 'genesis_header', 'rvamag_header_logo', 12);
 /*
  * Add header image and post nav mobile hamburger
  *
  * @since 
  */
-function rvamag_header_logo() {
+function rvamag_header_nav() {
 	?>
-	<a class="rva-logo" href="<?php echo get_site_url(); ?>">
-		<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo.svg" alt="RVA Mag Logo" />
-	</a>
-	<div class="rva-site-description">
-		<span><?php echo get_bloginfo( 'description' ); ?> </span>
+	<div class="rva-nav-wrapper" >
+		<a class="rva-logo" href="<?php echo get_site_url(); ?>">
+			<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo.svg" alt="RVA Mag Logo" />
+		</a>
+
+		<div class="rva-site-description">
+			<span><?php echo get_bloginfo( 'description' ); ?> </span>
+		</div>
+		<?php echo genesis_do_nav(); ?>
+		<a href="#0" class="rva-nav-trigger">Menu<span></span></a>
 	</div>
 	<?php
 }
-
-//* Reposition the primary navigation menu
-remove_action( 'genesis_after_header', 'genesis_do_nav');
-add_action( 'genesis_header', 'genesis_do_nav', 13 );
-
-add_action( 'genesis_header', 'rva_nav_button', 14);
-/**
- * Adds hamburger menu to the collapsed navigation.
- */
-function rva_nav_button() {
-	?>
-	<a href="#0" class="rva-nav-trigger">Menu<span></span></a>
-	<?php
-}
+add_action( 'genesis_header', 'rvamag_header_nav', 12);
 
 /*
  * Limit menu depth

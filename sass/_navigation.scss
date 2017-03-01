@@ -5,18 +5,9 @@
 	left: -9999px;
 }
 
-.rva-logo {
-	float: left;
-	width: 20%;
-	text-align: right;
-	padding-left: 1em;
-	img {
-		height: 50px;
-	}
-}
-
 .nav-primary {
 	//position: absolute;
+	width: 1px;
 	top: -9999px;
 	left: -9999px;
 
@@ -115,39 +106,8 @@
 
 }
 
-.rva-nav-trigger span {
-	/* hamburger menu */
-	background-color: $white;
-
-	&::before,
-	&::after {
-		/* upper and lower lines */
-		background-color: $white;
-	}
-}
-
 .nav-is-visible {
 	& .wrap {
-	}
-}
-
-.rva-site-description {
-	display: flex;
-	align-content: center;
-	justify-content: flex-start;
-	height: 50px;
-	float: left;
-    width: 80%;
-
-	span {
-		margin-left: 1em;
-		align-self: center;
-		color: $yellow;
-		font-weight: 600;
-		font-style: italic;
-	}
-	@include MQ(M){
-		display: none;
 	}
 }
 
@@ -159,53 +119,6 @@
 	&::after {
 		/* preserve visibility of upper and lower lines - close icon */
 		background-color: rgba($white, 1);
-	}
-}
-
-.rva-nav-trigger {
-	position: absolute;
-	top: 50%;
-	right: 10px;
-	color: transparent;
-	white-space: nowrap;
-
-	@include MQ(M) {
-		display: none;
-	}
-
-	span {
-		@include transition(background-color .3s .3s);
-		position: absolute;
-	
-		//top: 50%;
-		right: 10px;
-		// margin-top: -1px;
-		// margin-left: -10px;
-		width: 20px;
-		height: 4px;
-
-		&::before,
-		&::after {
-			/* Force Hardware Acceleration in WebKit */
-			@include transform(translateZ(0));
-			@include transition(transform .3s .3s);
-			position: absolute;
-			width: 100%;
-			height: 100%;
-			content: '';
-			backface-visibility: hidden;
-
-			-webkit-backface-visibility: hidden;
-			will-change: transform;
-		}
-
-		&::before {
-			@include transform(translateY(-6px));
-		}
-
-		&::after {
-			@include transform(translateY(6px));
-		}
 	}
 }
 
@@ -236,5 +149,89 @@
 		padding-bottom: 100px;
 		width: 100%;
 		height: 100%;
+	}
+}
+
+.rva-nav-trigger span {
+	/* hamburger menu */
+	background-color: $white;
+
+	&::before,
+	&::after {
+		/* upper and lower lines */
+		background-color: $white;
+	}
+}
+
+.rva-nav-wrapper {
+	width: 100%;
+	display: flex;
+	align-content: center;
+	justify-content: space-between;
+}
+
+.rva-logo {
+	width: 20%;
+	text-align: right;
+	padding-left: 1em;
+	img {
+		height: 50px;
+	}
+}
+
+.rva-site-description {
+	display: flex;
+
+	span {
+		margin-left: 1em;
+		align-self: center;
+		color: $yellow;
+		font-weight: 600;
+		font-style: italic;
+	}
+	@include MQ(M){
+		display: none;
+	}
+}
+
+.rva-nav-trigger {
+	align-self:center;
+	position: relative;
+	color: transparent;
+	white-space: nowrap;
+
+	@include MQ(M) {
+		display: none;
+	}
+
+	span {
+		@include transition(background-color .3s .3s);
+		position: absolute;
+		right: 10px;
+		width: 20px;
+		height: 4px;
+
+		&::before,
+		&::after {
+			/* Force Hardware Acceleration in WebKit */
+			@include transform(translateZ(0));
+			@include transition(transform .3s .3s);
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			content: '';
+			backface-visibility: hidden;
+
+			-webkit-backface-visibility: hidden;
+			will-change: transform;
+		}
+
+		&::before {
+			@include transform(translateY(-6px));
+		}
+
+		&::after {
+			@include transform(translateY(6px));
+		}
 	}
 }
