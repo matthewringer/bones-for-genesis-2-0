@@ -127,8 +127,6 @@
 	height: 100%;
 
 	.rva-nav-trigger {
-		top: 40px;
-		right: 10px;
 		span {
 			&::before {
 				@include transform(translateY(0) rotate(-45deg));
@@ -183,7 +181,7 @@
 	display: flex;
 
 	span {
-		margin-left: 1em;
+		margin-left: $spacer;
 		align-self: center;
 		color: $yellow;
 		font-weight: 600;

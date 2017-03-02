@@ -23,50 +23,38 @@ body {
 }
 
 .rva-fp-before-content {
-	//@include admin-offset-fix(40);
-	//background-color: $black;
-	//height: 50px;
-	@include MQ(XS) {
-		//@include admin-offset-fix(0);
-		//height: 0;
+	@include MQ(S) {
+		@include admin-offset-fix(40);
+		height: 40px;
 	}
 }
 
 .rva-before-entry-content {
 	//TODO: code smell
-	margin-bottom: 2em;
+	margin-bottom: $spacer;
 	
-	@include admin-offset-fix(100);
-	height: 100px;
+	@include admin-offset-fix(40);
+	height: 40px;
 
 	@include MQ(S) {
-		@include admin-offset-fix(155);
-		height: 155px;
+		@include admin-offset-fix(80);
+		height: 80px;
 	}
 	
 	@include MQ(M) {
-		@include admin-offset-fix(80);
-		height: 80px;
+		@include admin-offset-fix(93);
+		height: 93px;
 	}
 }
 
 .rva-category-before-content {
-	margin-bottom: 1em;
+	margin-bottom: $spacer;
+	@include admin-offset-fix(50);
+	height: 50px;
 
-	@include admin-offset-fix(110);
-	height: 110px;
-
-	@include MQ(XS) {
-		@include admin-offset-fix(115);
-		height: 115px;
-	}
 	@include MQ(S) {
-		@include admin-offset-fix(165);
-		height: 165px;
-	}
-	@include MQ(M) {
 		@include admin-offset-fix(90);
-    	height: 90px;
+		height: 90px;
 	}
 }
 
@@ -88,11 +76,11 @@ body {
 }
 
 .margin-bottom {
-	margin-bottom: 2em;
+	margin-bottom: $spacer;
 }
 
 .margin-top {
-	margin-top: 2em;
+	margin-top: $spacer;
 }
 
 .content-sidebar-wrap {

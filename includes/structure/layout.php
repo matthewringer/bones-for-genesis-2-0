@@ -151,7 +151,7 @@ add_shortcode('rva_3x6', 'rva_3x6');
 /**
  * 1 over 2 post thumbnail box
  * 
- * 
+ * TODO: hardcoded styles!
 */
 function rva_1_over_2_box($attr, $content) {
 
