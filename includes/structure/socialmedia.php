@@ -110,6 +110,7 @@ function rva_social_sharing_buttons() {
 
 	$perm  = get_permalink();
 	$title = get_the_title();
+    ?> <div class="rva-entry-like-btns" > <?php
 	if ( genesis_get_option( 'rva_facebook_like_btn', RVA_SETTINGS_FIELD ) ) {
 		?> 
         <div class="ctsettings-fb-like ctsettings-social-share"> <div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like href="'.$perm.'" send="false" layout="button_count" width="120" show_faces="false" action="like" font="lucida grande"></fb:like> </div>
@@ -131,6 +132,7 @@ function rva_social_sharing_buttons() {
 		</script></div>
         <?php
 	}
+    ?> </div> <?php
 }
 
 /**

@@ -11,6 +11,17 @@ if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  */
 add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_content_sidebar' );
 
+
+/**
+ * Gets the id object and returns an int
+ * @return int 
+ */
+function get_cat_id_by_slug($category_slug) {
+	$idObj = get_category_by_slug($category_slug); 
+	return $idObj->term_id;
+}
+
+
 /**
  *  Hero Story Box
  */

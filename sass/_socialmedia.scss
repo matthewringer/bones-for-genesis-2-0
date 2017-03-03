@@ -1,0 +1,8 @@
+.rva-entry-like-btns {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: $spacer;
+    & div {
+        margin-right: $spacer;
+    }
+}

@@ -111,11 +111,21 @@ function single_main_add_css_attr( $attributes ) {
 // } add_filter( 'genesis_attr_sidebar-primary', 'single_sidebar_add_css_attr' );
 
 /**
+ * Custom layout functions
+ * used in single....
+ */
+function get_the_tagline(){
+	$post_id = get_the_ID();
+    $field = 'rva_post_tagline';
+    return get_post_meta( $post_id, $field, true );
+}
+
+/**
 *
 */
 function rva_post_excerpt(){
 	?> 
-		<h2 class="entry-tagline"><?php get_the_tagline() ?> </h2> 
+		<h2 class="entry-tagline"><?php echo get_the_tagline(); ?> </h2> 
 	<?php
 } add_action('genesis_entry_header', 'rva_post_excerpt', 11);
 
