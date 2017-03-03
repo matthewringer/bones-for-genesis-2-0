@@ -65,16 +65,22 @@ add_shortcode( 'rva_gutter_box', 'rva_gutter_box_shortcode' );
  *
  *
  */
-function rva_post_thumbnail() {
+function rva_post_thumbnail($class='entry-thumbnail ') { //entry-thumb-vox 
 	?>
-	<article class="entry-thumbnail ">
-		<a href="<?php echo get_the_permalink(); ?>">
-			<div class="rva-article-image " style="background-image:url(<?php echo get_the_post_thumbnail_url()?>);" ></div>
-			<div class="text-block ">
-				<h2><?php echo get_the_title() ?></h2>
-				<p> <?php echo get_the_excerpt() ?> </p>
-			</div>
-		</a>
+	<article class="<?php echo $class ?>" >
+		<div class="rva-article-image" style="background-image:url(<?php echo get_the_post_thumbnail_url()?>);" >
+			<div class="title-block" >
+    			<h2 class="article-title"><a href="<?php echo get_the_permalink(); ?>"> <?php echo get_the_title(); ?> </a></h2>
+    			<br/>
+    			<p class="author"><?php echo do_shortcode('[post_author_posts_link]'); ?> </p>
+    		</div>
+		</div>
+		<div class="text-block">
+			<a href="<?php echo get_the_permalink(); ?>">
+				<h2 class="article-title"><?php echo get_the_title() ?></h2>
+			</a>
+			<p> <?php echo get_the_excerpt() ?> </p>
+		</div>
 	</article>
 	<?php
 }
@@ -98,11 +104,7 @@ function top_box($atts, $content) {
 	$loop = new WP_Query( $args );
 	if( $loop->have_posts() ) {
 		// loop through posts
-		$sidebar_class = "";
-		if ($sidebar !='') {
-			$sidebar_class = "rva-sidebar";
-		}
-		echo '<div class="rva-mobile-lead-box ' . $sidebar_class . '">';
+		echo '<div class="rva-mobile-lead-box ">';
 		while( $loop->have_posts() ): $loop->the_post();
 			rva_post_thumbnail();
 		endwhile;
@@ -129,7 +131,7 @@ function rva_3x6($atts) {
 	$args = [
 		'orderby'       => 'post_date',
 		'order'         => 'DESC',
-		'posts_per_page'=> '6',
+		'posts_per_page'=> '9',
 		'category_name' => $slug 
 	];
 
@@ -139,7 +141,7 @@ function rva_3x6($atts) {
 		// loop through posts
 		echo '<div class="rva-3x3-box">';
 		while( $loop->have_posts() ): $loop->the_post();
-			rva_post_thumbnail();
+			rva_post_thumbnail('entry-thumb-vox ');
 		endwhile;
 		echo '</div>';
 	}
@@ -181,7 +183,12 @@ function rva_1_over_2_box($attr, $content) {
 			//$loop->post; 
 			?>
 			<div class="rva-2x1-box margin-top">
-				<?php while( $loop->have_posts() ) { $loop->the_post(); rva_post_thumbnail(); } ?>
+				<?php while( $loop->have_posts() ) { 
+					$loop->the_post(); 
+					rva_post_thumbnail('entry-thumb-vox '); 
+					//rva_post_thumbnail(); 
+
+				} ?>
 			</div>
 			<?php endif;
 			wp_reset_postdata(); ?>

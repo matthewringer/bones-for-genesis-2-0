@@ -82,13 +82,9 @@ add_action('genesis_before_content_sidebar_wrap', 'rvamag_before_content');
  */
 function rvamag_frontpage_loop() {
 	//content
-	echo do_shortcode('
-		[notphone]
-			[rva_topbox title="LATEST"/]
-		[/notphone]
-		[phone]
-			[rva_topbox title="LATEST"/]
-		[/phone]');
+	echo do_shortcode('[rva_topbox title="LATEST"/]');
+
+	//echo do_shortcode('[rva_3x6 title="LATEST" slug="read"]');
 }
 remove_action( 'genesis_loop', 'genesis_do_loop' );
 add_action( 'genesis_loop', 'rvamag_frontpage_loop' );
@@ -104,7 +100,12 @@ function rva_fp_aftercontent() {
 			[/notphone]
 		[/rva_1x2]
 
-		[rva_ad name="Spud" class="margin-left ad-spud"]
+		[phone]
+			[rva_ad name="Spud" class="ad-spud"]
+		[/phone]
+		[notphone]
+			[rva_ad name="Big_Boy_H1" class="ad-big-boy"]
+		[/notphone]
 
 		[rva_1x2 title="Music" slug="music"]
 			[notphone]
@@ -112,7 +113,12 @@ function rva_fp_aftercontent() {
 			[/notphone]
 		[/rva_1x2]
 		
-		[rva_ad name="Spud" class="margin-left ad-spud"]
+		[phone]
+			[rva_ad name="Spud" class="ad-spud"]
+		[/phone]
+		[notphone]
+			[rva_ad name="Big_Boy_H2" class="ad-big-boy"]
+		[/notphone]
 
 		[rva_1x2 title="ART" slug="art"]
 			[notphone]
@@ -120,7 +126,12 @@ function rva_fp_aftercontent() {
 			[/notphone]
 		[/rva_1x2]
 		
-		[rva_ad name="Spud" class="margin-left ad-spud"]
+		[phone]
+			[rva_ad name="Spud" class="ad-spud"]
+		[/phone]
+		[notphone]
+			[rva_ad name="Big_Boy_H3" class="ad-big-boy"]
+		[/notphone]
 
 		[rva_1x2 title="PHOTO" slug="photo"]
 		[/rva_1x2]

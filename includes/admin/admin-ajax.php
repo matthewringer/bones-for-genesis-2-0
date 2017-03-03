@@ -10,7 +10,7 @@ function rva_ajax_load_more() {
 	$count = $loop->found_posts;
 	$max_pages = $loop->max_num_pages;
 	if( $loop->have_posts() ): while( $loop->have_posts() ): $loop->the_post();
-		rva_post_thumbnail();
+		rva_post_thumbnail('entry-thumb-vox');
 	endwhile; endif; wp_reset_postdata();
 	
 	echo '<hr>';
