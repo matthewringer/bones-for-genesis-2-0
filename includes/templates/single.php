@@ -64,7 +64,7 @@ function rva_before_content() {
 			previous_post_link( '<div class="rva-prev-link">%link</div>', '<i class="fa fa-chevron-left" ></i>', TRUE );
 		if(get_next_post(TRUE))
 			next_post_link( '<div class="rva-next-link">%link</div>', '<i class="fa fa-chevron-right" ></i>', TRUE );
-} add_action('genesis_before_content', 'rva_before_content');
+} add_action('genesis_before_content_sidebar_wrap', 'rva_before_content');
 
 /**
 * Display Featured Image at top of the post 
@@ -82,7 +82,7 @@ function featured_post_image() {
 			<?php $photog_name ?> 
 		</p> 
 	<?php
-} add_action( 'genesis_before_content', 'featured_post_image', 13 );
+} add_action( 'genesis_before_content_sidebar_wrap', 'featured_post_image', 13 );
 
 /**
 * Hook genesis content and add ".single-main" to class
