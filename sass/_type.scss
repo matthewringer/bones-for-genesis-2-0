@@ -1,19 +1,8 @@
 html,
 body {
 	min-width: 300px; //$site-width; // Prevents backgrounds on these elements from being truncated on smaller screens on fixed-width sites
-	//font-size: 62.5%;
+	
 	font-size: 80%;
-
-	// @include MQ(S) {
-	// 	font-size: 80%;
-	// }
-
-	// @include MQ(M) {
-	// 	font-size:100%;
-	// }
-	// @include MQ(L) {
-	// 	font-size:100%;
-	// }
 }
 
 html.admin-bar-showing {

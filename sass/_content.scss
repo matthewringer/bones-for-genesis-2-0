@@ -39,9 +39,6 @@
 		@extend .fa-fw;
 		@extend .fa-4x;
 		color: $yellow;
-
-		// media queries for spinner size.
-		//font-size: 20em;
 	}
 }
 
@@ -50,8 +47,7 @@
 	padding-top: 1em;
 	word-wrap: break-word;
 	font-weight: 800;
-	font-size: 2.4em;
-	//font-size: initial;
+	font-size: 2.4rem;
 
 	a {
 		color: inherit;
@@ -305,7 +301,7 @@ ul.social-links {
 		top: 60%;
 		display: block;
 		width: 5%;
-		font-size: 2em;
+		font-size: 2rem;
 	}
 	display: none;
 	text-align: center;
