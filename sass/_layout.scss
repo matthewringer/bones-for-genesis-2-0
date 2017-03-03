@@ -7,7 +7,7 @@
 // .full-width-content
 
 body {
-	background-color: $grey;
+	//background-color: $grey;
 }
 
 .site-container {
@@ -23,9 +23,24 @@ body {
 }
 
 .rva-fp-before-content {
-	@include MQ(S) {
-		@include admin-offset-fix(40);
-		height: 40px;
+		@include MQ(S) {
+			height: 90px;
+			@include admin-offset-fix(90);
+		}
+		@include MQ(M) {
+			@include admin-offset-fix(110);
+			height: 110px;
+		}
+}
+
+.rva-category-before-content {
+	margin-bottom: $spacer;
+	@include admin-offset-fix(55);
+	height: 55px; //TONY
+
+	@include MQ(S) { //TONY
+		@include admin-offset-fix(145);
+		height: 145px;
 	}
 }
 
@@ -44,17 +59,6 @@ body {
 	@include MQ(M) {
 		@include admin-offset-fix(93);
 		height: 93px;
-	}
-}
-
-.rva-category-before-content {
-	margin-bottom: $spacer;
-	@include admin-offset-fix(50);
-	height: 50px;
-
-	@include MQ(S) {
-		@include admin-offset-fix(90);
-		height: 90px;
 	}
 }
 

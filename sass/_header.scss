@@ -1,6 +1,8 @@
 
 .before-header {
 	
+	display: none;
+
 	@include admin-offset-fix;
 	position: fixed;
 	top: 0;
@@ -13,10 +15,11 @@
 	width: 100%;
 	height: 50px;
 	border-top: 1px;
-	background: $black;
+	background: $white;
 	text-align: center;
 
 	@include MQ(S) {
+		display: initial;
 		height: 90px;
 	}
 }
@@ -31,8 +34,10 @@
 }
 
 .site-header-offset {
-	@include admin-offset-fix(50);
-	top: 50px;
+	
+	// @include admin-offset-fix(50);
+	// top: 50px;
+
 	@include MQ(S) {
 		@include admin-offset-fix(90);
 		top: 90px;
@@ -50,7 +55,7 @@
 	display: flex;
 	max-width: $site-width;
 	width: 100%;
-	background-color: rgba($dark-grey, .6);
+	background-color: rgba($dark-grey, .9);
 	box-shadow: 0 1px 1px rgba($dark-grey, .1);
 
 	& .wrap {

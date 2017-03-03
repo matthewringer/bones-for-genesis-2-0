@@ -240,6 +240,16 @@
 	background-repeat: no-repeat;
 	color: white;
 
+
+	.article-title {
+		background-color: $black;
+		color: $yellow;
+	}
+	
+	a {
+		color: darken($yellow, 5%);
+	}
+
 	@include MQ(S) {
 		height: 500px;
 		.article-title{
@@ -260,37 +270,33 @@
 		height: 600px;
 	}
 
-	.article-title {
-		background-color: $black;
-		color: $yellow;
-	}
 	
-	a {
-		color: darken($yellow, 5%);
-	}
 }
 
 .rva-demi-hero {
+	//height: 300px;
 	@extend .rva-hero-box;
-	height: 300px;
-	@include MQ(S) {
-		* { font-size: 2rem !important; }
-	}
 }
 
 .section-title {
-	margin-top: $spacer;
-	min-height: 35px;
-	width: 100%;
-	border-top: 2px solid $grey;
-	text-align: center;
 
-	h2 {
-		position: relative;
-		top: -10px;
-		display: inline-block;
-		padding: 0 10px;
-		background-color: $white;
+	display: none;
+
+	@include MQ(M) {
+		display: block;
+		margin-top: $spacer;
+		min-height: 35px;
+		width: 100%;
+		border-top: 2px solid $grey;
+		text-align: center;
+
+		h2 {
+			position: relative;
+			top: -10px;
+			display: inline-block;
+			padding: 0 10px;
+			background-color: $white;
+		}
 	}
 }
 
@@ -375,7 +381,9 @@ ul.social-links {
 	}
 }
 
-.rva-mobile-lead-box {
+
+//TODO: remove
+.rva-mobile-lead-box-old {
 	display: flex;
     flex-wrap: wrap;
     align-items: baseline;
@@ -589,6 +597,76 @@ ul.social-links {
 
 	.text-block {
 		display: none;
+	}
+}
+
+.rva-mobile-lead-box {
+	display: flex;
+    flex-wrap: wrap;
+	margin-bottom: $spacer;
+
+	& article {
+		width: 100%;
+		padding: 0;
+		padding-bottom: $spacer;
+
+		.rva-article-image {
+			display: flex;
+			align-items: flex-end;
+			height: 200px;
+		}
+		
+		.title-block {
+			display: initial;
+		}
+
+		.article-title {
+			background-color: $black;
+			a {
+				color: $white;
+			}
+		}
+
+		.author {
+			display: none;
+		}
+
+		.text-block {
+			display: none;
+		}
+	}
+
+	& article:nth-of-type(6),
+	& article:nth-of-type(7),
+	& article:nth-of-type(8),
+	& article:nth-of-type(9){
+		display:none;
+	}
+	
+	@include MQ(S) {
+		& article {
+			padding: 0 $spacer/2 $spacer $spacer/2;
+			float: left;
+			width: 50%;
+		}
+
+		& article:nth-of-type(6){
+			display: initial;
+		}
+	}
+
+	@include MQ(M) {
+		& article {
+			//float: left;
+			//padding: 0 $spacer/2 $spacer $spacer/2;
+			width: 33.333%;
+		}
+
+		& article:nth-of-type(7),
+		& article:nth-of-type(8),
+		& article:nth-of-type(9) {
+			display: initial;
+		}
 	}
 }
 

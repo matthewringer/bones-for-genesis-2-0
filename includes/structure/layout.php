@@ -102,10 +102,13 @@ function rva_post_thumbnail($class='entry-thumbnail ') { //entry-thumb-vox
 function top_box($atts, $content) {
 
 	$title = $atts['title'];
+
+	$count = ($atts['count'] == '')? '9': $atts['count'];
+
 	$args = array(
 		'orderby'       => 'post_date',
 		'order'         => 'DESC',
-		'posts_per_page'=> '9',
+		'posts_per_page'=> $count,
 		//TODO: should be not in featured.... fix hardcoded reference!
 		'category__not_in' => get_cat_id_by_slug('feature')
 	);
@@ -118,6 +121,7 @@ function top_box($atts, $content) {
 		echo '<div class="rva-mobile-lead-box ">';
 		while( $loop->have_posts() ): $loop->the_post();
 			rva_post_thumbnail();
+			//rva_post_thumbnail('entry-thumb-vox');
 		endwhile;
 		echo '</div>';
 		if ($sidebar != '') {

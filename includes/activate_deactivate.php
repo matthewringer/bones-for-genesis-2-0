@@ -25,7 +25,7 @@ add_action('after_switch_theme', 'rva_create_primary_memu');
 function rva_create_primary_memu() {
 
 	$primary_menu_items = [
-		'read' => 'READ',
+		'politics' => 'POLITICS',
 		'music' => 'MUSIC',
 		'art' => 'ART',
 		'photo' => 'PHOTO',
@@ -35,7 +35,7 @@ function rva_create_primary_memu() {
 		'magazine' => 'MAGAZINE'
 	];
 
-    //TODO: set the categories when the theme is applied.
+    //TODO: create the categories when the theme is applied.
     //wp_create_category(${'name'}, ${'parent'});
     //wp_insert_category( array $catarr, bool $wp_error = false )
 	

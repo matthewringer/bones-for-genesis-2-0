@@ -82,7 +82,10 @@ add_action('genesis_before_content_sidebar_wrap', 'rvamag_before_content');
  */
 function rvamag_frontpage_loop() {
 	//content
-	echo do_shortcode('[rva_topbox title="LATEST"/]');
+	echo do_shortcode('
+		[rva_topbox title="LATEST"/]
+		[rva_ad name="Big_Boy_H1" class="ad-big-boy"]
+		');
 
 	//echo do_shortcode('[rva_3x6 title="LATEST" slug="read"]');
 }
@@ -92,9 +95,8 @@ add_action( 'genesis_loop', 'rvamag_frontpage_loop' );
 function rva_fp_aftercontent() {
 	//after content
 	echo do_shortcode('
-		[rva_ad name="Leaderboard" class="wrap ad-leaderboard"]
 		
-		[rva_1x2 title="READ" slug="read"]
+		[rva_1x2 title="POLITICS" slug="politics"]
 			[notphone]
 				[rva_ad name="Skyscraper" class="margin-left ad-skyscraper "]
 			[/notphone]

@@ -23,10 +23,6 @@ function rvamag_header_nav() {
 		<a class="rva-logo" href="<?php echo get_site_url(); ?>">
 			<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo.svg" alt="RVA Mag Logo" />
 		</a>
-
-		<div class="rva-site-description">
-			<span><?php echo get_bloginfo( 'description' ); ?> </span>
-		</div>
 		<?php echo genesis_do_nav(); ?>
 		<a href="#0" class="rva-nav-trigger">Menu<span></span></a>
 	</div>
