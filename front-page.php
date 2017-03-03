@@ -104,22 +104,25 @@ function rva_fp_aftercontent() {
 			[/notphone]
 		[/rva_1x2]
 
-		[rva_ad name="Leaderboard" class="ad-leaderboard"]
+		[rva_ad name="Spud" class="margin-left ad-spud"]
 
 		[rva_1x2 title="Music" slug="music"]
-			[rva_ad name="Skyscraper" class="margin-left ad-skyscraper"]
+			[notphone]
+				[rva_ad name="Skyscraper" class="margin-left ad-skyscraper "]
+			[/notphone]
 		[/rva_1x2]
 		
-		[rva_ad name="Leaderboard" class="ad-leaderboard"]
+		[rva_ad name="Spud" class="margin-left ad-spud"]
 
 		[rva_1x2 title="ART" slug="art"]
-			[rva_ad name="Spud" class="margin-left ad-spud"]
+			[notphone]
+				[rva_ad name="Skyscraper" class="margin-left ad-skyscraper "]
+			[/notphone]
 		[/rva_1x2]
 		
-		[rva_ad name="Leaderboard" class="ad-leaderboard"]
+		[rva_ad name="Spud" class="margin-left ad-spud"]
 
 		[rva_1x2 title="PHOTO" slug="photo"]
-			[rva_ad name="Spud" class="margin-left ad-spud"]
 		[/rva_1x2]
 		
 		[rva_ad name="Leaderboard" class="ad-leaderboard"]
@@ -128,8 +131,10 @@ function rva_fp_aftercontent() {
 
 		[rva_ad name="Leaderboard" class="ad-leaderboard"]
 		
-		[rva_3x6 title="WATCH" slug="watch"]
-		
+		[rva_gutter_box title="WATCH"]
+			[rva_3x6 title="WATCH" slug="watch"]
+		[/rva_gutter_box]
+
 		<!-- TODO: GayRva content... -->
 		
 		[rva_subscribtion_form]
