@@ -172,6 +172,8 @@
 	font-weight: 800;
 	font-size: 1.5rem;
 	line-height: 1.34;
+	font-style: italic;
+    text-transform: uppercase;
 }
 
 .author {
@@ -240,6 +242,19 @@
 
 	@include MQ(S) {
 		height: 500px;
+		.article-title{
+			*  { 
+				font-size: 2rem;
+				line-height: 1.5rem;
+			} 
+		}
+
+		.author { 
+			*  { 
+				font-size: 1.5rem; 
+				line-height: 1.1rem;
+			} 
+		}
 	}
 	@include MQ(M) {
 		height: 600px;
@@ -258,6 +273,9 @@
 .rva-demi-hero {
 	@extend .rva-hero-box;
 	height: 300px;
+	@include MQ(S) {
+		* { font-size: 2rem !important; }
+	}
 }
 
 .section-title {
