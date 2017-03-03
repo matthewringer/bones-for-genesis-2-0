@@ -6,7 +6,12 @@ if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 	Template Name: Category Template
 */
 
+/**
+ * Load javascript assets for category page
+ */
 function rva_load_more_args() {
+	wp_enqueue_script( 'rva-trans-header', get_stylesheet_directory_uri() . '/js/trans-header.js', array( 'jquery' ), '1.0', true );
+	wp_enqueue_script( 'rva-load-more', get_stylesheet_directory_uri() . '/js/load-more.js', array( 'jquery' ), '1.0', true );
 	
 	global $wp_query;
 	$args = array(
@@ -14,22 +19,11 @@ function rva_load_more_args() {
 		'query' => $wp_query->query,
 	);	
     wp_localize_script( 'rva-load-more', 'rvaloadmore', $args );
-
-	wp_enqueue_script( 'rva-trans-header', get_stylesheet_directory_uri() . '/js/trans-header.js', array( 'jquery' ), '1.0', true );
 }
 add_action( 'wp_enqueue_scripts', 'rva_load_more_args' );
 
-
 /** 
-* Add our custom loop
-*/
-remove_action( 'genesis_loop', 'genesis_do_loop' );
-add_action( 'genesis_loop', 'rvamag_categorypage_loop' );
-
-//add_action( 'genesis_before_header', 'rva_before_header' );
-add_action( 'genesis_header_right', 'rva_before_header' );
-/** 
-* print pre-header content
+* Add Leaderboard ad unit before header.
 *
 * @since 1.0.0
 */ 
@@ -40,36 +34,45 @@ function rva_before_header() {
 		</div>
 	<?php
 }
+add_action( 'genesis_before_header', 'rva_before_header' );
 
-add_action('genesis_before_content', 'rvamag_before_content');
 /**
- *
+ * Add spacer before page content to offset the fixed header and leaderboard ad unit.
  */
 function rvamag_before_content() {
 	?>
 	<div id="top" class="rva-category-before-content"></div>
 	<?php
 }
+add_action('genesis_before_content_sidebar_wrap', 'rvamag_before_content');
 
-//* Remove the post content (requires HTML5 theme support)
-remove_action( 'genesis_entry_content', 'genesis_do_post_content' );
-remove_action( 'genesis_entry_header', 'genesis_do_post_title' );
-// Remove Footer
-// remove_action('genesis_footer', 'genesis_do_footer');
-// remove_action('genesis_footer', 'genesis_footer_markup_open', 5);
-// remove_action('genesis_footer', 'genesis_footer_markup_close', 15);
-
+/** 
+* Add our custom loop
+*/
 function rvamag_categorypage_loop() {
-
 	global $wp_query;
 	echo rva_3x6([slug=>$wp_query->query["category_name"]]);
+}
+remove_action( 'genesis_loop', 'genesis_do_loop' );
+add_action( 'genesis_loop', 'rvamag_categorypage_loop' );
+
+
+function rva_sidebar(){
+	echo do_shortcode('
+			[rva_ad name="Big_Boy_H0" class="wrap ad-big-boy"]
+			');
+} add_action('genesis_sidebar', 'rva_sidebar', 5);
+
+function rva_fp_aftercontent() {
 
 	echo '<hr>';
 	echo do_shortcode('[rva_ad name="Leaderboard" class="wrap ad-leaderboard"]');
 	echo '<hr>';
-
-	$idObj = get_category_by_slug($wp_query->query["category_name"]); 
-  	$title = $idObj->cat_name;
     echo start_section(array(title=>"", classes=>""), '<div class="post-listing rva-3x3-box" ></div>' );
 
-}
+} add_action( 'genesis_after_content_sidebar_wrap', 'rva_fp_aftercontent');
+
+
+//* Remove the post content (requires HTML5 theme support)
+remove_action( 'genesis_entry_content', 'genesis_do_post_content' );
+remove_action( 'genesis_entry_header', 'genesis_do_post_title' );

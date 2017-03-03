@@ -25,34 +25,10 @@
 }
 
 .content {
+	padding-top: $spacer;
 	text-align: center;
-}
-
-.single-main {
-	@include MQ(S) {
-		width: 54%;
-	}
-	@include MQ(M) {
-		width: 65%;
-	}
 	float: left;
-	width: 100%;
-}
-
-.single-sidebar {
-	@include MQ(S) {
-		position: relative;
-		z-index: initial;
-		z-index: 0;
-		display: block;
-		//width: 45%;
-		float: right;
-		& * {
-			position: relative;
-			top: 0;
-		}
-	}
-	display: none;
+	width: auto;
 }
 
 .load-more {
@@ -98,7 +74,6 @@
 		clear: none;
 		text-align: left;
 		font-size: 1.15rem;
-
 	}
 
 	p {
@@ -181,8 +156,6 @@
 }
 
 .entry-meta {
-	//clear: both;
-	//text-align: center;
 	text-transform: uppercase;
 	font-weight: 900;
 
@@ -226,14 +199,6 @@
 	font-size: 1.2rem;
 	font-family: $serif;
 	line-height: 1.8;
-
-	// @include MQ(S) {
-	// 	margin: 1em 0 1.8em;
-	// 	font-size: 1.8rem;
-	// }
-	// @include MQ(M) {
-	// 	font-size: 3rem;
-	// }
 
 	a {
 		color: darken($yellow, 5%);
@@ -306,7 +271,7 @@
 }
 
 .section-title {
-	margin-top: 2em;
+	margin-top: $spacer;
 	min-height: 35px;
 	width: 100%;
 	border-top: 2px solid $grey;
@@ -372,11 +337,11 @@ ul.social-links {
 		float: left;
 		width: 100%;
 		& article:nth-of-type(2n+0) {
-			padding: 0 0 2em .5em;
+			padding: 0 0 $spacer $spacer/2;
 		}
 
 		& article:nth-of-type(2n+1) {
-			padding: 0 .5em 2em 0;
+			padding: 0 $spacer/2 $spacer 0;
 		}
 
 		& article {
@@ -385,12 +350,12 @@ ul.social-links {
 		}
 	}
 	& article {
-		padding: 0 0 2em 0;
+		padding: 0 0 $spacer 0;
 	}
 }
 
 .rva-flat-thumb {
-	padding: 0 .5em 1em .5em;
+	padding: 0 $spacer/2 $spacer $spacer/2;
 	min-height: 100px; //
 	width: 100%; //article takes up full row
 	& .rva-article-image {
@@ -408,7 +373,7 @@ ul.social-links {
 
 .rva-mobile-lead-box {
 	text-align: left;
-	margin-bottom: 2em;
+	margin-bottom: $spacer;
 	// & :nth-of-type(1).entry-thumbnail {
 	// 	width: 50%;
 	// 	float: left;
@@ -450,12 +415,9 @@ ul.social-links {
 		& :nth-of-type(3).entry-thumbnail,
 		& :nth-of-type(4).entry-thumbnail,
 		& :nth-of-type(5).entry-thumbnail,
-		& :nth-of-type(6).entry-thumbnail,
-		& :nth-of-type(7).entry-thumbnail,
-		& :nth-of-type(8).entry-thumbnail {
+		& :nth-of-type(6).entry-thumbnail {
 			display: initial;
 			float: left;
-			padding: 0 .5em 2em .5em;
 			min-height: 200px;
 			width: 50%;
 			& .rva-article-image {
@@ -463,6 +425,11 @@ ul.social-links {
 				padding-top: 100%;
 				width: 100%;
 			}
+		}
+ 
+		& :nth-of-type(7).entry-thumbnail,
+		& :nth-of-type(8).entry-thumbnail  {
+			display: none;
 		}
 
 		& article {
@@ -477,6 +444,7 @@ ul.social-links {
 			}
 		}
 	}
+
 	@include MQ(M) {
 		& :nth-of-type(1).entry-thumbnail,
 		& :nth-of-type(2).entry-thumbnail,
@@ -517,8 +485,6 @@ ul.social-links {
 	.entry-thumbnail {
 		display: initial;
 		float: left;
-		padding: 0 .5em 2em .5em;
-		//min-height: 400px;
 		width: 100%;
 		& .rva-article-image {
 			float: none;
@@ -533,8 +499,6 @@ ul.social-links {
 		.entry-thumbnail {
 			display: initial;
 			float: left;
-			padding: 0 .5em 2em .5em;
-			min-height: 400px;
 			width: 50%;
 			& .rva-article-image {
 				float: none;
@@ -550,8 +514,6 @@ ul.social-links {
 		.entry-thumbnail {
 			display: initial;
 			float: left;
-			padding: 0 .5em 2em .5em;
-			min-height: 400px;
 			width: 33.333%;
 			& .rva-article-image {
 				float: none;
@@ -566,10 +528,25 @@ ul.social-links {
 	@extend .rva-dflt-1x-box; 
 	@extend .rva-sm-2x-box;
 	@extend .rva-md-3x-box;
+
+	@include MQ(S) {
+		& :nth-of-type(5).entry-thumbnail,
+		& :nth-of-type(6).entry-thumbnail {
+			display: none;
+		}
+	}
+
+	@include MQ(M) {
+		& :nth-of-type(5).entry-thumbnail,
+		& :nth-of-type(6).entry-thumbnail {
+			display: initial;
+		}
+	}
 }
 
 .entry-thumbnail {
 	position: relative;
+	padding: 0 $spacer/2 $spacer $spacer/2;
 	& div.text-block {
 		@include MQ(S) {
 			height: 12em;
@@ -580,7 +557,7 @@ ul.social-links {
 			@include MQ(S) {
 				padding: 0;
 			}
-			padding: 0 .5em;
+			padding: 0 $spacer/2;
 		}
 		p {
 			display: none;
@@ -624,21 +601,10 @@ ul.social-links {
 }
 
 .big-boy-h0-sidebar {
-	@include MQ(S) {
-		margin-left: .5em;
-		width: auto;
-	}
 	display: inline-flex;
 	flex-direction: column;
 	align-items: flex-start;
 	width: 100%;
-}
-
-.rva-top-spacing {
-	@include MQ(S) {
-		margin-top: 1em;
-	}
-	margin-top: 2em;
 }
 
 .rva-modal {

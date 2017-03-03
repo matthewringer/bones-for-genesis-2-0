@@ -6,12 +6,6 @@ include 'category.php';
 	Template Name: Category Template
 */
 
-/**
-* Remove javascript infinite scroll 
-*/
-//TODO: code smell
-remove_action( 'wp_enqueue_scripts', 'rva_load_more_js' );
-
 //* Remove the post content (requires HTML5 theme support)
 remove_action( 'genesis_loop', 'rvamag_categorypage_loop' );
 

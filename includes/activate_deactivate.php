@@ -113,7 +113,7 @@ function rva_create_pages() {
 	$about_page = array(	
 		'slug' => 'about',
 		'title' =>'About',
-		'template' => '/includes/templates/about.php',
+		'template' => '/page_templates/about.php',
 		'post_excerpt' => 'About RVA Magazine'
 	);
 	rva_create_page($about_page);
@@ -121,7 +121,7 @@ function rva_create_pages() {
 	$advertizing_page = array(
 		'slug' => 'advertizing',
 		'title' =>'Advertizing',
-		'template' => '/includes/templates/page.php',
+		'template' => '/page_templates/page.php',
 		'post_excerpt' => 'Advertize with RVA Magazine'
 	);
 	rva_create_page($advertizing_page);
@@ -129,7 +129,7 @@ function rva_create_pages() {
 	$contributors_page = array(
 		'slug' => 'contributors',
 		'title' =>'Contributors',
-		'template' => '/includes/templates/page.php',
+		'template' => '/page_templates/contributors.php',
 		'post_excerpt' => 'RVA Magazine Contributors'
 	);
 	rva_create_page($contributors_page);
@@ -137,7 +137,7 @@ function rva_create_pages() {
 	$contact_page = array(	
 		'slug' => 'contact',
 		'title' => 'Contact',
-		'template' => '/includes/templates/page.php',
+		'template' => '/page_templates/page.php',
 		'post_excerpt' => 'Contact RVA Magazine'
 	);
 	rva_create_page($contact_page);

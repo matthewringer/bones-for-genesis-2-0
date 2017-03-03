@@ -24,16 +24,6 @@ function rva_post_summary() {
 }
 
 /**
- * Javascript for Load More
- *
- */
-function rva_load_more_js() {
-
-	wp_enqueue_script( 'rva-load-more', get_stylesheet_directory_uri() . '/js/load-more.js', array( 'jquery' ), '1.0', true );
-}
-add_action( 'wp_enqueue_scripts', 'rva_load_more_js' );
-
-/**
  * Custom layout functions
  *
  */

@@ -9,7 +9,7 @@ if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  *
  * @since 2.3.38
  */
-add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
+add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_content_sidebar' );
 
 /**
  *  Hero Story Box
@@ -113,7 +113,8 @@ function top_box($atts, $content) {
 	}
 	wp_reset_postdata();
 	$content = ob_get_clean();
-	return start_section( array(title => $title, classes => "flex"), $content );
+	//return start_section( array(title => $title, classes => "flex"), $content );
+	return $content;
 }
 add_shortcode('rva_topbox', 'top_box');
 
@@ -144,7 +145,7 @@ function rva_3x6($atts) {
 	}
 	wp_reset_postdata();
 	$content = ob_get_clean();
-	return start_section( array(title => $title, classes => "flex"), $content );
+	return $content; // start_section( array(title => $title, classes => "flex"), $content );
 }
 add_shortcode('rva_3x6', 'rva_3x6');
 
@@ -172,22 +173,20 @@ function rva_1_over_2_box($attr, $content) {
 	//flex container 
 	?> 
 	<div class="flex-container"> 
-		
-		<div style="flex: 1;"> 
+		<div style="flex-grow: 2;"> 
 			<?php if( $loop->have_posts() ) :
 			//Display hero
 			$loop->the_post(); 
-			echo do_shortcode('[rva_demihero_box]');
-			$loop->post; ?>
-			<div class="rva-2x1-box rva-top-spacing ">
+			echo do_shortcode('[rva_demihero_box]'); 
+			//$loop->post; 
+			?>
+			<div class="rva-2x1-box margin-top">
 				<?php while( $loop->have_posts() ) { $loop->the_post(); rva_post_thumbnail(); } ?>
 			</div>
 			<?php endif;
 			wp_reset_postdata(); ?>
 		</div>
-		<?php if($ad_html != ''): ?>
-		<div style="flex: 0 1 120px; margin-left:1em;"> <?php echo $ad_html; ?> </div>
-		<?php endif; ?>
+		<?php echo $ad_html; ?>
 	</div> 
 	<?php
     $content = ob_get_clean();

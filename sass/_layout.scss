@@ -59,20 +59,16 @@ body {
 }
 
 .flex-container {
-	//todo: 
-	display: -webkit-flex;
 	display: flex;
 	flex-direction: row;
-
-	-webkit-flex-direction: row;
 }
 
 .pad-bottom {
-	padding-bottom: 2em;
+	padding-bottom: $spacer;
 }
 
 .pad-top {
-	padding-top: 2em;
+	padding-top: $spacer;
 }
 
 .margin-bottom {
@@ -83,14 +79,33 @@ body {
 	margin-top: $spacer;
 }
 
+.margin-left {
+	margin-left: $spacer;
+}
+
+.margin-top {
+	margin-right: $spacer;
+}
+
 .content-sidebar-wrap {
 	@extend %clearfix;
+	@extend .rva-gutter-box;
+	display: flex;
 }
 
 .content {
 }
 
 .sidebar-primary {
+	display: none;
+	padding-top: $spacer;
+
+	@include MQ(S) {
+		position: relative;
+		display: block;
+		float: right;
+		margin-left: $spacer/2;
+	}
 }
 
 .sidebar-secondary {

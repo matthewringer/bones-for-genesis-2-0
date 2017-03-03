@@ -7,7 +7,7 @@ remove_action( 'genesis_loop', 'genesis_do_loop' );
 
 add_filter( 'genesis_attr_site-header', 'rva_unset_header_class' );
 /**
- * Hook header class
+ * Hook header class to remove the header offset.
  */
 function rva_unset_header_class($attrs) {
 
@@ -15,19 +15,6 @@ function rva_unset_header_class($attrs) {
 	
 	return $attrs;
 }
-
-add_filter( 'genesis_attr_site-inner', 'rva_set_header_class' );
-add_filter( 'genesis_attr_site-footer', 'rva_set_header_class' );
-/**
- * Hook header class
- */
-function rva_set_header_class($attrs) {
-
-	//$attrs['class'] .= ' site-header-offset';
-	
-	return $attrs;
-}
-
 
 add_action( 'genesis_loop', 'bfg_404' );
 /**
@@ -41,16 +28,13 @@ function bfg_404() {
 
 	global $wp_query;
 	?>
-	<article class="entry">
+	<article class="entry rva-gutter-box">
 		<h1 class="entry-title"> <?php printf( '%s ', apply_filters( 'genesis_404_entry_title', __( 'What the?!', CHILD_THEME_TEXT_DOMAIN ) ) ); ?> </h1>
 		<div class="entry-content">
-			<ol>
+			<ul>
 				<li>
 					<?php echo __( '<strong>Search</strong> for it:', CHILD_THEME_TEXT_DOMAIN ); ?>
 					<?php echo get_search_form(); ?>
-				</li>
-				<li>
-					<?php echo __( '<strong>If you typed in a URL...</strong> make sure the spelling, cApitALiZaTiOn, and punctuation are correct. Then, try reloading the page.', CHILD_THEME_TEXT_DOMAIN ); ?>
 				</li>
 				<li>
 					<?php
@@ -60,7 +44,7 @@ function bfg_404() {
 					)
 					?>
 				</li>
-			</ol>
+			</ul>
 			<?php
 
 		echo '</div>';
