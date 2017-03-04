@@ -82,10 +82,7 @@ add_action('genesis_before_content_sidebar_wrap', 'rvamag_before_content');
  */
 function rvamag_frontpage_loop() {
 	//content
-	echo do_shortcode('
-		[rva_topbox title="LATEST"/]
-		[rva_ad name="Big_Boy_H1" class="ad-big-boy"]
-		');
+	echo do_shortcode('[rva_topbox title="LATEST" count="12"/]');
 
 	//echo do_shortcode('[rva_3x6 title="LATEST" slug="read"]');
 }
@@ -95,19 +92,23 @@ add_action( 'genesis_loop', 'rvamag_frontpage_loop' );
 function rva_fp_aftercontent() {
 	//after content
 	echo do_shortcode('
-		
+		[rva_gutter_box class="flex-container padding-top margin-top margin-bottom"]
+			[rva_ad name="Big_Boy_H1" class="ad-big-boy"]
+			[rva_ad name="Big_Boy_H2" class="ad-big-boy collapse-s"]
+			[rva_ad name="Big_Boy_H3" class="ad-big-boy collapse-m"]
+		[/rva_gutter_box]
+
 		[rva_1x2 title="POLITICS" slug="politics"]
 			[notphone]
 				[rva_ad name="Skyscraper" class="margin-left ad-skyscraper "]
 			[/notphone]
 		[/rva_1x2]
 
-		[phone]
-			[rva_ad name="Spud" class="ad-spud"]
-		[/phone]
-		[notphone]
+		[rva_gutter_box class="flex-container padding-top margin-top margin-bottom"]
 			[rva_ad name="Big_Boy_H1" class="ad-big-boy"]
-		[/notphone]
+			[rva_ad name="Big_Boy_H2" class="ad-big-boy collapse-s"]
+			[rva_ad name="Big_Boy_H3" class="ad-big-boy collapse-m"]
+		[/rva_gutter_box]
 
 		[rva_1x2 title="Music" slug="music"]
 			[notphone]
@@ -115,12 +116,11 @@ function rva_fp_aftercontent() {
 			[/notphone]
 		[/rva_1x2]
 		
-		[phone]
-			[rva_ad name="Spud" class="ad-spud"]
-		[/phone]
-		[notphone]
-			[rva_ad name="Big_Boy_H2" class="ad-big-boy"]
-		[/notphone]
+		[rva_gutter_box class="flex-container padding-top margin-top margin-bottom"]
+			[rva_ad name="Big_Boy_H1" class="ad-big-boy"]
+			[rva_ad name="Big_Boy_H2" class="ad-big-boy collapse-s"]
+			[rva_ad name="Big_Boy_H3" class="ad-big-boy collapse-m"]
+		[/rva_gutter_box]
 
 		[rva_1x2 title="ART" slug="art"]
 			[notphone]
@@ -128,21 +128,27 @@ function rva_fp_aftercontent() {
 			[/notphone]
 		[/rva_1x2]
 		
-		[phone]
-			[rva_ad name="Spud" class="ad-spud"]
-		[/phone]
-		[notphone]
-			[rva_ad name="Big_Boy_H3" class="ad-big-boy"]
-		[/notphone]
+		[rva_gutter_box class="flex-container padding-top margin-top margin-bottom"]
+			[rva_ad name="Big_Boy_H1" class="ad-big-boy"]
+			[rva_ad name="Big_Boy_H2" class="ad-big-boy collapse-s"]
+			[rva_ad name="Big_Boy_H3" class="ad-big-boy collapse-m"]
+		[/rva_gutter_box]
 
-		[rva_1x2 title="PHOTO" slug="photo"]
-		[/rva_1x2]
+		[rva_1x2 title="PHOTO" slug="photo" /]
 		
-		[rva_ad name="Leaderboard" class="ad-leaderboard"]
+		[rva_gutter_box class="flex-container padding-top margin-top margin-bottom"]
+			[rva_ad name="Big_Boy_H1" class="ad-big-boy"]
+			[rva_ad name="Big_Boy_H2" class="ad-big-boy collapse-s"]
+			[rva_ad name="Big_Boy_H3" class="ad-big-boy collapse-m"]
+		[/rva_gutter_box]
 
-		[rva_1x2 title="EAT DRINK" slug="eatdrink"]
+		[rva_1x2 title="EAT DRINK" slug="eatdrink" /]
 
-		[rva_ad name="Leaderboard" class="ad-leaderboard"]
+		[rva_gutter_box class="flex-container padding-top margin-top margin-bottom"]
+			[rva_ad name="Big_Boy_H1" class="ad-big-boy"]
+			[rva_ad name="Big_Boy_H2" class="ad-big-boy collapse-s"]
+			[rva_ad name="Big_Boy_H3" class="ad-big-boy collapse-m"]
+		[/rva_gutter_box]
 		
 		[rva_gutter_box title="WATCH"]
 			[rva_3x6 title="WATCH" slug="watch"]
@@ -152,7 +158,11 @@ function rva_fp_aftercontent() {
 		
 		[rva_subscribtion_form]
 
-		[rva_ad name="Leaderboard" class="ad-leaderboard"]
+		[rva_gutter_box class="flex-container padding-top margin-top margin-bottom"]
+			[rva_ad name="Big_Boy_H1" class="ad-big-boy"]
+			[rva_ad name="Big_Boy_H2" class="ad-big-boy collapse-s"]
+			[rva_ad name="Big_Boy_H3" class="ad-big-boy collapse-m"]
+		[/rva_gutter_box]
 
 		[rva_gutter_box title="READ MORE"]
 			<div class="post-listing rva-3x3-box" ></div>

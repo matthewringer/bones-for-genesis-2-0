@@ -13,9 +13,13 @@ function rva_ajax_load_more() {
 		rva_post_thumbnail('entry-thumb-vox');
 	endwhile; endif; wp_reset_postdata();
 	
-	echo '<hr>';
-	echo do_shortcode('[rva_ad name="Leaderboard" class="wrap ad-leaderboard"]');
-	echo '<hr>';
+	echo do_shortcode('
+		[rva_gutter_box class="flex-container padding-top margin-top margin-bottom"]
+			[rva_ad name="Big_Boy_H1" class="ad-big-boy"]
+			[rva_ad name="Big_Boy_H2" class="ad-big-boy collapse-s"]
+			[rva_ad name="Big_Boy_H3" class="ad-big-boy collapse-m"]
+		[/rva_gutter_box]
+	');
 	$response = array();
 	$response['thumbs'] = ob_get_clean();
 	$response['count'] = $count;

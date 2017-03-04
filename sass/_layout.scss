@@ -6,10 +6,6 @@
 // .sidebar-content
 // .full-width-content
 
-body {
-	//background-color: $grey;
-}
-
 .site-container {
 	margin: auto;
 	max-width: $site-width;
@@ -17,7 +13,6 @@ body {
 }
 
 .site-inner {
-	//@include lb-ad-offset();
 	position: relative;
 	word-wrap: break-word;
 }
@@ -65,13 +60,40 @@ body {
 .flex-container {
 	display: flex;
 	flex-direction: row;
+	align-content: space-between;
+	justify-content: space-around;
 }
 
-.pad-bottom {
+.collapse-xs {
+	display: none;
+
+	@include MQ(XS) {
+		display: inline;
+	}
+}
+
+.collapse-s {
+	display: none;
+
+	@include MQ(S) {
+		display: inline;
+	}
+}
+
+.collapse-m {
+	display: none;
+
+	@include MQ(M) {
+		display: inline;
+	}
+}
+
+
+.padding-bottom {
 	padding-bottom: $spacer;
 }
 
-.pad-top {
+.padding-top {
 	padding-top: $spacer;
 }
 

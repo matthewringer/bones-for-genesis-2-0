@@ -160,7 +160,7 @@ function rva_social_account_buttons() {
 	$options =  get_option( RVA_SETTINGS_FIELD );
     ob_start();
 	?>
-	<div class="pad-bottom margin-bottom social-buttons " >
+	<div class="padding-bottom margin-bottom social-buttons " >
 		<div>
 			<h2>Follow RVA Mag</h2>
             <ul class="social-buttons">

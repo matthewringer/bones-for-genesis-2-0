@@ -144,7 +144,7 @@ function rva_entry_header_hr() {
 */
 function rva_single_ad_big_boy_h0(){
 
-	$shortcode = '[rva_ad name="Big_Boy_H0" class="wrap ad-big-boy pad-bottom"]';
+	$shortcode = '[rva_ad name="Big_Boy_H0" class="wrap ad-big-boy padding-bottom"]';
 	$shortcode = apply_filters('rva_single_ad_big_boy_h0', $shortcode );
 	
 	?>

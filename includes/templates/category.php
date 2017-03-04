@@ -66,9 +66,15 @@ function rva_sidebar(){
 function rva_fp_aftercontent() {
 
 	echo '<hr>';
-	echo do_shortcode('[rva_ad name="Leaderboard" class="wrap ad-leaderboard"]');
+	echo do_shortcode('
+		[rva_gutter_box class="flex-container padding-top margin-top margin-bottom"]
+			[rva_ad name="Big_Boy_H1" class="ad-big-boy"]
+			[rva_ad name="Big_Boy_H2" class="ad-big-boy collapse-s"]
+			[rva_ad name="Big_Boy_H3" class="ad-big-boy collapse-m"]
+		[/rva_gutter_box]
+	');
 	echo '<hr>';
-    echo start_section(array(title=>"", classes=>""), '<div class="post-listing rva-3x3-box" ></div>' );
+    echo start_section([], '<div class="post-listing rva-3x3-box" ></div>' );
 
 } add_action( 'genesis_after_content_sidebar_wrap', 'rva_fp_aftercontent');
 

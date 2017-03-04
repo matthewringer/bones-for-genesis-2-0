@@ -44,6 +44,21 @@ function demi_hero_story($atts) {
 }
 add_shortcode('rva_demihero_box', 'demi_hero_story');
 
+
+/**
+ * flex box container
+ *
+ */
+function flex_container ($atts, $content) {
+	ob_start();
+	?>
+	<div class="flex-container <?php echo atts['classes'] ?>" >
+		<?php echo do_shortcode($content); ?>
+	</div>
+	<?php
+	return ob_get_clean();
+} add_shortcode('rva_flex_box', 'flex_container');
+
 /**
  *  Open an Fullwidth Gutterbox div
  *  $atts [title=>string, classes=>string]
@@ -52,7 +67,7 @@ add_shortcode('rva_demihero_box', 'demi_hero_story');
 function start_section( $atts, $content) {
 	ob_start();
 	?>
-	<div class="rva-gutter-box <?php echo $atts['classes']; ?>">
+	<div class="rva-gutter-box <?php echo $atts['class']; ?>">
 		<?php if($atts['title'] != '') : ?>
 		<div class="section-title">
 			<h2><?php echo $atts['title']; ?></h2>
@@ -63,13 +78,11 @@ function start_section( $atts, $content) {
 	<?php
 	//TODO: return not echo....
 	return ob_get_clean();
-}
-add_shortcode('rva_layout_section', 'start_section');
+} add_shortcode('rva_layout_section', 'start_section');
 
 function rva_gutter_box_shortcode($atts, $content) {
 	return start_section($atts, $content);
-}
-add_shortcode( 'rva_gutter_box', 'rva_gutter_box_shortcode' );
+} add_shortcode( 'rva_gutter_box', 'rva_gutter_box_shortcode' );
 
 /**
  * Get the post thumbnail markup
@@ -130,7 +143,6 @@ function top_box($atts, $content) {
 	}
 	wp_reset_postdata();
 	$content = ob_get_clean();
-	//return start_section( array(title => $title, classes => "flex"), $content );
 	return $content;
 }
 add_shortcode('rva_topbox', 'top_box');
@@ -162,7 +174,7 @@ function rva_3x6($atts) {
 	}
 	wp_reset_postdata();
 	$content = ob_get_clean();
-	return $content; // start_section( array(title => $title, classes => "flex"), $content );
+	return $content;
 }
 add_shortcode('rva_3x6', 'rva_3x6');
 
@@ -213,6 +225,6 @@ function rva_1_over_2_box($attr, $content) {
 	<?php
     $content = ob_get_clean();
 
-	return start_section(array(title=>$title, classes=>""), $content);
+	return start_section(array(title=>$title), $content);
 }
 add_shortcode('rva_1x2','rva_1_over_2_box');
