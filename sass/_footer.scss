@@ -13,7 +13,6 @@
 .site-footer {
 	height: 200px;
 	background-color: $grey;
-	//border: 1px solid red;
 	> .wrap {
 	}
 }
@@ -44,6 +43,7 @@
 		padding: 5px 0;
 		font-weight: 800;
 		line-height: 1.5;
+		margin-right: 10px;
 	}
 
 	div:nth-of-type(3) {
@@ -59,9 +59,7 @@
 	}
 
 	& i:before {
-
 		text-align: left;
-		//padding-right: 10px;
 	}
 
 	i {
