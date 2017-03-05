@@ -10,6 +10,15 @@
 	margin: auto;
 	max-width: $site-width;
 	background-color: $white;
+	
+	position: relative;
+	top: 0;
+	@include admin-offset-fix;
+	//Offset for leaderboard ad unit.
+	@include MQ(S) {
+		top: 70px;
+		@include admin-offset-fix(70);
+	}
 }
 
 .site-inner {
@@ -17,43 +26,21 @@
 	word-wrap: break-word;
 }
 
-.rva-fp-before-content {
-		@include MQ(S) {
-			height: 90px;
-			@include admin-offset-fix(90);
-		}
-		@include MQ(M) {
-			@include admin-offset-fix(110);
-			height: 110px;
-		}
-}
-
 .rva-category-before-content {
 	margin-bottom: $spacer;
-	@include admin-offset-fix(55);
 	height: 55px; //TONY
 
-	@include MQ(S) { //TONY
-		@include admin-offset-fix(145);
-		height: 145px;
+	@include MQ(S) { 
+		height: 145px; //TONY
 	}
 }
 
 .rva-before-entry-content {
-	//TODO: code smell
+	height: 70px;
 	margin-bottom: $spacer;
-	
-	@include admin-offset-fix(40);
-	height: 40px;
 
 	@include MQ(S) {
-		@include admin-offset-fix(80);
-		height: 80px;
-	}
-	
-	@include MQ(M) {
-		@include admin-offset-fix(93);
-		height: 93px;
+		display: none;
 	}
 }
 
@@ -88,6 +75,13 @@
 	}
 }
 
+.collapse-l {
+	display: none;
+
+	@include MQ(L) {
+		display: inline;
+	}
+}
 
 .padding-bottom {
 	padding-bottom: $spacer;

@@ -202,13 +202,12 @@
 
 .title-block {
 	position: relative;
+	max-width: 90%;
+	text-align: left;
 	bottom: 10%;
 	left: 5%;
 	align-self: flex-end;
-	max-width: 90%;
-	text-align: left;
-
-	-webkit-align-self: flex-end;
+	// -webkit-align-self: flex-end;
 
 	h2 {
 		display: inline;
@@ -222,60 +221,6 @@
 
 .rva-photo-credit {
 	text-align: right;
-}
-
-.rva-hero-box {
-	
-	display: -webkit-box;
-	display: -moz-box;
-	display: -ms-flexbox;
-	display: -moz-flex;
-	display: -webkit-flex;
-	display: flex;
-	flex-wrap: wrap;
-	width: 100%;
-	height: 300px;
-	background-position: 0 25%;
-	background-size: cover;
-	background-repeat: no-repeat;
-	color: white;
-
-
-	.article-title {
-		background-color: $black;
-		color: $yellow;
-	}
-	
-	a {
-		color: darken($yellow, 5%);
-	}
-
-	@include MQ(S) {
-		height: 500px;
-		.article-title{
-			*  { 
-				font-size: 2rem;
-				line-height: 1.5rem;
-			} 
-		}
-
-		.author { 
-			*  { 
-				font-size: 1.5rem; 
-				line-height: 1.1rem;
-			} 
-		}
-	}
-	@include MQ(M) {
-		height: 600px;
-	}
-
-	
-}
-
-.rva-demi-hero {
-	//height: 300px;
-	@extend .rva-hero-box;
 }
 
 .section-title {
@@ -331,16 +276,128 @@ ul.social-links {
 	right: 0;
 }
 
+.rva-article-image {
+	//background-position: 0 25%; 
+	@extend .rva-center-img;
+	
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+// Structure
+
 .rva-gutter-box {
 	overflow-x: hidden;
 	margin-right: 5%;
 	margin-left: 5%;
 }
 
+
 .flex {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
+}
+
+.rva-modal {
+	display: none;
+	position: fixed;
+	z-index: 9999;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: $black;
+	background-color: rgba($black, .4);
+}
+
+.rva-modal-content {
+	background-color: $white;
+	margin: 15%;
+	padding: 20px;
+	border: 1px solid $dark-grey;
+	width: 80%;
+	height: 80%;
+
+	* {
+		width: 80%;
+		height: 80%;
+	}
+	span{
+		width: initial;
+		height: initial;
+	}
+}
+
+.rva-modal-close {
+	color: $red;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+
+	:hover,
+	:focus {
+		color: $black;
+		text-decoration: none;
+		cursor: pointer;
+	}
+}
+
+// Box layouts
+
+.rva-hero-box {
+	
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -moz-flex;
+	display: -webkit-flex;
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
+	height: 300px;
+	background-position: 0 25%;
+	background-size: cover;
+	background-repeat: no-repeat;
+	color: white;
+
+
+	.article-title {
+		background-color: $black;
+		color: $yellow;
+	}
+	
+	a {
+		color: darken($yellow, 5%);
+	}
+
+	@include MQ(S) {
+		height: 500px;
+		.article-title{
+			*  { 
+				font-size: 2rem;
+				line-height: 1.5rem;
+			} 
+		}
+
+		.author { 
+			*  { 
+				font-size: 1.5rem; 
+				line-height: 1.1rem;
+			} 
+		}
+	}
+	@include MQ(M) {
+		height: 600px;
+	}
+
+	
+}
+
+.rva-demi-hero {
+	//height: 300px;
+	@extend .rva-hero-box;
 }
 
 .rva-2x1-box {
@@ -376,7 +433,7 @@ ul.social-links {
 		width: 40%;
 		height: 90px;
 	}
-	& .text-block {
+	& .excerpt {
 		overflow: auto;
 	}
 }
@@ -460,6 +517,8 @@ ul.social-links {
 	padding: 0 $spacer/2 $spacer $spacer/2;
 
 	.rva-article-image {
+		display: flex;
+		align-items: flex-end;
 		height: 200px;
 		overflow: hidden;
 	}
@@ -472,27 +531,42 @@ ul.social-links {
 		}
 	}
 
-	.title-block {
+	.author, .excerpt, .text-block {
 		display: none;
 	}
 
-	.text-block {
-		//display: none;
+	@include MQ(S) {
 
-		text-align: center;
-		@include MQ(S) {
-			///height: 12em;
+		.rva-article-image {
+			align-items: flex-start;
+			height: 415px;
+			background-repeat: no-repeat;
+			background-position-y: -29px;
+    		background-position-x: 50%;
 		}
 
-		& h2 {
-			padding: 0 $spacer/2;
-			@include MQ(S) {
-				padding: 0;
+		.title-block {
+			background-color: $white;
+			position: relative;
+			top: 200px;
+			left: 0;
+			max-width: 100%;
+			width: 100%;
+			height: 100%;
+
+			a { color: $black; }
+			h2 {
+				color: $black;
+				background-color: transparent;
 			}
 		}
-	
-		p {
-			display: none;
+
+		.excerpt {
+			display: initial;
+			text-align: center;
+			background-color: $white;
+			width: 100%;
+			font-size: 1.5rem;
 		}
 	}
 }
@@ -517,12 +591,12 @@ ul.social-links {
 		display: none;
 	}
 
-	.text-block {
+	.excerpt {
 		display: none;
 	}
 }
 
-.rva-mobile-lead-box {
+.rva-top-box {
 	display: flex;
     flex-wrap: wrap;
 	margin-bottom: $spacer;
@@ -531,31 +605,6 @@ ul.social-links {
 		width: 100%;
 		padding: 0;
 		padding-bottom: $spacer;
-
-		.rva-article-image {
-			display: flex;
-			align-items: flex-end;
-			height: 200px;
-		}
-		
-		.title-block {
-			display: initial;
-		}
-
-		.article-title {
-			background-color: $black;
-			a {
-				color: $white;
-			}
-		}
-
-		.author {
-			display: none;
-		}
-
-		.text-block {
-			display: none;
-		}
 	}
 
 	//& article:nth-of-type(6),
@@ -569,16 +618,21 @@ ul.social-links {
 	}
 	
 	@include MQ(S) {
+
+
+
 		& article {
 			padding: 0 $spacer/2 $spacer $spacer/2;
 			float: left;
 			width: 50%;
 		}
 
+		& article:nth-of-type(5),
 		& article:nth-of-type(6),
 		& article:nth-of-type(7),
-		& article:nth-of-type(8){
-			display: initial;
+		& article:nth-of-type(8)
+		{
+			display: none;
 		}
 	}
 
@@ -589,19 +643,12 @@ ul.social-links {
 			width: 33.333%;
 		}
 		
-		& article:nth-of-type(9),
-		& article:nth-of-type(10),
-		& article:nth-of-type(11),
-		& article:nth-of-type(12) {
+		& article:nth-of-type(5),
+		& article:nth-of-type(6)
+		 {
 			display: initial;
 		}
 	}
-}
-
-.rva-article-image {
-	background-position: 0 25%; 
-	background-size: cover;
-	background-repeat: no-repeat;
 }
 
 .big-boy-h0-sidebar {
@@ -609,49 +656,4 @@ ul.social-links {
 	flex-direction: column;
 	align-items: flex-start;
 	width: 100%;
-}
-
-.rva-modal {
-	display: none;
-	position: fixed;
-	z-index: 9999;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	overflow: auto;
-	background-color: $black;
-	background-color: rgba($black, .4);
-}
-
-.rva-modal-content {
-	background-color: $white;
-	margin: 15%;
-	padding: 20px;
-	border: 1px solid $dark-grey;
-	width: 80%;
-	height: 80%;
-
-	* {
-		width: 80%;
-		height: 80%;
-	}
-	span{
-		width: initial;
-		height: initial;
-	}
-}
-
-.rva-modal-close {
-	color: $red;
-	float: right;
-	font-size: 28px;
-	font-weight: bold;
-
-	:hover,
-	:focus {
-		color: $black;
-		text-decoration: none;
-		cursor: pointer;
-	}
 }

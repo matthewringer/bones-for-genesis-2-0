@@ -52,9 +52,7 @@ add_action( 'genesis_before_header', 'rva_before_header' );
  * genesis_before_content
  */
 function rvamag_before_content() {
-	?>
-		<div id="top" class="rva-fp-before-content"></div>
-	<?php
+
 	$args = array(
 		'orderby'       => 'post_date',
 		'order'         => 'DESC',
@@ -96,6 +94,7 @@ function rva_fp_aftercontent() {
 			[rva_ad name="Big_Boy_H1" class="ad-big-boy"]
 			[rva_ad name="Big_Boy_H2" class="ad-big-boy collapse-s"]
 			[rva_ad name="Big_Boy_H3" class="ad-big-boy collapse-m"]
+			[rva_ad name="Big_Boy_H3" class="ad-big-boy collapse-l"]
 		[/rva_gutter_box]
 
 		[rva_1x2 title="POLITICS" slug="politics"]
@@ -108,6 +107,7 @@ function rva_fp_aftercontent() {
 			[rva_ad name="Big_Boy_H1" class="ad-big-boy"]
 			[rva_ad name="Big_Boy_H2" class="ad-big-boy collapse-s"]
 			[rva_ad name="Big_Boy_H3" class="ad-big-boy collapse-m"]
+			[rva_ad name="Big_Boy_H3" class="ad-big-boy collapse-l"]
 		[/rva_gutter_box]
 
 		[rva_1x2 title="Music" slug="music"]
@@ -120,6 +120,7 @@ function rva_fp_aftercontent() {
 			[rva_ad name="Big_Boy_H1" class="ad-big-boy"]
 			[rva_ad name="Big_Boy_H2" class="ad-big-boy collapse-s"]
 			[rva_ad name="Big_Boy_H3" class="ad-big-boy collapse-m"]
+			[rva_ad name="Big_Boy_H3" class="ad-big-boy collapse-l"]
 		[/rva_gutter_box]
 
 		[rva_1x2 title="ART" slug="art"]
@@ -132,6 +133,7 @@ function rva_fp_aftercontent() {
 			[rva_ad name="Big_Boy_H1" class="ad-big-boy"]
 			[rva_ad name="Big_Boy_H2" class="ad-big-boy collapse-s"]
 			[rva_ad name="Big_Boy_H3" class="ad-big-boy collapse-m"]
+			[rva_ad name="Big_Boy_H3" class="ad-big-boy collapse-l"]
 		[/rva_gutter_box]
 
 		[rva_1x2 title="PHOTO" slug="photo" /]
@@ -140,6 +142,7 @@ function rva_fp_aftercontent() {
 			[rva_ad name="Big_Boy_H1" class="ad-big-boy"]
 			[rva_ad name="Big_Boy_H2" class="ad-big-boy collapse-s"]
 			[rva_ad name="Big_Boy_H3" class="ad-big-boy collapse-m"]
+			[rva_ad name="Big_Boy_H3" class="ad-big-boy collapse-l"]
 		[/rva_gutter_box]
 
 		[rva_1x2 title="EAT DRINK" slug="eatdrink" /]
@@ -148,6 +151,7 @@ function rva_fp_aftercontent() {
 			[rva_ad name="Big_Boy_H1" class="ad-big-boy"]
 			[rva_ad name="Big_Boy_H2" class="ad-big-boy collapse-s"]
 			[rva_ad name="Big_Boy_H3" class="ad-big-boy collapse-m"]
+			[rva_ad name="Big_Boy_H3" class="ad-big-boy collapse-l"]
 		[/rva_gutter_box]
 		
 		[rva_gutter_box title="WATCH"]
@@ -159,9 +163,10 @@ function rva_fp_aftercontent() {
 		[rva_subscribtion_form]
 
 		[rva_gutter_box class="flex-container padding-top margin-top margin-bottom"]
-			[rva_ad name="Big_Boy_H1" class="ad-big-boy"]
+			[rva_ad name="Big_Boy_H2" class="ad-big-boy"]
 			[rva_ad name="Big_Boy_H2" class="ad-big-boy collapse-s"]
 			[rva_ad name="Big_Boy_H3" class="ad-big-boy collapse-m"]
+			[rva_ad name="Big_Boy_H3" class="ad-big-boy collapse-l"]
 		[/rva_gutter_box]
 
 		[rva_gutter_box title="READ MORE"]

@@ -1,11 +1,8 @@
 
 .before-header {
-	
 	display: none;
-
-	@include admin-offset-fix;
 	position: fixed;
-	top: 0;
+	@include admin-offset-fix;
 	z-index: 999;
 	overflow: hidden;
 	margin: 0;
@@ -20,6 +17,7 @@
 
 	@include MQ(S) {
 		display: initial;
+		//display: none;
 		height: 90px;
 	}
 }
@@ -33,19 +31,17 @@
 	display: block;
 }
 
-.site-header-offset {
-	
-	// @include admin-offset-fix(50);
-	// top: 50px;
-
-	@include MQ(S) {
-		@include admin-offset-fix(90);
-		top: 90px;
-	}
-}
-
 .site-header {
+	//Fixed Hearder offset is a PITA becasue of the admin bar...
 	position: fixed;
+	top: 0;
+	@include admin-offset-fix;
+	//Offset for leaderboard ad unit.
+	@include MQ(S) {
+		top: 90px;
+		@include admin-offset-fix(90);
+	}
+
 	z-index: 10;
 	display: -webkit-box;
 	display: -moz-box;

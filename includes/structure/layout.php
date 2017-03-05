@@ -97,13 +97,11 @@ function rva_post_thumbnail($class='entry-thumbnail ') { //entry-thumb-vox
     			<h2 class="article-title"><a href="<?php echo get_the_permalink(); ?>"> <?php echo get_the_title(); ?> </a></h2>
     			<br/>
     			<p class="author"><?php echo do_shortcode('[post_author_posts_link]'); ?> </p>
-    		</div>
-		</div>
-		<div class="text-block">
-			<a href="<?php echo get_the_permalink(); ?>">
-				<h2 class="article-title"><?php echo get_the_title() ?></h2>
-			</a>
-			<p> <?php echo get_the_excerpt() ?> </p>
+				<p class="excerpt"> <?php echo get_the_excerpt() ?> </p>
+			</div>
+			<!--<div class="text-block">
+				<p class="excerpt"> <?php echo get_the_excerpt() ?> </p>
+			</div>-->
 		</div>
 	</article>
 	<?php
@@ -131,7 +129,7 @@ function top_box($atts, $content) {
 	$loop = new WP_Query( $args );
 	if( $loop->have_posts() ) {
 		// loop through posts
-		echo '<div class="rva-mobile-lead-box ">';
+		echo '<div class="rva-top-box ">';
 		while( $loop->have_posts() ): $loop->the_post();
 			rva_post_thumbnail();
 			//rva_post_thumbnail('entry-thumb-vox');
@@ -169,6 +167,7 @@ function rva_3x6($atts) {
 		echo '<div class="rva-3x3-box">';
 		while( $loop->have_posts() ): $loop->the_post();
 			rva_post_thumbnail('entry-thumb-vox ');
+			//rva_post_thumbnail('entry-thumb-vox ');
 		endwhile;
 		echo '</div>';
 	}

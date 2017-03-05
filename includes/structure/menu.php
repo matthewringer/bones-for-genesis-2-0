@@ -10,7 +10,7 @@ if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 //* Reposition the primary navigation menu
 remove_action( 'genesis_after_header', 'genesis_do_nav');
-// remove_action( 'genesis_after_header', 'genesis_do_subnav' );
+remove_action( 'genesis_after_header', 'genesis_do_subnav' );
 
 /*
  * Add header image and post nav mobile hamburger

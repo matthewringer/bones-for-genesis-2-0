@@ -25,7 +25,7 @@ add_action( 'genesis_before_header', 'rva_before_header' );
  */
 function rva_before_content() {
 	?>
-		<div class="rva-before-entry-content"></div>
+		<div class="rva-category-before-content"></div>
 	<?php
 } add_action('genesis_before_content', 'rva_before_content');
 

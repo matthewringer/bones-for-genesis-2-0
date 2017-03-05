@@ -23,9 +23,6 @@
 }
 
 .genesis-nav-menu {
-	// position: fixed;
-	// top: 50px;
-	@include admin-offset-fix(50);
 	height: 50px;
 
 	@include transform(translateY(-1200%));
