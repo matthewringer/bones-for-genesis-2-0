@@ -36,14 +36,18 @@ function hero_story($atts) {
     		</div>
     	</div>
 	<?php
-}
-add_shortcode('rva_hero_box', 'hero_story');
+} add_shortcode('rva_hero_box', 'hero_story');
 
 function demi_hero_story($atts) {
-	do_shortcode('[rva_hero_box class="rva-demi-hero"]');
-}
-add_shortcode('rva_demihero_box', 'demi_hero_story');
+	do_shortcode('[rva_hero_box ]');
+} add_shortcode('rva_demihero_box', 'demi_hero_story');
 
+/**
+ * Horizon
+ */
+ function horizon_shortcode() {
+	 return '<div class="section-title rva-gutter-box collapse-s"></div>';
+ } add_shortcode('hr','horizon_shortcode');
 
 /**
  * flex box container
@@ -96,12 +100,9 @@ function rva_post_thumbnail($class='entry-thumbnail ') { //entry-thumb-vox
 			<div class="title-block" >
     			<h2 class="article-title"><a href="<?php echo get_the_permalink(); ?>"> <?php echo get_the_title(); ?> </a></h2>
     			<br/>
-    			<p class="author"><?php echo do_shortcode('[post_author_posts_link]'); ?> </p>
+    			<p class="author"> <?php echo do_shortcode('[post_author_posts_link]'); ?> </p>
 				<p class="excerpt"> <?php echo get_the_excerpt() ?> </p>
 			</div>
-			<!--<div class="text-block">
-				<p class="excerpt"> <?php echo get_the_excerpt() ?> </p>
-			</div>-->
 		</div>
 	</article>
 	<?php
@@ -142,8 +143,7 @@ function top_box($atts, $content) {
 	wp_reset_postdata();
 	$content = ob_get_clean();
 	return $content;
-}
-add_shortcode('rva_topbox', 'top_box');
+} add_shortcode('rva_topbox', 'top_box');
 
 /**
  * 3 by 6 post thumbnail box
@@ -166,16 +166,15 @@ function rva_3x6($atts) {
 		// loop through posts
 		echo '<div class="rva-3x3-box">';
 		while( $loop->have_posts() ): $loop->the_post();
-			rva_post_thumbnail('entry-thumb-vox ');
 			//rva_post_thumbnail('entry-thumb-vox ');
+			rva_post_thumbnail();
 		endwhile;
 		echo '</div>';
 	}
 	wp_reset_postdata();
 	$content = ob_get_clean();
 	return $content;
-}
-add_shortcode('rva_3x6', 'rva_3x6');
+} add_shortcode('rva_3x6', 'rva_3x6');
 
 /**
  * 1 over 2 post thumbnail box
@@ -211,8 +210,8 @@ function rva_1_over_2_box($attr, $content) {
 			<div class="rva-2x1-box margin-top">
 				<?php while( $loop->have_posts() ) { 
 					$loop->the_post(); 
-					rva_post_thumbnail('entry-thumb-vox '); 
-					//rva_post_thumbnail(); 
+					//rva_post_thumbnail('entry-thumb-vox '); 
+					rva_post_thumbnail(); 
 
 				} ?>
 			</div>
@@ -225,5 +224,4 @@ function rva_1_over_2_box($attr, $content) {
     $content = ob_get_clean();
 
 	return start_section(array(title=>$title), $content);
-}
-add_shortcode('rva_1x2','rva_1_over_2_box');
+} add_shortcode('rva_1x2','rva_1_over_2_box');

@@ -82,6 +82,7 @@ function featured_post_image() {
 			<?php $photog_name ?> 
 		</p> 
 	<?php
+
 } add_action( 'genesis_before_content_sidebar_wrap', 'featured_post_image', 13 );
 
 /**
@@ -115,32 +116,41 @@ function single_main_add_css_attr( $attributes ) {
  * used in single....
  */
 function get_the_tagline(){
+
 	$post_id = get_the_ID();
     $field = 'rva_post_tagline';
     return get_post_meta( $post_id, $field, true );
+
 }
 
 /**
 *
 */
-function rva_post_excerpt(){
+function rva_post_excerpt() {
+
 	?> 
 		<h2 class="entry-tagline"><?php echo get_the_tagline(); ?> </h2> 
 	<?php
+
 } add_action('genesis_entry_header', 'rva_post_excerpt', 11);
 
 /**
+*	Add hr to entry header
 *
 */
 function rva_entry_header_hr() {
+
 	?> 
 		<hr class="rva-content-horizon">
 	<?php
+
 } add_action('genesis_entry_header', 'rva_entry_header_hr', 14);
 
 /**
 * Prints the right primary sidebar ads
 * Applys filter : rva_single_ad_big_boy_h0
+*
+* @since 1.0.0
 */
 function rva_single_ad_big_boy_h0(){
 
@@ -152,6 +162,7 @@ function rva_single_ad_big_boy_h0(){
 	<?php echo do_shortcode($shortcode); ?>
 	</div>
 	<?php
+
 } add_action('genesis_sidebar', 'rva_single_ad_big_boy_h0', 5);
 
 

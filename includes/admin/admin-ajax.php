@@ -6,20 +6,24 @@ function rva_ajax_load_more() {
 	$args['paged'] = esc_attr( $_POST['page'] );
 	$args['post_status'] = 'publish';
 	ob_start();
+	
 	$loop = new WP_Query( $args );
 	$count = $loop->found_posts;
 	$max_pages = $loop->max_num_pages;
+
 	if( $loop->have_posts() ): while( $loop->have_posts() ): $loop->the_post();
-		rva_post_thumbnail('entry-thumb-vox');
+		rva_post_thumbnail();
 	endwhile; endif; wp_reset_postdata();
 	
+	echo '<hr>';
 	echo do_shortcode('
-		[rva_gutter_box class="flex-container padding-top margin-top margin-bottom"]
+		[rva_flex_box class="padding-top margin-top margin-bottom"]
 			[rva_ad name="Big_Boy_H1" class="ad-big-boy"]
 			[rva_ad name="Big_Boy_H2" class="ad-big-boy collapse-s"]
 			[rva_ad name="Big_Boy_H3" class="ad-big-boy collapse-m"]
-		[/rva_gutter_box]
-	');
+		[/rva_flex_box] ');
+	echo '<hr>';
+	
 	$response = array();
 	$response['thumbs'] = ob_get_clean();
 	$response['count'] = $count;

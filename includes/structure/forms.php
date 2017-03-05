@@ -39,7 +39,7 @@ function rva_mail_list_shortcode($atts, $content) {
     ?>
     <form id="mailing_list" action="http://rva.createsend.com/t/r/s/wdhtd/" method="post" target="createsend">
         <?php echo do_shortcode($content); ?>
-        <fieldset class="">
+        <fieldset >
             <input type="text" name="cm-wdhtd-wdhtd" id="wdhtd-wdhtd" size="25">
             <input type="button" class="btn btn-alert" href="javascript:;" value="SUBSCRIBE" onclick="
             (function(){

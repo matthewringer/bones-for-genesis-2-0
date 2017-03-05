@@ -3,14 +3,15 @@
 	//	padding: 7pt 10pt;
 	padding: .6em 1em;
 	width: auto;
-	height:24px;
+	height: $input-height;
 	border: none;
-	border-radius: .25em;
+	border-radius: $input-radius;
 	background-color: transparent;
 	text-align: center;
 	text-transform: uppercase;
 	white-space: nowrap;
 	font:  {
+		size: 1.2rem;
 		weight: 800;
 	}
 	line-height: 1;
@@ -107,23 +108,23 @@ div.social-buttons {
 
 		&.fa-facebook,
 		&.fa-tumblr {
-			top: 25%;
-			left: 33%;
+			top: 20%;
+			left: 30%;
 		}
 
 		&.fa-youtube,
 		&.fa-instagram,
 		&.fa-twitter,
 		&.fa-linkedin {
-			top: 20%;
-			left: 25%;
+			top: 17%;
+			left: 21%;
 		}
 
 		&.fa-envelope,
 		&.fa-print,
 		&.fa-comment {
-			top: 20%;
-			left: 21%;
+			top: 15%;
+			left: 16%;
 		}
 	}
 }
@@ -132,7 +133,7 @@ div.social-buttons {
 & div.social-buttons {
 	//margin: auto;
 	margin-top: $spacer;
-	padding: 1em;
+	padding: $spacer/2 $spacer;
 	width: 300px;
 	background-color: $grey;
 }
@@ -154,7 +155,7 @@ div.social-buttons {
 
 		span {
 			position: relative;
-			top: 4px;
+			top: 2px;
 			left: 35px;
 			display: inline-block;
 			color: $black;

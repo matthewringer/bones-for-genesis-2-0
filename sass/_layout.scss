@@ -55,7 +55,7 @@
 	display: none;
 
 	@include MQ(XS) {
-		display: inline;
+		display: initial;
 	}
 }
 
@@ -63,7 +63,7 @@
 	display: none;
 
 	@include MQ(S) {
-		display: inline;
+		display: initial;
 	}
 }
 
@@ -71,7 +71,7 @@
 	display: none;
 
 	@include MQ(M) {
-		display: inline;
+		display: initial;
 	}
 }
 
@@ -79,7 +79,7 @@
 	display: none;
 
 	@include MQ(L) {
-		display: inline;
+		display: initial;
 	}
 }
 

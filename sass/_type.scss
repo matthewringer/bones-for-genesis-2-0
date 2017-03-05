@@ -85,9 +85,9 @@ iframe {
 
 hr {
 	clear: both;
-	//margin: $spacer 0;
-	margin: $spacer 15%;
-	height: 1px;
+	display: block;
+	margin: $spacer 5%;
+	height: 2px;
 	border: 0;
 	background-color: $grey;
 }
