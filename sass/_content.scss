@@ -389,7 +389,9 @@ ul.social-links {
 .rva-2x1-box {
 	& article {
 		padding: 0;
+		margin-bottom: $spacer;
 	}
+
 	@include MQ(S) {
 		float: left;
 		width: 100%;
