@@ -58,7 +58,7 @@ function rvamag_before_content() {
 		wp_reset_postdata();
     }
 	?>
-	<div class="section-title">
+	<div class="section-title" style="margin-left:5%; margin-right:5%;">
 		<h2>LATEST</h2>
 	</div>
 	<?php
@@ -84,7 +84,7 @@ remove_action( 'genesis_loop', 'genesis_do_loop' );
  */
 function rva_fp_aftercontent() {
 
-	echo do_shortcode('
+	$square_ads = '
 		[hr]
 		[rva_gutter_box class="flex-container padding-top margin-top margin-bottom"]
 			[rva_ad name="Big_Boy_H1" class="ad-big-boy"]
@@ -92,73 +92,26 @@ function rva_fp_aftercontent() {
 			[rva_ad name="Big_Boy_H3" class="ad-big-boy collapse-m"]
 			[rva_ad name="Big_Boy_H3" class="ad-big-boy collapse-l"]
 		[/rva_gutter_box]
+	';
 
+	echo do_shortcode('
 		[rva_1x2 title="POLITICS" slug="politics"/]
 
-		[hr]
-		[rva_gutter_box class="flex-container padding-top margin-top margin-bottom"]
-			[rva_ad name="Big_Boy_H1" class="ad-big-boy"]
-			[rva_ad name="Big_Boy_H2" class="ad-big-boy collapse-s"]
-			[rva_ad name="Big_Boy_H3" class="ad-big-boy collapse-m"]
-			[rva_ad name="Big_Boy_H3" class="ad-big-boy collapse-l"]
-		[/rva_gutter_box]
-
 		[rva_1x2 title="Music" slug="music"/]
-
-		[hr]
-		[rva_gutter_box class="flex-container padding-top margin-top margin-bottom"]
-			[rva_ad name="Big_Boy_H1" class="ad-big-boy"]
-			[rva_ad name="Big_Boy_H2" class="ad-big-boy collapse-s"]
-			[rva_ad name="Big_Boy_H3" class="ad-big-boy collapse-m"]
-			[rva_ad name="Big_Boy_H3" class="ad-big-boy collapse-l"]
-		[/rva_gutter_box]
-
+		
 		[rva_1x2 title="ART" slug="art"/]
 		
-		[hr]
-		[rva_gutter_box class="flex-container padding-top margin-top margin-bottom"]
-			[rva_ad name="Big_Boy_H1" class="ad-big-boy"]
-			[rva_ad name="Big_Boy_H2" class="ad-big-boy collapse-s"]
-			[rva_ad name="Big_Boy_H3" class="ad-big-boy collapse-m"]
-			[rva_ad name="Big_Boy_H3" class="ad-big-boy collapse-l"]
-		[/rva_gutter_box]
-
 		[rva_1x2 title="PHOTO" slug="photo"/]
 		
-		[hr]
-		[rva_gutter_box class="flex-container padding-top margin-top margin-bottom"]
-			[rva_ad name="Big_Boy_H1" class="ad-big-boy"]
-			[rva_ad name="Big_Boy_H2" class="ad-big-boy collapse-s"]
-			[rva_ad name="Big_Boy_H3" class="ad-big-boy collapse-m"]
-			[rva_ad name="Big_Boy_H3" class="ad-big-boy collapse-l"]
-		[/rva_gutter_box]
-
 		[rva_1x2 title="EAT DRINK" slug="eatdrink"/]
-
-		[hr]
-		[rva_gutter_box class="flex-container padding-top margin-top margin-bottom"]
-			[rva_ad name="Big_Boy_H1" class="ad-big-boy"]
-			[rva_ad name="Big_Boy_H2" class="ad-big-boy collapse-s"]
-			[rva_ad name="Big_Boy_H3" class="ad-big-boy collapse-m"]
-			[rva_ad name="Big_Boy_H3" class="ad-big-boy collapse-l"]
-		[/rva_gutter_box]
 		
 		[rva_gutter_box title="WATCH"]
-			[rva_3x6 title="WATCH" slug="watch"]
+			[rva_3x6 title="WATCH" slug="watch" class="entry-thumb-vox"]
 		[/rva_gutter_box]
-
-		<!-- TODO: GayRva content... -->
 		
+		<!-- TODO: GayRva content... -->
 		[rva_subscribtion_form]
-
-		[hr]
-		[rva_gutter_box class="flex-container padding-top margin-top margin-bottom"]
-			[rva_ad name="Big_Boy_H2" class="ad-big-boy"]
-			[rva_ad name="Big_Boy_H2" class="ad-big-boy collapse-s"]
-			[rva_ad name="Big_Boy_H3" class="ad-big-boy collapse-m"]
-			[rva_ad name="Big_Boy_H3" class="ad-big-boy collapse-l"]
-		[/rva_gutter_box]
-
+		
 		[rva_gutter_box title="READ MORE"]
 			<div class="post-listing rva-3x3-box" ></div>
 		[/rva_gutter_box]

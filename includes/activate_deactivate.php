@@ -1,5 +1,5 @@
 <?php
-
+require_once(ABSPATH . 'wp-admin/includes/taxonomy.php');
 if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 
@@ -15,10 +15,8 @@ add_action('after_switch_theme', 'rva_activation');
 function rva_activation(){
     //$options1=array();
 	//add_option('rva_socialmedia_options',  serialize($options1));
-
 }
 
-add_action('after_switch_theme', 'rva_create_primary_memu');
 /**
  * Configure Theme menus
  */
@@ -35,10 +33,18 @@ function rva_create_primary_memu() {
 		'magazine' => 'MAGAZINE'
 	];
 
-    //TODO: create the categories when the theme is applied.
-    //wp_create_category(${'name'}, ${'parent'});
-    //wp_insert_category( array $catarr, bool $wp_error = false )
-	
+	//Create Categories if necessary
+	foreach ( $primary_menu_items as $key => $value ) {
+		$cat = get_category_by_slug( $key );
+		if( $cat == false ) {
+			write_log($key);
+			wp_insert_category([
+				'category_nicename' => $key,
+				'cat_name' => $value
+			]);
+		}
+	}
+
     //give your menu a name
     $menu_name = 'RVA Primary Menu';
 	$menu = wp_get_nav_menu_object( $menu_name );
@@ -62,9 +68,9 @@ function rva_create_primary_memu() {
 		$locations['primary'] = $menu->term_id;
 		set_theme_mod( 'nav_menu_locations', $locations );
 	}
-}
+} add_action('after_switch_theme', 'rva_create_primary_memu');
 
-add_action('after_switch_theme', 'rva_create_secondary_memu');
+
 /**
  * Create secondary menus
  */
@@ -73,7 +79,7 @@ function rva_create_secondary_memu() {
 	$secondary_menu_items = [
 		'rss' => 'RSS',
 		'about' => 'About',
-		'advertizing' => 'Advertizing',
+		'advertising' => 'Advertising',
 		'contributors' => 'Contributors',
 		'contact' => 'Contact'
 	];
@@ -102,9 +108,9 @@ function rva_create_secondary_memu() {
 		$locations['secondary'] = $menu->term_id;
 		set_theme_mod( 'nav_menu_locations', $locations );
 	}
-}
+} add_action('after_switch_theme', 'rva_create_secondary_memu');
 
-add_action('after_switch_theme', 'rva_create_pages');
+
 /**
  * 
  */
@@ -119,8 +125,8 @@ function rva_create_pages() {
 	rva_create_page($about_page);
 
 	$advertizing_page = array(
-		'slug' => 'advertizing',
-		'title' =>'Advertizing',
+		'slug' => 'advertising',
+		'title' =>'Advertising',
 		'template' => '/page_templates/page.php',
 		'post_excerpt' => 'Advertize with RVA Magazine'
 	);
@@ -142,7 +148,7 @@ function rva_create_pages() {
 	);
 	rva_create_page($contact_page);
 
-}
+} add_action('after_switch_theme', 'rva_create_pages');
 
 function rva_create_page($page_args){
 	$page = get_page_by_path( $page_args['slug'] );

@@ -46,7 +46,7 @@ add_filter( 'genesis_pre_get_option_site_layout', 'content_sidebar_layout_single
 
 remove_action( 'genesis_loop', 'genesis_do_loop' );
 
-
+require_once(ABSPATH . 'wp-admin/includes/taxonomy.php');
 /**
  * 
  */
@@ -55,7 +55,10 @@ function rva_contributors_loop() {
 	<div style="background-color:red;" >
 	<h2>List of authors:</h2>
 	<ul>
-		<?php wp_list_authors(); ?>
+		
+		<?php wp_list_authors(); 
+
+		?>
 	</ul>
 	</div>
 	<?php

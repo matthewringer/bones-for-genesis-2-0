@@ -50,8 +50,8 @@
 	display: flex;
 	max-width: $site-width;
 	width: 100%;
-	background-color: rgba($dark-grey, .9);
-	box-shadow: 0 1px 1px rgba($dark-grey, .1);
+	background-color: rgba($black, .9);
+	box-shadow: 0 1px 1px rgba($black, .1);
 
 	& .wrap {
 		width: 100%;
@@ -64,7 +64,7 @@
 }
 
 .rva-header-trans {
-	background-color: rgba($dark-grey, 1); // !important;
+	background-color: rgba($black, 1); // !important;
 }
 
 // hide the SEO title and description

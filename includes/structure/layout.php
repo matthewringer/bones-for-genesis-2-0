@@ -152,7 +152,7 @@ function rva_3x6($atts) {
 	
 	$title = $atts['title']; 
 	$slug = $atts['slug'];
-
+	$class = $atts['class'];
 	$args = [
 		'orderby'       => 'post_date',
 		'order'         => 'DESC',
@@ -166,8 +166,11 @@ function rva_3x6($atts) {
 		// loop through posts
 		echo '<div class="rva-3x3-box">';
 		while( $loop->have_posts() ): $loop->the_post();
-			//rva_post_thumbnail('entry-thumb-vox ');
-			rva_post_thumbnail();
+			if($class != null) {
+				rva_post_thumbnail($class);
+			} else {
+				rva_post_thumbnail();
+			}
 		endwhile;
 		echo '</div>';
 	}

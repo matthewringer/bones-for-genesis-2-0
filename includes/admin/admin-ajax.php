@@ -15,14 +15,14 @@ function rva_ajax_load_more() {
 		rva_post_thumbnail();
 	endwhile; endif; wp_reset_postdata();
 	
-	echo '<hr>';
-	echo do_shortcode('
-		[rva_flex_box class="padding-top margin-top margin-bottom"]
-			[rva_ad name="Big_Boy_H1" class="ad-big-boy"]
-			[rva_ad name="Big_Boy_H2" class="ad-big-boy collapse-s"]
-			[rva_ad name="Big_Boy_H3" class="ad-big-boy collapse-m"]
-		[/rva_flex_box] ');
-	echo '<hr>';
+	echo do_shortcode('[hr]');
+	// echo do_shortcode('
+	// 	[rva_flex_box class="padding-top margin-top margin-bottom"]
+	// 		[rva_ad name="Big_Boy_H1" class="ad-big-boy"]
+	// 		[rva_ad name="Big_Boy_H2" class="ad-big-boy collapse-s"]
+	// 		[rva_ad name="Big_Boy_H3" class="ad-big-boy collapse-m"]
+	// 	[/rva_flex_box] ');
+	echo do_shortcode('[hr]');
 	
 	$response = array();
 	$response['thumbs'] = ob_get_clean();
