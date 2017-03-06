@@ -281,7 +281,7 @@ add_filter( 'genesis_attr_site-header', 'rva_set_header_classes' );
  */
 function rva_set_header_classes($attrs) {
 	
-	$attrs['class'] .= ' site-header-offset';
+	//$attrs['class'] .= ' site-header-offset';
 	
 	return $attrs;
 }

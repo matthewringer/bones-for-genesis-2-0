@@ -36,6 +36,27 @@
 }
 
 .rva-before-entry-content {
+	
+	margin-bottom: $spacer;
+	height: 55px;
+	
+	@include MQ(S) {
+		height: 70px;
+		margin-bottom: $spacer;
+	}
+}
+
+.rva-menu-offset {
+	margin-bottom: $spacer;
+
+	height: 70px;
+
+	@include MQ(S) {
+		height: 90px;
+	}
+}
+
+.rva-menu-offset-no-ad {
 	height: 70px;
 	margin-bottom: $spacer;
 
@@ -43,6 +64,7 @@
 		display: none;
 	}
 }
+
 
 .flex-container {
 	display: flex;
@@ -114,6 +136,10 @@
 }
 
 .content {
+	padding-top: $spacer;
+	text-align: center;
+	float: left;
+	width: 100%;
 }
 
 .sidebar-primary {

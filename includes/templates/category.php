@@ -41,7 +41,7 @@ add_action( 'genesis_before_header', 'rva_before_header' );
  */
 function rvamag_before_content() {
 	?>
-	<div id="top" class="rva-category-before-content"></div>
+	<div class="rva-category-before-content"></div>
 	<?php
 }
 add_action('genesis_before_content_sidebar_wrap', 'rvamag_before_content');

@@ -60,7 +60,7 @@ Offsets
 //TOP
 
 @mixin admin-offset-fix( $offset: 0 ) {
-	$narrow-offset: 0px; //46px;
+	$narrow-offset: 46px;
 	$wide-offset: 32px;
 	@if $offset != 0 and type-of($offset) == 'number' {
 		$narrow-offset: $narrow-offset + $offset;

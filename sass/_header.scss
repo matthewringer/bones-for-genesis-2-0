@@ -75,6 +75,11 @@
 	width: 0;
 }
 
+.site-description {
+	//position: absolute;
+	//top: -9999px;
+}
+
 .site-title {
 	position: absolute;
 	top: -9999px;
@@ -85,18 +90,7 @@
 	}
 }
 
-.site-description {
-	// position: absolute;
-	// top: -9999px;
-	position: relative;
-	top: 25px;
-	@include MQ(XS) {
-		position: initial;
-		top: initial;
-	}
 
-	//genesis_attr( 'site-description' )
-}
 
 .header-widget-area {
 	//float: right;
