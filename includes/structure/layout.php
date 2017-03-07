@@ -11,7 +11,6 @@ if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  */
 add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_content_sidebar' );
 
-
 /**
  * Gets the id object and returns an int
  * @return int 
@@ -20,7 +19,6 @@ function get_cat_id_by_slug($category_slug) {
 	$idObj = get_category_by_slug($category_slug); 
 	return $idObj->term_id;
 }
-
 
 /**
  *  Hero Story Box
@@ -70,8 +68,10 @@ function flex_container ($atts, $content) {
  */
 function start_section( $atts, $content) {
 	ob_start();
+	//$class = $atts['class'];
+	$class = (array_key_exists('class',$atts))? $atts['class'] : '';
 	?>
-	<div class="rva-gutter-box <?php echo $atts['class']; ?>">
+	<div class="rva-gutter-box <?php echo $class; ?>">
 		<?php if($atts['title'] != '') : ?>
 		<div class="section-title">
 			<h2><?php echo $atts['title']; ?></h2>
@@ -97,6 +97,7 @@ function rva_post_thumbnail($class='entry-thumbnail ') { //entry-thumb-vox
 	?>
 	<article class="<?php echo $class ?>" >
 		<div class="rva-article-image" style="background-image:url(<?php echo get_the_post_thumbnail_url()?>);" >
+			<a href=" <?php echo get_the_permalink(); ?>"> <i class="fa fa-play-circle-o" aria-hidden="true"></i> </a>
 			<div class="title-block" >
     			<h2 class="article-title"><a href="<?php echo get_the_permalink(); ?>"> <?php echo get_the_title(); ?> </a></h2>
     			<br/>
@@ -153,10 +154,11 @@ function rva_3x6($atts) {
 	$title = $atts['title']; 
 	$slug = $atts['slug'];
 	$class = $atts['class'];
+	$count = ( array_key_exists ( 'count' , $atts ) )? $atts['count'] : '9';
 	$args = [
 		'orderby'       => 'post_date',
 		'order'         => 'DESC',
-		'posts_per_page'=> '9',
+		'posts_per_page'=> $count ,
 		'category_name' => $slug 
 	];
 
@@ -226,5 +228,5 @@ function rva_1_over_2_box($attr, $content) {
 	<?php
     $content = ob_get_clean();
 
-	return start_section(array(title=>$title), $content);
+	return start_section(array('title'=>$title), $content);
 } add_shortcode('rva_1x2','rva_1_over_2_box');

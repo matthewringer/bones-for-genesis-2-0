@@ -57,9 +57,10 @@ function rvamag_before_content() {
 		echo do_shortcode('[rva_hero_box]');
 		wp_reset_postdata();
     }
-	//TODO: style hacks
 	?>
-	<div class="section-title" style="margin-left: 5%; margin-right: 5%; margin-top: 2.5em;">
+	<div class="padding-top"></div>
+	<div class="padding-top collapse-s"></div>
+	<div class="section-title margin-top rva-site-margins">
 		<h2>LATEST</h2>
 	</div>
 	<?php
@@ -107,7 +108,7 @@ function rva_fp_aftercontent() {
 		[rva_1x2 title="EAT DRINK" slug="eatdrink"/]
 		
 		[rva_gutter_box title="WATCH"]
-			[rva_3x6 title="WATCH" slug="watch" class="entry-thumb-vox"]
+			[rva_3x6 title="WATCH" slug="watch" class="entry-thumb-video"]
 		[/rva_gutter_box]
 		
 		<!-- TODO: GayRva content... -->

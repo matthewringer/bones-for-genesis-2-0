@@ -27,7 +27,7 @@ require_once CHILD_DIR . '/includes/admin/admin-menu-page.php';	// RVA Magazine 
 
 //TODO move to plugin.
 require_once CHILD_DIR . '/includes/admin/admin-settings.php';  // RVA Magazine Theme settings
-require_once CHILD_DIR . '/includes/admin/admin-socialmedia.php';	// For adding/editing socialmedia options to RVA TODO: needs to be moved to the RVA settings section
+//require_once CHILD_DIR . '/includes/admin/admin-socialmedia.php';	// For adding/editing socialmedia options to RVA TODO: needs to be moved to the RVA settings section
 
 //Single Category selection todo move to plugin 
 require_once CHILD_DIR . '/includes/admin/taxonomy-single-term/class.taxonomy-single-term.php';  // 

@@ -40,10 +40,11 @@ add_filter('category_template', function($template) {
         //slug  to  path
         'read' => 'includes/templates/category-read.php',
         'events' => 'includes/templates/category-events.php',
+        'watch' => 'includes/templates/category-watch.php',
     ];
     // Get the current queried post id
     $term = get_queried_object();
-    $new_template = $category_templates[$term->slug];
+    $new_template = $category_templates[$term->slug]; //TODO: check first
     if ( $new_template ) {
         $new_template = locate_template( $new_template );
         if($new_template) {
