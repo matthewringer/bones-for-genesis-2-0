@@ -57,8 +57,9 @@ function rvamag_before_content() {
 		echo do_shortcode('[rva_hero_box]');
 		wp_reset_postdata();
     }
+	//TODO: style hacks
 	?>
-	<div class="section-title" style="margin-left:5%; margin-right:5%;">
+	<div class="section-title" style="margin-left: 5%; margin-right: 5%; margin-top: 2.5em;">
 		<h2>LATEST</h2>
 	</div>
 	<?php

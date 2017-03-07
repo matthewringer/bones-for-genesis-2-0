@@ -23,7 +23,8 @@ html.admin-bar-showing {
 	}
 
 	#wpadminbar {
-		display: none !important;
+		// don't hide admin bar
+		// display: none !important;
 	}
 }
 
