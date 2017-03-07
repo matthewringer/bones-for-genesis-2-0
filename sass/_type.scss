@@ -23,6 +23,7 @@ html.admin-bar-showing {
 	}
 
 	#wpadminbar {
+		position: fixed;
 		// don't hide admin bar
 		// display: none !important;
 	}

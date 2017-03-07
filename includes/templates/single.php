@@ -20,7 +20,7 @@ add_action('genesis_before', 'facebook_js_sdk'); //TODO: reference to function n
 
 function single_scripts() {
 
-	wp_enqueue_script( 'rva-trans-header', get_stylesheet_directory_uri() . '/js/trans-header.js', array( 'jquery' ), '1.0', true );
+	//wp_enqueue_script( 'rva-trans-header', get_stylesheet_directory_uri() . '/js/trans-header.js', array( 'jquery' ), '1.0', true );
 } add_action( 'wp_enqueue_scripts', 'single_scripts' );
 
 

@@ -10,7 +10,7 @@ if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  * Load javascript assets for category page
  */
 function rva_load_more_args() {
-	wp_enqueue_script( 'rva-trans-header', get_stylesheet_directory_uri() . '/js/trans-header.js', array( 'jquery' ), '1.0', true );
+	//wp_enqueue_script( 'rva-trans-header', get_stylesheet_directory_uri() . '/js/trans-header.js', array( 'jquery' ), '1.0', true );
 	wp_enqueue_script( 'rva-load-more', get_stylesheet_directory_uri() . '/js/load-more.js', array( 'jquery' ), '1.0', true );
 	
 	global $wp_query;
