@@ -21,6 +21,21 @@ function get_cat_id_by_slug($category_slug) {
 }
 
 /**
+ * Filter the_title max length...
+ */
+ function rva_title_elipses ($title) {
+	$text = $title;
+	$limit = 10;
+	if (str_word_count($text, 0) > $limit) {
+          $words = str_word_count($text, 2);
+          $pos = array_keys($words);
+          $text = substr($text, 0, $pos[$limit]) . '...';
+      }
+	return $text;
+ } add_filter('the_title', 'rva_title_elipses');
+
+
+/**
  *  Hero Story Box
  */
 function hero_story($atts) {
@@ -153,7 +168,9 @@ function rva_3x6($atts) {
 	
 	$title = $atts['title']; 
 	$slug = $atts['slug'];
+	
 	$class = $atts['class'];
+	$layout = ( array_key_exists ( 'layout' , $atts ) )? $atts['layout'] : 'rva-3x3-box';
 	$count = ( array_key_exists ( 'count' , $atts ) )? $atts['count'] : '9';
 	$args = [
 		'orderby'       => 'post_date',
@@ -166,7 +183,7 @@ function rva_3x6($atts) {
 	$loop = new WP_Query( $args );
 	if( $loop->have_posts() ) {
 		// loop through posts
-		echo '<div class="rva-3x3-box">';
+		echo '<div class="'.$layout.'">';
 		while( $loop->have_posts() ): $loop->the_post();
 			if($class != null) {
 				rva_post_thumbnail($class);
@@ -204,7 +221,7 @@ function rva_1_over_2_box($attr, $content) {
 	ob_start();
 	//flex container 
 	?> 
-	<div class="flex-container"> 
+	<div class="flex-container margin-top"> 
 		<div style="flex-grow: 2;"> 
 			<?php if( $loop->have_posts() ) :
 			//Display hero

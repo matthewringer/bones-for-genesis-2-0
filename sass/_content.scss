@@ -171,7 +171,6 @@
 	padding: 0 .5em 0 .1em;
 	font-weight: 800;
 	font-size: 1.5rem;
-	font-style: italic;
     text-transform: uppercase;
 }
 
@@ -226,6 +225,7 @@
 		margin-top: $spacer;
 		border-top: 2px solid $grey;
 		text-align: center;
+		height: $spacer;
 
 		h2 {
 			position: relative;
@@ -411,11 +411,14 @@ ul.social-links {
 			width: 50%;
 			padding: 0 0 $spacer 0;
 			.rva-article-image {
-				height: 500px;
+				height: 450px;
 			}
 			.title-block{
 				top: 300px;
-				h2 { font-size: 2.5rem; }
+				h2 { 
+					font-size: 2.5rem; 
+					line-height: 2.4rem;
+				}
 				p { font-size: 1rem; }
 			}
 		}
@@ -462,6 +465,23 @@ ul.social-links {
 	}
 }
 
+.rva-2x-box {
+	& article {
+		display: initial;
+		float: left;
+		width: 100%;
+	}
+
+	@include MQ(S) {
+	
+		& article {
+			display: initial;
+			float: left;
+			width: 50%;
+		}
+	}
+}
+
 .entry-thumbnail {
 	padding: 0 $spacer/2 $spacer $spacer/2;
 	.fa { display: none; }
@@ -491,6 +511,7 @@ ul.social-links {
 
 		.article-title {
 			font-size: 1.8rem;
+			line-height: 1.6rem;
 			box-shadow: initial;
 		}
 
@@ -500,7 +521,7 @@ ul.social-links {
 
 		.rva-article-image {
 			align-items: flex-start;
-			height: 415px;
+			height: 385px;
 			background-repeat: no-repeat;
 			background-position-y: -29px;
     		background-position-x: 50%;
@@ -514,6 +535,7 @@ ul.social-links {
 			max-width: 100%;
 			width: 100%;
 			height: 100%;
+			padding-top: .75em;
 
 			a { color: $black; }
 			h2 {
@@ -523,11 +545,12 @@ ul.social-links {
 		}
 
 		.excerpt {
-			display: initial;
-			text-align: center;
-			background-color: $white;
+			margin-top: $spacer/2;
+			display: inline-block;
 			width: 100%;
-			font-size: 1.2rem;
+			font-size: 1rem;
+			line-height: 1rem;
+			background-color: transparent;
 		}
 	}
 }
@@ -621,14 +644,25 @@ ul.social-links {
 			padding: 0 $spacer/2 $spacer $spacer/2;
 			float: left;
 			width: 50%;
+			.title-block {
+				top: 130px;
+			}
+			.article-title {
+				font-size: 1.4rem;
+    			line-height: 1.4rem;
+			}
+			.rva-article-image {
+				height: 282px
+			}
 		}
 
 		& article:nth-of-type(5),
 		& article:nth-of-type(6),
 		& article:nth-of-type(7),
-		& article:nth-of-type(8)
+		& article:nth-of-type(8),
+		& article:nth-of-type(9)
 		{
-			display: none;
+			display: initial;
 		}
 	}
 
