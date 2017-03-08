@@ -58,8 +58,8 @@ function rvamag_before_content() {
 		wp_reset_postdata();
     }
 	?>
-	<div class="padding-top"></div>
-	<div class="padding-top collapse-s"></div>
+	<!--<div class="padding-top"></div>-->
+	<div class="padding-top expand-m"></div>
 	<div class="section-title margin-top rva-site-margins">
 		<h2>LATEST</h2>
 	</div>
@@ -88,7 +88,7 @@ function rva_fp_aftercontent() {
 
 	$square_ads = '
 		[hr]
-		[rva_gutter_box class="flex-container padding-top margin-top margin-bottom"]
+		[rva_gutter_box class="flex-container padding-top margin-top"]
 			[rva_ad name="Big_Boy_H1" class="ad-big-boy"]
 			[rva_ad name="Big_Boy_H2" class="ad-big-boy collapse-s"]
 			[rva_ad name="Big_Boy_H3" class="ad-big-boy collapse-m"]

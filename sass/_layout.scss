@@ -9,7 +9,7 @@
 .site-container {
 	margin: auto;
 	max-width: $site-width;
-	background-color: $white;
+	background-color: $background-color; //$white;
 	
 	position: relative;
 	top: 0;
@@ -102,6 +102,22 @@
 
 	@include MQ(L) {
 		display: initial;
+	}
+}
+
+.expand-s {
+	display: inline-block;
+
+	@include MQ(S) {
+		display: none;
+	}
+}
+
+.expand-m {
+	display: inline-block;
+
+	@include MQ(M) {
+		display: none;
 	}
 }
 

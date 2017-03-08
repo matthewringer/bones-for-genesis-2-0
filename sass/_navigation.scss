@@ -39,7 +39,7 @@
 		display: block;
 		padding: 1em 0;
 		border: none;
-		color: $white;
+		color: $text-color; //$white;
 		font-size: 1.8rem;
 		text-decoration: none;
 		white-space: nowrap;
@@ -115,12 +115,12 @@
 
 .nav-is-visible .rva-nav-trigger span {
 	/* hide line in the center on mobile when nav is visible */
-	background-color: rgba($white, 0);
+	background-color: rgba($menu-color, 0);
 
 	&::before,
 	&::after {
 		/* preserve visibility of upper and lower lines - close icon */
-		background-color: rgba($white, 1);
+		background-color: rgba($menu-color, 1);
 	}
 }
 
@@ -154,12 +154,12 @@
 
 .rva-nav-trigger span {
 	/* hamburger menu */
-	background-color: $white;
+	background-color: $menu-color;
 
 	&::before,
 	&::after {
 		/* upper and lower lines */
-		background-color: $white;
+		background-color: $menu-color;
 	}
 }
 

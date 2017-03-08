@@ -4,14 +4,13 @@
 	margin-right: auto;
 	margin-left: auto;
 	width: 100%;
-	content: 'Advertisement';
+	content: 'ADVERTISEMENT';
 }
 
 .ad-centered {
 	@extend .wrap;
 	position: relative;
 	text-align: center;
-	margin-bottom: $spacer;
 	> div {
 		margin: auto;
 		overflow: hidden;

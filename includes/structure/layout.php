@@ -111,7 +111,13 @@ function rva_gutter_box_shortcode($atts, $content) {
 function rva_post_thumbnail($class='entry-thumbnail ') { //entry-thumb-vox 
 	?>
 	<article class="<?php echo $class ?>" >
-		<a href=""><span class="rva-sponsored-by"> The National <i class="fa fa-external-link" aria-hidden="true"></i> </span></a>
+		<span class="rva-thumb-category"> <?php 
+			$categories = get_the_category();
+			if ( ! empty( $categories ) ) {
+				echo esc_html( $categories[0]->name );   
+			}
+		?></span>
+		<!--<a href=""><span class="rva-sponsored-by"> The National <i class="fa fa-external-link" aria-hidden="true"></i> </span></a>-->
 		<div class="rva-article-image" style="background-image:url(<?php echo get_the_post_thumbnail_url()?>);" >
 			<a href=" <?php echo get_the_permalink(); ?>"> <i class="fa fa-play-circle" aria-hidden="true"></i> </a>
 			<div class="title-block" >
