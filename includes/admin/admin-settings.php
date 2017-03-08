@@ -72,7 +72,6 @@ function rva_settings_scripts() {
     wp_enqueue_script( 'rva_admin_js', get_stylesheet_directory_uri() . '/build/js/admin.js', array( 'jquery' ), '1.0', true );
 }
 
-add_action( 'admin_init', 'rva_register_settings' );
 /**
  * This function registers the settings for the RVA Magazine theme settings area. 
  * It also restores default options when the Reset button is selected.
@@ -90,9 +89,8 @@ function rva_register_settings() {
 		exit;
 	}
 
-}
+} add_action( 'admin_init', 'rva_register_settings' );
 
-add_action( 'admin_notices', 'rva_theme_settings_notice' );
 /**
  * This function displays admin notices when the user updates RVA Magazine theme settings.
  *
@@ -109,9 +107,8 @@ function rva_theme_settings_notice() {
 		echo '<div id="message" class="updated settings-error notice is-dismissible"><p><strong>' . __( 'Settings saved.', 'genesis' ) . '</strong></p></div>';
 	}
 
-}
+} add_action( 'admin_notices', 'rva_theme_settings_notice' );
 
-add_action( 'admin_menu', 'rva_theme_options' );
 /**
  * This function registers the RVA settings page and prepares the styles, scripts and metaboxes to be loaded.
  *
@@ -131,14 +128,13 @@ function rva_theme_options() {
     $icon_url   =   null;
     $position   =   2;
 
-    $_rva_settings_pagehook =  add_menu_page(                $page_title,   $menu_title,   $capability,          $menu_slug,                $function, $icon_url, $position );
-    //$_rva_settings_pagehook = add_submenu_page( 'genesis', 'CT Settings', 'CT Settings', 'edit_theme_options', CTSETTINGS_SETTINGS_FIELD, 'ctsettings_theme_options_page' );
+    $_rva_settings_pagehook =  add_menu_page($page_title, $menu_title, $capability, $menu_slug, $function, $icon_url, $position );
 
 	//add_action( 'load-' . $_rva_settings_pagehook, 'rva_settings_styles' );
 	add_action( 'load-' . $_rva_settings_pagehook, 'rva_settings_scripts' );
 	add_action( 'load-' . $_rva_settings_pagehook, 'rva_settings_boxes' );
-	
-}
+
+} add_action( 'admin_menu', 'rva_theme_options' );
 
 /**
  * This function sets up the metaboxes to be populated by their respective callback functions.

@@ -23,7 +23,7 @@ function get_cat_id_by_slug($category_slug) {
 /**
  * Filter the_title max length...
  */
- function rva_title_elipses ($title) {
+function rva_title_elipses ($title) {
 	$text = $title;
 	$limit = 10;
 	if (str_word_count($text, 0) > $limit) {
@@ -51,9 +51,9 @@ function hero_story($atts) {
 	<?php
 } add_shortcode('rva_hero_box', 'hero_story');
 
-function demi_hero_story($atts) {
-	do_shortcode('[rva_hero_box ]');
-} add_shortcode('rva_demihero_box', 'demi_hero_story');
+// function demi_hero_story($atts) {
+// 	do_shortcode('[rva_hero_box ]');
+// } add_shortcode('rva_demihero_box', 'demi_hero_story');
 
 /**
  * Horizon
@@ -111,8 +111,9 @@ function rva_gutter_box_shortcode($atts, $content) {
 function rva_post_thumbnail($class='entry-thumbnail ') { //entry-thumb-vox 
 	?>
 	<article class="<?php echo $class ?>" >
+		<a href=""><span class="rva-sponsored-by"> The National <i class="fa fa-external-link" aria-hidden="true"></i> </span></a>
 		<div class="rva-article-image" style="background-image:url(<?php echo get_the_post_thumbnail_url()?>);" >
-			<a href=" <?php echo get_the_permalink(); ?>"> <i class="fa fa-play-circle-o" aria-hidden="true"></i> </a>
+			<a href=" <?php echo get_the_permalink(); ?>"> <i class="fa fa-play-circle" aria-hidden="true"></i> </a>
 			<div class="title-block" >
     			<h2 class="article-title"><a href="<?php echo get_the_permalink(); ?>"> <?php echo get_the_title(); ?> </a></h2>
     			<br/>
@@ -226,7 +227,7 @@ function rva_1_over_2_box($attr, $content) {
 			<?php if( $loop->have_posts() ) :
 			//Display hero
 			$loop->the_post(); 
-			echo do_shortcode('[rva_demihero_box]'); 
+			echo do_shortcode('[rva_hero_box]'); 
 			//$loop->post; 
 			?>
 			<div class="rva-2x1-box margin-top">

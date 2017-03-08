@@ -179,14 +179,13 @@ function bfg_downsize_uploaded_image( $image_data ) {
  *
  * @since 2.2.3
  */
-add_filter( 'xmlrpc_methods', 'bfg_remove_xmlrpc_pingback_ping' );
 function bfg_remove_xmlrpc_pingback_ping( $methods ) {
 
 	unset($methods['pingback.ping']);
 
 	return $methods;
 
-}
+} add_filter( 'xmlrpc_methods', 'bfg_remove_xmlrpc_pingback_ping' );
 
 /*
  * Disable XML-RPC
@@ -197,7 +196,6 @@ function bfg_remove_xmlrpc_pingback_ping( $methods ) {
  */
 if( defined( 'XMLRPC_REQUEST' ) && XMLRPC_REQUEST ) exit;
 
-add_action( '_core_updated_successfully', 'bfg_remove_files_on_upgrade' );
 /*
  * Automatically remove readme.html (and optionally xmlrpc.php) after a WP core update
  *
@@ -211,7 +209,7 @@ function bfg_remove_files_on_upgrade() {
 	if( file_exists(ABSPATH . 'xmlrpc.php') )
 		unlink(ABSPATH . 'xmlrpc.php');
 
-}
+} add_action( '_core_updated_successfully', 'bfg_remove_files_on_upgrade' );
 
 /**
  * Add Photographer Name and URL fields to media uploader
@@ -221,6 +219,7 @@ function bfg_remove_files_on_upgrade() {
  * @return $form_fields, modified form fields
  */
 function rva_attachment_field_credit( $form_fields, $post ) {
+
 	$form_fields['rva-photographer-name'] = array(
 		'label' => 'Photo Credit',
 		'input' => 'text',
@@ -236,9 +235,8 @@ function rva_attachment_field_credit( $form_fields, $post ) {
 	);
 
 	return $form_fields;
-}
 
-add_filter( 'attachment_fields_to_edit', 'rva_attachment_field_credit', 10, 2 );
+} add_filter( 'attachment_fields_to_edit', 'rva_attachment_field_credit', 10, 2 );
 
 /**
  * Save values of Photographer Name and URL in media uploader
@@ -248,19 +246,20 @@ add_filter( 'attachment_fields_to_edit', 'rva_attachment_field_credit', 10, 2 );
  * @return $post array, modified post data
  */
 function rva_attachment_field_credit_save( $post, $attachment ) {
-	if( isset( $attachment['rva-photographer-name'] ) )
-		update_post_meta( $post['ID'], 'rva_photographer_name', $attachment['rva-photographer-name'] );
 
-	if( isset( $attachment['rva-photographer-url'] ) )
-update_post_meta( $post['ID'], 'rva_photographer_url', esc_url( $attachment['rva-photographer-url'] ) );
+	if( isset( $attachment['rva-photographer-name'] ) ) {
+		update_post_meta( $post['ID'], 'rva_photographer_name', $attachment['rva-photographer-name'] );
+	}
+
+	if( isset( $attachment['rva-photographer-url'] ) ) {
+		update_post_meta( $post['ID'], 'rva_photographer_url', esc_url( $attachment['rva-photographer-url'] ) );
+	}
 
 	return $post;
-}
 
-add_filter( 'attachment_fields_to_save', 'rva_attachment_field_credit_save', 10, 2 );
+} add_filter( 'attachment_fields_to_save', 'rva_attachment_field_credit_save', 10, 2 );
 
 
-add_action( 'admin_init', 'single_term_taxonomies');
 /**
  * Restrict Post Category to a single term. TODO: Blog post...
  */
@@ -275,12 +274,14 @@ function single_term_taxonomies() {
 			$custom_tax_mb->set( 'allow_new_terms', true );
 		}
 	}
-}
+
+} add_action( 'admin_init', 'single_term_taxonomies');
 
 /**
  *	Write to the debug log.
  */
 if ( ! function_exists('write_log')) {
+
    function write_log ( $log )  {
 	  if ( is_array( $log ) || is_object( $log )) {
          error_log( print_r( $log, true ) );
@@ -290,18 +291,5 @@ if ( ! function_exists('write_log')) {
    }
 }
 
-//add_filter( 'wp_get_nav_menu_items', 'log_menu_items', null, 3 );
-function log_menu_items( $items, $menu, $args ) {
-    // Iterate over the items to search and destroy
-	$menu = get_term_by( 'name', 'main-nav', 'nav_menu' );
-	write_log('Log menu items name: '. print_r($menu, true));
-	foreach ( $items as $key => $item ) {
-        //write_log($item);
-    }
-
-    return $items;
-}
-
-// Ensure Menu Items are created
 
 

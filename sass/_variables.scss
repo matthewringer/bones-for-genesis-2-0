@@ -23,7 +23,7 @@ $L: 1600px;
 
 // media queries
 
-@mixin MQ_C($C) {
+@mixin breakpoint($C) {
 	@media only screen and (min-width: $C) {
 		@content;
 	}

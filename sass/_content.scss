@@ -268,6 +268,27 @@ ul.social-links {
 	right: 0;
 }
 
+.rva-sponsored-by {
+	display: inline-block;
+    position: absolute;
+	top: -$spacer;
+	width: 100%;
+    text-align: end;
+    right: 0.5em;
+    font-size: .85rem;
+    font-weight: 700;
+	
+	.fa-external-link { 
+		display: inline; 
+	}
+
+	&::before {
+		content: "SPONSORED BY";
+		font-size: .5rem;
+		font-family: $serif;
+	}
+}
+
 .rva-article-image {
 	//background-position: 0 25%; 
 	@extend .rva-center-img;
@@ -390,7 +411,9 @@ ul.social-links {
 }
 
 .rva-2x1-box {
+
 	& article {
+
 		padding: 0;
 		margin-bottom: $spacer;
 	}
@@ -398,18 +421,22 @@ ul.social-links {
 	@include MQ(S) {
 		float: left;
 		width: 100%;
-		& article:nth-of-type(2n+0) {
-			padding: 0 0 $spacer $spacer/2;
-		}
-
-		& article:nth-of-type(2n+1) {
-			padding: 0 $spacer/2 $spacer 0;
-		}
 
 		& article {
 			float: left;
 			width: 50%;
 			padding: 0 0 $spacer 0;
+
+			.rva-sponsored-by {
+				top: 0px;
+				right: 8px;
+				background-color: white;
+				width: auto;
+				padding: 5px;
+				box-shadow: -4px 3px 0px $yellow;
+				border: 1px solid;
+			}
+
 			.rva-article-image {
 				height: 450px;
 			}
@@ -421,6 +448,18 @@ ul.social-links {
 				}
 				p { font-size: 1rem; }
 			}
+		}
+
+		& article:nth-of-type(2n+0) {
+			padding: 0 0 $spacer $spacer/2;
+			.rva-sponsored-by {
+				right: 0px;
+			}
+		}
+
+		& article:nth-of-type(2n+1) {
+			padding: 0 $spacer/2 $spacer 0;
+
 		}
 	}
 }
@@ -477,14 +516,25 @@ ul.social-links {
 		& article {
 			display: initial;
 			float: left;
+			width: 100%;
+		}
+	}
+
+	@include breakpoint(850px) {
+		& article {
+			display: initial;
+			float: left;
 			width: 50%;
 		}
 	}
 }
 
 .entry-thumbnail {
+	position: relative;
 	padding: 0 $spacer/2 $spacer $spacer/2;
-	.fa { display: none; }
+
+	.fa-play-circle-o, .fa-play-circle, .fa-play { display: none; }
+
 	.rva-article-image {
 		display: flex;
 		align-items: flex-end;
@@ -557,7 +607,7 @@ ul.social-links {
 
 .entry-thumb-vox { 
 	padding: 0 $spacer/2 $spacer $spacer/2;
-	.fa { display:none; }
+	.fa-play-circle-o, .fa-play-circle, .fa-play { display:none; }
 	.rva-article-image {
 		display: flex;
 		align-items: flex-end;
@@ -585,9 +635,10 @@ ul.social-links {
 	
 	a {
 		text-decoration: none;
-		color:$white;
+		color: $white;
+		opacity: 0.5;
 	}
-	.fa { 
+	.fa-play-circle-o, .fa-play-circle, .fa-play { 
 		display: inline; 
 		font-size:13rem;
 		color: $white;
