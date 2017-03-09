@@ -198,6 +198,9 @@ function rva_social_metabox() {
     <p>Pintrest URL:<br />
 	<input type="text" name="<?php echo RVA_SETTINGS_FIELD; ?>[rva_socialmedia_pintrest_url]" value="<?php echo esc_attr( genesis_get_option('rva_socialmedia_pintrest_url', RVA_SETTINGS_FIELD ) ); ?>" size="50" /> </p>
 
+	<p>YouTube URL:<br />
+	<input type="text" name="<?php echo RVA_SETTINGS_FIELD; ?>[rva_socialmedia_youtube_url]" value="<?php echo esc_attr( genesis_get_option('rva_socialmedia_youtube_url', RVA_SETTINGS_FIELD ) ); ?>" size="50" /> </p>
+
 	<p><?php _e( 'Check any of the following if you want Facebook, Twitter or Google+ buttons for your posts.', 'genesis' ); ?></p>
 	<table class="form-table ctsettings-social">
 		<tbody>

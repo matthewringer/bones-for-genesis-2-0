@@ -67,9 +67,10 @@ function hero_story($atts) {
  *
  */
 function flex_container ($atts, $content) {
+	$class = (array_key_exists('class',$atts))? $atts['class'] : '';
 	ob_start();
 	?>
-	<div class="flex-container <?php echo atts['classes'] ?>" >
+	<div class="flex-container <?php echo $class; ?>" >
 		<?php echo do_shortcode($content); ?>
 	</div>
 	<?php
@@ -85,11 +86,12 @@ function start_section( $atts, $content) {
 	ob_start();
 	//$class = $atts['class'];
 	$class = (array_key_exists('class',$atts))? $atts['class'] : '';
+	$title = (array_key_exists('title',$atts))? $atts['title'] : '';
 	?>
 	<div class="rva-gutter-box <?php echo $class; ?>">
-		<?php if($atts['title'] != '') : ?>
+		<?php if(array_key_exists('title',$atts)) : ?>
 		<div class="section-title">
-			<h2><?php echo $atts['title']; ?></h2>
+			<h2><?php echo $title; ?></h2>
 		</div>
 		<?php endif; ?>
 		<?php echo do_shortcode($content); ?> 

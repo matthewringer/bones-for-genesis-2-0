@@ -41,8 +41,7 @@ function content_sidebar_layout_single_posts( $opt ) {
 		$opt = 'content-sidebar';
 		return $opt;
 	} 
-}
-add_filter( 'genesis_pre_get_option_site_layout', 'content_sidebar_layout_single_posts' );
+} add_filter( 'genesis_pre_get_option_site_layout', 'content_sidebar_layout_single_posts' );
 
 remove_action( 'genesis_loop', 'genesis_do_loop' );
 
