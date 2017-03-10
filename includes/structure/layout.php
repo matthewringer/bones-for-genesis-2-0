@@ -138,9 +138,9 @@ function rva_post_thumbnail($class='entry-thumbnail ') { //entry-thumb-vox
  */
 function top_box($atts, $content) {
 
-	$title = $atts['title'];
+	$title = (array_key_exists('title',$atts))? $atts['title'] : '';
 
-	$count = ($atts['count'] == '')? '9': $atts['count'];
+	$count = (array_key_exists('count',$atts))? $atts['count'] : '9';
 
 	$args = array(
 		'orderby'       => 'post_date',
@@ -175,10 +175,9 @@ function top_box($atts, $content) {
 */
 function rva_3x6($atts) {
 	
-	$title = $atts['title']; 
-	$slug = $atts['slug'];
-	
-	$class = $atts['class'];
+	$title = (array_key_exists('title',$atts))? $atts['title'] : '';
+	$slug = (array_key_exists('slug',$atts))? $atts['slug'] : '';
+	$class = (array_key_exists('class',$atts))? $atts['class'] : '';
 	$layout = ( array_key_exists ( 'layout' , $atts ) )? $atts['layout'] : 'rva-3x3-box';
 	$count = ( array_key_exists ( 'count' , $atts ) )? $atts['count'] : '9';
 	$args = [
@@ -212,10 +211,10 @@ function rva_3x6($atts) {
  * 
  * TODO: hardcoded styles!
 */
-function rva_1_over_2_box($attr, $content) {
+function rva_1_over_2_box($atts, $content) {
 
-	$title = $attr['title']; 
-	$slug = $attr['slug'];
+	$title = (array_key_exists('title',$atts))? $atts['title'] : '';
+	$slug = (array_key_exists('slug',$atts))? $atts['slug'] : '';
 	$ad_html = do_shortcode($content);
 
     $args = array(

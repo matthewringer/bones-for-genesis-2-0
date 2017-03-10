@@ -6,13 +6,13 @@ if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 /**
  * Hook header class to remove the header offset.
  */
-function rva_unset_header_class($attrs) {
+function rva_set_search_content_class($attrs) {
 
-	//$attrs['class'] = str_replace('site-header-offset','', $attrs['class']);
+	$attrs['class'] = $attrs['class'].' search-content';
 	
 	return $attrs;
 
-} add_filter( 'genesis_attr_site-header', 'rva_unset_header_class' );
+} add_filter( 'genesis_attr_content', 'rva_set_search_content_class' );
 
 /**
  * Before content sidebar wrapper.
@@ -44,9 +44,17 @@ function bfg_do_search_title() {
  */
 function search_content_loop() {
 
-	echo "hello search world!";
+	ob_start();
+	echo get_search_form();
+	?>
 
-} add_action('genesis_loop', 'search_content_loop');
-//remove_action('genesis_loop', '');
+	<?php
+	echo ob_get_clean();
+
+} 
+//add_action('genesis_loop', 'search_content_loop', 9);
+
+remove_action( 'genesis_loop', 'genesis_do_loop' );
+add_action('genesis_loop','genesis_grid_loop');
 
 genesis();

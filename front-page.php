@@ -129,7 +129,7 @@ function rva_frontpage_sidebar(){
 
 	echo do_shortcode('
 			[rva_ad name="Big_Boy_H0" class="wrap ad-big-boy"]
-			[rva_social_account_buttons]
+			<img src="'. get_stylesheet_directory_uri() .'/images/social-media-buttons.jpg" />
 			');
 
 } add_action('genesis_sidebar', 'rva_frontpage_sidebar', 5);
