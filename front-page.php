@@ -12,14 +12,8 @@ if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  */
 function frontpage_scripts() {
 	wp_enqueue_script( 'rva-trans-header', get_stylesheet_directory_uri() . '/js/trans-header.js', array( 'jquery' ), '1.0', true );
-	wp_enqueue_script( 'rva-load-more', get_stylesheet_directory_uri() . '/js/load-more.js', array( 'jquery' ), '1.0', true );
 	
-	global $wp_query;
-	$args = array(
-		'url'   => admin_url( 'admin-ajax.php' ),
-		'query' => $wp_query->query,
-	);
-	wp_localize_script( 'rva-load-more', 'rvaloadmore', $args );
+	rva_load_more_posts();
 
 } add_action( 'wp_enqueue_scripts', 'frontpage_scripts' );
 
