@@ -89,24 +89,56 @@ function rva_fp_aftercontent() {
 		[/rva_gutter_box]
 	';
 
-	echo do_shortcode( $square_ads.'		
-		[rva_1x2 title="POLITICS" slug="politics"/]
-		'.$square_ads.'
+	echo do_shortcode( 
+		'[rva_popular_posts]
+
 		[rva_1x2 title="Music" slug="music"/]
+
 		'.$square_ads.'
+
 		[rva_1x2 title="ART" slug="art"/]
-		'.$square_ads.'
-		[rva_1x2 title="PHOTO" slug="photo"/]
-		'.$square_ads.'
+
+		[rva_gutter_box title=""]
+			[rva_mail_form]
+				<h3>The best of RVA sent to your inbox weekly</h3>
+				<h2>Sign up for the RVA Mag Newsletter</h2>
+			[/rva_mail_form]
+		[/rva_gutter_box]
+
+		[rva_1x2 title="POLITICS" slug="politics"/]
+	
+		[hr]
+		[rva_gutter_box class="flex-container padding-top margin-top"]
+			[rva_ad name="Leaderboard" class="ad-leaderboard"]
+		[/rva_gutter_box]
+		
 		[rva_1x2 title="EAT DRINK" slug="eatdrink"/]
+
+		[rva_gutter_box title=""]
+			[rva_magazine_box]
+		[/rva_gutter_box]
+		
 		'.$square_ads.'
+		
+		[rva_1x2 title="PHOTO" slug="photo"/]
+
+		[rva_gutter_box title=""]
+				[rva_bigwrk_box]
+		[/rva_gutter_box]
+
 		[rva_gutter_box title="WATCH"]
 			[rva_3x6 title="WATCH" slug="watch" layout="rva-3x3-box margin-top" class="entry-thumb-video"]
 		[/rva_gutter_box]
+
 		'.$square_ads.'
-		<!-- TODO: GayRva content... -->
-		[rva_subscribtion_form]
+
+		[rva_gutter_box title="GAY RVA"]
+			<h2>Big Work</h2>
+			<!-- TODO: GayRva content... 2x side by side. -->
+		[/rva_gutter_box]
+
 		'.$square_ads.'
+		
 		[rva_gutter_box title="READ MORE"]
 			<div class="post-listing rva-3x3-box" ></div>
 		[/rva_gutter_box]
@@ -123,7 +155,7 @@ function rva_frontpage_sidebar(){
 
 	echo do_shortcode('
 			[rva_ad name="Big_Boy_H0" class="wrap ad-big-boy"]
-			<img class="margin-top" src="'. get_stylesheet_directory_uri() .'/images/social-media-buttons.jpg" />
+			[rva_social_account_buttons]
 			');
 
 } add_action('genesis_sidebar', 'rva_frontpage_sidebar', 5);

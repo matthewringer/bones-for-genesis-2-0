@@ -11,6 +11,21 @@ if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 */
 add_action( 'genesis_after_entry_content', 'rva_social_sharing_buttons' ); //TODO: Defined elsewhere
 add_action('genesis_entry_header', 'rva_entry_share_links', 12); //TODO: Included from SocialMedia.php
+
+
+/**
+ * Track post views
+ */
+function rva_track_post_views ($post_id) {
+    if ( !is_single() ) return;
+    if ( empty ( $post_id) ) {
+        global $post;
+        $post_id = $post->ID;    
+    }
+    rva_set_post_views($post_id);
+
+} add_action( 'wp_head', 'rva_track_post_views');
+
 /**
 * Add Facebook Open Graph Meta Data Header
 */
@@ -72,44 +87,14 @@ function rva_before_content() {
 */
 function featured_post_image() {
 	if ( !is_singular( array( 'post', 'page' ) ))  return;
-
 	?> 
 		<div id="top" class="rva-feature-image" > 
-			<?php the_post_thumbnail('large'); ?> 
+			<?php the_post_thumbnail('large'); ?>
+			<?php echo do_shortcode('[rva_photo_credit]'); ?>
 		</div> 
-		<?php $photog_name = get_post_meta( get_post_thumbnail_id(), 'rva_photographer_name', true ); ?> 
-		<p class="rva-photo-credit"> 
-			<?php $photog_name ?> 
-		</p> 
 	<?php
 
 } add_action( 'genesis_before_content_sidebar_wrap', 'featured_post_image', 13 );
-
-/**
-* Hook genesis content and add ".single-main" to class
-*
-*/
-function single_main_add_css_attr( $attributes ) {
-
-	// add original plus extra CSS classes
-	//$attributes['class'] .= ' single-main';
-	
-	// return the attributes
-	return $attributes;
-
-} add_filter( 'genesis_attr_content', 'single_main_add_css_attr' );
-
-/**
-* Hook genesis sidebar-primary and add ".single-main" to class
-*/
-// function single_sidebar_add_css_attr( $attributes ) {
-
-// 	// add original plus extra CSS classes
-// 	$attributes['class'] .= ' single-sidebar';
-	
-// 	// return the attributes
-// 	return $attributes;
-// } add_filter( 'genesis_attr_sidebar-primary', 'single_sidebar_add_css_attr' );
 
 /**
  * Custom layout functions

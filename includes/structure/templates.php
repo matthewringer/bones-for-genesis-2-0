@@ -9,6 +9,7 @@ add_filter('single_template', function($template) {
     $category_templates = [
         //slug  to  path
         'read' => 'includes/templates/single-read.php',
+        'photo' => 'includes/templates/single-photo.php',
     ];
 
     // Get the current queried post id

@@ -33,6 +33,11 @@ textarea {
 		box-shadow: 0 0 6px rgba($alert, .2);
 	}
 
+	&.black {
+		border-color: $black;
+		box-shadow: 0 0 6px rgba($black, .2);
+	}
+
 	&:focus {
 		outline: none;
 		border-color: $yellow;
@@ -133,19 +138,36 @@ input[type='search'] {
 		height: auto;
 	}
 
+}
+
+.rva-newsletter-form {
+	text-align: center;
+	padding: $spacer;
+	background-color: $grey;
+	color: $black;
+	text-transform: uppercase;
+
+	.btn {
+		font-size: .5rem;
+		border-radius: 0;
+		transform: translateX(-3.3px);
+	}
+
 	& input {
-		margin-bottom: $spacer;;
+		margin-bottom: $spacer;
+		border-radius: 0;
 	}
 
 	& input[type="text"] {
 		width: 50%;
 	}
 
-	& form {
-		//height: 100px;
-		padding: $spacer;
-		background-color: $grey;
-	}
+	& input[type="text"]:focus {
+			outline: none;
+			border-color: $black;
+			box-shadow: 0 0 6px rgba($black, .2);
+		}
+
 }
 
 .rva-subscribe-block {

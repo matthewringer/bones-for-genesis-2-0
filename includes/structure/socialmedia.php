@@ -143,18 +143,23 @@ function rva_social_account_buttons() {
 	$options =  get_option( RVA_SETTINGS_FIELD );
     ob_start();
 	?>
-	<div class="padding-bottom margin-bottom social-buttons " >
-		<div>
-			<h2>Follow RVA Mag</h2>
-            <ul class="social-buttons">
-                <li class="btn-facebook"><a target="_blank" href="<?php echo esc_attr( $options['rva_socialmedia_facebook_url'] ); ?> "><i class="fa fa-facebook" ></i><span>Facebook</span></a></li>
-                <li class="btn-twitter"><a target="_blank" href="<?php echo esc_attr( $options['rva_socialmedia_twitter_url'] ); ?>"><i class="fa fa-twitter"></i><span>Twitter</span></a></li>
-                <li class="btn-tumblr"><a target="_blank" href="<?php echo esc_attr( $options['rva_socialmedia_tumblr_url'] ); ?>"><i class="fa fa-tumblr"></i><span>Tumblr</span></a></li>
-                <li class="btn-youtube"><a target="_blank" href="<?php echo esc_attr( $options['rva_socialmedia_youtube_url'] ); ?>"><i class="fa fa-youtube"></i><span>YouTube</span></a></li>
-                <li class="btn-instagram"><a target="_blank" href="<?php echo esc_attr( $options['rva_socialmedia_instagram_url'] ); ?>"><i class="fa fa-instagram"></i><span>Instagram</span></a></li>
-            </ul>
-		</div>
-	</div>
+    <ul class="margin-top margin-bottom" >
+        <li><a target="_blank" href="<?php echo esc_attr( $options['rva_socialmedia_facebook_url'] ); ?> "> 
+            <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/social-media-buttons_FB.jpg" alt="RVA Facebook link" />
+        </a></li>
+        <li><a target="_blank" href="<?php echo esc_attr( $options['rva_socialmedia_twitter_url'] ); ?>">
+            <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/social-media-buttons_twitter.jpg" alt="RVA Twitter link" />
+        </a></li>
+        <li><a target="_blank" href="<?php echo esc_attr( $options['rva_socialmedia_youtube_url'] ); ?>">
+            <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/social-media-buttons_youtube.jpg" alt="RVA YouTube link" />
+        </a></li>
+        <li><a target="_blank" href="<?php echo esc_attr( $options['rva_socialmedia_instagram_url'] ); ?>">
+            <img  src="<?php echo get_stylesheet_directory_uri(); ?>/images/social-media-buttons_instagram.jpg" alt="RVA Instagram link" />
+        </a></li>
+
+        <!-- <li class="btn-tumblr"><a target="_blank" href="<?php echo esc_attr( $options['rva_socialmedia_tumblr_url'] ); ?>"><i class="fa fa-tumblr"></i><span>Tumblr</span></a></li> -->
+    </ul>
+
 	<?php
     return ob_get_clean();
 } add_shortcode('rva_social_account_buttons', 'rva_social_account_buttons');

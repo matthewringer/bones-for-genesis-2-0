@@ -47,6 +47,14 @@
 		}
 	}
 
+	&.btn-black {
+		background: $black;
+		color: $white;
+		.no-touch &:hover {
+			background: lighten($black, 5%);
+		}
+	}
+
 	&.btn-outline {
 		background: transparent;
 		box-shadow: inset 0 0 0 1px $black;

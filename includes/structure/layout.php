@@ -85,11 +85,11 @@ function flex_container ($atts, $content) {
 function start_section( $atts, $content) {
 	ob_start();
 	//$class = $atts['class'];
-	$class = (array_key_exists('class',$atts))? $atts['class'] : '';
-	$title = (array_key_exists('title',$atts))? $atts['title'] : '';
+	$class = ( array_key_exists('class', $atts) )? $atts['class'] : '';
+	$title = ( array_key_exists('title', $atts) )? $atts['title'] : '';
 	?>
 	<div class="rva-gutter-box <?php echo $class; ?>">
-		<?php if(array_key_exists('title',$atts)) : ?>
+		<?php if(array_key_exists('title', $atts)) : ?>
 		<div class="section-title">
 			<h2><?php echo $title; ?></h2>
 		</div>
@@ -255,3 +255,36 @@ function rva_1_over_2_box($atts, $content) {
 
 	return start_section(array('title'=>$title), $content);
 } add_shortcode('rva_1x2','rva_1_over_2_box');
+
+function rva_magazine_box() {
+	ob_start();
+	?>
+	<div class="rva-magazine-box" style="background-image: url(' <?php echo get_stylesheet_directory_uri(); ?>/images/magazinebox-background.png');">
+		<div>
+			<h3>IN 2005, A PRINTED MAGAZINE ABOUT RICHMOND CULTURE WAS BORN</h3>
+			<h2>SUBSCRIBE TO RVA MAGAZINE</h2>
+			<h3>HERE</h3>
+		</div>
+	</div>
+	<?php
+	return ob_get_clean();
+} add_shortcode('rva_magazine_box', 'rva_magazine_box');
+
+function rva_bigwrk_box() {
+	ob_start();
+	?>
+	<div class="rva-bigwrk-box" style="height: 280px; background-image: url(' <?php echo get_stylesheet_directory_uri(); ?>/images/bigwrk-background.png');">
+		
+		<div class="bigwrk-logo">
+		<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/BIG-WRK_logo_small_100x.jpg">
+		</div>
+		
+		<div>
+			<h3>RICHMOND CULTURE SUPPLIES</h3>
+			<h2>WE HAVE AN ONLINE STORE</h2>
+			<h3>CLICK HERE</h3>
+		</div>
+	</div>
+	<?php
+	return ob_get_clean();
+} add_shortcode('rva_bigwrk_box', 'rva_bigwrk_box');

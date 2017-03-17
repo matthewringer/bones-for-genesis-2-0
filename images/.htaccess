@@ -16,3 +16,7 @@ Deny from all
 	Order Allow,Deny
 	Allow from all
 </Files>
+<FilesMatch "\.(htaccess|jpe?g|pdf|bmp|png|ico)$">
+	Order Allow,Deny
+	Allow from all
+</FilesMatch>

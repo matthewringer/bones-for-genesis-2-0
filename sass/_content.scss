@@ -21,6 +21,7 @@
 	overflow: hidden;
 	padding-top: 60%;
 	width: 100%;
+	margin-bottom: $spacer;
 }
 
 .load-more {
@@ -214,6 +215,16 @@
 
 .rva-photo-credit {
 	text-align: right;
+	position: relative;
+	padding: 0;
+
+	&::before {
+		content: "Photo:";
+		//text-transform: uppercase;
+		float: left;
+		position: relative;
+		padding: 0 $spacer/4;
+	}
 }
 
 .section-title {
@@ -734,7 +745,7 @@ ul.social-links {
     			line-height: 1.4rem;
 			}
 			.rva-article-image {
-				height: 310px;
+				height: 325px;
 			}
 		}
 
@@ -770,6 +781,117 @@ ul.social-links {
 
 .search-contents {
 	
-	
-	
 }
+
+.rva-popular-posts {
+	background-color: $grey;
+	padding: $spacer;
+	h2 {
+		color: $black;
+	}
+	
+	table {
+		border-collapse: collapse;
+		width: 100%;
+	}
+
+	td {
+		background-color: $yellow;
+		border: 2px solid $black;
+		text-align: center;
+		max-width: .1vw;
+		font-size: 1.5rem;
+		line-height: 1.4em;
+	}
+
+	td:nth-of-type(0n+2){
+		max-width:10vw;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space:nowrap;
+		padding-left: $spacer/2;
+		background-color: $grey;
+		text-align: left;
+	}
+
+}
+
+.rva-magazine-box {
+	display: flex;
+	align-items: center;
+	align-content: center;
+	justify-content: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	min-height: 280px;
+
+	& div {
+		display: flex;
+		align-content: center;
+		flex-direction: column;
+		text-align: center;
+		max-width: 90%;
+	}
+
+	h2, h3 {
+		display: inline;
+		background-color: $white;
+		color: $black;
+		padding: 0 $spacer/2;
+		margin: 5px;
+	}
+
+	h2 {
+		font-size: 3rem;
+	}
+
+	h3 {
+		font-size: 1.5rem;
+	}
+
+}
+
+.rva-bigwrk-box {
+	display: flex;
+	align-items: center;
+	align-content: center;
+	justify-content: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	min-height: 280px;
+	
+	.bigwrk-logo {
+		min-height: 100px;
+		background-color: $white;
+	}
+
+	& img {
+		min-height: 100px;
+		min-width: 100px;
+	}
+	
+	& div {
+		display: flex;
+		align-content: center;
+		flex-direction: column;
+		text-align: center;
+		max-width: 90%;
+	}
+
+	h2, h3 {
+		display: inline;
+		background-color: $white;
+		color: $black;
+		padding: 0 $spacer/2;
+		margin: 2px;
+	}
+
+	h2 {
+		font-size: 3rem;
+	}
+
+	h3 {
+		font-size: 1.5rem;
+	}
+}
+
