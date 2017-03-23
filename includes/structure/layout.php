@@ -139,15 +139,15 @@ function rva_post_thumbnail($class='entry-thumbnail ') { //entry-thumb-vox
 function top_box($atts, $content) {
 
 	$title = (array_key_exists('title',$atts))? $atts['title'] : '';
-
 	$count = (array_key_exists('count',$atts))? $atts['count'] : '9';
-
 	$args = array(
 		'orderby'       => 'post_date',
 		'order'         => 'DESC',
 		'posts_per_page'=> $count,
-		//TODO: should be not in featured.... fix hardcoded reference!
-		'category__not_in' => get_cat_id_by_slug('feature')
+		'meta_query' => [[
+			'key' => RVA_POST_FIELDS_FEATURED_POST,
+			'compare' => 'NOT EXISTS'
+		]]
 	);
 	$sidebar = $content;
 	

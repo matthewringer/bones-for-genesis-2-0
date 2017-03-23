@@ -786,6 +786,9 @@ ul.social-links {
 .rva-popular-posts {
 	background-color: $grey;
 	padding: $spacer;
+	a {
+		color: $black;
+	}
 	h2 {
 		color: $black;
 	}

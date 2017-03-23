@@ -37,20 +37,36 @@ function rva_before_header() {
  * @since 1.0.0
  */
 function rvamag_before_content() {
+	
+	//$custom_field = get_post_meta( get_the_ID(), RVA_POST_FIELDS_FEATURED_POST, true );
 
-	$args = array(
+	
+	
+
+	$loop = new WP_Query([	
 		'orderby'       => 'post_date',
 		'order'         => 'DESC',
-		'posts_per_page'=> '1', //TODO: overrides posts per page in theme settings
-		'category_name' => 'feature',
-	);
+		'posts_per_page'=> '1',
+		'meta_query' => [[
+			'key' => RVA_POST_FIELDS_FEATURED_POST,
+			'compare' => 'EXISTS'
+			]]
+	]);
 
-	$loop = new WP_Query( $args );
+	if( !$loop->have_posts() ) {
+		$loop = new WP_Query([
+			'orderby'       => 'post_date',
+			'order'         => 'DESC',
+			'posts_per_page'=> '1' 
+		]);
+	}
+
 	if( $loop->have_posts() ) {
 		$loop->the_post();
 		echo do_shortcode('[rva_hero_box]');
 		wp_reset_postdata();
     }
+
 	?>
 	<!--<div class="padding-top"></div>-->
 	<div class="padding-top expand-m"></div>
