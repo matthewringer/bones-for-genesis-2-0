@@ -37,11 +37,6 @@ function rva_before_header() {
  * @since 1.0.0
  */
 function rvamag_before_content() {
-	
-	//$custom_field = get_post_meta( get_the_ID(), RVA_POST_FIELDS_FEATURED_POST, true );
-
-	
-	
 
 	$loop = new WP_Query([	
 		'orderby'       => 'post_date',
@@ -142,14 +137,12 @@ function rva_fp_aftercontent() {
 				[rva_bigwrk_box]
 		[/rva_gutter_box]
 
-		[rva_gutter_box title="WATCH"]
-			[rva_3x6 title="WATCH" slug="watch" layout="rva-3x3-box margin-top" class="entry-thumb-video"]
-		[/rva_gutter_box]
+		[rva_2x title="WATCH" slug="watch" layout="rva-3x3-box margin-top" class="entry-thumb-video"]
 
 		'.$square_ads.'
 
 		[rva_gutter_box title="GAY RVA"]
-			<h2>Big Work</h2>
+			<h2>Gay RVA Content</h2>
 			<!-- TODO: GayRva content... 2x side by side. -->
 		[/rva_gutter_box]
 

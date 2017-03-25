@@ -45,8 +45,7 @@ add_filter( 'excerpt_more', 'bfg_truncated_excerpt_link' );
  * @since 2.0.16
  */
 function bfg_truncated_excerpt_link() {
-
-	return '...';
+	return '... <a class="rva-read-more" href="'.post_permalink().'" alt="'.the_title().'">[READ MORE]</a>';
 
 }
 

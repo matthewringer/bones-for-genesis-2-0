@@ -23,7 +23,7 @@ function get_cat_id_by_slug($category_slug) {
 /**
  * Filter the_title max length...
  */
-function rva_title_elipses ($title) {
+function rva_title_limit_words ($title) {
 	$text = $title;
 	$limit = 10;
 	if (str_word_count($text, 0) > $limit) {
@@ -32,8 +32,26 @@ function rva_title_elipses ($title) {
           $text = substr($text, 0, $pos[$limit]) . '...';
       }
 	return $text;
- } add_filter('the_title', 'rva_title_elipses');
+ } //add_filter('rva_thumbnail_title', 'rva_title_limit_words');
 
+ function rva_title_limit_chars ($title) {
+	$text = $title;
+	$limit = 60;
+	if (strlen($text) > $limit) {
+          $text = substr($text, 0, $limit-3) . '...';
+      }
+	return $text;
+ } add_filter('rva_thumbnail_title', 'rva_title_limit_chars');
+
+/**
+ * Get the title formated for use in a thumbnail
+ * Applies filter : rva_thumbnail_title
+ */
+function get_thumbnail_title() {
+
+	$the_title = get_the_title();
+	return apply_filters('rva_thumbnail_title', $the_title);
+}
 
 /**
  *  Hero Story Box
@@ -122,8 +140,9 @@ function rva_post_thumbnail($class='entry-thumbnail ') { //entry-thumb-vox
 		<!--<a href=""><span class="rva-sponsored-by"> The National <i class="fa fa-external-link" aria-hidden="true"></i> </span></a>-->
 		<div class="rva-article-image" style="background-image:url(<?php echo get_the_post_thumbnail_url()?>);" >
 			<a href=" <?php echo get_the_permalink(); ?>"> <i class="fa fa-play-circle" aria-hidden="true"></i> </a>
+			<span class="rva-video-time"> <?php echo get_post_meta(the_ID(), 'rva-video-time', false); ?> </span>
 			<div class="title-block" >
-    			<h2 class="article-title"><a href="<?php echo get_the_permalink(); ?>"> <?php echo get_the_title(); ?> </a></h2>
+    			<h2 class="article-title"><a href="<?php echo get_the_permalink(); ?>"> <?php echo get_thumbnail_title(); ?> </a></h2>
     			<br/>
     			<p class="author"> <?php echo do_shortcode('[post_author_posts_link]'); ?> </p>
 				<p class="excerpt"> <?php echo get_the_excerpt() ?> </p>
@@ -256,6 +275,34 @@ function rva_1_over_2_box($atts, $content) {
 	return start_section(array('title'=>$title), $content);
 } add_shortcode('rva_1x2','rva_1_over_2_box');
 
+/**
+ *	
+ */
+function rva_2x_box($atts) {
+	$title = (array_key_exists('title',$atts))? $atts['title'] : '';
+	$slug = (array_key_exists('slug',$atts))? $atts['slug'] : '';
+	$class = (array_key_exists('class',$atts))? $atts['class'] : 'entry-thumbnail';
+	$ad_html = do_shortcode($content);
+    $loop = new WP_Query([
+		'orderby'       => 'post_date',
+		'order'         => 'DESC',
+		'posts_per_page'=> '2',
+		'category_name' => $slug,
+	]);
+
+	ob_start();
+	?> 
+	<div class="rva-2x1-box margin-top">
+		<?php while( $loop->have_posts() ) { 
+			$loop->the_post(); 
+			rva_post_thumbnail($class);
+		}?>
+	</div>
+	<?php wp_reset_postdata();
+    $content = ob_get_clean();
+	return start_section(array('title'=>$title), $content);
+} add_shortcode('rva_2x','rva_2x_box');
+
 function rva_magazine_box() {
 	ob_start();
 	?>
@@ -271,17 +318,18 @@ function rva_magazine_box() {
 } add_shortcode('rva_magazine_box', 'rva_magazine_box');
 
 function rva_bigwrk_box() {
+	$bigwrk_bg_img = get_stylesheet_directory_uri().'/images/bigwrk-background.png';
+	$bigwrk_logo_img = get_stylesheet_directory_uri().'/images/BIG-WRK_logo_small_100x.jpg';
 	ob_start();
 	?>
-	<div class="rva-bigwrk-box" style="height: 280px; background-image: url(' <?php echo get_stylesheet_directory_uri(); ?>/images/bigwrk-background.png');">
-		
-		<div class="bigwrk-logo">
-		<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/BIG-WRK_logo_small_100x.jpg">
+	<div class="rva-bigwrk-box" style="height: 280px; background-image: url(' <?php echo $bigwrk_bg_img; ?>' );">
+		<div class="rva-bigwrk-logo">
+		<img src="<?php echo $bigwrk_logo_img; ?>">
 		</div>
-		
 		<div>
 			<h3>RICHMOND CULTURE SUPPLIES</h3>
-			<h2>WE HAVE AN ONLINE STORE</h2>
+			<h2 class="rva-bigwrk-second-line" >WE HAVE AN ONLINE STORE</h2>
+			<div class="rva-bigwrk-logo-mobile" style="background-image: url('<?php echo $bigwrk_logo_img; ?>');"></div>
 			<h3>CLICK HERE</h3>
 		</div>
 	</div>

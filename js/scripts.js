@@ -37,5 +37,14 @@
 		textElement.text('H: '+height + ' x '+ 'W: '+width);
 	}
 
-
+	// Smooth scroll for id links. 
+	$('a[href^="#"]').on('click', function(event) {
+		var target = $(this.getAttribute('href'));
+		if( target.length ) {
+			event.preventDefault();
+			$('html, body').stop().animate({
+				scrollTop: target.offset().top
+			}, 1000);
+		}
+	});
 })( window.jQuery );

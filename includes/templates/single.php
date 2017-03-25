@@ -9,8 +9,17 @@ if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 /**
 * Functions are not defined on this page.
 */
-add_action( 'genesis_after_entry_content', 'rva_social_sharing_buttons' ); //TODO: Defined elsewhere
-add_action('genesis_entry_header', 'rva_entry_share_links', 12); //TODO: Included from SocialMedia.php
+
+function after_entry() {
+	echo do_shortcode('[rva_like_buttons]');
+	echo do_shortcode('[fb_comments]');
+}
+add_action( 'genesis_after_entry_content', 'after_entry' ); //TODO: Defined elsewhere
+
+function entry_header(){
+	echo rva_entry_share_links();
+}
+add_action('genesis_entry_header', 'entry_header', 12); //TODO: Included from SocialMedia.php 
 
 
 /**
@@ -59,7 +68,7 @@ function content_sidebar_layout_single_posts( $opt ) {
 function rva_before_header($ad_unit = 'Leaderboard') {
 	?>
 		<div class="before-header">
-			<?php echo do_shortcode('[rva_ad name="m_home_header"]'); ?>
+			<?php echo do_shortcode('[rva_ad name="Leaderboard"]'); ?>
 		</div>
 	<?php
 } add_action( 'genesis_before_header', 'rva_before_header' );
@@ -101,10 +110,9 @@ function featured_post_image() {
  * used in single....
  */
 function get_the_tagline(){
-
-	$post_id = get_the_ID();
+	global $post;
     $field = 'rva_post_tagline';
-    return get_post_meta( $post_id, $field, true );
+    return get_post_meta( $post->ID, $field, true );
 
 }
 

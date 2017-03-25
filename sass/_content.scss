@@ -42,6 +42,7 @@
 	word-wrap: break-word;
 	font-weight: 800;
 	font-size: 2.4rem;
+	text-transform: uppercase;
 
 	a {
 		color: inherit;
@@ -210,6 +211,14 @@
 
 	h2 {
 		display: inline;
+	}
+}
+
+.rva-read-more {
+	font-weight: 800;
+	white-space: nowrap;
+	@include MQ(S){
+		color: $yellow;
 	}
 }
 
@@ -572,7 +581,7 @@ ul.social-links {
 	position: relative;
 	padding: 0 $spacer/2 $spacer $spacer/2;
 
-	.fa-play-circle-o, .fa-play-circle, .fa-play { display: none; }
+	.fa-play-circle-o, .fa-play-circle, .fa-play, .rva-video-time { display: none; }
 
 	.rva-thumb-category {
 		display: inline-block;
@@ -826,6 +835,7 @@ ul.social-links {
 	justify-content: center;
 	background-repeat: no-repeat;
 	background-size: cover;
+	height: 280px;
 	min-height: 280px;
 
 	& div {
@@ -863,9 +873,49 @@ ul.social-links {
 	background-size: cover;
 	min-height: 280px;
 	
-	.bigwrk-logo {
+	.rva-bigwrk-logo {
 		min-height: 100px;
 		background-color: $white;
+		display: none;
+		@include MQ(S) {
+			display: block;
+		}
+	}
+
+	.rva-bigwrk-second-line {
+		display: none;
+		@include MQ(S) {
+			display: block;
+		}
+	}
+
+	& .rva-bigwrk-logo-mobile {
+		width: 100%;
+		height: 100px;
+    	align-self: center;
+		background-repeat: no-repeat;
+		background-position: center;
+		background-color: $white;
+		// margin-top: 2px;
+		// margin-bottom: 2px;
+		
+		// &::before{
+		// 	background-color: $white;
+		// 	float: left;
+		// 	width: $spacer/2;
+		// 	content: "A";
+		// }
+		
+		// &::after {
+		// 	background-color: $white;
+		// 	float: right;
+		// 	width: $spacer/2;
+		// 	content: "A";
+		// }
+
+		@include MQ(S) {
+			display: none;
+		}
 	}
 
 	& img {
@@ -886,8 +936,27 @@ ul.social-links {
 		background-color: $white;
 		color: $black;
 		padding: 0 $spacer/2;
-		margin: 2px;
+		margin: 4px;
+
+		@include MQ(S) {
+			margin: 2px;
+		}
 	}
+
+	h2 {
+		font-size: 3rem;
+	}
+
+	h3 {
+		font-size: 1.5rem;
+	}
+}
+
+.rva-newsletter-form {
+	height: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
 	h2 {
 		font-size: 3rem;

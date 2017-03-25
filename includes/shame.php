@@ -4,7 +4,7 @@ if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 /* Limit exerpt lenght */
 function custom_excerpt_length( $length ) {
-	return 25;
+	return 20;
 }
 add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
 

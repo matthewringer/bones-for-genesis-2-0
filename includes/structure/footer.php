@@ -2,7 +2,9 @@
 
 if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-add_filter( 'genesis_footer_output', 'bfg_footer_creds_text' );
+//TODO: this is cool. 
+//add_filter( 'genesis_footer_scripts', 'do_shortcode' );
+
 /**
  * Custom footer 'creds' text.
  *
@@ -19,9 +21,8 @@ function bfg_footer_creds_text($content) {
 		[rva_ad name="Partner" class="wrap"]
 		[rva_ad name="Partner" class="wrap"]
 	</div >
-
 	<div class="rva-footer-links">
-	<!-- links -->
+		<!-- links -->
 		<a class="rva-footer-logo" href=" <?php echo get_site_url() ?>"><img src="<?php echo get_stylesheet_directory_uri() .'/images/logo.svg';?>" alt="RVA Mag Logo" /></a>
 		<div> 
 			<ul>
@@ -44,16 +45,18 @@ function bfg_footer_creds_text($content) {
 			[rva_mail_form]
 		</div>
 	</div>
-
 	<div >
-		<p> <?php echo __( 'Copyright', CHILD_THEME_TEXT_DOMAIN ) . ' [footer_copyright] [footer_childtheme_link]'; ?> </p>
-	</div>
-	
+		<p> <?php echo __( 'Copyright', CHILD_THEME_TEXT_DOMAIN ) . ' [footer_copyright] [footer_childtheme_link]';?> </p>
+	</div >
 	<?php
 	$contents = ob_get_clean();
 	return $contents; 
-
 }
+
+function rva_footer_creds_text($content) {
+	return '';
+}
+add_filter('genesis_footer_creds_text', 'rva_footer_creds_text');
 
 // add_action( 'wp_footer', 'bfg_disable_pointer_events_on_scroll', 99 );
 /**
