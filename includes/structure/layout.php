@@ -34,6 +34,9 @@ function rva_title_limit_words ($title) {
 	return $text;
  } //add_filter('rva_thumbnail_title', 'rva_title_limit_words');
 
+/**
+ * Return a title truncated by character count on words
+ */
  function rva_title_limit_chars ($title) {
 	$text = $title;
 	$limit = 60;
@@ -128,7 +131,13 @@ function rva_gutter_box_shortcode($atts, $content) {
  *
  *
  */
-function rva_post_thumbnail($class='entry-thumbnail ') { //entry-thumb-vox 
+function rva_post_thumbnail( $atts ) { //entry-thumb-vox 
+	if(!is_array($atts)) {
+		$atts = [];
+	}
+	$excerpt_length = ( array_key_exists('excerpt_len', $atts) )? $atts['excerpt_len'] : 140;
+	$class = ( array_key_exists('class', $atts) )? $atts['class'] : ' entry-thumbnail ';
+	ob_start();
 	?>
 	<article class="<?php echo $class ?>" >
 		<span class="rva-thumb-category"> <?php 
@@ -145,12 +154,16 @@ function rva_post_thumbnail($class='entry-thumbnail ') { //entry-thumb-vox
     			<h2 class="article-title"><a href="<?php echo get_the_permalink(); ?>"> <?php echo get_thumbnail_title(); ?> </a></h2>
     			<br/>
     			<p class="author"> <?php echo do_shortcode('[post_author_posts_link]'); ?> </p>
-				<p class="excerpt"> <?php echo get_the_excerpt() ?> </p>
+				<p class="excerpt"> 
+					<?php echo rva_get_excerpt($excerpt_length, 'content'); ?> 
+				</p>
 			</div>
 		</div>
 	</article>
 	<?php
-}
+	$content = ob_get_clean();
+	return $content;
+} add_shortcode('rva_post_thumbnail', 'rva_post_thumbnail');
 
 /**
  * 
@@ -176,8 +189,7 @@ function top_box($atts, $content) {
 		// loop through posts
 		echo '<div class="rva-top-box ">';
 		while( $loop->have_posts() ): $loop->the_post();
-			rva_post_thumbnail();
-			//rva_post_thumbnail('entry-thumb-vox');
+			echo do_shortcode('[rva_post_thumbnail]');
 		endwhile;
 		echo '</div>';
 		if ($sidebar != '') {
@@ -211,13 +223,11 @@ function rva_3x6($atts) {
 	if( $loop->have_posts() ) {
 		// loop through posts
 		echo '<div class="'.$layout.'">';
-		while( $loop->have_posts() ): $loop->the_post();
-			if($class != null) {
-				rva_post_thumbnail($class);
-			} else {
-				rva_post_thumbnail();
-			}
-		endwhile;
+		while( $loop->have_posts() ) {
+			$loop->the_post();
+			if($class != '' ) { $class= 'class="'.$class.'"'; }
+			echo do_shortcode('[rva_post_thumbnail '.$class.']');
+		}
 		echo '</div>';
 	}
 	wp_reset_postdata();
@@ -259,9 +269,7 @@ function rva_1_over_2_box($atts, $content) {
 			<div class="rva-2x1-box margin-top">
 				<?php while( $loop->have_posts() ) { 
 					$loop->the_post(); 
-					//rva_post_thumbnail('entry-thumb-vox '); 
-					rva_post_thumbnail(); 
-
+					echo do_shortcode('[rva_post_thumbnail]');
 				} ?>
 			</div>
 			<?php endif;
@@ -295,7 +303,7 @@ function rva_2x_box($atts) {
 	<div class="rva-2x1-box margin-top">
 		<?php while( $loop->have_posts() ) { 
 			$loop->the_post(); 
-			rva_post_thumbnail($class);
+			echo do_shortcode('[rva_post_thumbnail class="'.$class.'"]');
 		}?>
 	</div>
 	<?php wp_reset_postdata();

@@ -759,10 +759,10 @@ ul.social-links {
 		}
 
 		& article:nth-of-type(5),
-		& article:nth-of-type(6),
-		& article:nth-of-type(7),
-		& article:nth-of-type(8),
-		& article:nth-of-type(9)
+		& article:nth-of-type(6) //,
+		// & article:nth-of-type(7),
+		// & article:nth-of-type(8),
+		// & article:nth-of-type(9)
 		{
 			display: initial;
 		}
@@ -774,7 +774,10 @@ ul.social-links {
 		}
 		
 		& article:nth-of-type(5),
-		& article:nth-of-type(6)
+		& article:nth-of-type(6),
+		& article:nth-of-type(7),
+		& article:nth-of-type(8),
+		& article:nth-of-type(9)
 		 {
 			display: initial;
 		}
