@@ -70,7 +70,8 @@ function rvamag_before_content() {
 	</div>
 	<?php
 
-} add_action('genesis_before_content_sidebar_wrap', 'rvamag_before_content');
+} 
+add_action('genesis_before_content_sidebar_wrap', 'rvamag_before_content');
 
 /**
  * Output front page content loop.
@@ -81,7 +82,8 @@ function rvamag_frontpage_loop() {
 
 	echo do_shortcode('[rva_topbox title="LATEST" count="9"/]');
 
-} add_action( 'genesis_loop', 'rvamag_frontpage_loop' );
+} 
+add_action( 'genesis_loop', 'rvamag_frontpage_loop' );
 remove_action( 'genesis_loop', 'genesis_do_loop' );
 
 /**

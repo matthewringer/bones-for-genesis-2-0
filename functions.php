@@ -17,6 +17,7 @@ require_once CHILD_DIR . '/includes/developer-tools.php';
 require_once CHILD_DIR . '/includes/genesis.php';				// Customizations to Genesis-specific functions
 
 // Admin
+require_once CHILD_DIR . '/includes/admin/admin-ajax.php';	// For adding/editing theme options to 
 require_once CHILD_DIR . '/includes/admin/admin-functions.php';	// Customization to admin functionality
 require_once CHILD_DIR . '/includes/admin/admin-views.php';		// Customizations to the admin area display
 require_once CHILD_DIR . '/includes/admin/admin-branding.php';	// Admin view customizations that specifically involve branding

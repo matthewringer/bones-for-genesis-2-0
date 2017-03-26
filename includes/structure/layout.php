@@ -22,6 +22,7 @@ function get_cat_id_by_slug($category_slug) {
 
 /**
  * Filter the_title max length...
+ * @return string 
  */
 function rva_title_limit_words ($title) {
 	$text = $title;
@@ -32,19 +33,19 @@ function rva_title_limit_words ($title) {
           $text = substr($text, 0, $pos[$limit]) . '...';
       }
 	return $text;
- } //add_filter('rva_thumbnail_title', 'rva_title_limit_words');
+}//add_filter('rva_thumbnail_title', 'rva_title_limit_words');
 
 /**
  * Return a title truncated by character count on words
  */
- function rva_title_limit_chars ($title) {
+function rva_title_limit_chars ($title) {
 	$text = $title;
 	$limit = 60;
 	if (strlen($text) > $limit) {
-          $text = substr($text, 0, $limit-3) . '...';
-      }
+		$text = substr($text, 0, $limit-3) . '...';
+	}
 	return $text;
- } add_filter('rva_thumbnail_title', 'rva_title_limit_chars');
+} add_filter('rva_thumbnail_title', 'rva_title_limit_chars');
 
 /**
  * Get the title formated for use in a thumbnail
@@ -72,16 +73,12 @@ function hero_story($atts) {
 	<?php
 } add_shortcode('rva_hero_box', 'hero_story');
 
-// function demi_hero_story($atts) {
-// 	do_shortcode('[rva_hero_box ]');
-// } add_shortcode('rva_demihero_box', 'demi_hero_story');
-
 /**
  * Horizon
  */
- function horizon_shortcode() {
-	 return '<div class="section-title rva-gutter-box collapse-s"></div>';
- } add_shortcode('hr','horizon_shortcode');
+function horizon_shortcode() {
+	return '<div class="section-title rva-gutter-box collapse-s"></div>';
+} add_shortcode('hr','horizon_shortcode');
 
 /**
  * flex box container
@@ -122,6 +119,10 @@ function start_section( $atts, $content) {
 	return ob_get_clean();
 } add_shortcode('rva_layout_section', 'start_section');
 
+/**
+ * Print gutter box container section.
+ * @return shortcode content
+ */
 function rva_gutter_box_shortcode($atts, $content) {
 	return start_section($atts, $content);
 } add_shortcode( 'rva_gutter_box', 'rva_gutter_box_shortcode' );
@@ -148,7 +149,7 @@ function rva_post_thumbnail( $atts ) { //entry-thumb-vox
 		?></span>
 		<!--<a href=""><span class="rva-sponsored-by"> The National <i class="fa fa-external-link" aria-hidden="true"></i> </span></a>-->
 		<div class="rva-article-image" style="background-image:url(<?php echo get_the_post_thumbnail_url()?>);" >
-			<a href=" <?php echo get_the_permalink(); ?>"> <i class="fa fa-play-circle" aria-hidden="true"></i> </a>
+			<a href=" <?php echo get_the_permalink(); ?>"> <i class="fa fa-play" aria-hidden="true"></i> </a>
 			<span class="rva-video-time"> <?php echo get_post_meta(the_ID(), 'rva-video-time', false); ?> </span>
 			<div class="title-block" >
     			<h2 class="article-title"><a href="<?php echo get_the_permalink(); ?>"> <?php echo get_thumbnail_title(); ?> </a></h2>
@@ -166,7 +167,8 @@ function rva_post_thumbnail( $atts ) { //entry-thumb-vox
 } add_shortcode('rva_post_thumbnail', 'rva_post_thumbnail');
 
 /**
- * 
+ * Print content layout Top Box 
+ * (content immediately following lead story)
  */
 function top_box($atts, $content) {
 
@@ -202,7 +204,7 @@ function top_box($atts, $content) {
 } add_shortcode('rva_topbox', 'top_box');
 
 /**
- * 3 by 6 post thumbnail box
+ * Print content layout 3 by 6 post thumbnail box
 */
 function rva_3x6($atts) {
 	
@@ -217,6 +219,8 @@ function rva_3x6($atts) {
 		'posts_per_page'=> $count ,
 		'category_name' => $slug 
 	];
+	
+	if($class != '' ) { $class= 'class="'.$class.'"'; }
 
 	ob_start();
 	$loop = new WP_Query( $args );
@@ -225,7 +229,6 @@ function rva_3x6($atts) {
 		echo '<div class="'.$layout.'">';
 		while( $loop->have_posts() ) {
 			$loop->the_post();
-			if($class != '' ) { $class= 'class="'.$class.'"'; }
 			echo do_shortcode('[rva_post_thumbnail '.$class.']');
 		}
 		echo '</div>';
@@ -236,7 +239,7 @@ function rva_3x6($atts) {
 } add_shortcode('rva_3x6', 'rva_3x6');
 
 /**
- * 1 over 2 post thumbnail box
+ * Print Content layout 1 hero over over 2 post thumbnails
  * 
  * TODO: hardcoded styles!
 */
@@ -284,7 +287,7 @@ function rva_1_over_2_box($atts, $content) {
 } add_shortcode('rva_1x2','rva_1_over_2_box');
 
 /**
- *	
+ *	Print content block 2x1
  */
 function rva_2x_box($atts) {
 	$title = (array_key_exists('title',$atts))? $atts['title'] : '';
@@ -311,6 +314,9 @@ function rva_2x_box($atts) {
 	return start_section(array('title'=>$title), $content);
 } add_shortcode('rva_2x','rva_2x_box');
 
+/**
+ * Print the Magazine subscription box section
+ */
 function rva_magazine_box() {
 	ob_start();
 	?>
@@ -325,6 +331,9 @@ function rva_magazine_box() {
 	return ob_get_clean();
 } add_shortcode('rva_magazine_box', 'rva_magazine_box');
 
+/**
+ * Print the BIGWRK ad box;
+ */
 function rva_bigwrk_box() {
 	$bigwrk_bg_img = get_stylesheet_directory_uri().'/images/bigwrk-background.png';
 	$bigwrk_logo_img = get_stylesheet_directory_uri().'/images/BIG-WRK_logo_small_100x.jpg';
