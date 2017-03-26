@@ -103,7 +103,7 @@ function rva_fp_aftercontent() {
 	';
 
 	echo do_shortcode( 
-		'[rva_popular_posts]
+		'[rva_popular_posts date_after="5 year ago"]
 
 		[rva_1x2 title="Music" slug="music"/]
 

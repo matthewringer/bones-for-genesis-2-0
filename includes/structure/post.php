@@ -154,27 +154,23 @@ function bfg_password_form( $post = 0 ) {
 function rva_author_box(  ) {
 	$author_id = get_the_author_id();
 	ob_start();
-
 	$popular_posts = new WP_Query(rva_popular_posts_query( 5, '1 year ago', [ $author_id ] ));
-
 	?>
-	<div class='post_author' > 
-
-	<?php echo get_avatar($author_id); ?>
-	<br>
-	<?php echo the_author_link(); ?>
-	<br>
-	<?php echo the_author_posts(); ?>
-	<br>
-	
-	<?php echo count($popular_posts->posts); ?>
-
-	<table class="decimal"><?php $i = 0; while ( $popular_posts->have_posts() ) : $popular_posts->the_post(); $i++; ?>
-		<tr>
-			<td><?php echo $i; ?></td><td> <a href="<?php echo get_the_permalink();?>" > <?php echo the_title(); ?> </a> </td>
-		</tr>
-		<?php endwhile; ?>
-	</table>
+	<div class='post-author flex-box' >
+		<?php echo get_avatar($author_id); ?>
+		<br>
+		<span class="author"> <?php echo the_author_link(); ?></span>
+		<br>
+		<?php echo the_author_posts(); ?>
+		<br>
+		<?php echo count($popular_posts->posts); ?>
+		<table class="decimal"><?php $i = 0; while ( $popular_posts->have_posts() ) : $popular_posts->the_post(); $i++; ?>
+			<tr>
+				<td><?php echo $i; ?></td><td> <a href="<?php echo get_the_permalink();?>" > <?php echo the_title(); ?> </a> </td>
+			</tr>
+			<?php endwhile; ?>
+		</table>
+	</div>
 
 	<?php $content = ob_get_clean(); ?>
 	<?php
