@@ -682,8 +682,8 @@ ul.social-links {
 }
 
 .entry-thumb-video {
-	
-	height: 300px;
+
+	height: initial;
 	margin-top: $spacer;
 	padding: 0 $spacer/2 $spacer $spacer/2;
 	
@@ -717,7 +717,9 @@ ul.social-links {
 	& div.rva-article-image {
 		display: flex;
 		align-items: flex-end;
-		height: 300px;
+		height: initial;
+		width: 100%;
+		padding-top: 50%;
 	}
 
 	.article-title, .author, .excerpt {
@@ -725,11 +727,11 @@ ul.social-links {
 	}
 
 	@include MQ(S) {
-		height: 280px;
+		height: initial;
 		overflow: hidden;
 
 		& div.rva-article-image {
-			height: 280px;
+			height: initial;
 		}
 	}
 }

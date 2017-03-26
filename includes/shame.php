@@ -18,7 +18,7 @@ function rva_get_excerpt($limit, $source = null){
     $excerpt = substr($excerpt, 0, $limit);
     $excerpt = substr($excerpt, 0, strripos($excerpt, " "));
     $excerpt = trim(preg_replace( '/\s+/', ' ', $excerpt));
-    $excerpt = $excerpt.'... <a class="rva-read-more" href="'.get_permalink($post->ID).'">[READ MORE]</a>';
+    $excerpt = $excerpt.'... <a class="rva-read-more" href="'.get_permalink(the_ID()).'">[READ MORE]</a>';
     return $excerpt;
 }
 

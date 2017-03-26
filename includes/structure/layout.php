@@ -290,10 +290,11 @@ function rva_1_over_2_box($atts, $content) {
  *	Print content block 2x1
  */
 function rva_2x_box($atts) {
+
+	//extract( shortcode_atts( [ 'authors' => '', 'date_after' => '1 week ago', 'posts_per_page' => 5 ], $atts) );
 	$title = (array_key_exists('title',$atts))? $atts['title'] : '';
 	$slug = (array_key_exists('slug',$atts))? $atts['slug'] : '';
 	$class = (array_key_exists('class',$atts))? $atts['class'] : 'entry-thumbnail';
-	$ad_html = do_shortcode($content);
     $loop = new WP_Query([
 		'orderby'       => 'post_date',
 		'order'         => 'DESC',
