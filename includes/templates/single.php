@@ -115,8 +115,9 @@ function rva_before_content() {
 function featured_post_image() {
 
 	if ( !is_singular( array( 'post', 'page' ) ))  return;
+	$feature_image_class = ( has_post_format('video') ) ? 'margin-bottom' : 'rva-feature-image margin-bottom' ;
 	?> 
-		<div id="top" class="rva-feature-image" > 
+		<div id="top" class="<?php echo $feature_image_class; ?>" >
 			<?php the_post_thumbnail('large'); ?>
 			<?php echo do_shortcode('[rva_photo_credit]'); ?>
 		</div> 
