@@ -7,31 +7,6 @@ if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  */
 
 /**
-* Functions are not defined on this page.
-*/
-
-/**
- * Hook the page link buttons after the content
- */
-function after_entry() {
-
-	echo do_shortcode('[rva_author_box]');
-	echo do_shortcode('[rva_like_buttons]');
-	echo do_shortcode('[fb_comments]');
-
-} add_action( 'genesis_after_entry_content', 'after_entry' ); //TODO: Defined elsewhere
-
-/**
- * Hook the social sharing links into the entry header
- */
-function entry_header(){
-
-	echo rva_entry_share_links();
-
-} add_action('genesis_entry_header', 'entry_header', 12); //TODO: Included from SocialMedia.php 
-
-
-/**
  * Track post views
  */
 function rva_track_post_views ($post_id) {
@@ -125,6 +100,16 @@ function featured_post_image() {
 
 } add_action( 'genesis_before_content_sidebar_wrap', 'featured_post_image', 13 );
 
+
+/**
+ * Hook the social sharing links into the entry header
+ */
+function entry_header(){
+
+	echo rva_entry_share_links();
+
+} add_action('genesis_entry_header', 'entry_header', 12); //TODO: Included from SocialMedia.php 
+
 /**
  * Custom layout functions
  * used in single....
@@ -177,5 +162,15 @@ function rva_single_ad_big_boy_h0(){
 	<?php
 
 } add_action('genesis_sidebar', 'rva_single_ad_big_boy_h0', 5);
+
+/**
+ * Hook the page link buttons after the content
+ */
+function rva_entry_comments() {
+
+	echo do_shortcode('[rva_like_buttons]');
+	echo do_shortcode('[fb_comments]');
+
+} add_action( 'genesis_before_comments', 'rva_entry_comments' ); //TODO: Defined elsewhere
 
 

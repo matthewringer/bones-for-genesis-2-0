@@ -124,12 +124,95 @@ function bfg_next_link_text( $text ) {
 add_filter( 'edit_post_link', '__return_false' );
 
 /*
- * Hide the author box
+ * Show the  author box for posts and user archives. 
  *
  * @since 2.0.18
  */
-// add_filter( 'get_the_author_genesis_author_box_single', '__return_false' );
-// add_filter( 'get_the_author_genesis_author_box_archive', '__return_false' );
+add_filter( 'get_the_author_genesis_author_box_single', '__return_true' );
+add_filter( 'get_the_author_genesis_author_box_archive', '__return_true' );
+
+//remove_action( 'genesis_after_entry', 'genesis_do_author_box_single', 8 );
+//remove_action( 'genesis_after_post', 'genesis_do_author_box_single' );
+
+/**
+* Author box output filter.
+*
+* Allows you to filter the full output of the author box.
+*
+* @since unknown
+*
+* @param string $output  Assembled output.
+* @param string $context Context.
+* @param string $pattern (s)printf pattern.
+* @param string $context Gravatar.
+* @param string $context Title.
+* @param string $context Description.
+*/
+function rva_author_box_filter($output='', $context='', $pattern='', $gravatar='', $title='', $description='' ) {
+
+	$output =  rva_author_box([ 'output'=> $output, 'context' => $context, 'pattern' => $pattern, 'gravatar' => $gravatar, 'title' => $title, 'description' => $description ]);
+
+	return $output;
+
+} add_filter('genesis_author_box', 'rva_author_box_filter');
+
+
+/**
+ * Shortcode for the author box. 
+ */
+function rva_author_box($atts, $content=NULL, $tag='rva_author_box') {
+
+	$author_id = get_the_author_meta('ID');
+	$avitar = get_avatar($author_id);
+	$title = get_the_author_link();
+	$authordata    = is_object( $authordata ) ? $authordata : get_userdata( get_query_var( 'author' ) );
+	$gravatar_size = apply_filters( 'genesis_author_box_gravatar_size', 96, $context );
+	$gravatar      = get_avatar( $author_id, $gravatar_size );
+	$description   = wpautop( get_the_author_meta( 'description' ) );
+	$email = get_the_author_meta( 'email' );
+	
+	$social_media_ul = rva_social_accounts([
+		'facebook' => get_the_author_meta( 'facebook' ),
+		'twitter' => get_the_author_meta( 'twitter' ),
+		'linkedin' => get_the_author_meta( 'linkedin' ),
+		'snapchat' => get_the_author_meta( 'snapchat' ),
+		'instagram' => get_the_author_meta( 'instagram' )
+	]);
+	
+	$popular_posts = new WP_Query(rva_popular_posts_query( 5, '1 year ago', [ $author_id ] ));
+	
+	ob_start();
+	?>
+	<section class="author-box" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+		<div class="avatar-block" >
+			<?php echo $gravatar; //class="avatar avatar-96 photo" height="96" width="96" ?>
+		</div>
+		<div class="author-bio-block" >
+			<h4 class="author-box-title">
+					<span itemprop="name" class=""> <?php echo $title; ?></span>
+			</h4>
+			<?php echo $social_media_ul; ?>
+			<div class="author-box-content" itemprop="description">
+				<?php echo $description; ?>
+			</div>
+			<div class="author-box-content" itemprop="description">
+				<h4>Top posts by <?php echo $title; ?></h4>
+				<table class="author-top-posts"><?php $i = 0; while ( $popular_posts->have_posts() ) : $popular_posts->the_post(); $i++; ?>
+					<tr>
+						<td><?php echo $i; ?></td><td> <a href="<?php echo get_the_permalink();?>" > <?php echo the_title(); ?> </a> </td>
+					</tr>
+					<?php endwhile; ?>
+				</table>
+			</div>
+		</div>
+	</section>
+
+	<?php $content = ob_get_clean(); ?>
+	<?php
+	return $content;
+
+} add_shortcode( 'rva_author_box','rva_author_box' );
+
 
 /*
  * Adjust the default WP password protected form to support keeping the input and submit on the same line
@@ -151,29 +234,3 @@ function bfg_password_form( $post = 0 ) {
 
 }
 
-function rva_author_box(  ) {
-	$author_id = get_the_author_id();
-	ob_start();
-	$popular_posts = new WP_Query(rva_popular_posts_query( 5, '1 year ago', [ $author_id ] ));
-	?>
-	<div class='post-author flex-box' >
-		<?php echo get_avatar($author_id); ?>
-		<br>
-		<span class="author"> <?php echo the_author_link(); ?></span>
-		<br>
-		<?php echo the_author_posts(); ?>
-		<br>
-		<?php echo count($popular_posts->posts); ?>
-		<table class="decimal"><?php $i = 0; while ( $popular_posts->have_posts() ) : $popular_posts->the_post(); $i++; ?>
-			<tr>
-				<td><?php echo $i; ?></td><td> <a href="<?php echo get_the_permalink();?>" > <?php echo the_title(); ?> </a> </td>
-			</tr>
-			<?php endwhile; ?>
-		</table>
-	</div>
-
-	<?php $content = ob_get_clean(); ?>
-	<?php
-	return $content;
-
-} add_shortcode('rva_author_box','rva_author_box');

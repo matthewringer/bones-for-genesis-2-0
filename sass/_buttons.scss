@@ -73,44 +73,51 @@ div.social-buttons {
 	height: 231px; //TODO: shame...
 }
 
+.btn-facebook {
+	background-color: $bc-facebook;
+}
+
+.btn-twitter {
+	background-color: $bc-twitter;
+}
+
+.btn-tumblr {
+	background: $bc-tumblr;
+}
+
+.btn-youtube {
+	background-color: $bc-youtube;
+}
+
+.btn-email,
+.btn-print {
+	background-color: darken($grey, 50%);
+}
+
+.btn-message {
+	background-color: $black;
+}
+
+.btn-instagram {
+	background-color: $bc-instagram;
+}
+
+.btn-linkedin {
+	background-color: $bc-linkedin;
+}
+.btn-snapchat {
+	background-color: #000; //$snapchat; 
+	// & i { 
+	// 	background-color: #000;  
+	// }
+}
+
+
+
 .social-buttons li {
 	position: relative;
 	border-radius: 50px;
 	color: $white;
-
-	&.btn-facebook {
-		background-color: $bc-facebook;
-	}
-
-	&.btn-twitter {
-		background-color: $bc-twitter;
-	}
-
-	&.btn-tumblr {
-		background: $bc-tumblr;
-	}
-
-	&.btn-youtube {
-		background-color: $bc-youtube;
-	}
-
-	&.btn-email,
-	&.btn-print {
-		background-color: darken($grey, 50%);
-	}
-
-	&.btn-message {
-		background-color: $black;
-	}
-
-	&.btn-instagram {
-		background-color: $bc-instagram;
-	}
-
-	&.btn-linkedin {
-		background-color: $bc-linkedin;
-	}
-
 	& i {
 		position: absolute;
 

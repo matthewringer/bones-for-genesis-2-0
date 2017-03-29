@@ -67,7 +67,7 @@ function hero_story($atts) {
     		<div class="title-block" >
     			<h2 class="article-title"><a href="<?php echo get_the_permalink(); ?>"> <?php echo get_the_title(); ?> </a></h2>
     			<br/>
-    			<p class="author"><?php echo do_shortcode('[post_author_posts_link]'); ?> </p>
+    			<p class="rva-author-title"><?php echo do_shortcode('[post_author_posts_link]'); ?> </p>
     		</div>
     	</div>
 	<?php
@@ -154,7 +154,7 @@ function rva_post_thumbnail( $atts ) { //entry-thumb-vox
 			<div class="title-block" >
     			<h2 class="article-title"><a href="<?php echo get_the_permalink(); ?>"> <?php echo get_thumbnail_title(); ?> </a></h2>
     			<br/>
-    			<p class="author"> <?php echo do_shortcode('[post_author_posts_link]'); ?> </p>
+    			<p class="rva-author-title"> <?php echo do_shortcode('[post_author_posts_link]'); ?> </p>
 				<p class="excerpt"> 
 					<?php echo rva_get_excerpt($excerpt_length, 'content'); ?> 
 				</p>

@@ -176,20 +176,37 @@ function rva_social_account_buttons() {
     return ob_get_clean();
 } add_shortcode('rva_social_account_buttons', 'rva_social_account_buttons');
 
+
+// $options =  get_option( RVA_SETTINGS_FIELD );
+    // esc_attr( $options['rva_socialmedia_facebook_url'] );
+    // esc_attr( $options['rva_socialmedia_twitter_url'] )
+    // esc_attr( $options['rva_socialmedia_tumblr_url'] )
+    // esc_attr( $options['rva_socialmedia_youtube_url'] )
+    // esc_attr( $options['rva_socialmedia_instagram_url'] )
+
 /**
- * Print social account share buttons links, used in the single page entry header
+ * Print social account link buttons
  * TODO: facebook, linkedin, twitter and youtube buttons
  */
-function rva_social_accounts() {
-    $options =  get_option( RVA_SETTINGS_FIELD );
+function rva_social_accounts($atts, $content=NULL, $tag='rva_social_accounts') {
+
+    shortcode_atts( [ 
+		'facebook'=> '',
+        'twitter'=> '',
+        'tumblr'=> '',
+        'youtube'=> '',
+        'instagram'=> '',
+        'snapchat' => '',
+	], $atts, $tag);
+
     ob_start();
     ?>
-    <ul>
-        <li class="btn-facebook"><a target="_blank" href="<?php echo esc_attr( $options['rva_socialmedia_facebook_url'] ); ?> "><i class="fa fa-facebook" ></i><span>Facebook</span></a></li>
-        <li class="btn-twitter"><a target="_blank" href="<?php echo esc_attr( $options['rva_socialmedia_twitter_url'] ); ?>"><i class="fa fa-twitter"></i><span>Twitter</span></a></li>
-        <li class="btn-tumblr"><a target="_blank" href="<?php echo esc_attr( $options['rva_socialmedia_tumblr_url'] ); ?>"><i class="fa fa-tumblr"></i><span>Tumblr</span></a></li>
-        <li class="btn-youtube"><a target="_blank" href="<?php echo esc_attr( $options['rva_socialmedia_youtube_url'] ); ?>"><i class="fa fa-youtube"></i><span>YouTube</span></a></li>
-        <li class="btn-instagram"><a target="_blank" href="<?php echo esc_attr( $options['rva_socialmedia_instagram_url'] ); ?>"><i class="fa fa-instagram"></i><span>Instagram</span></a></li>
+    <ul class="rva-social-link-list">
+    <?php foreach($atts as $key => $val ) :
+        if(!empty($val)) {
+            echo '<li class="btn-'.$key.'"><a target="_blank" href="'.$val.'"><i class="fa fa-'.$key.'" ></i></a></li>';
+        }
+    endforeach; ?>
     </ul>
     <?php
     return ob_get_clean();

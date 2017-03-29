@@ -111,6 +111,8 @@ function bfg_hidden_meta_boxes( $hidden ) {
 	} elseif( 'page' === $current_screen->id ) {
 		$hidden = array('postcustom', 'commentstatusdiv', 'slugdiv', 'authordiv', 'postimagediv');
 		// Other hideable post boxes: genesis_inpost_scripts_box, pageparentdiv
+	} elseif('user-edit' === $current_screen->id ) {
+		$hidden = ['author'];
 	}
 
 	return $hidden;
@@ -247,9 +249,11 @@ add_filter( 'user_contactmethods', 'bfg_user_contactmethods' );
  */
 function bfg_user_contactmethods( $fields ) {
 
-	// $fields['facebook'] = 'Facebook';											// Add Facebook
-	// $fields['twitter'] = 'Twitter';												// Add Twitter
-	// $fields['linkedin'] = 'LinkedIn';											// Add LinkedIn
+	$fields['facebook'] = 'Facebook';											// Add Facebook
+	$fields['twitter'] = 'Twitter';												// Add Twitter
+	$fields['linkedin'] = 'LinkedIn';											// Add LinkedIn
+	$fields['snapchat'] = 'SnapChat';											// Add LinkedIn
+	$fields['instagram'] = 'Instagram';											// Add LinkedIn
 	unset( $fields['aim'], $fields['yim'], $fields['jabber'] );						// Remove AIM, Yahoo IM, and Jabber / Google Talk
 
 	return $fields;

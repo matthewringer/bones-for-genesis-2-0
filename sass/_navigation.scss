@@ -25,7 +25,8 @@
 .genesis-nav-menu {
 	height: 50px;
 
-	@include transform(translateY(-1200%));
+	//@include transform(translateY(-2000%));
+	@include transform(translateX(-1024px));
 	@include transition(transform .1s);
 	left: 0;
 	width: 100%;
@@ -177,8 +178,9 @@
 	padding-left: 20px; //TONY
 	margin-right: $spacer*2;
 	img {
-		height: 50px;
-		margin-top: 10px; //TONY
+		//height: 50px;
+		//margin-top: 10px; //TONY
+		height: 70px; //Larger header
 		min-width: 66.6px;
 	}
 }

@@ -176,7 +176,7 @@
     text-transform: uppercase;
 }
 
-.author {
+.rva-author-title {
 
 	display: inline-block;
 	transform: translate(-1px, -14px);
@@ -202,6 +202,86 @@
 	}
 }
 
+.author-box {
+	margin-top: 1.5em;
+
+	.avatar-block {
+
+		@include MQ(S){
+			float: left;
+		}
+
+	}
+
+	.avatar {
+
+		width: 50%;
+    	margin: 1.5em;
+
+		@include MQ(S){
+			width: 100%;
+			margin: 0;
+		}
+
+	}
+
+	.author-bio-block {
+
+		display: inline-block;
+		text-align: center;
+
+		@include MQ(S){
+			text-align: left;
+			width: 70%;
+			margin-left: .75em;
+		}
+
+	}
+
+	.author-box-title {
+
+		line-height: .8;
+
+		& span {
+			font-style: italic;
+    		font-size: 2.5rem;
+    		font-family: serif;
+		}
+	}
+
+	.rva-social-link-list {
+		display: inline-block;
+		li {
+			float: left;
+			padding: $spacer/4;
+			min-width: 3em;
+			text-align: center;
+
+			a {
+				color: $white;
+				font-size: 2rem;
+			}
+		}
+	}
+
+	.author-box-content {
+		text-align: left;
+		font-size: 1rem;
+		margin: 1.5em 0;
+	}
+
+	.author-top-posts {
+		font-weight: 800;
+		& td {
+			vertical-align: top;
+			    padding-bottom: $spacer/2;
+			// max-width: 10vw;
+			// overflow: hidden;
+			// text-overflow: ellipsis;
+			// white-space: nowrap;
+		}
+	}
+}
 .title-block {
 	position: relative;
 	max-width: 90%;
