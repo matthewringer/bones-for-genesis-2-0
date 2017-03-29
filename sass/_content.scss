@@ -519,7 +519,7 @@ ul.social-links {
 			font-size: 3rem;
 		}
 
-		.author {
+		.rva-author-title {
 			transform: translate(-1px, -13px);
 			span  { 
 				font-size: 1.5rem; 
@@ -696,7 +696,7 @@ ul.social-links {
 			box-shadow: initial;
 		}
 
-		.author {
+		.rva-author-title {
 			display: none;
 		}
 
@@ -752,7 +752,7 @@ ul.social-links {
 		}
 	}
 
-	.author {
+	.rva-author-title {
 		display: none;
 	}
 
@@ -802,7 +802,7 @@ ul.social-links {
 		padding-top: 50%;
 	}
 
-	.article-title, .author, .excerpt {
+	.article-title, .rva-author-title, .excerpt {
 		display: none;
 	}
 

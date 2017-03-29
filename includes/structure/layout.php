@@ -132,7 +132,7 @@ function rva_gutter_box_shortcode($atts, $content) {
  *
  *
  */
-function rva_post_thumbnail( $atts ) { //entry-thumb-vox 
+function rva_post_thumbnail( $atts ) {
 	if(!is_array($atts)) {
 		$atts = [];
 	}
