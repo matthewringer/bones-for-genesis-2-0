@@ -764,7 +764,7 @@ ul.social-links {
 
 .entry-thumb-video {
 
-	height: initial;
+	//height: initial;
 	margin-top: $spacer;
 	padding: 0 $spacer/2 $spacer $spacer/2;
 	
@@ -773,22 +773,26 @@ ul.social-links {
 		color: $black; //TODO: which colorway?
 	}
 
+	.video-block { 
+		display: flex;
+	}
+
 	.fa-play-circle-o, .fa-play-circle, .fa-play { 
-		padding: 19px;
+		padding: 11px;
 		display: inline; 
 		font-size: 2rem;
 		color: $black;
 		background-color: $white;
 		position: relative;
 		left: 10px;
-		bottom: 29px;
+		bottom: -2.5px;
 	}
 
 	.rva-video-time {
 		display: inline; 
 		color: $white;
 		background-color:$black;
-    	font-size: 3rem;
+    	font-size: 2rem;
     	padding: 10px;
 		position: relative;
 		left: 10px;
@@ -797,13 +801,28 @@ ul.social-links {
 
 	& div.rva-article-image {
 		display: flex;
-		align-items: flex-end;
-		height: initial;
+		flex-direction: column;
+		align-items: flex-start;
+		//height: initial;
 		width: 100%;
 		padding-top: 50%;
 	}
 
-	.article-title, .rva-author-title, .excerpt {
+	.title-block {
+		align-self: flex-start;
+		position: initial;
+		max-width: initial;
+		text-align: left;
+		background-color: $black;
+		left: initial;
+		width: 100%;
+	}
+	.article-title {
+		a {
+			color: $white;
+		}
+	}
+	.rva-author-title, .excerpt {
 		display: none;
 	}
 
@@ -812,8 +831,12 @@ ul.social-links {
 		overflow: hidden;
 
 		& div.rva-article-image {
-			height: initial;
+			//height: initial;
 		}
+	}
+
+	@include MQ(M) {
+		height: 270px;
 	}
 }
 

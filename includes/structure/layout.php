@@ -149,8 +149,10 @@ function rva_post_thumbnail( $atts ) {
 		?></span>
 		<!--<a href=""><span class="rva-sponsored-by"> The National <i class="fa fa-external-link" aria-hidden="true"></i> </span></a>-->
 		<div class="rva-article-image" style="background-image:url(<?php echo get_the_post_thumbnail_url()?>);" >
-			<a href=" <?php echo get_the_permalink(); ?>"> <i class="fa fa-play" aria-hidden="true"></i> </a>
-			<span class="rva-video-time"> <?php echo get_post_meta(the_ID(), 'rva-video-time', false); ?> </span>
+			<div class="video-block" >
+				<a href=" <?php echo get_the_permalink(); ?>"> <i class="fa fa-play" aria-hidden="true"></i> </a>
+				<span class="rva-video-time"> <?php echo get_post_meta(the_ID(), 'rva-video-time', false); ?> </span>
+			</div>
 			<div class="title-block" >
     			<h2 class="article-title"><a href="<?php echo get_the_permalink(); ?>"> <?php echo get_thumbnail_title(); ?> </a></h2>
     			<br/>
