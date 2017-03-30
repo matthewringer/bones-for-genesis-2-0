@@ -13,12 +13,12 @@ add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_c
 */
 function photo_content_class( $attributes ) {
 
-	// add original plus extra CSS classes
-	$attributes['class'] .= ' center-content';
-	
+	// add replace content class
+	$attributes['class'] = 'center-content';
 	// return the attributes
 	return $attributes;
 
-} add_filter( 'genesis_attr_content', 'photo_content_class' );
+} 
+add_filter( 'genesis_attr_entry-content', 'photo_content_class' );
 
 genesis();

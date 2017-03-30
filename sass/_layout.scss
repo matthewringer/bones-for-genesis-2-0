@@ -159,7 +159,13 @@
 }
 
 .center-content {
-	text-align: center;
+	& p, img, ol, li {
+		text-align: center;
+		font-size: 1.15rem;
+		margin-bottom: 1.5em;
+		letter-spacing: .01rem;
+		line-height: 1.5;
+	}
 }
 
 .sidebar-primary {
