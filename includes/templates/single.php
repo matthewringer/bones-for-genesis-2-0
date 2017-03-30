@@ -169,6 +169,16 @@ function rva_single_ad_big_boy_h0(){
 function rva_entry_comments() {
 
 	echo do_shortcode('[rva_like_buttons]');
+
+	echo do_shortcode(' 
+		[hr]
+		[rva_gutter_box class="flex-container padding-top margin-top"]
+			[rva_ad name="Big_Boy_H1" class="ad-big-boy"]
+			[rva_ad name="Big_Boy_H2" class="ad-big-boy collapse-s"]
+			[rva_ad name="Big_Boy_H3" class="ad-big-boy collapse-m"]
+		[/rva_gutter_box]
+		[hr]');
+
 	echo do_shortcode('[fb_comments]');
 
 } add_action( 'genesis_before_comments', 'rva_entry_comments' ); //TODO: Defined elsewhere
