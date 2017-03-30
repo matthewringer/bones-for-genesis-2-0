@@ -130,9 +130,7 @@ function rva_fp_aftercontent() {
 		[rva_gutter_box title=""]
 			[rva_magazine_box]
 		[/rva_gutter_box]
-		
-		'.$square_ads.'
-		
+
 		[rva_1x2 title="PHOTO" slug="photo"/]
 
 		[rva_gutter_box title=""]

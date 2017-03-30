@@ -354,3 +354,28 @@ function rva_bigwrk_box() {
 	<?php
 	return ob_get_clean();
 } add_shortcode('rva_bigwrk_box', 'rva_bigwrk_box');
+
+function spingo_events_widget() {
+	ob_start();
+	?>
+	<script src="http://event2.spingo.com/list-widget.js"></script>
+<div id="spingo-list-widget"></div>
+<script>
+  new SpinGoWidget({
+  	title: "RVAMag",
+	bodyFontFamily: "open sans",
+	headerFontFamily: "open sans",
+	baseFontSize: 18,
+	dateLabelWidth: 230,
+	textColor: "#ffffff",
+	mainColor: "#4c4c4c",
+	featuredColor: "#b3b3b3",
+	perPage: 5,
+	postalCode: "23220",
+	radiusMiles: 10
+  });
+</script>
+	<?php
+	return ob_get_clean();
+
+}

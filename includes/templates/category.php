@@ -55,14 +55,12 @@ add_action( 'genesis_loop', 'rvamag_categorypage_loop' );
 
 
 function rva_sidebar(){
-	echo do_shortcode('
-			[rva_ad name="Big_Boy_H0" class="wrap ad-big-boy"]
-			');
+	echo do_shortcode('[rva_ad name="Big_Boy_H0" class="wrap ad-big-boy"]');
 } add_action('genesis_sidebar', 'rva_sidebar', 5);
 
 function rva_fp_aftercontent() {
 
-    echo start_section([], '<div class="post-listing rva-3x3-box" ></div>' );
+    echo start_section([], '<div class="post-listing rva-3x3-box margin-top" ></div>' );
 
 } add_action( 'genesis_after_content_sidebar_wrap', 'rva_fp_aftercontent');
 
