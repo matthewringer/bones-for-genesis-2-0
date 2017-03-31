@@ -166,10 +166,13 @@ function rva_single_ad_big_boy_h0(){
 /**
  * Hook the page link buttons after the content
  */
-function rva_entry_comments() {
+function rva_entry_like_buttons() {
 
 	echo do_shortcode('[rva_like_buttons]');
 
+} add_action( 'genesis_entry_footer', 'rva_entry_like_buttons' );
+
+function rva_entry_after_loop() {
 	echo do_shortcode(' 
 		[hr]
 		[rva_gutter_box class="flex-container padding-top margin-top"]
@@ -179,8 +182,11 @@ function rva_entry_comments() {
 		[/rva_gutter_box]
 		[hr]');
 
-	echo do_shortcode('[fb_comments]');
-
-} add_action( 'genesis_before_comments', 'rva_entry_comments' ); //TODO: Defined elsewhere
+	echo do_shortcode('
+	[rva_gutter_box class="flex-container padding-top margin-top"]
+	[fb_comments]
+	[/rva_gutter_box]
+	');
+} add_action( 'genesis_after_content_sidebar_wrap', 'rva_entry_after_loop' ); //TODO: Defined elsewhere
 
 
