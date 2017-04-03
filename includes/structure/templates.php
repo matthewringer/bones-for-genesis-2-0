@@ -67,6 +67,35 @@ function catch_page_template( $page_template ) {
         $page_template = locate_template('includes/templates/category-events.php');
     //}
     return $page_template;
-} add_filter('page_template', 'catch_page_template', 999);
+} 
+//add_filter('page_template', 'catch_page_template', 999);
+
+
+
+function get_custom_post_type_template( $archive_template ) {
+     //global $post;
+     
+     $archive_templates = [
+        'magazine' => 'includes/templates/archive-magazine.php',
+        'events' => 'includes/templates/archive-events.php',
+    ];
+
+    $term = get_queried_object();
+    $new_template = $archive_templates[$term->slug]; //TODO: check first
+    if ( $new_template ) {
+        $new_template = locate_template( $new_template );
+        if($new_template) {
+            return $new_template;
+        }
+    }
+
+    //  if ( is_post_type_archive ( 'events' ) ) {
+    //       $archive_template = locate_template('includes/templates/category-events.php');
+          
+    //       //$archive_template = dirname( __FILE__ ) . '/category-events.php';
+    //  }
+
+     return $archive_template;
+} add_filter( 'archive_template', 'get_custom_post_type_template' ) ;
 
 
