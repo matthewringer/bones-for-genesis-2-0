@@ -45,9 +45,9 @@ add_action('genesis_before_content_sidebar_wrap', 'rvamag_before_content');
 function rvamag_categorypage_loop() {
 	global $wp_query;
 	echo rva_3x6([
-		'slug'=>$wp_query->query["category_name"],
-		'count'=>'4',
-		'layout'=>'rva-2x-box'
+		'slug' => $wp_query->query["category_name"],
+		'count' => 4,
+		'layout' => 'rva-2x-box'
 		]);
 }
 remove_action( 'genesis_loop', 'genesis_do_loop' );

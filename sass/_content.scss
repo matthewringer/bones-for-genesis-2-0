@@ -25,14 +25,21 @@
 }
 
 .load-more {
+	display: inline-block;
+	height: 41px;
 	margin: auto;
-	i {
+	width: 100%;
+	& i {
 		@extend .fa;
 		@extend .fa-circle-o-notch;
 		@extend .fa-spin;
 		@extend .fa-fw;
 		@extend .fa-4x;
 		color: $yellow;
+		position: absolute;
+    	width: 100%;
+		margin: auto;
+		//top: 100px;
 	}
 }
 
@@ -430,7 +437,7 @@ ul.social-links {
 
 .rva-gutter-box {
 	@extend .rva-site-margins;
-	overflow-x: hidden;
+	overflow: hidden;
 }
 
 .flex {

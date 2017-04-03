@@ -59,4 +59,14 @@ add_filter('category_template', function($template) {
     return $template;
 });
 
+/**
+ *
+ */
+function catch_page_template( $page_template ) {
+    //if ( is_page( 'events' ) ) {
+        $page_template = locate_template('includes/templates/category-events.php');
+    //}
+    return $page_template;
+} add_filter('page_template', 'catch_page_template', 999);
+
 

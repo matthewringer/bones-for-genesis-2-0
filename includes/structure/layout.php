@@ -101,13 +101,15 @@ function flex_container ($atts, $content) {
  * 	$content 
  */
 function start_section( $atts, $content) {
+
+	extract( shortcode_atts( [ 'class' => '', 'title' => null ], $atts) );
+	// $class = ( array_key_exists('class', $atts) )? $atts['class'] : '';
+	// $title = ( array_key_exists('title', $atts) )? $atts['title'] : '';
+
 	ob_start();
-	//$class = $atts['class'];
-	$class = ( array_key_exists('class', $atts) )? $atts['class'] : '';
-	$title = ( array_key_exists('title', $atts) )? $atts['title'] : '';
 	?>
 	<div class="rva-gutter-box <?php echo $class; ?>">
-		<?php if(array_key_exists('title', $atts)) : ?>
+		<?php if( isset($title) ) : ?>
 		<div class="section-title">
 			<h2><?php echo $title; ?></h2>
 		</div>
@@ -209,18 +211,32 @@ function top_box($atts, $content) {
  * Print content layout 3 by 6 post thumbnail box
 */
 function rva_3x6($atts) {
-	
-	$title = (array_key_exists('title',$atts))? $atts['title'] : '';
-	$slug = (array_key_exists('slug',$atts))? $atts['slug'] : '';
-	$class = (array_key_exists('class',$atts))? $atts['class'] : '';
-	$layout = ( array_key_exists ( 'layout' , $atts ) )? $atts['layout'] : 'rva-3x3-box';
-	$count = ( array_key_exists ( 'count' , $atts ) )? $atts['count'] : '9';
-	$args = [
-		'orderby'       => 'post_date',
-		'order'         => 'DESC',
-		'posts_per_page'=> $count ,
-		'category_name' => $slug 
-	];
+
+	extract( shortcode_atts( [ 
+		'title' => '', 
+		'slug' => '', 
+		'class' => '', 
+		'layout' => 'rva-3x3-box', 
+		'count' => '9',
+		'args' => null,
+		 ], $atts ) );
+
+	// $title = (array_key_exists('title',$atts))? $atts['title'] : '';
+	// $slug = (array_key_exists('slug',$atts))? $atts['slug'] : '';
+	// $class = (array_key_exists('class',$atts))? $atts['class'] : '';
+	// $layout = ( array_key_exists ( 'layout' , $atts ) )? $atts['layout'] : 'rva-3x3-box';
+	// $count = ( array_key_exists ( 'count' , $atts ) )? $atts['count'] : '9';
+
+	if( isset($args) ) {
+		$args = json_decode( stripslashes( $args ), true );
+	} else {
+		$args = [
+			'orderby'       => 'post_date',
+			'order'         => 'DESC',
+			'posts_per_page'=> $count ,
+			'category_name' => $slug 
+		];
+	}
 	
 	if($class != '' ) { $class= 'class="'.$class.'"'; }
 

@@ -4,35 +4,57 @@ if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 include 'category.php';
 
+add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
+
+global $query_override;
+$query_override = [
+	'category_name' => '',
+	'orderby'       => 'post_date',
+	'order'         => 'DESC',
+	'posts_per_page'=> 6 ,
+	'tax_query'=>[[
+		'taxonomy' => 'post_format',
+		'field' => 'slug',
+		'operator' => 'IN',
+		'include_children' => true,
+		'terms' => ['post-format-video'] 
+	]]
+];
+
+/**
+ *
+ */
 function rva_watch_load_more_args() {
-	//from plugin...
-	rva_load_more_posts("entry-thumb-video");
+
+	global $query_override;
+	rva_load_more_posts(1, "entry-thumb-video", $query_override );
 
 } add_action( 'wp_enqueue_scripts', 'rva_watch_load_more_args' );
 remove_action( 'wp_enqueue_scripts', 'rva_load_more_args' );
 
-add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
+/**
+ *
+ */
+function rva_query_hook( $query ) {
 
-/** 
-* Add our custom loop
-*/
-function rvamag_watch_loop() {
-	global $wp_query;
-    echo do_shortcode('[rva_3x6 title="WATCH" slug="watch" count="6" layout="post-listing rva-3x3-box" class="entry-thumb-video"]');
-}
-add_action( 'genesis_loop', 'rvamag_watch_loop' );
+	global $query_override;
+
+	if(is_array($query_override)) {
+		foreach( $query_override as $key => $value ) {
+			$query->query_vars[$key] = $value;
+		}
+	}
+
+} //add_action( 'pre_get_posts', 'rva_query_hook' );
+
 remove_action( 'genesis_loop', 'rvamag_categorypage_loop' );
 
 function rva_watch_aftercontent() {
 
-    echo do_shortcode('
-        [rva_gutter_box ]
-			[rva_3x6 title="" count="6" slug="watch" layout="post-listing rva-3x3-box" class="entry-thumb-video"]
-		[/rva_gutter_box]
-    ');
+	echo start_section([], '<div class="post-listing rva-3x3-box margin-top" ></div>' );
 
 } 
-//add_action( 'genesis_after_content_sidebar_wrap', 'rva_watch_aftercontent');
+add_action( 'genesis_after_content_sidebar_wrap', 'rva_watch_aftercontent');
 remove_action ('genesis_after_content_sidebar_wrap', 'rva_fp_aftercontent');
 
 

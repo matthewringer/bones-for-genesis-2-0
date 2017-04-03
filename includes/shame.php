@@ -23,25 +23,6 @@ function rva_get_excerpt($limit, $source = null){
 }
 
 /**
- *
- */
-function rva_load_more_posts( $thumb_style = 'entry-thumbnail' ) {
-
-	//wp_enqueue_script( 'rva-load-more', CHILD_DIR . '/js/load-more.js', array( 'jquery' ), '1.0', true );
-
-	wp_enqueue_script( 'rva-load-more', get_stylesheet_directory_uri() . '/js/load-more.js', array( 'jquery' ), '1.0', true );
-	
-	global $wp_query;
-	$args = array(
-		'url'   => admin_url( 'admin-ajax.php' ),
-		'query' => $wp_query->query,
-		'thumb_style' => $thumb_style,
-	);
-	wp_localize_script( 'rva-load-more', 'rvaloadmore', $args );
-
-}
-
-/**
  * AJAX Load More
  * @link http://www.billerickson.net/infinite-scroll-in-wordpress
  */

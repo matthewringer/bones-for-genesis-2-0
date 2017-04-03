@@ -7,7 +7,7 @@ if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  */
 function rva_load_more_args() {
 	//from plugin...
-	rva_load_more_posts( $thumb_style = 'entry-thumbnail' );
+	rva_load_more_posts( 3, $thumb_style = 'entry-thumbnail' );
 }
 add_action( 'wp_enqueue_scripts', 'rva_load_more_args' );
 
