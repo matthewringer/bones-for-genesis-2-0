@@ -181,4 +181,21 @@
 }
 
 .sidebar-secondary {
+
+}
+
+.page-default {
+	margin-left: 20%;
+
+	header.entry-header {
+		text-align: left;
+	}
+
+	.entry-title {
+		font-size: 1.5rem;
+	}
+
+	.content-sidebar-wrap {
+		padding-top: 35px;
+	}
 }

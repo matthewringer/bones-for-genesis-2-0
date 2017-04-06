@@ -160,13 +160,14 @@ function rva_post_thumbnail( $atts ) {
     			<br/>
     			<p class="rva-author-title"> <?php echo do_shortcode('[post_author_posts_link]'); ?> </p>
 				<p class="excerpt"> 
-					<?php echo rva_get_excerpt($excerpt_length, 'content'); ?> 
+					<?php 
+					echo rva_get_excerpt($excerpt_length, 'content'); ?> 
 				</p>
 			</div>
 		</div>
 	</article>
 	<?php
-	$content = ob_get_clean();
+	$content = apply_filters('rva_thumbnail_content', ob_get_clean() );
 	return $content;
 } add_shortcode('rva_post_thumbnail', 'rva_post_thumbnail');
 
@@ -234,10 +235,10 @@ function rva_3x6($atts) {
 			'orderby'       => 'post_date',
 			'order'         => 'DESC',
 			'posts_per_page'=> $count ,
-			'category_name' => $slug 
+			'category_name' => $slug
 		];
 	}
-	
+
 	if($class != '' ) { $class= 'class="'.$class.'"'; }
 
 	ob_start();
@@ -383,8 +384,8 @@ function spingo_events_widget() {
 		title: "RVAMag",
 		bodyFontFamily: "open sans",
 		headerFontFamily: "open sans",
-		baseFontSize: 18,
-		dateLabelWidth: 230,
+		baseFontSize: 12,
+		dateLabelWidth: 200,
 		textColor: "#ffffff",
 		mainColor: "#4c4c4c",
 		featuredColor: "#b3b3b3",

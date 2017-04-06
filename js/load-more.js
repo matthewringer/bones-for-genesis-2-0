@@ -36,7 +36,8 @@ jQuery(function($){
 					nonce: rvaloadmore.nonce,
 					page: page,
 					query: rvaloadmore.query,
-					thumb_style: rvaloadmore.thumb_style
+					thumb_style: rvaloadmore.thumb_style,
+					layout: rvaloadmore.layout
 				};
 				$.post(rvaloadmore.url, data, function(res) {
 					if( res.success) {

@@ -92,6 +92,9 @@ remove_action( 'genesis_loop', 'genesis_do_loop' );
  * @since 1.0.0
  */
 function rva_fp_aftercontent() {
+	//echo "hello";
+	//echo print_r($_genesis_displayed_ids, true);
+	//TODO: use this!!
 
 	$square_ads = '
 		[hr]

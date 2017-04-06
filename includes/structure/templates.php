@@ -40,7 +40,8 @@ add_filter('category_template', function($template) {
     $category_templates = [
         //slug  to  path
         'read' => 'includes/templates/category-read.php',
-        'events' => 'includes/templates/category-events.php',
+        //'magazine' => 'includes/templates/archive-magazine.php',
+        'events' => 'includes/templates/archive-events.php',
         'watch' => 'includes/templates/category-watch.php',
     ];
     // Get the current queried post id
