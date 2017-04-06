@@ -51,7 +51,7 @@ function rva_ajax_load_more() {
 		$args['posts_per_page'] = esc_attr( $_POST['posts_per_page'] );
 	}
 
-	if( isset( $layout ) ) {
+	if( isset( $layout ) && $layout != '' ) {
 
 		$layouts = [
 			'events' => 'rva_filter_event_thumbnail'
