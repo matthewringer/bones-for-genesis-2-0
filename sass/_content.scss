@@ -212,10 +212,12 @@
 
 .author-box {
 	margin-top: 1.5em;
+	text-align: right;
 
 	.avatar-block {
 
 		@include MQ(S){
+			width: 136px;
 			float: left;
 		}
 
@@ -249,11 +251,10 @@
 	.author-box-title {
 
 		line-height: .8;
+		margin: 0 0 $spacer;
 
 		& span {
-			font-style: italic;
     		font-size: 2.5rem;
-    		font-family: serif;
 		}
 	}
 
@@ -274,7 +275,7 @@
 
 	.author-box-content {
 		text-align: left;
-		font-size: 1rem;
+		font-size: 1.15rem;
 		margin: 1.5em 0;
 	}
 
