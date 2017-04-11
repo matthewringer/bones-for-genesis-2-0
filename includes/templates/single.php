@@ -89,7 +89,7 @@ function rva_before_content() {
 */
 function featured_post_image() {
 
-	if ( !is_singular( array( 'post', 'page' ) ))  return;
+	if ( !is_singular( array( 'post', 'page', 'magazine' ) ))  return;
 	$feature_image_class = ( has_post_format('video') ) ? 'margin-bottom' : 'rva-feature-image margin-bottom' ;
 	?> 
 		<div id="top" class="<?php echo $feature_image_class; ?>" >

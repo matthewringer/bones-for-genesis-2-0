@@ -54,10 +54,11 @@ function rva_ajax_load_more() {
 	if( isset( $layout ) && $layout != '' ) {
 
 		$layouts = [
-			'events' => 'rva_filter_event_thumbnail'
+			'events' => 'rva_filter_event_thumbnail',
+			'magazine' => 'rva_filter_magazine_thumbnail'
 		];
 
-		add_filter('rva_thumbnail_content', $layouts[$layout] );
+		add_filter( 'rva_thumbnail_content', $layouts[$layout] );
 	}
 
 	$loop = new WP_Query( $args );
@@ -67,6 +68,9 @@ function rva_ajax_load_more() {
 	$max_pages = $loop->max_num_pages;
 
 	ob_start();
+
+	// echo $layout;
+	// echo print_r($args,true);
 
 	$current_date = null;
 
@@ -145,3 +149,22 @@ function rva_filter_event_thumbnail( $content ) {
 	$content = ob_get_clean();
 	return $content;
 }
+
+function rva_filter_magazine_thumbnail( $content ) {
+	global $post;
+
+	ob_start();
+	?>
+	<article class="entry-thumb-cover" >
+		<div class="rva-article-image" style="background-image:url(<?php echo get_the_post_thumbnail_url()?>);" >
+			
+		</div>
+		<div class="title-block" >
+				<h2 class="article-title"> <a href="<?php echo get_the_permalink(); ?>"> <?php echo get_post_meta($post->ID, 'wpcf-issuenumber', true); ?> </a></h2>
+				<h3 class="article-title"><a href="<?php echo get_the_permalink(); ?>"> <?php echo get_thumbnail_title(); ?> </a></h3>
+		</div>
+	</article>
+	<?php
+	$content = ob_get_clean();
+	return $content;
+} 	

@@ -36,10 +36,7 @@
 		@extend .fa-fw;
 		@extend .fa-4x;
 		color: $yellow;
-		position: absolute;
-    	width: 100%;
-		margin: auto;
-		//top: 100px;
+		width: 100%;
 	}
 }
 
@@ -779,6 +776,29 @@ ul.social-links {
 	}
 }
 
+.entry-thumb-cover { 
+	padding: 0 $spacer/2 $spacer $spacer/2;
+	
+	.rva-article-image {
+		display: flex;
+		align-items: flex-end;
+		height: 335px;
+		width: 260px;
+	}
+	.title-block {
+		text-align: left;
+		left: 0;
+	}
+	h2.article-title {
+		
+	}
+
+	h3.article-title {
+		font-weight: 400;
+		font-size: 1.2rem;
+	}
+}
+
 .entry-thumb-video {
 
 	//height: initial;
@@ -1157,10 +1177,14 @@ article.entry-thumb-event {
 }
 
 .rva-newsletter-form {
-	height: 280px;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
+	padding: 0;
+	padding-top: 1.5em;
+	margin-left: 5%;
+	margin-right: 5%;
 
 	h2 {
 		font-size: 3rem;
