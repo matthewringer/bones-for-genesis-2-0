@@ -211,10 +211,15 @@
 	margin-top: 1.5em;
 	text-align: right;
 
+	@include MQ(S){
+		display: flex;
+	}
+
 	.avatar-block {
+		text-align: center;
 
 		@include MQ(S){
-			width: 136px;
+			min-width: 136px;
 			float: left;
 		}
 
@@ -240,7 +245,11 @@
 		@include MQ(S){
 			text-align: left;
 			width: 70%;
-			margin-left: .75em;
+			margin-left: $spacer;
+		}
+
+		@include MQ(S){
+			width: 75%;
 		}
 
 	}
