@@ -13,12 +13,7 @@
 	
 	position: relative;
 	top: 0;
-	@include admin-offset-fix;
-	//Offset for leaderboard ad unit.
-	@include MQ(S) {
-		top: 70px;
-		@include admin-offset-fix(70);
-	}
+	//@include admin-offset-fix;
 }
 
 .site-inner {
@@ -50,10 +45,10 @@
 .rva-menu-offset {
 	margin-bottom: $spacer;
 
-	height: 70px;
+	//height: 70px;
 
 	@include MQ(S) {
-		height: 90px;
+		//height: 90px;
 	}
 }
 

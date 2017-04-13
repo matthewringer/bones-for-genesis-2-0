@@ -23,7 +23,7 @@
 		display: inline-block;
 		padding: 0;
 		border: none;
-		color: $text-color; //$white;
+		color: $text-color;
 		font-size: 1.8rem;
 		text-decoration: none;
 		white-space: nowrap;
@@ -36,6 +36,7 @@
 	li:first-of-type a {
 		border-top-width: 1px;
 	}
+
 	// Sublevels
 	.sub-menu {
 		position: absolute;
@@ -51,17 +52,6 @@
 
 		.sub-menu {
 		}
-	}
-}
-
-.rva-nav-trigger span {
-	/* hamburger menu */
-	background-color: $menu-color;
-
-	&::before,
-	&::after {
-		/* upper and lower lines */
-		background-color: $menu-color;
 	}
 }
 
@@ -128,7 +118,6 @@
 		width: 100%;
 
 		& li.menu-item a {
-			//font-weight: 400;
 			font-size: 1.2rem;
 			line-height: 2.2rem;
 		}
@@ -159,35 +148,28 @@
 .rva-logo {
 	width: 20%;
 	text-align: right;
-	padding-left: 20px; //TONY
-	margin-right: $spacer*2;
+
 	img {
-		//height: 50px;
-		//margin-top: 10px; //TONY
+		margin: $spacer;
 		height: 70px; //Larger header
 		min-width: 66.6px;
 	}
 }
 
 .rva-site-description {
-	display: flex;
+}
 
-	span {
-		margin-left: $spacer;
-		align-self: center;
-		color: $yellow;
-		font-weight: 600;
-		font-style: italic;
-	}
-	@include MQ(M){
-		display: none;
-	}
+.rva-title-bar {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .rva-nav-trigger {
+
 	position: absolute;
 	left: 5%;
-	top: $spacer*2;
 	text-align: initial;
 	color: transparent;
 	white-space: nowrap;
@@ -195,13 +177,15 @@
 	span { // hamburger icon
 		@include transition(background-color .3s .3s); 
 		position: absolute;
-		top: 25%;
-		right: 20px;
 		width: 20px;
 		height: 4px;
-
+		/* hamburger menu */
+		background-color: $menu-color;
+		
 		&::before,
 		&::after {
+			/* upper and lower lines */
+			background-color: $menu-color;
 			/* Force Hardware Acceleration in WebKit */
 			@include transform(translateZ(0));
 			@include transition(transform .3s .3s);
@@ -210,7 +194,6 @@
 			height: 100%;
 			content: '';
 			backface-visibility: hidden;
-
 			-webkit-backface-visibility: hidden;
 			will-change: transform;
 		}
@@ -222,12 +205,6 @@
 		&::after {
 			@include transform(translateY(6px));
 		}
-	}
-}
-
-.nav-is-visible {
-	& .wrap {
-
 	}
 }
 

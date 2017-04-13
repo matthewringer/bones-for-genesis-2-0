@@ -40,11 +40,6 @@
 		text-align: center;
 	}
 	@include admin-offset-fix;
-	//Offset for leaderboard ad unit.
-	@include MQ(S) {
-		top: 90px;
-		@include admin-offset-fix(90);
-	}
 
 	z-index: 10;
 	display: -webkit-box;
@@ -59,6 +54,7 @@
 	box-shadow: 0 1px 1px rgba($header-background , .1);
 
 	& .wrap {
+
 		width: 100%;
 		& p {
 			color: $yellow;

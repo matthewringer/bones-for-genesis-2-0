@@ -59,7 +59,7 @@ function rva_before_header($ad_unit = 'Leaderboard') {
 		</div>
 	<?php
 
-} add_action( 'genesis_before_header', 'rva_before_header' );
+} //add_action( 'genesis_before_header', 'rva_before_header' );
 
 
 /**

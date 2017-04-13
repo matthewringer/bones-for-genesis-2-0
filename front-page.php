@@ -29,7 +29,7 @@ function rva_before_header() {
 		</div>
 	<?php
 
-} add_action( 'genesis_before_header', 'rva_before_header' );
+} //add_action( 'genesis_before_header', 'rva_before_header' );
 
 /**
  * Pre-page content menu standoff.
