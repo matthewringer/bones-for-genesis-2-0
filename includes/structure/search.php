@@ -68,3 +68,22 @@ function bfg_only_search_posts( $query ) {
 	}
 
 }
+
+
+function rva_searchform() {
+	ob_start();
+    ?> 
+	<form class="search-form" role="search" method="get" id="searchform" action="<?php echo home_url( '/' ); ?>" >
+		<div><label class="screen-reader-text" for="s"><?php echo __('Search for:'); ?></label>
+			<input type="text" value="<?php echo get_search_query(); ?>" name="s" id="s" />
+			<button type="submit" id="searchsubmit" value="<?php echo esc_attr__('Search'); ?>" >
+				<i class="fa fa-search" aria-hidden="true"></i>
+			</button>
+		</div>
+    </form>
+	<?php
+	$form = ob_get_clean();
+    return $form;
+}
+//add_shortcode('wpbsearch', 'wpbsearchform');
+

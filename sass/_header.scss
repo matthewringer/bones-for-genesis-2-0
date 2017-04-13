@@ -35,6 +35,10 @@
 	//Fixed Hearder offset is a PITA becasue of the admin bar...
 	position: fixed;
 	top: 0;
+	
+	div.wrap {
+		text-align: center;
+	}
 	@include admin-offset-fix;
 	//Offset for leaderboard ad unit.
 	@include MQ(S) {

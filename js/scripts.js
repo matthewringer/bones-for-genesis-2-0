@@ -10,7 +10,11 @@
 
 	//open navigation on mobile
 	$('.rva-nav-trigger').on('click', function(){
+		
+		$('body').toggleClass('rva-no-scroll');
+
 		$('header').toggleClass('nav-is-visible');
+
 	});
 
 

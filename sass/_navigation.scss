@@ -5,40 +5,23 @@
 	left: -9999px;
 }
 
-.nav-primary {
-	//position: absolute;
-	width: 1px;
-	top: -9999px;
-	left: -9999px;
-
-	@include MQ(M) {
-		float: left;
-		width: 80%;
-		margin-top: 10px; //TONY
-	}
-}
-
-.nav-secondary {
-	position: fixed;
-}
-
 .genesis-nav-menu {
-	height: 50px;
 
-	//@include transform(translateY(-2000%));
-	@include transform(translateX(-1024px));
-	@include transition(transform .1s);
 	left: 0;
-	width: 100%;
 	background: $black;
-	text-align: center;
 	text-transform: uppercase;
 	font-weight: 800;
 	font-family: $sans;
+	text-align: initial;
+	margin-left: 5%;
+
+	& li.menu-item a {
+		padding: 0;
+	}
 
 	li.menu-item a {
-		display: block;
-		padding: 1em 0;
+		display: inline-block;
+		padding: 0;
 		border: none;
 		color: $text-color; //$white;
 		font-size: 1.8rem;
@@ -69,88 +52,6 @@
 		.sub-menu {
 		}
 	}
-
-	@include MQ(M) {
-		@include transform(translateY(0));
-		position: static;
-		display: table;
-		padding: 0;
-		width: auto;
-		//height: 90px;
-		background: transparent;
-		text-align: center;
-
-		li.menu-item {
-			display: table-cell;
-			padding: 0 .6em;
-			vertical-align: middle;
-		}
-
-		li.menu-item a {
-			@include transition(all .2s);
-			display: inline-block;
-			padding: .4em .2em;
-			font-size: initial;
-
-			&.selected {
-				box-shadow: 0 2px 0 $yellow;
-				color: $grey;
-			}
-
-			&.no-touch &:hover {
-				color: $yellow;
-			}
-		}
-
-		li:first-of-type a {
-			border-top: none;
-		}
-	}
-
-}
-
-.nav-is-visible {
-	& .wrap {
-	}
-}
-
-.nav-is-visible .rva-nav-trigger span {
-	/* hide line in the center on mobile when nav is visible */
-	background-color: rgba($menu-color, 0);
-
-	&::before,
-	&::after {
-		/* preserve visibility of upper and lower lines - close icon */
-		background-color: rgba($menu-color, 1);
-	}
-}
-
-.nav-is-visible {
-	width: 100%;
-	height: 100%;
-
-	.rva-nav-trigger {
-		span {
-			&::before {
-				@include transform(translateY(0) rotate(-45deg));
-			}
-
-			&::after {
-				@include transform(translateY(0) rotate(45deg));
-			}
-		}
-	}
-
-	.genesis-nav-menu {
-		@include transform(translateY(0));
-		position: absolute;
-		top: 0;
-		left: 0;
-		overflow: auto;
-		padding-bottom: 100px;
-		width: 100%;
-		height: 100%;
-	}
 }
 
 .rva-nav-trigger span {
@@ -165,11 +66,94 @@
 }
 
 .rva-nav-wrapper {
+	position: absolute;
+	@include transform(translateX(-2024px));
+	transition: transform 1s ease-in-out;
+	background-color: $black;
 	width: 100%;
-	display: flex;
-	align-content: baseline;
-	justify-content: space-between;
-	height: 70px;
+	height: 100vh;
+	flex-direction: column;
+	justify-content: flex-start;
+	overflow: auto;
+	padding-bottom: 200px;
+
+	.search-form {
+		display: inherit;
+		width: 300px;
+		height: 50px;
+		margin: $spacer 5%;
+		font-size: 1.5rem;
+		div {
+			display:flex;
+		}
+		& input {
+			border-radius: 0;
+			border: 0;
+			height: 50px;
+		}
+		& button {
+			border: 0;
+			background-color: $white;
+		}
+	}
+
+	.rva-menu-logo {
+		order: 2;
+		display: block;
+		height: 50px;
+		margin: 1.5rem 0 2.5rem 5%;
+		text-align: left;
+		padding: 0;
+
+		img {
+			width: 90px;
+		}
+	}
+
+	.nav-primary {
+		order: 1;
+		text-align: left;
+		display: inline-block;
+		width: 100%;
+
+		& li.menu-item a {
+			line-height: 2.8rem;
+		}
+	}
+	
+	.nav-secondary {
+		display: inline-block;
+		order: 3;
+		text-align: left;
+		width: 100%;
+
+		& li.menu-item a {
+			//font-weight: 400;
+			font-size: 1.2rem;
+			line-height: 2.2rem;
+		}
+	}
+
+	ul.rva-social-link-list {
+		margin: 1.5rem 0 4rem 5%;
+		order: 4;
+		
+		li {
+			float: left;
+			background-color: transparent;
+			padding: 0 $spacer 0 0;
+
+		}
+
+		& a {
+			color: $white;
+		}
+
+		& i {
+			font-size: 1.5rem;
+		}
+	}
+
 }
 
 .rva-logo {
@@ -201,17 +185,15 @@
 }
 
 .rva-nav-trigger {
-	align-self:center;
-	position: relative;
+	position: absolute;
+	left: 5%;
+	top: $spacer*2;
+	text-align: initial;
 	color: transparent;
 	white-space: nowrap;
 
-	@include MQ(M) {
-		display: none;
-	}
-
-	span {
-		@include transition(background-color .3s .3s);
+	span { // hamburger icon
+		@include transition(background-color .3s .3s); 
 		position: absolute;
 		top: 25%;
 		right: 20px;
@@ -241,4 +223,50 @@
 			@include transform(translateY(6px));
 		}
 	}
+}
+
+.nav-is-visible {
+	& .wrap {
+
+	}
+}
+
+.nav-is-visible .rva-nav-trigger span {
+	/* hide line in the center on mobile when nav is visible */
+	background-color: rgba($menu-color, 0);
+
+	&::before,
+	&::after {
+		/* preserve visibility of upper and lower lines - close icon */
+		background-color: rgba($menu-color, 1);
+	}
+}
+
+.nav-is-visible {
+	background-color: rgba($black, 1);
+
+	.rva-nav-wrapper {
+		@include transform(translateX(0));
+	}
+
+	.rva-nav-trigger {
+		span {
+			&::before {
+				@include transform(translateY(0) rotate(-45deg));
+			}
+
+			&::after {
+				@include transform(translateY(0) rotate(45deg));
+			}
+		}
+	}
+
+	.rva-logo {
+		visibility: hidden;
+	}
+
+}
+
+body.rva-no-scroll {
+	overflow: hidden;
 }

@@ -178,12 +178,12 @@ function rva_social_account_buttons() {
 
 
 // $options =  get_option( RVA_SETTINGS_FIELD );
-    // esc_attr( $options['rva_socialmedia_facebook_url'] );
-    // esc_attr( $options['rva_socialmedia_twitter_url'] )
-    // esc_attr( $options['rva_socialmedia_tumblr_url'] )
-    // esc_attr( $options['rva_socialmedia_youtube_url'] )
-    // esc_attr( $options['rva_socialmedia_instagram_url'] )
-
+// esc_attr( $options['rva_socialmedia_facebook_url'] );
+// esc_attr( $options['rva_socialmedia_twitter_url'] )
+// esc_attr( $options['rva_socialmedia_tumblr_url'] )
+// esc_attr( $options['rva_socialmedia_youtube_url'] )
+// esc_attr( $options['rva_socialmedia_instagram_url'] )
+//rva_social_accounts($options);
 /**
  * Print social account link buttons
  * TODO: facebook, linkedin, twitter and youtube buttons
