@@ -17,20 +17,6 @@ function frontpage_scripts() {
 
 } add_action( 'wp_enqueue_scripts', 'frontpage_scripts' );
 
-/** 
-* Add Leaderboard ad before header
-*
-* @since 1.0.0
-*/ 
-function rva_before_header() {
-	?>
-		<div class="before-header">
-			<?php echo do_shortcode('[rva_ad name="Leaderboard" class="ad-leaderboard"]'); ?>
-		</div>
-	<?php
-
-} //add_action( 'genesis_before_header', 'rva_before_header' );
-
 /**
  * Pre-page content menu standoff.
  *
@@ -63,8 +49,18 @@ function rvamag_before_content() {
     }
 
 	?>
-	<!--<div class="padding-top"></div>-->
+	
 	<div class="padding-top expand-m"></div>
+	
+	<!-- [rva_ad name="Leaderboard" class="ad-leaderboard"] -->
+
+	<?php echo do_shortcode('
+		[rva_gutter_box class="flex-container padding-top margin-top"]
+			<div class="collapse-m" style="height:250px; width:970px; background-color:yellow;"></div>
+			<div class="expand-m" style="margin-bottom: 6em; height:250px; width:300px; background-color:yellow;"></div>
+		[/rva_gutter_box]
+		'); ?>
+	
 	<div class="section-title margin-top rva-site-margins">
 		<h2>LATEST</h2>
 	</div>
@@ -80,7 +76,7 @@ add_action('genesis_before_content_sidebar_wrap', 'rvamag_before_content');
  */
 function rvamag_frontpage_loop() {
 
-	echo do_shortcode('[rva_topbox title="LATEST" count="9"/]');
+	echo do_shortcode('[rva_topbox title="LATEST" count="6"/]');
 
 } 
 add_action( 'genesis_loop', 'rvamag_frontpage_loop' );
@@ -105,10 +101,10 @@ function rva_fp_aftercontent() {
 		[/rva_gutter_box]
 	';
 
-	echo do_shortcode( 
-		'[rva_popular_posts date_after="5 year ago"]
+	//[rva_popular_posts date_after="5 year ago"]
 
-		[rva_1x2 title="Music" slug="music"/]
+	echo do_shortcode( 
+		'[rva_1x2 title="Music" slug="music"/]
 
 		'.$square_ads.'
 
@@ -165,11 +161,8 @@ function rva_fp_aftercontent() {
  */
 function rva_frontpage_sidebar(){
 
-	echo do_shortcode('
-			[rva_ad name="Big_Boy_H0" class="wrap ad-big-boy"]
-			[rva_social_account_buttons]
-			');
-
+	echo do_shortcode('[rva_ad name="Big_Boy_H0" class="wrap ad-big-boy"]');
+			//[rva_social_account_buttons]
 } add_action('genesis_sidebar', 'rva_frontpage_sidebar', 5);
 
 genesis();

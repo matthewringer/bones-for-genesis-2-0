@@ -55,10 +55,28 @@
 	}
 }
 
+.rva-social-link-list {
+
+	li {
+		float: left;
+		background-color: transparent;
+		padding: 0 $spacer 0 0;
+
+	}
+
+	& a {
+		color: $white;
+	}
+
+	& i {
+		font-size: 1.5rem;
+	}
+}
+
 .rva-nav-wrapper {
 	position: absolute;
 	@include transform(translateX(-2024px));
-	transition: transform 1s ease-in-out;
+	transition: transform .3s ease-in-out;
 	background-color: $black;
 	width: 100%;
 	height: 100vh;
@@ -123,26 +141,10 @@
 		}
 	}
 
-	ul.rva-social-link-list {
+	.rva-social-link-list {
 		margin: 1.5rem 0 4rem 5%;
 		order: 4;
-		
-		li {
-			float: left;
-			background-color: transparent;
-			padding: 0 $spacer 0 0;
-
-		}
-
-		& a {
-			color: $white;
-		}
-
-		& i {
-			font-size: 1.5rem;
-		}
 	}
-
 }
 
 .rva-logo {
@@ -164,6 +166,11 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
+
+	.rva-social-link-list {
+		right: 5%;
+		position: absolute;
+	}
 }
 
 .rva-nav-trigger {
@@ -237,9 +244,10 @@
 			}
 		}
 	}
-
-	.rva-logo {
-		visibility: hidden;
+	.rva-title-bar {
+		.rva-logo, .rva-social-link-list {
+			visibility: hidden;
+		}
 	}
 
 }
