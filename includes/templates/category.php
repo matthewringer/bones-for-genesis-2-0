@@ -15,26 +15,18 @@ function rva_load_more_args() {
 }
 add_action( 'wp_enqueue_scripts', 'rva_load_more_args' );
 
-/** 
-* Add Leaderboard ad unit before header.
-*
-* @since 1.0.0
-*/ 
-function rva_before_header() {
-	?>
-		<div class="before-header">
-			<?php echo do_shortcode('[rva_ad name="Leaderboard" class="wrap ad-leaderoard"]'); ?>
-		</div>
-	<?php
-}
-//add_action( 'genesis_before_header', 'rva_before_header' );
-
 /**
  * Add spacer before page content to offset the fixed header and leaderboard ad unit.
  */
 function rvamag_before_content() {
 	?>
 	<div class="rva-category-before-content"></div>
+	<?php echo do_shortcode('
+	[rva_gutter_box class="flex-container padding-top margin-top"]
+		<div class="collapse-m" style="margin-bottom: 6em; height:250px; width:970px; background-color:yellow;"></div>
+		<div class="expand-m" style="margin-bottom: 6em; height:250px; width:300px; background-color:yellow;"></div>
+	[/rva_gutter_box]
+	'); ?>
 	<?php
 }
 add_action('genesis_before_content_sidebar_wrap', 'rvamag_before_content');

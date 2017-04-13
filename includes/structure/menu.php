@@ -19,14 +19,15 @@ remove_action( 'genesis_after_header', 'genesis_do_subnav' );
  */
 function rvamag_header_nav() {
 	$options =  get_option( RVA_SETTINGS_FIELD );
-		$social_accounts = rva_social_accounts([ 	
+	$account_array	= [ 	
 			'facebook' => $options['rva_socialmedia_facebook_url'],
 			'twitter' => $options['rva_socialmedia_twitter_url'],
 			'tumblr' => $options['rva_socialmedia_tumblr_url'],
 			'youtube' => $options['rva_socialmedia_youtube_url'],
 			'instagram' => $options['rva_socialmedia_instagram_url'],
 			'snapchat' => $options['rva_socialmedia_snapchat_url']
-		]);
+		];
+	$social_accounts = rva_social_accounts($account_array);
 
 	?>
 		<div class="rva-title-bar" >
@@ -34,9 +35,11 @@ function rvamag_header_nav() {
 			<a class="rva-logo" href="<?php echo get_site_url(); ?>">
 				<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo.svg" alt="RVA Mag Logo" />
 			</a>
-			<?php echo $social_accounts; ?>
+			<div class="collapse-s">
+				<?php echo $social_accounts; ?>
+			</div>
 		</div>
-		<?php echo rva_navigation($social_accounts); ?>
+		<?php echo rva_navigation( $social_accounts ); ?>
 	<?php
 }
 add_action( 'genesis_header', 'rvamag_header_nav', 12);

@@ -11,21 +11,6 @@ function rva_load_more_args() {
 }
 add_action( 'wp_enqueue_scripts', 'rva_load_more_args' );
 
-/** 
-* print pre-header content
-*
-* @since 1.0.0
-*/ 
-function rva_before_header($ad_unit = 'Leaderboard') {
-
-	?>
-		<div class="before-header">
-			<?php echo do_shortcode('[rva_ad name="Leaderboard"]'); ?>
-		</div>
-	<?php
-
-} add_action( 'genesis_before_header', 'rva_before_header' );
-
 
 /**
  * Add spacer before page content to offset the fixed header and leaderboard ad unit.

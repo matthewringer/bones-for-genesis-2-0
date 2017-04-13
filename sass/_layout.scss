@@ -25,21 +25,25 @@
 	
 	margin-bottom: $spacer;
 	height: 55px; //TONY
-
-	@include MQ(S) { 
-		height: 145px; //TONY
-	}
+	height: 145px;
+	
+	// @include MQ(S) { 
+	// 	height: 145px; //TONY
+	// }
 }
 
 .rva-before-entry-content {
 	
 	margin-bottom: $spacer;
 	height: 55px;
+	height: 148px;
+	height: 145px;
 	
-	@include MQ(S) {
-		height: 70px;
-		margin-bottom: $spacer;
-	}
+	// @include MQ(S) {
+	// 	height: 70px;
+	// 	height: 115px;
+	// 	//margin-bottom: $spacer;
+	// }
 }
 
 .rva-menu-offset {
