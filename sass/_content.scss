@@ -1031,8 +1031,33 @@ article.entry-thumb-event {
 	width: 100%;
 }
 
-.search-contents {
+.search-content {
+	padding-top: 1.5em;
+	text-align: left;
 	
+	.rva-read-more {
+		display: none;
+	}
+
+	.entry-meta {
+		font-size: 1.15rem;
+		margin: 1.5em 0;
+	}
+	
+	.entry-content {
+		font-size: 1.15rem;
+		& img {
+			display: none;
+		}
+	}
+
+	.more-link {
+		text-transform: uppercase;
+	}
+
+	.pagination {
+		margin-top: 1.5rem;
+	}
 }
 
 .rva-popular-posts {
