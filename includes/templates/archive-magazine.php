@@ -11,10 +11,10 @@ include 'category.php';
 
 add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
 
-function rva_before_magazine_content() {
-	echo '<div class="rva-before-entry-content"></div>';
-} add_action('genesis_before_content_sidebar_wrap', 'rva_before_magazine_content');
-remove_action('genesis_before_content_sidebar_wrap', 'rvamag_before_content');
+// function rva_before_magazine_content() {
+// 	echo '<div class="rva-before-entry-content"></div>';
+// } add_action('genesis_before_content_sidebar_wrap', 'rva_before_magazine_content');
+// remove_action('genesis_before_content_sidebar_wrap', 'rvamag_before_content');
 
 
 /**
@@ -37,7 +37,7 @@ remove_action( 'wp_enqueue_scripts', 'rva_load_more_args' );
 
 function rvamag_magazine_archive_loop() {
 	//echo rva_mail_form();
-	echo start_section([], '<div class="post-listing rva-3x3-box margin-top" ></div>' );
+	echo start_section(['title' => 'Magazine'], '<div class="post-listing rva-3x3-box margin-top" ></div>' );
 }
 remove_action( 'genesis_loop', 'rvamag_categorypage_loop' );
 add_action( 'genesis_loop', 'rvamag_magazine_archive_loop');

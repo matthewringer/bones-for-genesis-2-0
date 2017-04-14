@@ -28,6 +28,9 @@ function rvamag_before_content() {
 	[/rva_gutter_box]
 	'); ?>
 	<?php
+	global $wp_query;
+	echo start_section(['title' => $wp_query->query["category_name"] ], '');
+	
 }
 add_action('genesis_before_content_sidebar_wrap', 'rvamag_before_content');
 
