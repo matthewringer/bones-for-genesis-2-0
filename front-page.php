@@ -143,19 +143,20 @@ function rva_fp_aftercontent() {
 
 		'.$square_ads.'
 
-		[rva_gutter_box title="GAY RVA"]
-			<h2>Gay RVA Content</h2>
-			<!-- TODO: GayRva content... 2x side by side. -->
-		[/rva_gutter_box]
-
-		'.$square_ads.'
-		
 		[rva_gutter_box title="READ MORE"]
 			<div class="post-listing rva-3x3-box" ></div>
 		[/rva_gutter_box]
 	');
 
 } add_action( 'genesis_after_content_sidebar_wrap', 'rva_fp_aftercontent');
+
+		// [rva_gutter_box title="GAY RVA"]
+		// 	<h2>Gay RVA Content</h2>
+		// 	<!-- TODO: GayRva content... 2x side by side. -->
+		// [/rva_gutter_box]
+
+		// '.$square_ads.'
+
 
 /**
  * Sidebar Content (hiden below S breakpoint)
