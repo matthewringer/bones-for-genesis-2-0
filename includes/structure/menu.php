@@ -35,7 +35,7 @@ function rvamag_header_nav() {
 			<a class="rva-logo" href="<?php echo get_site_url(); ?>">
 				<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo.svg" alt="RVA Mag Logo" />
 			</a>
-			<div class="collapse-s">
+			<div class="rva-title-button-wrap">
 				<?php echo $social_accounts; ?>
 			</div>
 		</div>
