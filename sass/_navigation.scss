@@ -245,6 +245,20 @@
 
 	.rva-nav-wrapper {
 		@include transform(translateX(0));
+
+		.rva-social-link-list {
+			float: left;
+		}
+
+		.createsend-wrap {
+			text-align: left;
+			position: relative;
+			top: 18px;
+			.subscribe-button-inner {
+				position: relative;
+				left: -2px;
+			}
+		}
 	}
 
 	.rva-nav-trigger {

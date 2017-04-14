@@ -39,8 +39,7 @@ function rvamag_header_nav() {
 				<?php echo $social_accounts; ?>
 			</div>
 		</div>
-		<?php echo rva_navigation( $social_accounts ); ?>
-	<?php
+		<?php echo rva_navigation( $social_accounts );
 }
 add_action( 'genesis_header', 'rvamag_header_nav', 12);
 
@@ -67,14 +66,32 @@ function rva_navigation($social_accounts) {
 	ob_start();
 		echo rva_searchform();
 		echo genesis_do_nav();
-		?>
+	?>
+
 		<a class="rva-menu-logo" href="<?php echo get_site_url(); ?>">
 			<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo.svg" alt="RVA Mag Logo" />
 		</a>
-		<?php
-		echo genesis_do_subnav();
-		echo $social_accounts;
-	echo '</div>';
 
+	<?php echo genesis_do_subnav(); ?>
+
+		<script type="text/javascript" async="" src="http://btn.createsend1.com/js/sb.min.js?v=2" class="createsend-script"></script>
+		
+
+	<?php echo $social_accounts; ?>
+
+		<div class="createsend-wrap" >
+			<div class="createsend-button" data-listid="r/1C/4D9/816/5081E2E96C3931C2"></div>
+		</div>
+	
+	</div>
+	<?php
 	return ob_get_clean();
 }
+
+add_filter('nav_menu_item_id', function( $menu_id, $item, $args, $depth ) {
+
+	$menu_id = ( $item->title === 'Newsletters' ) ? 'menu-item-newsletters' : $menu_id;
+
+	return $menu_id;
+
+}, 10, 4);
