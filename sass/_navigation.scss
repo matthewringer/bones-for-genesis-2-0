@@ -189,6 +189,7 @@
 
 .rva-nav-trigger {
 
+	@include transform(translateX(-25px));
 	position: absolute;
 	left: 5%;
 	text-align: initial;
