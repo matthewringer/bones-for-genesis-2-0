@@ -31,7 +31,7 @@ function bfg_gallery_style( $css ) {
  */
 function bfg_more_tag_excerpt_link() {
 
-	return ' <a class="more-link" href="' . get_permalink() . '">' . __( 'Read more &rarr;', CHILD_THEME_TEXT_DOMAIN ) . '</a>';
+	return ' <a class="more-link" href="' . get_permalink() . '">' . __( 'READ MORE &rarr;', CHILD_THEME_TEXT_DOMAIN ) . '</a>';
 
 }
 
@@ -45,7 +45,7 @@ add_filter( 'excerpt_more', 'bfg_truncated_excerpt_link' );
  * @since 2.0.16
  */
 function bfg_truncated_excerpt_link() {
-	return '... <a class="rva-read-more" href="'.post_permalink().'" alt="'.the_title().'">[READ MORE]</a>';
+	return '... <a class="rva-read-more" href="'.post_permalink().'" alt="'.the_title().'">READ MORE</a>';
 
 }
 
@@ -150,7 +150,10 @@ add_filter( 'get_the_author_genesis_author_box_archive', '__return_true' );
 */
 function rva_author_box_filter($output='', $context='', $pattern='', $gravatar='', $title='', $description='' ) {
 
-	$output =  rva_author_box([ 'output'=> $output, 'context' => $context, 'pattern' => $pattern, 'gravatar' => $gravatar, 'title' => $title, 'description' => $description ]);
+	$author_id = get_the_author_meta('ID');
+	$output =  rva_author_box( ['author_id'=> $author_id ] );
+
+	//[ 'output'=> $output, 'context' => $context, 'pattern' => $pattern, 'gravatar' => $gravatar, 'title' => $title, 'description' => $description ]
 
 	return $output;
 
@@ -162,13 +165,18 @@ function rva_author_box_filter($output='', $context='', $pattern='', $gravatar='
  */
 function rva_author_box($atts, $content=NULL, $tag='rva_author_box') {
 
-	$author_id = get_the_author_meta('ID');
+	extract( shortcode_atts( [ 
+		'author_id' => '',
+		 ], $atts ) );
+
+	global  $authordata;
+	$authordata    =  get_userdata( $author_id );
+
 	$avitar = get_avatar($author_id);
 	$title = get_the_author_link();
-	$authordata    = is_object( $authordata ) ? $authordata : get_userdata( get_query_var( 'author' ) );
 	$gravatar_size = apply_filters( 'genesis_author_box_gravatar_size', 96, $context );
 	$gravatar      = get_avatar( $author_id, $gravatar_size );
-	$description   = wpautop( get_the_author_meta( 'description' ) );
+	$description   = wpautop( get_the_author_meta( 'description') );
 	$email = get_the_author_meta( 'email' );
 	
 	$social_media_ul = rva_social_accounts([

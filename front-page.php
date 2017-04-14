@@ -76,7 +76,10 @@ add_action('genesis_before_content_sidebar_wrap', 'rvamag_before_content');
  */
 function rvamag_frontpage_loop() {
 
-	echo do_shortcode('[rva_topbox title="LATEST" count="6"/]');
+	echo do_shortcode('
+		[rva_topbox title="LATEST" count="6"/]
+		[rva_ad name="Big_Boy_H0" class="ad-big-boy expand-s"]
+	');
 
 } 
 add_action( 'genesis_loop', 'rvamag_frontpage_loop' );

@@ -64,12 +64,21 @@ add_filter('category_template', function($template) {
  *
  */
 function catch_page_template( $page_template ) {
-    //if ( is_page( 'events' ) ) {
-        $page_template = locate_template('includes/templates/category-events.php');
-    //}
-    return $page_template;
-} 
-//add_filter('page_template', 'catch_page_template', 999);
+    $archive_templates = [
+        'contributors' => 'page_templates/contributors.php',
+        ];
+    $term = get_queried_object();
+    $new_template = $templates[$term->slug]; //TODO: check first
+    if ( $new_template ) {
+        $new_template = locate_template( $new_template );
+        if($new_template) {
+            return $new_template;
+        }
+    }
+ 
+
+
+} add_filter('page_template', 'catch_page_template', 999);
 
 
 
@@ -79,6 +88,7 @@ function get_custom_post_type_template( $archive_template ) {
      $archive_templates = [
         'magazine' => 'includes/templates/archive-magazine.php',
         'events' => 'includes/templates/archive-events.php',
+        'contributors' => 'includes/templates/archive-contributors.php'
     ];
 
     $term = get_queried_object();
