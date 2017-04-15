@@ -306,6 +306,7 @@ header.entry-header {
 		}
 	}
 }
+
 .title-block {
 	position: relative;
 	max-width: 90%;
@@ -1221,4 +1222,70 @@ article.entry-thumb-event {
 
 #spingo-list-widget {
 	width: 300px;
+}
+
+.rva-event-carousel {
+	height: 300px; 
+	width: 100%;
+	position: relative;
+	//background-color: red;
+	//display: flex;
+
+	.rva-prev-link, .rva-next-link {
+		position: absolute;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		width: 10%;
+		top: 0;
+		z-index: 1;
+		background-color: rgba($black, 0.6);
+	}
+
+	.rva-prev-link {
+		left: 0;
+	}
+	
+	.rva-next-link {
+		right:0;
+	}
+
+	.rva-carousel-mask {
+		overflow-x: visible;
+		display: inline-block;
+		//width: 100%;
+		background-color: $black;
+		//border: 1px solid yellow;
+	}
+
+	.rva-carousel-contents {
+		transform: translate3d(-20%, 0px, 0px);
+		height: 100%;
+		display: block;
+		white-space: nowrap;
+	}
+
+	.animate {
+		transition: transform .75s ease 0s;
+	}
+
+	.rva-event-thumbnail {
+		display: inline-block;
+		width: 45%;
+		height: 280px;
+		background-color: $black;
+		//border: 1px solid green;
+		background-color: red;
+		text-align: center;
+    	font-size: 10rem;
+
+		@include MQ(M) {
+			width: 20%;
+		}
+
+		img {
+			width: 268px;
+		}
+	}
 }

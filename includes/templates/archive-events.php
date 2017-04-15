@@ -39,6 +39,110 @@ function rva_events_load_more_args() {
 } add_action( 'wp_enqueue_scripts', 'rva_events_load_more_args' );
 remove_action( 'wp_enqueue_scripts', 'rva_load_more_args' );
 
+function append_rvamag_before_content() {
+	ob_start();
+	// must see events carosel
+	?>
+		[rva_gutter_box class="flex-container padding-top margin-top"]
+		<div class="rva-event-carousel" >
+			<div class="rva-prev-link"><i class="fa fa-chevron-left" ></i></div>
+			<div class="rva-carousel-mask">
+				<div class="rva-carousel-contents">
+					<div class="rva-event-thumbnail">
+						<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo.svg" alt="RVA Mag Logo" />
+					</div>
+					<div class="rva-event-thumbnail">
+						<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo.svg" alt="RVA Mag Logo" />
+					</div>
+					<div class="rva-event-thumbnail">
+						<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo.svg" alt="RVA Mag Logo" />
+					</div>
+					<div class="rva-event-thumbnail">
+						<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo.svg" alt="RVA Mag Logo" />
+					</div>
+					<div class="rva-event-thumbnail">
+						<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo.svg" alt="RVA Mag Logo" />
+					</div>
+					<div class="rva-event-thumbnail">
+						<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo.svg" alt="RVA Mag Logo" />
+					</div>
+					<div class="rva-event-thumbnail">
+						<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo.svg" alt="RVA Mag Logo" />
+					</div>
+					<div class="rva-event-thumbnail">
+						<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo.svg" alt="RVA Mag Logo" />
+					</div>
+					<div class="rva-event-thumbnail">
+						<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo.svg" alt="RVA Mag Logo" />
+					</div>
+				</div>
+			</div>
+			<div class="rva-next-link"><i class="fa fa-chevron-right" ></i></div>
+		</div>
+		[/rva_gutter_box]
+		<script type="text/javascript">
+
+			const delta = 20;
+			//const delta = $('.rva-event-thumbnail').width()/$('.rva-carousel-mask').width() * 100;
+
+			$('.rva-event-carousel .rva-next-link').on('click', function(){
+				console.log('click next');
+				$('.rva-carousel-contents').addClass('animate');
+				$('.rva-carousel-contents').animate( { go: -delta, }, slide, 'linear');
+			});
+
+			$('.rva-event-carousel .rva-prev-link').on('click', function(){
+				console.log('click prev');
+				$('.rva-carousel-contents').animate( { go: delta, }, slide, 'linear');
+			});
+
+			let slide = {
+					step: function(now, fx) {
+
+						console.log(`now: ${now} start: ${fx.start} end: ${fx.end}`);
+						console.log(this.go);
+						let offset = now - delta*4;
+
+
+						// Offset start negative(left) if now is zero and scrolling right
+						if( 0 == now && delta == fx.end ) {
+							fx.start = delta;
+							//fx.start = 0;
+						} 
+						
+						//Start at zero if now and end will be the same location and scrollign right.
+						if( delta == now && delta == fx.end ) {
+							fx.start = 0;
+						} 
+
+						// If now and start are both at delta or zero offset to negative delta
+						if( (delta == now && delta == fx.start) || (0 == now && 0 == fx.start ) ) {
+							fx.start = -delta;
+							fx.end = -delta;
+						 }
+
+						$(this).css('-webkit-transform',`translate3d(${offset}%, 0px, 0px)`);
+						$(this).css('-moz-transform',`translate3d(${offset}%, 0px, 0px)`);
+						$(this).css('transform',`translate3d(${offset}%, 0px, 0px)`);
+					},
+					duration: 300,
+					complete: function(){
+						let now = -20; // -delta;
+						$(this).css('-webkit-transform',`translate3d(${now}%, 0px, 0px)`);
+						$(this).css('-moz-transform',`translate3d(${now}%, 0px, 0px)`);
+						$(this).css('transform',`translate3d(${now}%, 0px, 0px)`);
+						$('.rva-carousel-contents').removeClass('animate');
+					}
+				};
+
+		</script>
+	<?php
+	
+	echo do_shortcode(ob_get_clean());
+
+} add_action('genesis_before_content_sidebar_wrap', 'append_rvamag_before_content');
+//remove_action('genesis_before_content_sidebar_wrap', 'rvamag_before_content');
+
 
 function filter_thumbnail( $content ) {
 	global $post;
@@ -80,26 +184,14 @@ function filter_thumbnail( $content ) {
  */
 function do_calendar() {
 
-	// $args = json_encode( [
-	// 		'post_type' => 'events',
-	// 		'orderby'       => 'post_date',
-	// 		'order'         => 'DESC',
-	// 		'posts_per_page'=> $count ,
-	// 		//'category_name' => $slug
-	// 	]);
+	echo start_section([], '<div class="post-listing rva-1x-box margin-top" ></div>' );
 
-	// global $wp_query;
-	// echo rva_3x6([
-	// 	'layout' => 'rva-1x-box',
-	// 	'args' => $args
-	// 	]);
-    echo start_section([], '<div class="post-listing rva-1x-box margin-top" ></div>' );
 }
 add_action( 'genesis_loop', 'do_calendar');
 remove_action( 'genesis_loop', 'rvamag_categorypage_loop' );
 
 function rva_events_sidebar(){
-	echo spingo_events_widget();
+	//echo '<div class="post-listing rva-1x-box margin-top" ></div>';
 	echo '<div class="margin-top padding-top"></div>';
 	echo do_shortcode('[rva_ad name="Big_Boy_H0" class="margin-top wrap ad-big-boy"]');
 } add_action('genesis_sidebar','rva_events_sidebar'); 
