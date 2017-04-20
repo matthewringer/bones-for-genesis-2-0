@@ -899,13 +899,40 @@ ul.social-links {
 .event-list-date {
 	width: 100%;
 	text-align: left;
+	
+	.rva-accordian {
+		overflow: hidden;
+		transition: height .3s;
+	}
+
+	.rva-event-group {
+		display: inline-block;
+	}
+
 	h3 {
 		display: inline-block;
 		font-weight: 700;
 		font-size: 2rem;
 		padding: 5px 15px;
 		background-color: #0d0d0d;
-		//box-shadow: 6px 5px 0px #fff200;
+	}
+
+	i {
+		font-size: 2rem;
+		//transform: rotate(90deg);
+		transition: transform .3s;
+		width: 13px;
+	}
+}
+
+.open {
+
+	.rva-event-group {
+    	
+	}
+	
+	& i {
+		transform: rotate(90deg);
 	}
 }
 

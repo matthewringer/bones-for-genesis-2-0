@@ -103,8 +103,6 @@ function flex_container ($atts, $content) {
 function start_section( $atts, $content) {
 
 	extract( shortcode_atts( [ 'class' => '', 'title' => null ], $atts) );
-	// $class = ( array_key_exists('class', $atts) )? $atts['class'] : '';
-	// $title = ( array_key_exists('title', $atts) )? $atts['title'] : '';
 
 	ob_start();
 	?>
@@ -119,7 +117,7 @@ function start_section( $atts, $content) {
 	<?php
 	//TODO: return not echo....
 	return ob_get_clean();
-} add_shortcode('rva_layout_section', 'start_section');
+} add_shortcode('rva_content_section', 'start_section');
 
 /**
  * Print gutter box container section.
@@ -373,28 +371,3 @@ function rva_bigwrk_box() {
 	<?php
 	return ob_get_clean();
 } add_shortcode('rva_bigwrk_box', 'rva_bigwrk_box');
-
-function spingo_events_widget() {
-	ob_start();
-	?>
-	<script src="http://event2.spingo.com/list-widget.js"></script>
-	<div id="spingo-list-widget"></div>
-	<script>
-	new SpinGoWidget({
-		title: "RVAMag",
-		bodyFontFamily: "open sans",
-		headerFontFamily: "open sans",
-		baseFontSize: 12,
-		dateLabelWidth: 200,
-		textColor: "#ffffff",
-		mainColor: "#4c4c4c",
-		featuredColor: "#b3b3b3",
-		perPage: 5,
-		postalCode: "23220",
-		radiusMiles: 10
-	});
-	</script>
-	<?php
-	return ob_get_clean();
-
-}

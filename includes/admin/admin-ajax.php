@@ -18,6 +18,8 @@ function rva_load_more_posts($start_page = 3, $thumb_style = 'entry-thumbnail', 
 
 	$args = [
 		'url'	=> admin_url( 'admin-ajax.php' ),
+		'action' => 'rva_ajax_load_more',
+		'button_selector' => '.load-more',
 		'query' => json_encode($query),
 		'thumb_style' => $thumb_style,
 		'startpage' => $start_page,
@@ -28,17 +30,14 @@ function rva_load_more_posts($start_page = 3, $thumb_style = 'entry-thumbnail', 
 
 }
 
+
 /**
  *
  */
 function rva_ajax_load_more() {
 
-	//$args = isset( $_POST['query'] ) ? array_map( 'esc_attr', $_POST['query'] ) : array();
-	//extract( [ 'thumb_style' => 'entry-thumbnail', 'layout' => '', 'page' => null, 'posts_per_page' => null] , $_POST );
-	
 	$thumb_style = isset( $_POST['thumb_style'] ) ? $_POST['thumb_style'] : '';
 	$layout = isset( $_POST['layout'] ) ? $_POST['layout'] : null;
-
 	$args = isset( $_POST['query'] ) ? json_decode( stripslashes(  $_POST['query'] ), true ) : array();
 	$args['post_type'] = isset( $args['post_type'] ) ? esc_attr( $args['post_type'] ) : 'post';
 	$args['post_status'] = 'publish';
@@ -59,38 +58,20 @@ function rva_ajax_load_more() {
 		];
 
 		add_filter( 'rva_thumbnail_content', $layouts[$layout] );
+
 	}
 
 	$loop = new WP_Query( $args );
-
 	$count = $loop->post_count;
 	$total = $loop->found_posts;
 	$max_pages = $loop->max_num_pages;
 
 	ob_start();
 
-	// echo $layout;
-	// echo print_r($args,true);
-
-	$current_date = null;
-
 	if( $loop->have_posts() ) {
 
 		while( $loop->have_posts() ) {
-			
 			$loop->the_post();
-
-			if($layout == 'events') {
-				//print the day, month day box
-				global $post;
-				$event_date = rva_get_date_header($post);
-				if($event_date != $current_date) {
-					echo '<div class="event-list-date"><h3>'.$event_date.'</h3></div>';
-					$current_date = $event_date;
-				}
-
-			}
-
 			echo do_shortcode('[rva_post_thumbnail class="'.$thumb_style.'"]');
 		}
 
@@ -125,17 +106,16 @@ function rva_filter_event_thumbnail( $content ) {
 	$meta_eventlocation = get_post_meta($post->ID, 'wpcf-eventlocation', true);
 	$meta_eventtime = get_post_meta($post->ID, 'wpcf-eventtime', true);
 
-	$date = date_create();
-	date_timestamp_set($date, $meta_eventdate);
+	$raw_date = date_create();
+	date_timestamp_set($raw_date, $meta_eventdate);
 
-	$time = date_format($date, 'h:iA');
-	$day = date_format($date, 'l');
-	$date = date_format($date, 'l, F d');
+	$time = date_format($raw_date, 'h:iA');
+	$day = date_format($raw_date, 'l');
+	$date = date_format($raw_date, 'l, F d');
 
 	ob_start();
-	?>
-	<article class="entry-thumb-event" >
-		<?php echo get_the_post_thumbnail($post_id, [100,100]);?>
+	?><article class="entry-thumb-event" data-date="<?php echo date_format($raw_date, 'Ymd'); ?>" data-display-date="<?php echo $date; ?>" data-id="<?php echo $post->ID; ?>" >
+		<?php echo get_the_post_thumbnail($post->ID, [100,100]);?>
 		<div class="title-block" >
 			<h3 class="rva-event-date"> <?php echo $time; ?> </h3>
 			<h2 class="article-title"><a href="<?php echo get_the_permalink(); ?>"> <?php echo get_thumbnail_title(); ?> </a></h2>
@@ -144,9 +124,7 @@ function rva_filter_event_thumbnail( $content ) {
 				<?php echo rva_get_excerpt(140, 'content'); ?>
 			</p>
 		</div>
-	</article>
-	<?php
-	$content = ob_get_clean();
+	</article><?php $content = ob_get_clean();
 	return $content;
 }
 

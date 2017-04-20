@@ -78,24 +78,20 @@ function append_rvamag_before_content() {
 				</div>
 			</div>
 			<div class="rva-next-link"><i class="fa fa-chevron-right" ></i></div>
-		</div>
+		</div> 
 		[/rva_gutter_box]
 		<script type="text/javascript">
-
 			const delta = 20;
-			//const delta = $('.rva-event-thumbnail').width()/$('.rva-carousel-mask').width() * 100;
-
 			$('.rva-event-carousel .rva-next-link').on('click', function(){
 				console.log('click next');
 				$('.rva-carousel-contents').addClass('animate');
 				$('.rva-carousel-contents').animate( { go: -delta, }, slide, 'linear');
 			});
-
 			$('.rva-event-carousel .rva-prev-link').on('click', function(){
 				console.log('click prev');
+				//$('.rva-carousel-contents').addClass('animate');
 				$('.rva-carousel-contents').animate( { go: delta, }, slide, 'linear');
 			});
-
 			let slide = {
 					step: function(now, fx) {
 
@@ -127,7 +123,7 @@ function append_rvamag_before_content() {
 					},
 					duration: 300,
 					complete: function(){
-						let now = -20; // -delta;
+						let now = -delta;
 						$(this).css('-webkit-transform',`translate3d(${now}%, 0px, 0px)`);
 						$(this).css('-moz-transform',`translate3d(${now}%, 0px, 0px)`);
 						$(this).css('transform',`translate3d(${now}%, 0px, 0px)`);
@@ -184,8 +180,35 @@ function filter_thumbnail( $content ) {
  */
 function do_calendar() {
 
-	echo start_section([], '<div class="post-listing rva-1x-box margin-top" ></div>' );
+	ob_start();
+	
+	?> 
+	[rva_content_section]
+	<div class="rva-1x-box margin-top" >
+		<div class="event-list-date testing">
+			<i class="fa fa-caret-right open-trigger" aria-hidden="true"></i>
+			<h3 class="open-trigger">Editor's Picks</h3>
+			<div class="rva-accordian" >
+				<div class="rva-event-group">
+					<article class="entry-thumb-event">
+						<img width="100" height="100" src="http://localhost:8080/wp-content/uploads/2016/12/14264804_857247927708809_3702427707630193609_n-150x150.jpg" class="attachment-100x100 size-100x100 wp-post-image" alt="14264804_857247927708809_3702427707630193609_n.jpg">		<div class="title-block">
+							<h3 class="rva-event-date"> 12:00AM </h3>
+							<h2 class="article-title"><a href="http://localhost:8080/events/southside-funk-baja/"> Southside Funk @ BAJA </a></h2>
+							<h3 class="rva-event-location"> Baja Bean Co. 1520 West Main ST, Richmond, VA 2322 </h3>
+							<p class="excerpt"> 
+								Southside Funk LIVE @ BAJA @ 10pm 01/03/09NO COVER 21&amp;UP... <a class="rva-read-more" href="http://localhost:8080/events/southside-funk-baja/">READ MORE</a>			</p>
+						</div>
+					</article>
+				</div>
+			</div>
+		</div>
+	</div>
 
+	<div class="post-listing rva-1x-box margin-top" ></div>
+	[/rva_content_section]
+	<?php
+
+	echo do_shortcode(ob_get_clean());
 }
 add_action( 'genesis_loop', 'do_calendar');
 remove_action( 'genesis_loop', 'rvamag_categorypage_loop' );
