@@ -90,38 +90,54 @@ function rva_ajax_load_more() {
   add_action( 'wp_ajax_nopriv_rva_ajax_load_more', 'rva_ajax_load_more' );
 
 
-function rva_get_date_header($post) {
+// function rva_get_date_header($post) {
 
-	$meta_eventdate = get_post_meta($post->ID, 'wpcf-eventdate', true);
-	$date = date_create();
-	date_timestamp_set($date, $meta_eventdate);
-	return date_format($date, 'l, F d');
+// 	$meta_eventdate = get_post_meta($post->ID, 'wpcf-eventdate', true);
+// 	$date = date_create();
+// 	date_timestamp_set($date, $meta_eventdate);
+// 	return date_format($date, 'l, F d');
 
+// }
+
+function value_or_default($value, $default) {
+	return ( $value === '' || !isset($value) || is_null($value) ) ? $default : $value;
 }
 
 function rva_filter_event_thumbnail( $content ) {
 	global $post;
+	// rva_post_event_title
+	// rva_post_event_description
+	// rva_post_event_datetime
+	// rva_post_event_venue
+	// rva_post_event_price
+	// rva_post_event_tickets
+	// rva_post_event_editorspick
+	// rva_post_event_mustsee
 
-	$meta_eventdate = get_post_meta($post->ID, 'wpcf-eventdate', true);
-	$meta_eventlocation = get_post_meta($post->ID, 'wpcf-eventlocation', true);
-	$meta_eventtime = get_post_meta($post->ID, 'wpcf-eventtime', true);
-
-	$raw_date = date_create();
-	date_timestamp_set($raw_date, $meta_eventdate);
-
-	$time = date_format($raw_date, 'h:iA');
-	$day = date_format($raw_date, 'l');
+	$title = get_post_meta($post->ID, 'rva_post_event_title', true); 				// value_or_default( , get_thumbnail_title() );
+	$description = get_post_meta($post->ID, 'rva_post_event_description', true); 	//value_or_default( , rva_get_excerpt(140, 'content') );
+	$meta_eventdate = get_post_meta($post->ID, 'rva_post_event_datetime', true); 	// wpcf-eventdate wpcf-eventtime
+	$meta_eventlocation = get_post_meta($post->ID, 'rva_post_event_venue', true); 	//'wpcf-eventlocation', 
+	$meta_eventprice = get_post_meta($post->ID, 'rva_post_event_price', true); 		// value_or_default( , 'FREE' );
+	$meta_eventtickets = get_post_meta($post->ID, 'rva_post_event_tickets', true); 	// value_or_default( , 'TICKETS' );
+	
+	$raw_date = date_create($meta_eventdate);
+	$time = date_format($raw_date, 'h:i A');
 	$date = date_format($raw_date, 'l, F d');
 
 	ob_start();
 	?><article class="entry-thumb-event" data-date="<?php echo date_format($raw_date, 'Ymd'); ?>" data-display-date="<?php echo $date; ?>" data-id="<?php echo $post->ID; ?>" >
-		<?php echo get_the_post_thumbnail($post->ID, [100,100]);?>
+		<?php //echo get_the_post_thumbnail($post->ID, [100,100]); ?>
 		<div class="title-block" >
-			<h3 class="rva-event-date"> <?php echo $time; ?> </h3>
-			<h2 class="article-title"><a href="<?php echo get_the_permalink(); ?>"> <?php echo get_thumbnail_title(); ?> </a></h2>
+			<h2 class="article-title"><a href="<?php echo get_the_permalink(); ?>"> <?php echo $title; ?> </a></h2>
+		</div>
+		<div class="details-block">
+			<h2 class="rva-event-date"> <?php echo $date; ?> </h2>
+			<h3 class="rva-event-time"> <?php echo $time; ?> </h3>
 			<h3 class="rva-event-location"> <?php echo $meta_eventlocation; ?> </h3>
+			<h3 class="rva-event-price"> <?php echo $meta_eventprice; ?> </h3>
 			<p class="excerpt"> 
-				<?php echo rva_get_excerpt(140, 'content'); ?>
+				<?php echo $description; ?>
 			</p>
 		</div>
 	</article><?php $content = ob_get_clean();

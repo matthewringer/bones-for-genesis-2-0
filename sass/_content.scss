@@ -859,7 +859,6 @@ ul.social-links {
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;
-		//height: initial;
 		width: 100%;
 		padding-top: 50%;
 	}
@@ -907,6 +906,7 @@ ul.social-links {
 
 	.rva-event-group {
 		display: inline-block;
+		width: 100%;
 	}
 
 	h3 {
@@ -928,7 +928,7 @@ ul.social-links {
 .open {
 
 	.rva-event-group {
-    	
+
 	}
 	
 	& i {
@@ -941,49 +941,56 @@ article.entry-thumb-event {
 	width: 100%;
 	position: relative;
 	padding: 0 $spacer/2 $spacer $spacer/2;
+	border-top: 2px solid $grey;
+	padding-top: $spacer;
 
-	img.wp-post-image {
-		height: 100px;
-		width: 100px;
-	}
 	.rva-event-date {
-		//align-self: flex-end;
-		font-size: 1.5rem;
-		font-weight: 400;
-		width: 100%;
-    	//text-align: right;
-	}
-	.rva-article-image {
-		display: flex;
-		align-items: flex-end;
-		height: 300px;
-		overflow: hidden;
+		display: none;
 	}
 
 	.title-block {
+		position: initial;
 		align-self: flex-start;
 		display: flex;
     	flex-direction: column;
-		max-width: 95%;
-		width: 95%;
+		width: 50%;
+		min-width: 50%;
+	}
+	.details-block {
+		display: flex;
+		flex-direction: column;
 	}
 
 	.rva-event-location {
 		font-size: 1.2rem;
 	}
 
-	.article-title {
-		font-size: 2rem;
-		box-shadow: 10px 0 0 $black, -2px 0 0 $black;
-		background-color: $black;
-		color: $white;
-		a {
-		//	color: $white;
-		}
+	.article-title, .rva-event-date {
+		font-size: 1.5rem;
+	}
+	
+	.rva-event-time, .rva-event-location, .rva-event-price {
+		font-size: 1rem;
+		padding: 0;
+	}
+
+	.rva-event-time {
+		font-size: 1.5rem;
 	}
 
 	.excerpt, .text-block {
-		display: none;
+		font-size: 1rem;
+	}
+}
+
+.editors-picks {
+	article.entry-thumb-event {
+		.rva-event-date {
+			display: initial;
+		}
+		.rva-event-time{
+			font-size: 1rem;
+		}
 	}
 }
 
@@ -1191,22 +1198,6 @@ article.entry-thumb-event {
 		background-repeat: no-repeat;
 		background-position: center;
 		background-color: $white;
-		// margin-top: 2px;
-		// margin-bottom: 2px;
-		
-		// &::before{
-		// 	background-color: $white;
-		// 	float: left;
-		// 	width: $spacer/2;
-		// 	content: "A";
-		// }
-		
-		// &::after {
-		// 	background-color: $white;
-		// 	float: right;
-		// 	width: $spacer/2;
-		// 	content: "A";
-		// }
 
 		@include MQ(S) {
 			display: none;
@@ -1247,19 +1238,57 @@ article.entry-thumb-event {
 	}
 }
 
-#spingo-list-widget {
-	width: 300px;
-}
-
-.rva-event-carousel {
-	height: 300px; 
+#rva-event-carousel {
 	width: 100%;
-	position: relative;
-	//background-color: red;
-	//display: flex;
+	height: 420px;
+    display: flex;
+	justify-content: center;
+	
+	.slide-wrapper {
+		margin: $spacer;
+		outline: none;
+	}
+
+	.rva-event-thumbnail {
+		max-width: 280px;
+		margin: auto;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		height: 385px;
+		background-repeat: no-repeat;
+		
+		.event-date {
+			font-size: 1.5rem;
+		}
+
+		.details-block {
+			height: 100px;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			background-color: $black;
+			.article-title a {
+				font-size: 1rem;
+			}
+			.rva-entry-like-btns {
+				//justify-content: center;
+			}
+		}
+
+		h2 {
+			text-align: left;
+			width: 100%;
+			background: $black;
+		}
+		
+		img {
+			width: 100%;
+		}
+	}
 
 	.rva-prev-link, .rva-next-link {
-		position: absolute;
+		position: relative;
 		height: 100%;
 		display: flex;
 		flex-direction: column;
@@ -1268,6 +1297,7 @@ article.entry-thumb-event {
 		top: 0;
 		z-index: 1;
 		background-color: rgba($black, 0.6);
+		font-size: 2rem;
 	}
 
 	.rva-prev-link {
@@ -1278,41 +1308,4 @@ article.entry-thumb-event {
 		right:0;
 	}
 
-	.rva-carousel-mask {
-		overflow-x: visible;
-		display: inline-block;
-		//width: 100%;
-		background-color: $black;
-		//border: 1px solid yellow;
-	}
-
-	.rva-carousel-contents {
-		transform: translate3d(-20%, 0px, 0px);
-		height: 100%;
-		display: block;
-		white-space: nowrap;
-	}
-
-	.animate {
-		transition: transform .75s ease 0s;
-	}
-
-	.rva-event-thumbnail {
-		display: inline-block;
-		width: 45%;
-		height: 280px;
-		background-color: $black;
-		//border: 1px solid green;
-		background-color: red;
-		text-align: center;
-    	font-size: 10rem;
-
-		@include MQ(M) {
-			width: 20%;
-		}
-
-		img {
-			width: 268px;
-		}
-	}
 }

@@ -30,7 +30,8 @@ function rvamag_before_content() {
 		'posts_per_page'=> '1',
 		'meta_query' => [[
 			'key' => RVA_POST_FIELDS_FEATURED_POST,
-			'compare' => 'EXISTS'
+			'value' => '1',
+			'compare' => '='
 			]]
 	]);
 

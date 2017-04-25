@@ -11,17 +11,19 @@ include 'category.php';
 
 global $query_override;
 $query_override = [
-			'post_type' => 'events',
-			'orderby'       => 'post_date',
-			'order'         => 'ASC',
-			'posts_per_page'=> $count ,
-			'meta_query' => [ [
-				'key' => 'wpcf-eventdate',
-				'operator' => 'EXISTS'
-				] ],
-			'orderby' => 'meta_value'
-		];
-
+	//'post_status' => 'draft',
+	'category_name' => '',
+	'post_type' => 'post',
+	'order'         => 'ASC',
+	'posts_per_page'=> 7 ,
+	'meta_query' => [ [
+		'key' => 'rva_post_event_datetime',
+		'value' => '',
+		'compare' => '!=',
+		] ],
+	'orderby' => 'meta_value'
+	
+];
 
 /**
  *
@@ -35,176 +37,129 @@ function rva_events_load_more_args() {
 		$query_override,
 		'events'
 	 );
+	 //TODO: figure out CDN stuff
+	 wp_enqueue_style('slick-css', 'http://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css');
+	 wp_enqueue_script('slick-js','http://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js');
 
 } add_action( 'wp_enqueue_scripts', 'rva_events_load_more_args' );
 remove_action( 'wp_enqueue_scripts', 'rva_load_more_args' );
 
-function append_rvamag_before_content() {
+function append_rvamag_event_slider_before_content() {
+	$query = new WP_Query([
+		'category_name' => '',
+		'post_type' => 'post',
+		'order'         => 'ASC',
+		'posts_per_page'=> 9 ,
+		'meta_query' => [ 
+			[
+				'key' => 'rva_post_event_datetime',
+				'value' => '',
+				'compare' => '!=',
+			],[
+				'key' => 'rva_post_event_mustsee',
+				'value' => '1',
+				'compare' => '=',
+			],
+		],
+		'orderby' => 'meta_value'
+	]);
+
 	ob_start();
-	// must see events carosel
 	?>
-		[rva_gutter_box class="flex-container padding-top margin-top"]
-		<div class="rva-event-carousel" >
-			<div class="rva-prev-link"><i class="fa fa-chevron-left" ></i></div>
-			<div class="rva-carousel-mask">
-				<div class="rva-carousel-contents">
-					<div class="rva-event-thumbnail">
-						<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo.svg" alt="RVA Mag Logo" />
-					</div>
-					<div class="rva-event-thumbnail">
-						<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo.svg" alt="RVA Mag Logo" />
-					</div>
-					<div class="rva-event-thumbnail">
-						<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo.svg" alt="RVA Mag Logo" />
-					</div>
-					<div class="rva-event-thumbnail">
-						<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo.svg" alt="RVA Mag Logo" />
-					</div>
-					<div class="rva-event-thumbnail">
-						<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo.svg" alt="RVA Mag Logo" />
-					</div>
-					<div class="rva-event-thumbnail">
-						<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo.svg" alt="RVA Mag Logo" />
-					</div>
-					<div class="rva-event-thumbnail">
-						<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo.svg" alt="RVA Mag Logo" />
-					</div>
-					<div class="rva-event-thumbnail">
-						<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo.svg" alt="RVA Mag Logo" />
-					</div>
-					<div class="rva-event-thumbnail">
-						<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo.svg" alt="RVA Mag Logo" />
-					</div>
-				</div>
+			<div class="section-title margin-top rva-site-margins">
+				<h2>MUST SEE SHOWS</h2>
 			</div>
-			<div class="rva-next-link"><i class="fa fa-chevron-right" ></i></div>
-		</div> 
+		[rva_gutter_box class="flex-container padding-top margin-top"]
+			<div id="rva-event-carousel" >
+				<?php while( $query->have_posts() ) : $query->the_post(); global $post; ?>
+					<div class="slide-wrapper">
+						<article class="rva-event-thumbnail" style="background-image: url(<?php echo get_the_post_thumbnail_url($post->ID); ?>);">
+							<h2 class="event-date"> 
+								<?php 
+								$meta_eventdate = get_post_meta($post->ID, 'rva_post_event_datetime', true);
+								$raw_date = date_create($meta_eventdate);
+								echo date_format($raw_date, 'l, m/d'); ?> 
+							</h2>
+
+							<div class="details-block">
+								<h2 class="article-title"><a href="<?php echo get_the_permalink(); ?>"> <?php echo get_post_meta($post->ID, 'rva_post_event_title', true); ?> </a></h2>
+								<?php echo rva_social_sharing_buttons(); ?>
+							</div>
+						</article>
+					</div>
+				<?php endwhile; ?>
+			</div>
 		[/rva_gutter_box]
 		<script type="text/javascript">
-			const delta = 20;
-			$('.rva-event-carousel .rva-next-link').on('click', function(){
-				console.log('click next');
-				$('.rva-carousel-contents').addClass('animate');
-				$('.rva-carousel-contents').animate( { go: -delta, }, slide, 'linear');
-			});
-			$('.rva-event-carousel .rva-prev-link').on('click', function(){
-				console.log('click prev');
-				//$('.rva-carousel-contents').addClass('animate');
-				$('.rva-carousel-contents').animate( { go: delta, }, slide, 'linear');
-			});
-			let slide = {
-					step: function(now, fx) {
-
-						console.log(`now: ${now} start: ${fx.start} end: ${fx.end}`);
-						console.log(this.go);
-						let offset = now - delta*4;
-
-
-						// Offset start negative(left) if now is zero and scrolling right
-						if( 0 == now && delta == fx.end ) {
-							fx.start = delta;
-							//fx.start = 0;
-						} 
-						
-						//Start at zero if now and end will be the same location and scrollign right.
-						if( delta == now && delta == fx.end ) {
-							fx.start = 0;
-						} 
-
-						// If now and start are both at delta or zero offset to negative delta
-						if( (delta == now && delta == fx.start) || (0 == now && 0 == fx.start ) ) {
-							fx.start = -delta;
-							fx.end = -delta;
-						 }
-
-						$(this).css('-webkit-transform',`translate3d(${offset}%, 0px, 0px)`);
-						$(this).css('-moz-transform',`translate3d(${offset}%, 0px, 0px)`);
-						$(this).css('transform',`translate3d(${offset}%, 0px, 0px)`);
-					},
-					duration: 300,
-					complete: function(){
-						let now = -delta;
-						$(this).css('-webkit-transform',`translate3d(${now}%, 0px, 0px)`);
-						$(this).css('-moz-transform',`translate3d(${now}%, 0px, 0px)`);
-						$(this).css('transform',`translate3d(${now}%, 0px, 0px)`);
-						$('.rva-carousel-contents').removeClass('animate');
-					}
-				};
-
+			$('#rva-event-carousel').slick(
+				{	'slidesToShow': 3,
+					'prevArrow': '<div class="rva-prev-link"><i class="fa fa-chevron-left" ></i></div>',
+					'nextArrow': '<div class="rva-next-link"><i class="fa fa-chevron-right" ></i></div>',
+					'responsive': [{
+						'breakpoint': 1024,
+						'settings': {
+							'slidesToShow': 2,
+						}
+					}, {
+						'breakpoint': 729,
+						'settings': {
+							'slidesToShow': 1,
+						}
+					}]
+				}
+			);
 		</script>
+		<div class="section-title margin-top rva-site-margins"></div>
 	<?php
-	
 	echo do_shortcode(ob_get_clean());
-
-} add_action('genesis_before_content_sidebar_wrap', 'append_rvamag_before_content');
-//remove_action('genesis_before_content_sidebar_wrap', 'rvamag_before_content');
-
-
-function filter_thumbnail( $content ) {
-	global $post;
-
-	$meta_eventdate = get_post_meta($post->ID, 'wpcf-eventdate', true);
-	$meta_eventlocation = get_post_meta($post->ID, 'wpcf-eventlocation', true);
-	$meta_eventtime = get_post_meta($post->ID, 'wpcf-eventtime', true);
-
-	$date = date_create();
-	date_timestamp_set($date, $meta_eventdate);
-	$date = date_format($date, 'U = Y-m-d H:i:s');  
-
-	ob_start();
-	?>
-	<article class="rva-event-thumbnail" >
-		<!--<a href=""><span class="rva-sponsored-by"> The National <i class="fa fa-external-link" aria-hidden="true"></i> </span></a>-->
-		<?php echo get_the_post_thumbnail();?>
-		<div class="rva-article-image" style="background-image:url(<?php echo get_the_post_thumbnail_url()?>);" >
-			<div class="title-block" >
-    			<h2 class="article-title"><a href="<?php echo get_the_permalink(); ?>"> <?php echo get_thumbnail_title(); ?> </a></h2>
-				<span class="rva-event-date"> <?php 
-					echo $date;
-				?> </span>
-				<span class="rva-event-location"> <?php echo $meta_eventlocation; ?> </span>
-				<span class="rva-event-time"> <?php echo $meta_eventtime; ?> </span>
-				<p class="excerpt"> 
-					<?php echo rva_get_excerpt(140, 'content'); ?>
-				</p>
-			</div>
-		</div>
-	</article>
-	<?php
-	$content = ob_get_clean();
-	return $content;
-} 	add_filter('rva_thumbnail_content', 'filter_thumbnail' );
+}
+add_action('genesis_before_content_sidebar_wrap', 'append_rvamag_event_slider_before_content');
 
 /**
  * Calendar loop
  */
 function do_calendar() {
 
+	$query = new WP_Query([
+		'category_name' => '',
+		'post_type' => 'post',
+		'order'         => 'ASC',
+		'posts_per_page'=> 7 ,
+		'meta_query' => [ 
+			[
+				'key' => 'rva_post_event_datetime',
+				'value' => '',
+				'compare' => '!=',
+			],[
+				'key' => 'rva_post_event_editorspick',
+				'value' => '1',
+				'compare' => '=',
+			],
+		],
+		'orderby' => 'meta_value'
+	]);
+
 	ob_start();
-	
-	?> 
+	?>
 	[rva_content_section]
 	<div class="rva-1x-box margin-top" >
 		<div class="event-list-date testing">
 			<i class="fa fa-caret-right open-trigger" aria-hidden="true"></i>
 			<h3 class="open-trigger">Editor's Picks</h3>
 			<div class="rva-accordian" >
-				<div class="rva-event-group">
-					<article class="entry-thumb-event">
-						<img width="100" height="100" src="http://localhost:8080/wp-content/uploads/2016/12/14264804_857247927708809_3702427707630193609_n-150x150.jpg" class="attachment-100x100 size-100x100 wp-post-image" alt="14264804_857247927708809_3702427707630193609_n.jpg">		<div class="title-block">
-							<h3 class="rva-event-date"> 12:00AM </h3>
-							<h2 class="article-title"><a href="http://localhost:8080/events/southside-funk-baja/"> Southside Funk @ BAJA </a></h2>
-							<h3 class="rva-event-location"> Baja Bean Co. 1520 West Main ST, Richmond, VA 2322 </h3>
-							<p class="excerpt"> 
-								Southside Funk LIVE @ BAJA @ 10pm 01/03/09NO COVER 21&amp;UP... <a class="rva-read-more" href="http://localhost:8080/events/southside-funk-baja/">READ MORE</a>			</p>
-						</div>
-					</article>
+				<div class="rva-event-group editors-picks">
+					<?php
+						while( $query->have_posts() ) {
+							$query->the_post();
+							echo rva_filter_event_thumbnail(null);
+						}
+					?>
 				</div>
 			</div>
 		</div>
 	</div>
 
-	<div class="post-listing rva-1x-box margin-top" ></div>
+	<div class="post-listing rva-1x-box" ></div>
 	[/rva_content_section]
 	<?php
 
