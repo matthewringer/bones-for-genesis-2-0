@@ -9,28 +9,29 @@ include 'category.php';
 	Template Name: Category Template
 */
 
-global $query_override;
-$query_override = [
-	//'post_status' => 'draft',
-	'category_name' => '',
-	'post_type' => 'post',
-	'order'         => 'ASC',
-	'posts_per_page'=> 7 ,
-	'meta_query' => [ [
-		'key' => 'rva_post_event_datetime',
-		'value' => '',
-		'compare' => '!=',
-		] ],
-	'orderby' => 'meta_value'
-	
-];
+//global $date_filter;
+function get_date_filter() {
+	return date('Y/m/d h:i A',strtotime("-2 hours"));  // 2 hous ago
+}
 
 /**
  *
  */
 function rva_events_load_more_args() {
 
-	global $query_override;
+	$query_override = [
+		'category_name' => '',
+		'post_type' => 'post',
+		'order'         => 'ASC',
+		'posts_per_page'=> 7 ,
+		'meta_query' => [ [
+			'key' => 'rva_post_event_datetime',
+			'value' => get_date_filter(),
+			'compare' => '>=',
+			] ],
+		'orderby' => 'meta_value'
+	];
+
 	rva_load_more_posts(
 		1, 
 		"entry-thumb-event",
@@ -53,8 +54,8 @@ function append_rvamag_event_slider_before_content() {
 		'meta_query' => [ 
 			[
 				'key' => 'rva_post_event_datetime',
-				'value' => '',
-				'compare' => '!=',
+				'value' => get_date_filter(),
+				'compare' => '>=',
 			],[
 				'key' => 'rva_post_event_mustsee',
 				'value' => '1',
@@ -63,6 +64,8 @@ function append_rvamag_event_slider_before_content() {
 		],
 		'orderby' => 'meta_value'
 	]);
+
+	if(!$query->have_posts()) return;
 
 	ob_start();
 	?>
@@ -119,17 +122,17 @@ add_action('genesis_before_content_sidebar_wrap', 'append_rvamag_event_slider_be
  * Calendar loop
  */
 function do_calendar() {
-
+	//$date = date('Y/m/d h:i A',strtotime("-2 hours"));  // 2 hous ago
 	$query = new WP_Query([
 		'category_name' => '',
 		'post_type' => 'post',
 		'order'         => 'ASC',
-		'posts_per_page'=> 7 ,
+		'posts_per_page'=> 5 ,
 		'meta_query' => [ 
 			[
 				'key' => 'rva_post_event_datetime',
-				'value' => '',
-				'compare' => '!=',
+				'value' => get_date_filter(),
+				'compare' => '>=',
 			],[
 				'key' => 'rva_post_event_editorspick',
 				'value' => '1',
@@ -142,6 +145,7 @@ function do_calendar() {
 	ob_start();
 	?>
 	[rva_content_section]
+	<?php if($query->have_posts()) : ?>
 	<div class="rva-1x-box margin-top" >
 		<div class="event-list-date testing">
 			<i class="fa fa-caret-right open-trigger" aria-hidden="true"></i>
@@ -158,6 +162,7 @@ function do_calendar() {
 			</div>
 		</div>
 	</div>
+	<?php endif; ?>
 
 	<div class="post-listing rva-1x-box" ></div>
 	[/rva_content_section]
