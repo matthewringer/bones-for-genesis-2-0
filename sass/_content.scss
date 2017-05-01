@@ -43,6 +43,7 @@
 .entry-title {
 	overflow: hidden;
 	padding-top: 1em;
+	margin: 0;
 	word-wrap: break-word;
 	font-weight: 800;
 	font-size: 2.4rem;
@@ -261,6 +262,10 @@ header.entry-header {
 			width: 100%;
 		}
 
+		.rva-social-link-list {
+			position: relative;
+			left: -8px;
+		}
 	}
 
 	.author-box-title {
@@ -820,39 +825,41 @@ ul.social-links {
 
 .entry-thumb-video {
 
-	//height: initial;
 	margin-top: $spacer;
 	padding: 0 $spacer/2 $spacer $spacer/2;
 	
 	a {
 		text-decoration: none;
-		color: $black; //TODO: which colorway?
+		color: $black;
 	}
 
 	.video-block { 
 		display: flex;
-	}
-
-	.fa-play-circle-o, .fa-play-circle, .fa-play { 
-		padding: 11px;
-		display: inline; 
-		font-size: 2rem;
-		color: $black;
-		background-color: $white;
-		position: relative;
-		left: 10px;
-		bottom: -2.5px;
-	}
-
-	.rva-video-time {
-		display: inline; 
-		color: $white;
-		background-color:$black;
-    	font-size: 2rem;
-    	padding: 10px;
 		position: relative;
 		left: 10px;
 		bottom: 10px;
+	}
+
+	.play-button {
+		background-color: $white;
+		height: 25px;
+		width: 25px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.run-time {
+		height: 25px;
+		background-color: $black;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0 4px;
+	}
+
+	.rva-video-time {
+		color: $white;
 	}
 
 	& div.rva-article-image {
@@ -864,6 +871,7 @@ ul.social-links {
 	}
 
 	.title-block {
+		padding-top: $spacer/2;
 		align-self: flex-start;
 		position: initial;
 		max-width: initial;
@@ -872,11 +880,13 @@ ul.social-links {
 		left: initial;
 		width: 100%;
 	}
+
 	.article-title {
 		a {
 			color: $white;
 		}
 	}
+
 	.rva-author-title, .excerpt {
 		display: none;
 	}
@@ -884,10 +894,6 @@ ul.social-links {
 	@include MQ(S) {
 		height: initial;
 		overflow: hidden;
-
-		& div.rva-article-image {
-			//height: initial;
-		}
 	}
 
 	@include MQ(M) {
@@ -1157,11 +1163,11 @@ article.entry-thumb-event {
 	}
 
 	h2 {
-		font-size: 3rem;
+		font-size: 2rem;
 	}
 
 	h3 {
-		font-size: 1.5rem;
+		font-size: 1.2rem;
 	}
 
 }
@@ -1214,7 +1220,7 @@ article.entry-thumb-event {
 		align-content: center;
 		flex-direction: column;
 		text-align: center;
-		max-width: 90%;
+		//max-width: 90%;
 	}
 
 	h2, h3 {
@@ -1222,7 +1228,7 @@ article.entry-thumb-event {
 		background-color: $white;
 		color: $black;
 		padding: 0 $spacer/2;
-		margin: 4px;
+		margin: 4px 0;
 
 		@include MQ(S) {
 			margin: 2px;
@@ -1230,7 +1236,8 @@ article.entry-thumb-event {
 	}
 
 	h2 {
-		font-size: 3rem;
+		height: 47px;
+		padding-top: 10px;
 	}
 
 	h3 {
@@ -1251,7 +1258,6 @@ article.entry-thumb-event {
 
 	.rva-event-thumbnail {
 		max-width: 280px;
-		width: 280px;
 		margin: auto;
 		display: flex;
 		flex-direction: column;
@@ -1261,6 +1267,7 @@ article.entry-thumb-event {
 		
 		.event-date {
 			font-size: 1.5rem;
+			width: 280px;
 		}
 
 		.details-block {
@@ -1271,9 +1278,6 @@ article.entry-thumb-event {
 			background-color: $black;
 			.article-title a {
 				font-size: 1rem;
-			}
-			.rva-entry-like-btns {
-				//justify-content: center;
 			}
 		}
 

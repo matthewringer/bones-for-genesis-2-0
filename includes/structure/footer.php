@@ -2,6 +2,11 @@
 
 if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
+function rva_footer_creds_text($content) {
+	return '';
+}
+add_filter('genesis_footer_creds_text', 'rva_footer_creds_text');
+
 //TODO: this is cool. 
 //add_filter( 'genesis_footer_scripts', 'do_shortcode' );
 
@@ -11,7 +16,7 @@ if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  * @since 2.0.0
  * TODO: fix hardcoding of menu names.
  */
-function bfg_footer_creds_text($content) {
+/*function bfg_footer_creds_text($content) {
 	ob_start();
 	?>
 	<div class="rva-footer-partners">
@@ -51,12 +56,7 @@ function bfg_footer_creds_text($content) {
 	<?php
 	$contents = ob_get_clean();
 	return $contents; 
-}
-
-function rva_footer_creds_text($content) {
-	return '';
-}
-add_filter('genesis_footer_creds_text', 'rva_footer_creds_text');
+}*/
 
 // add_action( 'wp_footer', 'bfg_disable_pointer_events_on_scroll', 99 );
 /**
@@ -66,7 +66,7 @@ add_filter('genesis_footer_creds_text', 'rva_footer_creds_text');
  *
  * @since 2.0.20
  */
-function bfg_disable_pointer_events_on_scroll() {
+/*function bfg_disable_pointer_events_on_scroll() {
 
 	ob_start();
 	?><script>
@@ -91,4 +91,4 @@ function bfg_disable_pointer_events_on_scroll() {
 	$output = ob_get_clean();
 	echo preg_replace( '/\s+/', ' ', $output ) . "\n";
 
-}
+}*/

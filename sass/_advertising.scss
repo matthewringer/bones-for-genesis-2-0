@@ -33,6 +33,18 @@
 	}
 }
 
+.ad-billboard {
+	@extend .ad-centered;
+	> div {
+		width: 320px;
+		height: 250px;
+		@include MQ(S) {
+			width: 970px;
+			height: 250px;
+		}
+	}
+}
+
 .ad-big-boy {
 	@extend .ad-centered;
 	> div {

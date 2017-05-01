@@ -41,8 +41,5 @@ require_once CHILD_DIR . '/includes/structure/sidebar.php';
 require_once CHILD_DIR . '/includes/structure/socialmedia.php';
 require_once CHILD_DIR . '/includes/structure/templates.php';
 
-// Activation and deactivation handlers TODO: move to plugin
-//require_once CHILD_DIR . '/includes/activate_deactivate.php';
-
 // Shame
 require_once CHILD_DIR . '/includes/shame.php';					// For new code snippets that haven't been sorted and commented yet

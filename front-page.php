@@ -47,27 +47,22 @@ function rvamag_before_content() {
 		$loop->the_post();
 		echo do_shortcode('[rva_hero_box]');
 		wp_reset_postdata();
-    }
+	}
 
+	ob_start();
 	?>
-	
-	<div class="padding-top expand-m"></div>
-	
-	<!-- [rva_ad name="Leaderboard" class="ad-leaderboard"] -->
-
-	<?php echo do_shortcode('
+	<div class="padding-top"></div>
 		[rva_gutter_box class="flex-container padding-top margin-top"]
-			<div class="collapse-m" style="height:250px; width:970px; background-color:yellow;"></div>
-			<div class="expand-m" style="margin-bottom: 6em; height:250px; width:300px; background-color:yellow;"></div>
+			[rva_ad name="Super_Billboard" class="ad-billboard"]
 		[/rva_gutter_box]
-		'); ?>
-	
 	<div class="section-title margin-top rva-site-margins">
 		<h2>LATEST</h2>
 	</div>
+	
 	<?php
+	echo do_shortcode(ob_get_clean());
 
-} 
+}
 add_action('genesis_before_content_sidebar_wrap', 'rvamag_before_content');
 
 /**
@@ -79,7 +74,10 @@ function rvamag_frontpage_loop() {
 
 	echo do_shortcode('
 		[rva_topbox title="LATEST" count="6"/]
-		[rva_ad name="Big_Boy_H0" class="ad-big-boy expand-s"]
+		
+		[rva_gutter_box class="flex-container padding-top margin-top expand-s"]
+			[rva_ad name="Big_Boy_H0" class="ad-big-boy"]
+		[/rva_gutter_box]
 	');
 
 } 
@@ -92,13 +90,9 @@ remove_action( 'genesis_loop', 'genesis_do_loop' );
  * @since 1.0.0
  */
 function rva_fp_aftercontent() {
-	//echo "hello";
-	//echo print_r($_genesis_displayed_ids, true);
-	//TODO: use this!!
-
 	$square_ads = '
 		[hr]
-		[rva_gutter_box class="flex-container padding-top margin-top"]
+		[rva_gutter_box class="flex-container padding-top margin-top margin-bottom"]
 			[rva_ad name="Big_Boy_H1" class="ad-big-boy"]
 			[rva_ad name="Big_Boy_H2" class="ad-big-boy collapse-s"]
 			[rva_ad name="Big_Boy_H3" class="ad-big-boy collapse-m"]
@@ -122,12 +116,7 @@ function rva_fp_aftercontent() {
 		[/rva_gutter_box]
 
 		[rva_1x2 title="POLITICS" slug="politics"/]
-	
-		[hr]
-		[rva_gutter_box class="flex-container padding-top margin-top"]
-			[rva_ad name="Leaderboard" class="ad-leaderboard"]
-		[/rva_gutter_box]
-		
+
 		[rva_1x2 title="EAT DRINK" slug="eatdrink"/]
 
 		[rva_gutter_box title=""]
@@ -144,8 +133,8 @@ function rva_fp_aftercontent() {
 
 		'.$square_ads.'
 
-		[rva_gutter_box title="READ MORE"]
-			<div class="post-listing rva-3x3-box" ></div>
+		[rva_gutter_box title="READ MORE" class="padding-top"]
+			<div class="post-listing rva-3x3-box margin-top" ></div>
 		[/rva_gutter_box]
 	');
 

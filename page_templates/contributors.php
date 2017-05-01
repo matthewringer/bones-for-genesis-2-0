@@ -5,20 +5,6 @@
 
 if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-/** 
-* print pre-header content
-*
-* @since 1.0.0
-*/ 
-function rva_before_header($ad_unit = 'Leaderboard') {
-	?>
-		<div class="before-header">
-			<?php echo do_shortcode('[rva_ad name="m_home_header"]'); ?>
-		</div>
-	<?php
-}
-//add_action( 'genesis_before_header', 'rva_before_header' );
-
 /**
  * Pre-page content menu standoff.
  *

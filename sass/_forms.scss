@@ -141,33 +141,44 @@ input[type='search'] {
 }
 
 .rva-newsletter-form {
-
-}
-
-.rva-newsletter-form {
 	display: flex;
     flex-direction: column;
     justify-content: center;
+	align-items: center;
 	text-align: center;
 	background-color: $grey;
 	color: $black;
 	text-transform: uppercase;
 	height: 280px;
     min-height: 280px;
-	padding: 0 $spacer 0 0;
 
 	h2 {
-		font-size: 3rem;
+		font-size: 2rem;
 	}
 
 	h3 {
 		font-size: 1.5rem;
 	}
+	
+	// @include MQ(S){
+	// 	h2 {
+	// 		font-size: 3rem;
+	// 	}
+
+	// 	h3 {
+	// 		font-size: 1.5rem;
+	// 	}
+	// }
 
 	.btn {
 		font-size: .5rem;
 		border-radius: 0;
 		transform: translateX(-3.3px);
+	}
+
+	fieldset {
+		width: 100%;
+		text-align: center;
 	}
 
 	& input {
@@ -187,23 +198,23 @@ input[type='search'] {
 
 }
 
-.rva-subscribe-block {
+// .rva-subscribe-block {
 
-	& div:nth-of-type(2).rva-subscribe-box {
-		@include MQ(S) {
-			padding-right: $spacer/2;
-		}
-		form {
-			margin: $spacer 0 0 0;
-		}
-	}
+// 	& div:nth-of-type(2).rva-subscribe-box {
+// 		@include MQ(S) {
+// 			padding-right: $spacer/2;
+// 		}
+// 		form {
+// 			margin: $spacer 0 0 0;
+// 		}
+// 	}
 
-	& div:nth-of-type(3).rva-subscribe-box {
-		@include MQ(S) {
-			padding-left: $spacer/2;
-		}
-		form {
-			margin: 0 0 $spacer 0;
-		}
-	}
-}
+// 	& div:nth-of-type(3).rva-subscribe-box {
+// 		@include MQ(S) {
+// 			padding-left: $spacer/2;
+// 		}
+// 		form {
+// 			margin: 0 0 $spacer 0;
+// 		}
+// 	}
+// }

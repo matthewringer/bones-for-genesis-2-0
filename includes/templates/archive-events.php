@@ -11,6 +11,8 @@ include 'category.php';
 
 //global $date_filter;
 function get_date_filter() {
+	//$date = new DateTime('now');
+	//$date->setTimezone(new DateTimeZone('America/New_York'));
 	return date('Y/m/d h:i A',strtotime("-2 hours"));  // 2 hous ago
 }
 
@@ -95,13 +97,13 @@ function append_rvamag_event_slider_before_content() {
 		[/rva_gutter_box]
 		<script type="text/javascript">
 			$('#rva-event-carousel').slick(
-				{	'slidesToShow': 3,
+				{	'slidesToShow': <?php echo ($query->post_count < 3) ? 1 : 3; ?> ,
 					'prevArrow': '<div class="rva-prev-link"><i class="fa fa-chevron-left" ></i></div>',
 					'nextArrow': '<div class="rva-next-link"><i class="fa fa-chevron-right" ></i></div>',
 					'responsive': [{
 						'breakpoint': 1024,
 						'settings': {
-							'slidesToShow': 2,
+							'slidesToShow': <?php echo ($query->post_count < 3) ? 1 : 2; ?>,
 						}
 					}, {
 						'breakpoint': 729,

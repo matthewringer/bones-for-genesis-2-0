@@ -138,6 +138,8 @@ function rva_post_thumbnail( $atts ) {
 	}
 	$excerpt_length = ( array_key_exists('excerpt_len', $atts) )? $atts['excerpt_len'] : 140;
 	$class = ( array_key_exists('class', $atts) )? $atts['class'] : ' entry-thumbnail ';
+
+	global $post;
 	ob_start();
 	?>
 	<article class="<?php echo $class ?>" >
@@ -150,8 +152,12 @@ function rva_post_thumbnail( $atts ) {
 		<!--<a href=""><span class="rva-sponsored-by"> The National <i class="fa fa-external-link" aria-hidden="true"></i> </span></a>-->
 		<div class="rva-article-image" style="background-image:url(<?php echo get_the_post_thumbnail_url()?>);" >
 			<div class="video-block" >
-				<a href=" <?php echo get_the_permalink(); ?>"> <i class="fa fa-play" aria-hidden="true"></i> </a>
-				<span class="rva-video-time"> <?php echo get_post_meta(the_ID(), 'rva-video-time', false); ?> </span>
+				<div class="play-button">
+					<a href=" <?php echo get_the_permalink(); ?>"> <i class="fa fa-play" aria-hidden="true"></i> </a>
+				</div>
+				<div class="run-time">
+					<span class="rva-video-time"> <?php echo get_post_meta($post->ID, 'rva_post_video_runtime', true); ?> </span>
+				</div>
 			</div>
 			<div class="title-block" >
     			<h2 class="article-title"><a href="<?php echo get_the_permalink(); ?>"> <?php echo get_thumbnail_title(); ?> </a></h2>
