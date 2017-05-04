@@ -1,12 +1,12 @@
 <?php
 /*
- *	Template Name: Events Template
+ *	Template Name: Contributors Template
  */
 
 if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 include 'category.php';
 /*
-	Template Name: Category Template
+	Template Name: Page Contributors
 */
 
 add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );

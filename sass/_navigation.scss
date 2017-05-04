@@ -75,15 +75,17 @@
 
 .rva-nav-wrapper {
 	position: absolute;
+	//position: fixed;
 	@include transform(translateX(-2024px));
 	transition: transform .3s ease-in-out;
 	background-color: $black;
-	width: 100%;
+	width: 110%;
 	height: 100vh;
 	flex-direction: column;
 	justify-content: flex-start;
 	overflow: auto;
-	padding-bottom: 200px;
+	padding-left: 5%;
+	padding-bottom: 1000px;
 
 	.search-form {
 		display: inherit;
@@ -246,7 +248,9 @@
 	background-color: rgba($black, 1);
 
 	.rva-nav-wrapper {
-		@include transform(translateX(0));
+		//@include transform(translateX(0));
+		@include transform(translateX(-5%));
+
 
 		.rva-social-link-list {
 			float: left;

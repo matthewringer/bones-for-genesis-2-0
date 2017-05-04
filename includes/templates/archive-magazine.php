@@ -1,6 +1,6 @@
 <?php
 /*
- *	Template Name: Events Template
+ *	Template Name: Magazine Archive Template
  */
 
 if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -10,12 +10,6 @@ include 'category.php';
 */
 
 add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
-
-// function rva_before_magazine_content() {
-// 	echo '<div class="rva-before-entry-content"></div>';
-// } add_action('genesis_before_content_sidebar_wrap', 'rva_before_magazine_content');
-// remove_action('genesis_before_content_sidebar_wrap', 'rvamag_before_content');
-
 
 /**
  *

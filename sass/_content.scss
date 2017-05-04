@@ -897,7 +897,8 @@ ul.social-links {
 	}
 
 	@include MQ(M) {
-		height: 270px;
+		//height: 270px;
+		height: 348px;
 	}
 }
 
