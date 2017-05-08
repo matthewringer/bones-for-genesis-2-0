@@ -296,6 +296,7 @@ header.entry-header {
 	.author-box-content {
 		text-align: left;
 		font-size: 1.15rem;
+		line-height: 1.25em;
 		margin: 1.5em 0;
 	}
 
@@ -921,7 +922,7 @@ ul.social-links {
 		font-weight: 700;
 		font-size: 2rem;
 		padding: 5px 15px;
-		background-color: #0d0d0d;
+		background-color: $black;
 	}
 
 	i {

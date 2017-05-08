@@ -174,17 +174,18 @@ function rva_author_box($atts, $content=NULL, $tag='rva_author_box') {
 
 	$avitar = get_avatar($author_id);
 	$title = get_the_author_link();
-	$gravatar_size = apply_filters( 'genesis_author_box_gravatar_size', 96, $context );
+	$gravatar_size = apply_filters( 'genesis_author_box_gravatar_size', 96);
 	$gravatar      = get_avatar( $author_id, $gravatar_size );
 	$description   = wpautop( get_the_author_meta( 'description') );
-	$email = get_the_author_meta( 'email' );
+	//$email = get_the_author_meta( 'email' );
 	
 	$social_media_ul = rva_social_accounts([
 		'facebook' => get_the_author_meta( 'facebook' ),
 		'twitter' => get_the_author_meta( 'twitter' ),
 		'linkedin' => get_the_author_meta( 'linkedin' ),
 		'snapchat' => get_the_author_meta( 'snapchat' ),
-		'instagram' => get_the_author_meta( 'instagram' )
+		'instagram' => get_the_author_meta( 'instagram' ),
+		'email' 	=> get_the_author_meta( 'email' )
 	]);
 	
 	$popular_posts = new WP_Query(rva_popular_posts_query( 5, '1 year ago', [ $author_id ] ));

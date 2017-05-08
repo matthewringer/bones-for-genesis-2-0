@@ -14,7 +14,7 @@ add_filter('single_template', function($template) {
 	$current_post = get_queried_object_id();
 	$terms = wp_get_post_terms( $current_post, 'category' );
 	$term = array_pop($terms);
-	$new_template = $category_templates[$term->slug];
+	$new_template = (array_key_exists( $term->slug, $category_templates ))? $category_templates[$term->slug] : false;
 	if ( $new_template ) {
 		$new_template = locate_template( $new_template );
 		if($new_template) {
@@ -41,7 +41,7 @@ add_filter('category_template', function($template) {
 	];
 	// Get the current queried post id
 	$term = get_queried_object();
-	$new_template = $category_templates[$term->slug]; //TODO: check first
+	$new_template = (array_key_exists( $term->slug, $category_templates ))? $category_templates[$term->slug] : false;
 	if ( $new_template ) {
 		$new_template = locate_template( $new_template );
 		if($new_template) {
@@ -64,7 +64,7 @@ add_filter( 'archive_template', function( $archive_template ) {
 		'magazine' => 'includes/templates/archive-magazine.php',
 	];
 	$term = get_queried_object();
-	$new_template = $archive_templates[$term->name]; //TODO: check first
+	$new_template = (array_key_exists( $term->name, $archive_templates ))? $archive_templates[$term->name] : false;
 	if ( $new_template ) {
 		$new_template = locate_template( $new_template );
 		if($new_template) {

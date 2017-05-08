@@ -176,14 +176,6 @@ function rva_social_account_buttons() {
     return ob_get_clean();
 } add_shortcode('rva_social_account_buttons', 'rva_social_account_buttons');
 
-
-// $options =  get_option( RVA_SETTINGS_FIELD );
-// esc_attr( $options['rva_socialmedia_facebook_url'] );
-// esc_attr( $options['rva_socialmedia_twitter_url'] )
-// esc_attr( $options['rva_socialmedia_tumblr_url'] )
-// esc_attr( $options['rva_socialmedia_youtube_url'] )
-// esc_attr( $options['rva_socialmedia_instagram_url'] )
-//rva_social_accounts($options);
 /**
  * Print social account link buttons
  * TODO: facebook, linkedin, twitter and youtube buttons
@@ -197,14 +189,25 @@ function rva_social_accounts($atts, $content=NULL, $tag='rva_social_accounts') {
         'youtube'=> '',
         'instagram'=> '',
         'snapchat' => '',
+        'email' => '',
 	], $atts, $tag);
 
     ob_start();
     ?>
     <ul class="rva-social-link-list">
     <?php foreach($atts as $key => $val ) :
+
+        switch($key) {
+            case 'email':
+                $icon = 'envelope-o';
+                $val = 'mailto:'.$val;
+                break;
+            default:
+                $icon = $key;
+        }
+
         if(!empty($val)) {
-            echo '<li class="btn-'.$key.'"><a target="_blank" href="'.$val.'"><i class="fa fa-'.$key.'" ></i></a></li>';
+            echo '<li class="btn-'.$key.'"><a target="_blank" href="'.$val.'"><i class="fa fa-'.$icon.'" ></i></a></li>';
         }
     endforeach; ?>
     </ul>

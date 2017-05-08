@@ -18,8 +18,8 @@ remove_action( 'genesis_after_header', 'genesis_do_subnav' );
  * @since 
  */
 function rvamag_header_nav() {
-	$options =  get_option( RVA_SETTINGS_FIELD );
-	$account_array	= [ 	
+	$options =  get_option( RVA_SETTINGS_FIELD ); //TODO: save all social media settings as an array for simplicity!
+	$account_array	= [
 			'facebook' => $options['rva_socialmedia_facebook_url'],
 			'twitter' => $options['rva_socialmedia_twitter_url'],
 			'tumblr' => $options['rva_socialmedia_tumblr_url'],

@@ -52,7 +52,7 @@ function rvamag_before_content() {
 	ob_start();
 	?>
 	<div class="padding-top"></div>
-		[rva_gutter_box class="flex-container padding-top margin-top"]
+		[rva_gutter_box class="flex-container padding-top padding-bottom margin-top"]
 			[rva_ad name="Super_Billboard" class="ad-billboard"]
 		[/rva_gutter_box]
 	<div class="section-title margin-top rva-site-margins">
