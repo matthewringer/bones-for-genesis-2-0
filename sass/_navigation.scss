@@ -75,14 +75,10 @@
 
 .rva-nav-wrapper {
 	position: absolute;
-	//position: fixed;
 	@include transform(translateX(-2024px));
 	transition: transform .3s ease-in-out;
 	background-color: $black;
-	//width: 110%;
 	width: 385px;
-	//border: 3px solid $dark-grey;
-	border-right: 3px solid $dark-grey;
 	height: 100vh;
 	flex-direction: column;
 	justify-content: flex-start;

@@ -8,13 +8,21 @@ add_filter('single_template', function($template) {
 	// Add files to override the singlge template.
 	$category_templates = [
 		'photo' => 'includes/templates/single-photo.php',
+		'magazine' => 'includes/templates/single-magazine.php',
 	];
 
 	// Get the current queried post id
 	$current_post = get_queried_object_id();
 	$terms = wp_get_post_terms( $current_post, 'category' );
-	$term = array_pop($terms);
-	$new_template = (array_key_exists( $term->slug, $category_templates ))? $category_templates[$term->slug] : false;
+	if ( count($terms) > 0 ) {
+		$term = array_pop($terms);
+		$slug = $term->slug;
+	} else {
+		$slug = 'magazine'; //TODO: Hack to serve the magazine template... needs to be not hardcoded.
+	}
+
+	//$term = get_queried_object();
+	$new_template = (array_key_exists( $slug, $category_templates ))? $category_templates[$slug] : false;
 	if ( $new_template ) {
 		$new_template = locate_template( $new_template );
 		if($new_template) {

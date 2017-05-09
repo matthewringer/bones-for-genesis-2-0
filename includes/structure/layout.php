@@ -346,8 +346,8 @@ function rva_magazine_box() {
 	?>
 	<div class="rva-magazine-box" style="background-image: url(' <?php echo get_stylesheet_directory_uri(); ?>/images/magazinebox-background.png');">
 		<div>
-			<h3>IN 2005, A PRINTED MAGAZINE ABOUT RICHMOND CULTURE WAS BORN</h3>
-			<h2>SUBSCRIBE TO RVA MAGAZINE</h2>
+			<h3>IN 2005, A PRINTED MAGAZINE <br class="expand-s" > ABOUT RICHMOND CULTURE WAS BORN</h3>
+			<h2>SUBSCRIBE TO <br class="expand-s" > RVA MAGAZINE</h2>
 			<h3>HERE</h3>
 		</div>
 	</div>

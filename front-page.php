@@ -110,8 +110,8 @@ function rva_fp_aftercontent() {
 
 		[rva_gutter_box title=""]
 			[rva_mail_form]
-				<h3>The best of RVA sent to your inbox weekly</h3>
-				<h2>Sign up for the RVA Mag Newsletter</h2>
+				<h3>The best of RVA <br class="expand-s" >sent to your inbox weekly</h3>
+				<h2>Sign up for the RVA <br class="expand-s" >Newsletter</h2>
 			[/rva_mail_form]
 		[/rva_gutter_box]
 

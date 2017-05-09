@@ -898,7 +898,6 @@ ul.social-links {
 	}
 
 	@include MQ(M) {
-		//height: 270px;
 		height: 348px;
 	}
 }
@@ -1315,4 +1314,46 @@ article.entry-thumb-event {
 		right:0;
 	}
 
+}
+
+.rva-advertizing-hero-box {
+	color: $black;
+
+	.title-block {
+		position: relative;
+		left: 10%;
+	}
+}
+
+.rva-advertizing-box {
+	height: 557px;
+	display: block;
+	
+	.title-block {
+		overflow: hidden;
+		position: relative;
+		top: 10%;
+		padding-bottom: $spacer;
+	}
+	
+	h2 {
+		white-space: nowrap;
+		line-height: .8em;
+		font-size: 1.7rem;
+
+		@include MQ(S){
+			font-size: 2.5rem;
+		}
+	}
+
+	p {
+		white-space: nowrap;
+		
+		font-size: 1rem;
+		//line-height: 1em;
+
+		@include MQ(S) {
+			font-size: 1.5rem;
+		}
+	}
 }
