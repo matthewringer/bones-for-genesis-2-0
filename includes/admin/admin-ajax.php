@@ -123,11 +123,10 @@ function rva_filter_event_thumbnail( $content ) {
 	
 	$raw_date = date_create($meta_eventdate);
 	$time = date_format($raw_date, 'h:i A');
-	$date = date_format($raw_date, 'l, F d');
+	$date = date_format($raw_date, 'l, M d');
 
 	ob_start();
 	?><article class="entry-thumb-event" data-date="<?php echo date_format($raw_date, 'Ymd'); ?>" data-display-date="<?php echo $date; ?>" data-id="<?php echo $post->ID; ?>" >
-		<?php //echo get_the_post_thumbnail($post->ID, [100,100]); ?>
 		<div class="title-block" >
 			<h2 class="article-title"><a href="<?php echo get_the_permalink(); ?>"> <?php echo $title; ?> </a></h2>
 		</div>
@@ -139,6 +138,11 @@ function rva_filter_event_thumbnail( $content ) {
 			<p class="excerpt"> 
 				<?php echo $description; ?>
 			</p>
+			<?php
+			if( '' !== $meta_eventtickets ) {
+				echo '<a href="'.$meta_eventtickets.'" target="_blank" alt="event tickets">TICKETS</a>';
+			}
+			?>
 		</div>
 	</article><?php $content = ob_get_clean();
 	return $content;

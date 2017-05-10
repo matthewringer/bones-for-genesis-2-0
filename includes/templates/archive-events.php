@@ -16,6 +16,14 @@ function get_date_filter() {
 	return date('Y/m/d h:i A',strtotime("-2 hours"));  // 2 hous ago
 }
 
+
+/*
+ * Add filter 
+ */
+add_filter('rva_category_archive_title', function($title){
+	return 'MUST SEE SHOWS';
+});
+
 /**
  *
  */
@@ -71,14 +79,11 @@ function append_rvamag_event_slider_before_content() {
 
 	ob_start();
 	?>
-			<div class="section-title margin-top rva-site-margins">
-				<h2>MUST SEE SHOWS</h2>
-			</div>
-		[rva_gutter_box class="flex-container padding-top margin-top"]
+		[rva_gutter_box class="flex-container"]
 			<div id="rva-event-carousel" >
 				<?php while( $query->have_posts() ) : $query->the_post(); global $post; ?>
 					<div class="slide-wrapper">
-						<article class="rva-event-thumbnail" style="background-image: url(<?php echo get_the_post_thumbnail_url($post->ID); ?>);">
+						<article class="rva-article-image rva-event-thumbnail" style="background-image: url(<?php echo get_the_post_thumbnail_url($post->ID); ?>);">
 							<h2 class="event-date"> 
 								<?php 
 								$meta_eventdate = get_post_meta($post->ID, 'rva_post_event_datetime', true);
@@ -114,7 +119,7 @@ function append_rvamag_event_slider_before_content() {
 				}
 			);
 		</script>
-		<div class="section-title margin-top rva-site-margins"></div>
+		<div class="section-title rva-site-margins"></div>
 	<?php
 	echo do_shortcode(ob_get_clean());
 }

@@ -327,7 +327,7 @@ function rva_2x_box($atts) {
 
 	ob_start();
 	?> 
-	<div class="rva-2x1-box margin-top">
+	<div class="rva-2x1-box">
 		<?php while( $loop->have_posts() ) { 
 			$loop->the_post(); 
 			echo do_shortcode('[rva_post_thumbnail class="'.$class.'"]');

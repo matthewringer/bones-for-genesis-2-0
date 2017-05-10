@@ -108,28 +108,13 @@ function rva_fp_aftercontent() {
 
 		[rva_1x2 title="ART" slug="art"/]
 
-		[rva_gutter_box title=""]
-			[rva_mail_form]
-				<h3>The best of RVA <br class="expand-s" >sent to your inbox weekly</h3>
-				<h2>Sign up for the RVA <br class="expand-s" >Newsletter</h2>
-			[/rva_mail_form]
-		[/rva_gutter_box]
-
 		[rva_1x2 title="POLITICS" slug="politics"/]
 
 		[rva_1x2 title="EAT DRINK" slug="eatdrink"/]
 
-		[rva_gutter_box title=""]
-			[rva_magazine_box]
-		[/rva_gutter_box]
-
 		[rva_1x2 title="PHOTO" slug="photo"/]
 
-		[rva_gutter_box title=""]
-				[rva_bigwrk_box]
-		[/rva_gutter_box]
-
-		[rva_2x title="WATCH" slug="watch" layout="rva-3x3-box margin-top" class="entry-thumb-video"]
+		[rva_2x title="WATCH" slug="watch" layout="rva-3x3-box" class="entry-thumb-video"]
 
 		'.$square_ads.'
 
@@ -139,6 +124,21 @@ function rva_fp_aftercontent() {
 	');
 
 } add_action( 'genesis_after_content_sidebar_wrap', 'rva_fp_aftercontent');
+
+		// [rva_gutter_box title=""]
+		// 	[rva_mail_form]
+		// 		<h3>The best of RVA <br class="expand-s" >sent to your inbox weekly</h3>
+		// 		<h2>Sign up for the RVA <br class="expand-s" >Newsletter</h2>
+		// 	[/rva_mail_form]
+		// [/rva_gutter_box]
+
+		// [rva_gutter_box title=""]
+		// 	[rva_bigwrk_box]
+		// [/rva_gutter_box]
+
+		// [rva_gutter_box title=""]
+		// 	[rva_magazine_box]
+		// [/rva_gutter_box]
 
 		// [rva_gutter_box title="GAY RVA"]
 		// 	<h2>Gay RVA Content</h2>

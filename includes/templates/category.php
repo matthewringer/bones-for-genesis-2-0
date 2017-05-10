@@ -17,6 +17,8 @@ add_action( 'wp_enqueue_scripts', 'rva_load_more_args' );
 
 /**
  * Add spacer before page content to offset the fixed header and leaderboard ad unit.
+ *
+ * Applies filter: rva_category_archive_title
  */
 function rvamag_before_content() {
 	?>
@@ -28,7 +30,9 @@ function rvamag_before_content() {
 	'); ?>
 	<?php
 	global $wp_query;
-	echo start_section(['title' => $wp_query->query["category_name"] ], '');
+
+	$title = apply_filters( 'rva_category_archive_title', $wp_query->query["category_name"] );
+	echo start_section(['title' => $title ], '');
 	
 }
 add_action('genesis_before_content_sidebar_wrap', 'rvamag_before_content');

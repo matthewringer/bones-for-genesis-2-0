@@ -298,6 +298,10 @@ header.entry-header {
 		font-size: 1.15rem;
 		line-height: 1.25em;
 		margin: 1.5em 0;
+
+		p {
+			line-height: 1.55em;
+		}
 	}
 
 	.author-top-posts {
@@ -634,13 +638,13 @@ ul.social-links {
 			}
 			
 			.rva-article-image {
-				height: 450px;
+				height: 480px; //TODO: commented 5/9/2017
 			}
 			
 			.title-block{
 				top: 300px;
 				h2 { 
-					font-size: 2.5rem; 
+					font-size: 2.5rem;
 					line-height: 2.4rem;
 				}
 				p { font-size: 1rem; }
@@ -828,6 +832,15 @@ ul.social-links {
 
 	margin-top: $spacer;
 	padding: 0 $spacer/2 $spacer $spacer/2;
+
+	@include MQ(S) {
+		//height: initial;
+		height: 348px;
+		overflow: hidden;
+	}
+
+	@include MQ(M) {
+	}
 	
 	a {
 		text-decoration: none;
@@ -869,6 +882,7 @@ ul.social-links {
 		align-items: flex-start;
 		width: 100%;
 		padding-top: 50%;
+		height: initial;
 	}
 
 	.title-block {
@@ -890,15 +904,6 @@ ul.social-links {
 
 	.rva-author-title, .excerpt {
 		display: none;
-	}
-
-	@include MQ(S) {
-		height: initial;
-		overflow: hidden;
-	}
-
-	@include MQ(M) {
-		height: 348px;
 	}
 }
 
@@ -987,6 +992,7 @@ article.entry-thumb-event {
 
 	.excerpt, .text-block {
 		font-size: 1rem;
+		line-height: 1.55em;
 	}
 }
 
@@ -1248,13 +1254,17 @@ article.entry-thumb-event {
 
 #rva-event-carousel {
 	width: 100%;
-	height: 420px;
+	height: 400px;
     display: flex;
 	justify-content: center;
 	
 	.slide-wrapper {
 		margin: $spacer;
 		outline: none;
+
+		@include MQ(M) {
+			margin: 0;
+		}
 	}
 
 	.rva-event-thumbnail {
@@ -1268,6 +1278,7 @@ article.entry-thumb-event {
 		
 		.event-date {
 			font-size: 1.5rem;
+			line-height: 1.6em;
 			width: 280px;
 		}
 
@@ -1328,7 +1339,11 @@ article.entry-thumb-event {
 .rva-advertizing-box {
 	height: 557px;
 	display: block;
+	background-position: right bottom;
 	
+	.article-title{
+		padding: initial;
+	}
 	.title-block {
 		overflow: hidden;
 		position: relative;
@@ -1350,10 +1365,13 @@ article.entry-thumb-event {
 		white-space: nowrap;
 		
 		font-size: 1rem;
-		//line-height: 1em;
 
 		@include MQ(S) {
 			font-size: 1.5rem;
 		}
+	}
+
+	a{
+		font-weight: 800;
 	}
 }
