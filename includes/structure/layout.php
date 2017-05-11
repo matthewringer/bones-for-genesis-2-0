@@ -184,14 +184,22 @@ function top_box($atts, $content) {
 	$title = (array_key_exists('title',$atts))? $atts['title'] : '';
 	$count = (array_key_exists('count',$atts))? $atts['count'] : '9';
 	$args = array(
+		'post_status'	=> 'publish',
 		'orderby'       => 'post_date',
 		'order'         => 'DESC',
 		'posts_per_page'=> $count,
-		'meta_query' => [[
-			'key' => RVA_POST_FIELDS_FEATURED_POST,
-			'compare' => 'NOT EXISTS'
-		]]
+		// 'meta_query' => [[
+		// 	'key' => RVA_POST_FIELDS_FEATURED_POST,
+		// 	'compare' => 'NOT EXISTS'
+		// ]],
 	);
+
+	global $rva_displayed_posts;
+	if( isset($rva_displayed_posts) ) {
+		$args['post__not_in'] = $rva_displayed_posts;
+	}
+
+
 	$sidebar = $content;
 	
 	ob_start();
@@ -200,7 +208,10 @@ function top_box($atts, $content) {
 		// loop through posts
 		echo '<div class="rva-top-box ">';
 		while( $loop->have_posts() ): $loop->the_post();
+			//dont' display again
 			echo do_shortcode('[rva_post_thumbnail]');
+			global $post;
+			$rva_displayed_posts[] = $post->ID;
 		endwhile;
 		echo '</div>';
 		if ($sidebar != '') {
@@ -226,12 +237,6 @@ function rva_3x6($atts) {
 		'args' => null,
 		 ], $atts ) );
 
-	// $title = (array_key_exists('title',$atts))? $atts['title'] : '';
-	// $slug = (array_key_exists('slug',$atts))? $atts['slug'] : '';
-	// $class = (array_key_exists('class',$atts))? $atts['class'] : '';
-	// $layout = ( array_key_exists ( 'layout' , $atts ) )? $atts['layout'] : 'rva-3x3-box';
-	// $count = ( array_key_exists ( 'count' , $atts ) )? $atts['count'] : '9';
-
 	if( isset($args) ) {
 		$args = json_decode( stripslashes( $args ), true );
 	} else {
@@ -242,6 +247,11 @@ function rva_3x6($atts) {
 			'category_name' => $slug
 		];
 	}
+	
+	global $rva_displayed_posts;
+	if( isset($rva_displayed_posts) ) {
+		$args['post__not_in'] = $rva_displayed_posts;
+	}
 
 	if($class != '' ) { $class= 'class="'.$class.'"'; }
 
@@ -251,8 +261,11 @@ function rva_3x6($atts) {
 		// loop through posts
 		echo '<div class="'.$layout.'">';
 		while( $loop->have_posts() ) {
-			$loop->the_post();
+			$post = $loop->the_post();
 			echo do_shortcode('[rva_post_thumbnail '.$class.']');
+			//dont' display again
+			global $post;
+			$rva_displayed_posts[] = $post->ID;
 		}
 		echo '</div>';
 	}
@@ -278,8 +291,12 @@ function rva_1_over_2_box($atts, $content) {
 		'posts_per_page'=> '3',
 		'category_name' => $slug,
 	);
-
-    $loop = new WP_Query( $args );
+	
+	global $rva_displayed_posts;
+	if( isset($rva_displayed_posts) ) {
+		$args['post__not_in'] = $rva_displayed_posts;
+	}
+	$loop = new WP_Query( $args );
 
 	ob_start();
 	//flex container 
@@ -288,9 +305,11 @@ function rva_1_over_2_box($atts, $content) {
 		<div style="flex-grow: 2;"> 
 			<?php if( $loop->have_posts() ) :
 			//Display hero
-			$loop->the_post(); 
+			$loop->the_post();
 			echo do_shortcode('[rva_hero_box]'); 
-			//$loop->post; 
+			//dont' display again
+			global $post;
+			$rva_displayed_posts[] = $post->ID;
 			?>
 			<div class="rva-2x1-box margin-top">
 				<?php while( $loop->have_posts() ) { 

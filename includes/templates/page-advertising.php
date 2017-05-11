@@ -15,7 +15,7 @@ function override_rvamag_before_content() {
 	$sky_boat_img_url = get_stylesheet_directory_uri().'/images/advertising/sky_boat.png';
 	?>
 	<div class="rva-before-entry-content"></div>
-	<div class="rva-advertizing-box rva-advertizing-hero-box" style = "background-image: url(' <?php echo $sky_boat_img_url; ?> '); background-position: right bottom;" >
+	<div class="rva-advertizing-box rva-advertizing-hero-box" style = "background-image: url(' <?php echo $sky_boat_img_url; ?> '); " >
 		<div class="title-block" >
 			<h2 class="article-title">MEET <br>THE NEW <br> <a href="<?php echo get_site_url(); ?>">RVAMAG.COM</a></h2>
 			<br><br>
@@ -53,7 +53,7 @@ function rvamag_custom_archive_loop() {
 			<p>business is all about and more.</p>
 		</div>
 	</section>
-	<section class="rva-advertizing-box" style = "background-image: url(' <?php echo $field_img_url; ?> '); background-position: right bottom;" >
+	<section class="rva-advertizing-box" style = "background-image: url(' <?php echo $field_img_url; ?> '); " >
 		<div class="title-block" >
 			<h2 class="article-title">
 			Advertising<br>
@@ -83,7 +83,7 @@ function rvamag_custom_archive_loop() {
 			<p>get the most for your spend.</p>
 		</div>
 	</section>
-	<section class="rva-center-img rva-advertizing-box" style = "background-image: url(' <?php echo $dude_img_url; ?> '); background-position: right bottom;" >
+	<section class="rva-center-img rva-advertizing-box" style = "background-image: url(' <?php echo $dude_img_url; ?> '); " >
 		<div class="title-block" >
 			<h2 class="article-title">
 			marketing<br>

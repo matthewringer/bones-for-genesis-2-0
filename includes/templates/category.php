@@ -27,6 +27,7 @@ function rvamag_before_content() {
 		[rva_gutter_box class="flex-container padding-top"]
 			[rva_ad name="Super_Billboard" class="ad-billboard"]
 		[/rva_gutter_box]
+		<div class="padding-top expand-m" ></div>
 	'); ?>
 	<?php
 	global $wp_query;

@@ -43,8 +43,15 @@ function rvamag_before_content() {
 		]);
 	}
 
+	global $rva_displayed_posts;
+	if(isset($rva_displayed_posts)) {
+		$args['post__not_in'] = $rva_displayed_posts;
+	}
+
 	if( $loop->have_posts() ) {
 		$loop->the_post();
+		global $post;
+		$rva_displayed_posts[] = $post->ID;
 		echo do_shortcode('[rva_hero_box]');
 		wp_reset_postdata();
 	}

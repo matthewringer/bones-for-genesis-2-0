@@ -187,8 +187,6 @@ function rva_events_sidebar(){
 } add_action('genesis_sidebar','rva_events_sidebar'); 
 remove_action('genesis_sidebar', 'rva_sidebar', 5);
 
-
 remove_action ('genesis_after_content_sidebar_wrap', 'rva_fp_aftercontent');
-
 
 genesis();
