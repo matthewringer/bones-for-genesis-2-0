@@ -1079,7 +1079,12 @@ article.entry-thumb-event {
 }
 
 .search-content {
-	padding-top: 1.5em;
+	padding-top: 30px;
+
+	@include MQ(S) {
+		padding-top: 1.5em;
+	}
+
 	text-align: left;
 	
 	.rva-read-more {

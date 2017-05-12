@@ -107,7 +107,6 @@ function rva_fp_aftercontent() {
 	';
 
 	//[rva_popular_posts date_after="5 year ago"]
-
 	echo do_shortcode( 
 		'[rva_1x2 title="Music" slug="music"/]
 
@@ -119,12 +118,26 @@ function rva_fp_aftercontent() {
 
 		[rva_1x2 title="EAT DRINK" slug="eatdrink"/]
 
-		[rva_1x2 title="PHOTO" slug="photo"/]
-
-		[rva_2x title="WATCH" slug="watch" layout="rva-3x3-box" class="entry-thumb-video"]
-
-		'.$square_ads.'
-
+		[rva_1x2 title="PHOTO" slug="photo"/]'.
+		rva_2x_box([
+			'title'=>'WATCH',
+			'slug'=>'watch',
+			'layout'=>'rva-3x3-box',
+			'class'=>'entry-thumb-video',
+			'args'=> [ 
+				'orderby'       => 'post_date',
+				'order'         => 'DESC',
+				'posts_per_page'=> 2 ,
+				'tax_query'=>[[
+					'taxonomy' => 'post_format',
+					'field' => 'slug',
+					'operator' => 'IN',
+					'include_children' => true,
+					'terms' => ['post-format-video'] 
+				]]
+			]
+		])
+		.$square_ads.'
 		[rva_gutter_box title="READ MORE" class="padding-top"]
 			<div class="post-listing rva-3x3-box margin-top" ></div>
 		[/rva_gutter_box]

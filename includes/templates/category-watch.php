@@ -8,7 +8,6 @@ add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_c
 
 global $query_override;
 $query_override = [
-	'category_name' => '',
 	'orderby'       => 'post_date',
 	'order'         => 'DESC',
 	'posts_per_page'=> 6 ,

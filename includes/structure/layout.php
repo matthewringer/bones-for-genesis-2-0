@@ -261,7 +261,7 @@ function rva_3x6($atts) {
 		// loop through posts
 		echo '<div class="'.$layout.'">';
 		while( $loop->have_posts() ) {
-			$post = $loop->the_post();
+			$loop->the_post();
 			echo do_shortcode('[rva_post_thumbnail '.$class.']');
 			//dont' display again
 			global $post;
@@ -337,12 +337,21 @@ function rva_2x_box($atts) {
 	$title = (array_key_exists('title',$atts))? $atts['title'] : '';
 	$slug = (array_key_exists('slug',$atts))? $atts['slug'] : '';
 	$class = (array_key_exists('class',$atts))? $atts['class'] : 'entry-thumbnail';
-    $loop = new WP_Query([
-		'orderby'       => 'post_date',
-		'order'         => 'DESC',
-		'posts_per_page'=> '2',
-		'category_name' => $slug,
-	]);
+
+	if (array_key_exists('args', $atts)) {
+		$args = (is_array($atts['args'] ) ) 
+			? $atts['args'] 
+			: json_decode(  $args );
+	} else {
+		$args =	[ 
+			'orderby'       => 'post_date',
+			'order'         => 'DESC',
+			'posts_per_page'=> '2',
+			'category_name' => $slug 
+		];
+	}
+
+	$loop = new WP_Query($args);
 
 	ob_start();
 	?> 
