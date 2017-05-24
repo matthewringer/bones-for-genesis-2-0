@@ -165,7 +165,7 @@ function rva_post_thumbnail( $atts ) {
     			<p class="rva-author-title"> <?php echo do_shortcode('[post_author_posts_link]'); ?> </p>
 				<p class="excerpt"> 
 					<?php 
-					echo rva_get_excerpt($excerpt_length, 'content'); ?> 
+					echo rva_get_excerpt($excerpt_length, 'content'); ?>
 				</p>
 			</div>
 		</div>

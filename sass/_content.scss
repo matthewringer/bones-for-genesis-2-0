@@ -964,13 +964,20 @@ article.entry-thumb-event {
 		position: initial;
 		align-self: flex-start;
 		display: flex;
-    	flex-direction: column;
+		flex-direction: column;
 		width: 50%;
 		min-width: 50%;
 	}
+
 	.details-block {
 		display: flex;
 		flex-direction: column;
+	}
+
+	.rva-event-tickets-link {
+		font-weight: 800;
+		font-size: 1.2rem;
+		line-height: 2;
 	}
 
 	.rva-event-location {
@@ -1273,6 +1280,7 @@ article.entry-thumb-event {
 	}
 
 	.rva-event-thumbnail {
+		background-position: 50% 25%;
 		max-width: 280px;
 		margin: auto;
 		display: flex;
@@ -1368,9 +1376,8 @@ article.entry-thumb-event {
 
 	p {
 		white-space: nowrap;
-		
 		font-size: 1rem;
-
+		font-weight: 900;
 		@include MQ(S) {
 			font-size: 1.5rem;
 		}

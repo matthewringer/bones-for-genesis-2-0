@@ -140,7 +140,7 @@ function rva_filter_event_thumbnail( $content ) {
 			</p>
 			<?php
 			if( '' !== $meta_eventtickets ) {
-				echo '<a href="'.$meta_eventtickets.'" target="_blank" alt="event tickets">TICKETS</a>';
+				echo '<a class="rva-event-tickets-link" href="'.$meta_eventtickets.'" target="_blank" alt="event tickets">TICKETS</a>';
 			}
 			?>
 		</div>

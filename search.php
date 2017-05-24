@@ -54,6 +54,12 @@ function search_content_loop() {
 } 
 //add_action('genesis_loop', 'search_content_loop', 9);
 
+
+add_filter( 'the_content', function($content) {
+	//$content = rva_get_excerpt(100, $content);
+	return $content;
+});
+
 remove_action( 'genesis_loop', 'genesis_do_loop' );
 add_action('genesis_loop','genesis_grid_loop');
 

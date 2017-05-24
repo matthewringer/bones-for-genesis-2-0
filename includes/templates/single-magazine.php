@@ -24,4 +24,18 @@ remove_action( 'genesis_before_content_sidebar_wrap', 'featured_post_image', 13 
 
 //add_filter('genesis_author_box', '__return_empty_string');
 
+/*
+ * Prepend the issue number to the title
+ */
+add_filter('genesis_post_title_text', function($title){
+	global $post;
+	return get_post_meta($post->ID, 'wpcf-issuenumber', true) . " " . $title;
+});
+
+/*
+* Remove the by line and date
+*/
+add_filter('genesis_post_info', '__return_empty_string', 999 );
+
+
 genesis();
