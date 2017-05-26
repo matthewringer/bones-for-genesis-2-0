@@ -2,7 +2,7 @@
 
 if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-// add_action( 'admin_enqueue_scripts', 'bfg_load_admin_assets' );
+add_action( 'admin_enqueue_scripts', 'bfg_load_admin_assets' );
 /**
  * Enqueue admin CSS and JS files.
  *
@@ -14,8 +14,8 @@ function bfg_load_admin_assets() {
 	$use_production_assets = genesis_get_option('bfg_production_on');
 	$use_production_assets = !empty($use_production_assets);
 
-	$src = $use_production_assets ? '/build/css/admin.min.css' : '/build/css/admin.css';
-	wp_enqueue_style( 'bfg-admin', $stylesheet_dir . $src, array(), null );
+	//$src = $use_production_assets ? '/build/css/admin.min.css' : '/build/css/admin.css';
+	//wp_enqueue_style( 'bfg-admin', $stylesheet_dir . $src, array(), null );
 
 	$src = $use_production_assets ? '/build/js/admin.min.js' : '/build/js/admin.js';
 	wp_enqueue_script( 'bfg-admin', $stylesheet_dir . $src, array('jquery'), null, true );

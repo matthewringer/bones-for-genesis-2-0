@@ -51,4 +51,12 @@
 			}, 1000);
 		}
 	});
+
+	// Prevent youtube autoplay
+	// TODO: hackish 80% case, maybe set this in the video plugin provider
+	$('iframe[src*="https://www.youtube.com/embed/"]').each(function(index) {
+		$(this).attr('src',     $(this).attr('src').replace('autoplay=1','autoplay=0'));
+		return false;
+	});
+
 })( window.jQuery );

@@ -42,7 +42,7 @@ function rva_title_limit_chars ($title) {
 	$text = $title;
 	$limit = 60;
 	if (strlen($text) > $limit) {
-		$text = substr($text, 0, $limit-3) . '...';
+		$text = substr( htmlspecialchars_decode($text), 0, $limit-3).'...';
 	}
 	return $text;
 } add_filter('rva_thumbnail_title', 'rva_title_limit_chars');

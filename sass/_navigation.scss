@@ -256,9 +256,11 @@
 		}
 
 		.createsend-wrap {
+			float: right;
+			width: 200px;
 			text-align: left;
 			position: relative;
-			top: 18px;
+			top: 17px;
 			.subscribe-button-inner {
 				position: relative;
 				left: -2px;
