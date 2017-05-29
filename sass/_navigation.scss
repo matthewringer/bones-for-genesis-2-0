@@ -143,7 +143,7 @@
 	}
 
 	.rva-social-link-list {
-		margin: 1.5rem 0 4rem 5%;
+		margin: $spacer 0 $spacer 5%;
 		order: 4;
 	}
 }
@@ -249,23 +249,6 @@
 	.rva-nav-wrapper {
 		//@include transform(translateX(0));
 		@include transform(translateX(-5%));
-
-
-		.rva-social-link-list {
-			float: left;
-		}
-
-		.createsend-wrap {
-			float: right;
-			width: 200px;
-			text-align: left;
-			position: relative;
-			top: 17px;
-			.subscribe-button-inner {
-				position: relative;
-				left: -2px;
-			}
-		}
 	}
 
 	.rva-nav-trigger {
@@ -285,6 +268,20 @@
 		}
 	}
 
+}
+
+.createsend-wrap {
+	margin-top: $spacer;
+	text-align: left;
+	position: relative;
+	
+	.rva-social-link-list {
+		margin: 0 0 0 5%;
+	}
+	.subscribe-button-inner {
+		position: relative;
+		top: -2px;
+	}
 }
 
 body.rva-no-scroll {
