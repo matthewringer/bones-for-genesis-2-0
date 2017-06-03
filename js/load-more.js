@@ -1,4 +1,7 @@
+/*jshint esversion: 6 */
+
 var rva = (function ($) {
+	'use strict';
 	var module = {};
 
 	module.closeAll = function(selector) {
@@ -7,7 +10,7 @@ var rva = (function ($) {
 		if( !root.hasClass('open') ) {
 			accordian.height(0);
 		}
-	}
+	};
 
 	module.toggleOpen = function(e){
 
@@ -38,7 +41,7 @@ rva.closeAll('.event-list-date');
 $('.open-trigger').once('click', rva.toggleOpen);
 
 (function($, rva){
-
+	'use strict';
 	let parent = $('.post-listing').parent();
 	$( '<div class="load-more"><i class="spinner"></i><span class="sr-only">Loading...</span></div>' ).appendTo( parent );
 
@@ -104,10 +107,10 @@ $('.open-trigger').once('click', rva.toggleOpen);
 	function appendEvents(posts, btn ){
 		[...$(posts)].forEach( x => {
 
-			let date = $(x)[0].dataset['date'];
-			let displayDate = $(x)[0].dataset['displayDate'];
+			let date = $(x)[0].dataset.date;
+			let displayDate = $(x)[0].dataset.displayDate;
 			let slider = $( `div.event-list-date[data-date="${date}"]` );
-			let id = $(x)[0].dataset['id'];
+			let id = $(x)[0].dataset.id;
 
 			if(slider.length === 0) {
 				$('.post-listing').append(

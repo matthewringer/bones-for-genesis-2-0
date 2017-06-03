@@ -5,7 +5,15 @@
  */
 function rva_load_more_posts($start_page = 3, $thumb_style = 'entry-thumbnail', $sub_queries = null, $layout = null) {
 
-	wp_enqueue_script( 'rva-load-more', get_stylesheet_directory_uri() . '/js/load-more.js', array( 'jquery' ), '1.0', true );
+	$stylesheet_dir        = get_stylesheet_directory_uri();
+	$use_production_assets = genesis_get_option('bfg_production_on');
+	$use_production_assets = !empty($use_production_assets);
+
+	$src = $use_production_assets ? '/build/js/load-more.min.js' : '/build/js/load-more.js';
+	
+	wp_enqueue_script( 'rva-load-more', $stylesheet_dir . $src, array('jquery'), null, true );
+
+	//wp_enqueue_script( 'rva-load-more', get_stylesheet_directory_uri() . '/js/load-more.js', array( 'jquery' ), '1.0', true );
 
 	global $wp_query;
 	$query = $wp_query->query;

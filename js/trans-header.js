@@ -1,3 +1,4 @@
+/*jshint esversion: 6 */
 (function($){
 	'use strict';
   //todo: find a way to make the header not flash black on load....
