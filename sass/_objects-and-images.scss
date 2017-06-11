@@ -1,9 +1,4 @@
-embed,
-iframe,
-img,
-object,
-video,
-.wp-caption {
+embed, iframe, img, object, video, .wp-caption {
 	max-width: 100%;
 }
 
@@ -12,10 +7,7 @@ img {
 }
 
 // Remove the gap between images, videos, audio and canvas and the bottom of their containers: h5bp.com/i/440
-audio,
-canvas,
-img,
-video {
+audio, canvas, img, video {
 	vertical-align: middle;
 }
 
@@ -42,26 +34,20 @@ a.alignnone {
 	text-align: right;
 }
 
-img.centered,
-.aligncenter {
+img.centered, .aligncenter {
 	display: block;
 	margin: 0 auto $spacer;
 }
 
-img.alignnone,
-.alignnone {
+img.alignnone, .alignnone {
 	margin-bottom: $spacer / 1;
 }
 
-a.alignleft,
-img.alignleft,
-.wp-caption.alignleft {
+a.alignleft, img.alignleft, .wp-caption.alignleft {
 	margin: 0 $spacer $spacer 0;
 }
 
-a.alignright,
-img.alignright,
-.wp-caption.alignright {
+a.alignright, img.alignright, .wp-caption.alignright {
 	margin: 0 0 $spacer $spacer;
 }
 
@@ -77,9 +63,7 @@ img.alignright,
 	text-align: center;
 }
 
-.wp-audio-shortcode,
-.wp-playlist,
-.wp-video {
+.wp-audio-shortcode, .wp-playlist, .wp-video {
 	margin: 0 0 $spacer;
 }
 

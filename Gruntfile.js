@@ -95,6 +95,32 @@ module.exports = function(grunt) {
 				],
 				dest: 'build/js/admin.js',
 				nonull: true
+			},
+			loadmore: {
+				src: [
+					'js/load-more.js'
+				],
+				dest: 'build/js/load-more.js',
+				nonull: true
+			},
+			transheader: {
+				src: [
+					'js/trans-header.js'
+				],
+				dest: 'build/js/trans-header.js',
+				nonull: true
+			}
+		},
+
+		babel: {
+			options: {
+				minified: true,
+				sourceMap: true,
+			},
+			files: {
+				expand: true,
+				src: ['build/js/load-more.js', 'build/js/trans-header.js'],
+				ext: '.min.js'
 			}
 		},
 
@@ -106,7 +132,7 @@ module.exports = function(grunt) {
 			build: {
 				files: {
 					'build/js/scripts.min.js': 'build/js/scripts.js',
-					'build/js/admin.min.js': 'build/js/admin.js'
+					'build/js/admin.min.js': 'build/js/admin.js',
 				}
 			}
 		},
@@ -174,6 +200,7 @@ module.exports = function(grunt) {
 		}
 	});
 
+	grunt.loadNpmTasks('grunt-babel');
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-copy');
@@ -188,7 +215,8 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-notify');
 	grunt.loadNpmTasks('grunt-postcss');
 
+
 	grunt.registerTask('default', ['clean', 'imagemin', 'sass', 'copy', 'concat', 'postcss:css', 'watch']);
-	grunt.registerTask('build', ['clean', 'imagemin', 'csscomb', 'postcss:scss', 'sass', 'copy', 'jshint', 'concat', 'uglify', 'postcss:css', 'csso']);
+	grunt.registerTask('build', ['clean', 'imagemin', 'csscomb', 'postcss:scss', 'sass', 'copy', 'jshint', 'concat', 'babel', 'uglify', 'postcss:css', 'csso']);
 
 };

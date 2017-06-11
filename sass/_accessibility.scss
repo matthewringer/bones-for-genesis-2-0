@@ -10,9 +10,7 @@
 	white-space: nowrap;
 }
 
-.screen-reader-text,
-.screen-reader-text span,
-.screen-reader-shortcut {
+.screen-reader-text, .screen-reader-text span, .screen-reader-shortcut {
 	@extend %visuallyhidden;
 }
 

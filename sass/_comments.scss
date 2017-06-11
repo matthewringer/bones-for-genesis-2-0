@@ -28,18 +28,11 @@
 	}
 }
 
-.comment-notes,
-.logged-in-as,
-.form-allowed-tags {
+.comment-notes, .logged-in-as, .form-allowed-tags {
 	@extend %type;
 }
 
-.comment-notes,
-.logged-in-as,
-.form-allowed-tags,
-.comment-form-author,
-.comment-form-email,
-.comment-form-url {
+.comment-notes, .logged-in-as, .form-allowed-tags, .comment-form-author, .comment-form-email, .comment-form-url {
 }
 
 .comment-form-comment {

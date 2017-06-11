@@ -11,7 +11,15 @@ if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  * @since 1.0.0
  */
 function frontpage_scripts() {
-	wp_enqueue_script( 'rva-trans-header', get_stylesheet_directory_uri() . '/js/trans-header.js', array( 'jquery' ), '1.0', true );
+	//todo:
+
+	$stylesheet_dir        = get_stylesheet_directory_uri();
+	$use_production_assets = genesis_get_option('bfg_production_on');
+	$use_production_assets = !empty($use_production_assets);
+	$src = $use_production_assets ? '/build/js/trans-header.min.js' : '/build/js/trans-header.js';
+	wp_enqueue_script( 'rva-trans-header', $stylesheet_dir . $src, array('jquery'), null, true );
+
+	//wp_enqueue_script( 'rva-trans-header', get_stylesheet_directory_uri() . '/js/trans-header.js', array( 'jquery' ), '1.0', true );
 	
 	rva_load_more_posts();
 
@@ -59,9 +67,9 @@ function rvamag_before_content() {
 	ob_start();
 	?>
 	<div class="padding-top"></div>
-		[rva_gutter_box class="flex-container padding-top padding-bottom margin-top"]
+		<div class="flex-container padding-top padding-bottom margin-top">
 			[rva_ad name="Super_Billboard" class="ad-billboard"]
-		[/rva_gutter_box]
+		</div>
 	<div class="section-title margin-top rva-site-margins">
 		<h2>LATEST</h2>
 	</div>

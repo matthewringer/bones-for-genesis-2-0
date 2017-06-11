@@ -26,7 +26,7 @@
 	bottom: 0 !important;
 }
 
-.header-widget-area{
+.header-widget-area {
 	width: 100%;
 	display: block;
 }
@@ -35,26 +35,24 @@
 	//Fixed Hearder offset is a PITA becasue of the admin bar...
 	position: fixed;
 	top: 0;
-	
+
 	div.wrap {
 		text-align: center;
 	}
 	@include admin-offset-fix;
-
 	z-index: 10;
 	display: -webkit-box;
-	display: -moz-box;
+	display:    -moz-box;
 	display: -ms-flexbox;
-	display: -moz-flex;
+	display:    -moz-flex;
 	display: -webkit-flex;
-	display: flex;
+	display:         flex;
 	max-width: $site-width;
 	width: 100%;
 	background-color: rgba($header-background, 1);
-	box-shadow: 0 1px 1px rgba($header-background , .1);
+	box-shadow: 0 1px 1px rgba($header-background , 0.1);
 
 	& .wrap {
-
 		width: 100%;
 		& p {
 			color: $yellow;
@@ -65,7 +63,7 @@
 }
 
 .rva-header-trans {
-	background-color: rgba($header-background, .9); // !important;
+	background-color: rgba($header-background, 0.9); // !important;
 }
 
 // hide the SEO title and description
@@ -85,8 +83,7 @@
 	position: absolute;
 	top: -9999px;
 	a {
-		&:hover,
-		&:focus {
+		&:hover, &:focus {
 		}
 	}
 }
@@ -99,5 +96,3 @@
 	.widget {
 	}
 }
-
-

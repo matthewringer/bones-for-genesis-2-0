@@ -24,9 +24,9 @@ function rvamag_before_content() {
 	?>
 	<div class="rva-category-before-content"></div>
 	<?php echo do_shortcode('
-		[rva_gutter_box class="flex-container padding-top"]
+		<div class="flex-container padding-top" >
 			[rva_ad name="Super_Billboard" class="ad-billboard"]
-		[/rva_gutter_box]
+		</div>
 		<div class="padding-top expand-m" ></div>
 	'); ?>
 	<?php

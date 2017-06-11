@@ -20,24 +20,22 @@
 }
 
 .rva-category-before-content {
-	
 	margin-bottom: $spacer;
 	height: 55px; //TONY
 	height: 145px;
 	height: 100px;
-	
+
 	// @include MQ(S) { 
 	// 	height: 145px; //TONY
 	// }
 }
 
 .rva-before-entry-content {
-	
 	margin-bottom: $spacer;
 	height: 55px;
 	height: 148px;
 	height: 145px;
-	
+
 	// @include MQ(S) {
 	// 	height: 70px;
 	// 	height: 115px;
@@ -162,7 +160,7 @@
 		text-align: center;
 		font-size: 1.15rem;
 		margin-bottom: 1.5em;
-		letter-spacing: .01rem;
+		letter-spacing: 0.01rem;
 		line-height: 1.5;
 	}
 }
@@ -180,7 +178,6 @@
 }
 
 .sidebar-secondary {
-
 }
 
 .page-default {

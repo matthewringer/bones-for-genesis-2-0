@@ -37,11 +37,16 @@
 	@extend .ad-centered;
 	> div {
 		width: 320px;
-		height: 250px;
-		@include MQ(S) {
+		height: 280px;
+		@include MQ(M) {
 			width: 970px;
 			height: 250px;
 		}
+	}
+
+	margin-bottom: $spacer;
+	@include MQ(M) {
+		margin-bottom: 0;
 	}
 }
 

@@ -1,5 +1,4 @@
-html,
-body {
+html, body {
 	min-width: 300px; //$site-width; // Prevents backgrounds on these elements from being truncated on smaller screens on fixed-width sites
 	color: $text-color; //TODO: new
 	background-color: $background-color;
@@ -34,7 +33,6 @@ body {
 	font-family: $sans;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-
 	font-variant-ligatures: common-ligatures;
 }
 
@@ -47,15 +45,13 @@ a {
 	text-decoration: none;
 	//transition: all .15s ease-in-out;
 
-	&:hover,
-	&:focus {
+	&:hover, &:focus {
 		text-decoration: underline;
 		//color: $yellow;
 	}
 }
 
-ol,
-ul {
+ol, ul {
 	@extend %unstyled-list;
 }
 
@@ -63,13 +59,12 @@ p {
 	margin: 0;
 }
 
-b,
-strong {
+b, strong {
 	font-weight: 800;
 }
 
 abbr {
-	letter-spacing: .1em;
+	letter-spacing: 0.1em;
 }
 
 pre {

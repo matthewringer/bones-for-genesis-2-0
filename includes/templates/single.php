@@ -57,9 +57,9 @@ function rva_before_content() {
 	<div class="rva-before-entry-content"></div>
 
 	<?php echo do_shortcode('
-		[rva_gutter_box class="flex-container padding-top padding-bottom"]
+		<div class="flex-container padding-top padding-bottom" >
 			[rva_ad name="Super_Billboard" class="ad-billboard"]
-		[/rva_gutter_box]
+		</div>
 	'); ?>
 
 	<?php 

@@ -39,10 +39,10 @@ function rva_title_limit_words ($title) {
  * Return a title truncated by character count on words
  */
 function rva_title_limit_chars ($title) {
-	$text = $title;
+	$text = htmlspecialchars_decode($title);
 	$limit = 60;
 	if (strlen($text) > $limit) {
-		$text = substr( htmlspecialchars_decode($text), 0, $limit-3).'...';
+		$text = substr( $text, 0, $limit-3).'...';
 	}
 	return $text;
 } add_filter('rva_thumbnail_title', 'rva_title_limit_chars');

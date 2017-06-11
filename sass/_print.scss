@@ -1,7 +1,5 @@
 @media print {
-	*,
-	*::before,
-	*::after {
+	*, *::before, *::after {
 		background: transparent !important;
 		filter: none !important;
 		box-shadow: none !important;
@@ -21,14 +19,12 @@
 		display: none !important;
 	}
 
-	a,
-	a:visited {
+	a, a:visited {
 		color: #000 !important;
 		text-decoration: underline;
 	}
 
-	pre,
-	blockquote {
+	pre, blockquote {
 		border: 1px solid #000;
 		page-break-inside: avoid;
 	}
@@ -42,8 +38,7 @@
 		display: table-header-group;
 	}
 
-	tr,
-	img {
+	tr, img {
 		page-break-inside: avoid;
 	}
 
@@ -52,48 +47,22 @@
 	}
 
 	@page {
-		margin: 2cm .5cm;
+		margin: 2cm 0.5cm;
 	}
 
-	p,
-	h2,
-	h3 {
+	p, h2, h3 {
 		orphans: 3;
 		widows: 3;
 	}
 
-	h1,
-	h2,
-	h3,
-	h4,
-	h5,
-	h6 {
+	h1, h2, h3, h4, h5, h6 {
 		page-break-inside: avoid;
 		page-break-after: avoid;
 		orphans: 3;
 		widows: 3;
 	}
 
-	button,
-	input,
-	select,
-	textarea,
-	.breadcrumb,
-	.comment-edit-link,
-	.comment-form,
-	.comment-list .reply a,
-	.comment-reply-title,
-	.edit-link,
-	.entry-comments-link,
-	.entry-footer,
-	.genesis-box,
-	.header-widget-area,
-	.hidden-print,
-	.home-top,
-	.nav-primary,
-	.nav-secondary,
-	.post-edit-link,
-	.sidebar {
+	button, input, select, textarea, .breadcrumb, .comment-edit-link, .comment-form, .comment-list .reply a, .comment-reply-title, .edit-link, .entry-comments-link, .entry-footer, .genesis-box, .header-widget-area, .hidden-print, .home-top, .nav-primary, .nav-secondary, .post-edit-link, .sidebar {
 		display: none !important;
 	}
 
@@ -106,20 +75,15 @@
 		width: 100% !important;
 	}
 
-	blockquote,
-	pre,
-	table {
+	blockquote, pre, table {
 		page-break-inside: avoid;
 	}
 
-	dl,
-	ol,
-	ul {
+	dl, ol, ul {
 		page-break-before: avoid;
 	}
 
-	.entry-title,
-	.entry-content {
+	.entry-title, .entry-content {
 		a[href]::after {
 			content: ' (' attr(href) ')';
 		}
@@ -133,8 +97,7 @@
 	     * or use the `javascript:` pseudo protocol
 	     */
 
-		a[href^='#']::after,
-		a[href^='javascript:']::after {
+		a[href^='#']::after, a[href^='javascript:']::after {
 			content: '';
 		}
 	}

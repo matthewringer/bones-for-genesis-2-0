@@ -12,9 +12,7 @@ function rva_load_more_posts($start_page = 3, $thumb_style = 'entry-thumbnail', 
 	$src = $use_production_assets ? '/build/js/load-more.min.js' : '/build/js/load-more.js';
 	
 	wp_enqueue_script( 'rva-load-more', $stylesheet_dir . $src, array('jquery'), null, true );
-
-	//wp_enqueue_script( 'rva-load-more', get_stylesheet_directory_uri() . '/js/load-more.js', array( 'jquery' ), '1.0', true );
-
+	
 	global $wp_query;
 	$query = $wp_query->query;
 
@@ -113,14 +111,6 @@ function value_or_default($value, $default) {
 
 function rva_filter_event_thumbnail( $content ) {
 	global $post;
-	// rva_post_event_title
-	// rva_post_event_description
-	// rva_post_event_datetime
-	// rva_post_event_venue
-	// rva_post_event_price
-	// rva_post_event_tickets
-	// rva_post_event_editorspick
-	// rva_post_event_mustsee
 
 	$title = get_post_meta($post->ID, 'rva_post_event_title', true); 				// value_or_default( , get_thumbnail_title() );
 	$description = get_post_meta($post->ID, 'rva_post_event_description', true); 	//value_or_default( , rva_get_excerpt(140, 'content') );

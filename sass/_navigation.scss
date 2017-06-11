@@ -6,7 +6,6 @@
 }
 
 .genesis-nav-menu {
-
 	left: 0;
 	background: $black;
 	text-transform: uppercase;
@@ -42,7 +41,7 @@
 		position: absolute;
 		top: 100%;
 		opacity: 0;
-		transition: opacity .4s ease-in-out;
+		transition: opacity 0.4s ease-in-out;
 
 		> .menu-item {
 			> a {
@@ -56,12 +55,10 @@
 }
 
 .rva-social-link-list {
-
 	li {
 		float: left;
 		background-color: transparent;
 		padding: 0 $spacer 0 0;
-
 	}
 
 	& a {
@@ -76,7 +73,7 @@
 .rva-nav-wrapper {
 	position: absolute;
 	@include transform(translateX(-2024px));
-	transition: transform .3s ease-in-out;
+	transition: transform 0.3s ease-in-out;
 	background-color: $black;
 	width: 385px;
 	height: 100vh;
@@ -93,7 +90,7 @@
 		margin: $spacer 5%;
 		font-size: 1.5rem;
 		div {
-			display:flex;
+			display: flex;
 		}
 		& input {
 			border-radius: 0;
@@ -129,7 +126,7 @@
 			line-height: 2.8rem;
 		}
 	}
-	
+
 	.nav-secondary {
 		display: inline-block;
 		order: 3;
@@ -149,7 +146,6 @@
 }
 
 .rva-logo {
-
 	img {
 		margin: $spacer;
 		height: 70px; //Larger header
@@ -173,10 +169,9 @@
 }
 
 .rva-title-button-wrap {
-
 	display: none;
 
-	@include MQ(S){
+	@include MQ(S) {
 		display: flex;
 		height: 100%;
 		align-items: center;
@@ -189,7 +184,6 @@
 }
 
 .rva-nav-trigger {
-
 	@include transform(translateX(-25px));
 	position: absolute;
 	top: 45%;
@@ -198,26 +192,26 @@
 	color: transparent;
 	white-space: nowrap;
 
-	span { // hamburger icon
-		@include transition(background-color .3s .3s); 
+	span {
+		// hamburger icon
+		@include transition(background-color 0.3s 0.3s);
 		position: absolute;
 		width: 25px;
 		height: 4px;
 		/* hamburger menu */
 		background-color: $menu-color;
-		
-		&::before,
-		&::after {
+
+		&::before, &::after {
 			/* upper and lower lines */
 			background-color: $menu-color;
 			/* Force Hardware Acceleration in WebKit */
 			@include transform(translateZ(0));
-			@include transition(transform .3s .3s);
+			@include transition(transform 0.3s 0.3s);
 			position: absolute;
 			width: 100%;
 			height: 100%;
 			content: '';
-			backface-visibility: hidden;
+			        backface-visibility: hidden;
 			-webkit-backface-visibility: hidden;
 			will-change: transform;
 		}
@@ -236,8 +230,7 @@
 	/* hide line in the center on mobile when nav is visible */
 	background-color: rgba($menu-color, 0);
 
-	&::before,
-	&::after {
+	&::before, &::after {
 		/* preserve visibility of upper and lower lines - close icon */
 		background-color: rgba($menu-color, 1);
 	}
@@ -267,14 +260,13 @@
 			//visibility: hidden;
 		}
 	}
-
 }
 
 .createsend-wrap {
 	margin-top: $spacer;
 	text-align: left;
 	position: relative;
-	
+
 	.rva-social-link-list {
 		margin: 0 0 0 5%;
 	}

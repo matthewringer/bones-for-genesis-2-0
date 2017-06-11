@@ -52,8 +52,7 @@
 	a {
 		color: inherit;
 
-		&:hover,
-		&:focus {
+		&:hover, &:focus {
 		}
 	}
 }
@@ -75,15 +74,13 @@
 		@extend %type;
 	}
 
-	ol,
-	ul {
+	ol, ul {
 		@extend %type;
 		overflow: hidden;
 		padding-left: 2.5em;
 
-		ol,
-		ul {
-			margin-bottom: .5em;
+		ol, ul {
+			margin-bottom: 0.5em;
 			padding-left: 1.5em;
 		}
 	}
@@ -101,13 +98,12 @@
 	}
 
 	blockquote {
-		margin: .4em 0;
+		margin: 0.4em 0;
 		padding: 20px;
 		border-top: 15px solid $grey;
 		border-bottom: 2px solid $grey;
 
-		p,
-		a {
+		p, a {
 			text-align: center;
 			font-weight: 800;
 			font-size: 2.4rem;
@@ -121,15 +117,14 @@
 
 		p::before {
 			position: relative;
-			top: -.5em;
+			top: -0.5em;
 			display: inline-block;
 			content: '"';
-			transform: rotate(180deg);
-
+			        transform: rotate(180deg);
 			-webkit-transform: rotate(180deg);
-			-moz-transform: rotate(180deg);
-			-ms-transform: rotate(180deg);
-			-o-transform: rotate(180deg);
+			   -moz-transform: rotate(180deg);
+			    -ms-transform: rotate(180deg);
+			     -o-transform: rotate(180deg);
 		}
 		p::after {
 			content: '"';
@@ -142,13 +137,11 @@
 }
 
 header.entry-header {
-
 	h1.entry-title {
-			padding-top: 0;
-			top: -8px;
-    		position: relative;
-		}
-
+		padding-top: 0;
+		top: -8px;
+		position: relative;
+	}
 }
 
 .more-link {
@@ -170,29 +163,25 @@ header.entry-header {
 	.entry-footer & {
 	}
 
-	.entry-categories,
-	.entry-tags {
+	.entry-categories, .entry-tags {
 		font-weight: 400;
 	}
 }
 
 .page-title {
-	
 	font-size: 2.5rem;
 	font-weight: 800;
-	
 }
 
 .article-title {
-	margin: 0 0 .4em;
-	padding: 0 .5em 0 .1em;
+	margin: 0 0 0.4em;
+	padding: 0 0.5em 0 0.1em;
 	font-weight: 800;
 	font-size: 1.5rem;
-    text-transform: uppercase;
+	text-transform: uppercase;
 }
 
 .rva-author-title {
-
 	text-transform: capitalize;
 	display: inline-block;
 	transform: translate(-1px, -14px);
@@ -222,43 +211,39 @@ header.entry-header {
 	margin-top: 1.5em;
 	text-align: right;
 
-	@include MQ(S){
+	@include MQ(S) {
 		display: flex;
 	}
 
 	.avatar-block {
 		text-align: center;
 
-		@include MQ(S){
+		@include MQ(S) {
 			min-width: 136px;
 			float: left;
 		}
-
 	}
 
 	.avatar {
-
 		width: 50%;
-    	margin: 1.5em;
+		margin: 1.5em;
 
-		@include MQ(S){
+		@include MQ(S) {
 			width: 100%;
 			margin: 0;
 		}
-
 	}
 
 	.author-bio-block {
-
 		text-align: center;
 
-		@include MQ(S){
+		@include MQ(S) {
 			text-align: left;
 			width: 70%;
 			margin-left: $spacer;
 		}
 
-		@include MQ(S){
+		@include MQ(S) {
 			width: 100%;
 		}
 
@@ -269,12 +254,11 @@ header.entry-header {
 	}
 
 	.author-box-title {
-
-		line-height: .8;
+		line-height: 0.8;
 		margin: 0 0 $spacer;
 
 		& span {
-    		font-size: 2.5rem;
+			font-size: 2.5rem;
 		}
 	}
 
@@ -308,7 +292,7 @@ header.entry-header {
 		font-weight: 800;
 		& td {
 			vertical-align: top;
-			    padding-bottom: $spacer/2;
+			padding-bottom: $spacer/2;
 			// max-width: 10vw;
 			// overflow: hidden;
 			// text-overflow: ellipsis;
@@ -332,7 +316,7 @@ header.entry-header {
 .rva-read-more {
 	font-weight: 800;
 	white-space: nowrap;
-	@include MQ(S){
+	@include MQ(S) {
 		color: $yellow;
 	}
 }
@@ -343,7 +327,7 @@ header.entry-header {
 	padding: 0;
 
 	&::before {
-		content: "Photo:";
+		content: 'Photo:';
 		//text-transform: uppercase;
 		float: left;
 		position: relative;
@@ -352,7 +336,6 @@ header.entry-header {
 }
 
 .section-title {
-
 	display: none;
 
 	@include MQ(M) {
@@ -375,7 +358,7 @@ header.entry-header {
 
 ul.social-links {
 	display: inline-block;
-	padding: .5em 0;
+	padding: 0.5em 0;
 	border: none;
 
 	& li {
@@ -383,8 +366,7 @@ ul.social-links {
 	}
 }
 
-.rva-prev-link,
-.rva-next-link {
+.rva-prev-link, .rva-next-link {
 	@include MQ(S) {
 		position: fixed;
 		top: 60%;
@@ -405,22 +387,22 @@ ul.social-links {
 }
 
 .rva-thumb-category {
-	display:none;
+	display: none;
 	position: absolute;
 	left: $spacer/2;
 	font-weight: 700;
 	font-size: 1rem;
-	top: 0px;
+	top: 0;
 	// right: 8px;
 	padding: 5px 15px;
 	background-color: $background-color;
-	box-shadow: 6px 5px  0px $yellow;
+	box-shadow: 6px 5px  0 $yellow;
 	//border: 1px solid;
 
-	@include MQ(S){
+	@include MQ(S) {
 		top: -$spacer;
 		color: $text-color;
-		font-size: .85rem;
+		font-size: 0.85rem;
 		padding: 0;
 		//background-color: $background-color;
 		box-shadow: none;
@@ -429,21 +411,21 @@ ul.social-links {
 
 .rva-sponsored-by {
 	display: none;
-    position: absolute;
+	position: absolute;
 	top: -$spacer;
 	width: 100%;
-    text-align: end;
-    right: 0.5em;
-    font-size: .85rem;
-    font-weight: 700;
-	
-	.fa-external-link { 
-		display: inline; 
+	text-align: end;
+	right: 0.5em;
+	font-size: 0.85rem;
+	font-weight: 700;
+
+	.fa-external-link {
+		display: inline;
 	}
 
 	&::before {
-		content: "SPONSORED BY";
-		font-size: .5rem;
+		content: 'SPONSORED BY';
+		font-size: 0.5rem;
 		font-family: $serif;
 	}
 }
@@ -451,7 +433,6 @@ ul.social-links {
 .rva-article-image {
 	//background-position: 0 25%; 
 	@extend .rva-center-img;
-	
 	background-size: cover;
 	background-repeat: no-repeat;
 }
@@ -483,7 +464,7 @@ ul.social-links {
 	height: 100%;
 	overflow: auto;
 	background-color: $black;
-	background-color: rgba($black, .4);
+	background-color: rgba($black, 0.4);
 }
 
 .rva-modal-content {
@@ -498,7 +479,7 @@ ul.social-links {
 		width: 80%;
 		height: 80%;
 	}
-	span{
+	span {
 		width: initial;
 		height: initial;
 	}
@@ -510,8 +491,7 @@ ul.social-links {
 	font-size: 28px;
 	font-weight: bold;
 
-	:hover,
-	:focus {
+	:hover, :focus {
 		color: $black;
 		text-decoration: none;
 		cursor: pointer;
@@ -521,13 +501,12 @@ ul.social-links {
 // Box layouts
 
 .rva-hero-box {
-	
 	display: -webkit-box;
-	display: -moz-box;
+	display:    -moz-box;
 	display: -ms-flexbox;
-	display: -moz-flex;
+	display:    -moz-flex;
 	display: -webkit-flex;
-	display: flex;
+	display:         flex;
 	flex-wrap: wrap;
 	width: 100%;
 	height: 400px;
@@ -537,34 +516,32 @@ ul.social-links {
 	color: $text-color;
 
 	.article-title {
-
 		background-color: $title-bgcolor;
 		color: $yellow;
 		font-size: 2rem;
 		box-shadow: 10px 0 0 $title-bgcolor, -2px 0 0 $title-bgcolor;
 	}
-	
+
 	a {
 		color: darken($yellow, 5%);
 	}
 
 	@include MQ(S) {
 		height: 500px;
-		.article-title{
+		.article-title {
 			font-size: 3rem;
 		}
 
 		.rva-author-title {
 			transform: translate(-1px, -13px);
-			span  { 
-				font-size: 1.5rem; 
-			} 
+			span {
+				font-size: 1.5rem;
+			}
 		}
 	}
 	@include MQ(M) {
 		height: 600px;
 	}
-	
 }
 
 .rva-3x3-box {
@@ -591,24 +568,19 @@ ul.social-links {
 	}
 
 	@include MQ(S) {
-		& article:nth-of-type(7),
-		& article:nth-of-type(8),
-		& article:nth-of-type(9) {
+		& article:nth-of-type(7), & article:nth-of-type(8), & article:nth-of-type(9) {
 			display: none;
 		}
 	}
 
 	@include MQ(M) {
-		& article:nth-of-type(7),
-		& article:nth-of-type(8),
-		& article:nth-of-type(9) {
+		& article:nth-of-type(7), & article:nth-of-type(8), & article:nth-of-type(9) {
 			display: initial;
 		}
 	}
 }
 
 .rva-2x1-box {
-
 	& article {
 		padding: 0;
 		margin-bottom: $spacer;
@@ -624,43 +596,44 @@ ul.social-links {
 			padding: 0 0 $spacer 0;
 
 			.rva-sponsored-by {
-				top: 0px;
+				top: 0;
 				right: 8px;
 				background-color: $white;
 				width: auto;
 				padding: 5px;
-				box-shadow: -4px 3px 0px $yellow;
+				box-shadow: -4px 3px 0 $yellow;
 				border: 1px solid;
 			}
-			
+
 			.rva-thumb-category {
 				display: none;
 			}
-			
+
 			.rva-article-image {
 				height: 480px; //TODO: commented 5/9/2017
 			}
-			
-			.title-block{
+
+			.title-block {
 				top: 300px;
-				h2 { 
+				h2 {
 					font-size: 2.5rem;
 					line-height: 2.4rem;
 				}
-				p { font-size: 1rem; }
+				p {
+					font-size: 1rem;
+				}
 			}
 		}
 
 		& article:nth-of-type(2n+0) {
 			padding: 0 0 $spacer $spacer/2;
 			.rva-sponsored-by {
-				right: 0px;
+				right: 0;
 			}
 		}
 
 		& article:nth-of-type(2n+1) {
 			padding: 0 $spacer/2 $spacer 0;
-
 		}
 	}
 }
@@ -674,7 +647,6 @@ ul.social-links {
 	}
 
 	@include MQ(S) {
-	
 		& article {
 			display: initial;
 			float: left;
@@ -703,7 +675,9 @@ ul.social-links {
 	position: relative;
 	padding: 0 $spacer/2 $spacer $spacer/2;
 
-	.fa-play-circle-o, .fa-play-circle, .fa-play, .rva-video-time { display: none; }
+	.fa-play-circle-o, .fa-play-circle, .fa-play, .rva-video-time {
+		display: none;
+	}
 
 	.rva-thumb-category {
 		display: inline-block;
@@ -732,7 +706,6 @@ ul.social-links {
 	}
 
 	@include MQ(S) {
-
 		.article-title {
 			font-size: 1.8rem;
 			line-height: 1.6rem;
@@ -749,7 +722,7 @@ ul.social-links {
 			height: 385px;
 			background-repeat: no-repeat;
 			background-position-y: -29px;
-    		background-position-x: 50%;
+			background-position-x: 50%;
 		}
 
 		.title-block {
@@ -760,9 +733,11 @@ ul.social-links {
 			max-width: 100%;
 			width: 100%;
 			height: 100%;
-			padding-top: .75em;
+			padding-top: 0.75em;
 
-			a { color: $text-color; }
+			a {
+				color: $text-color;
+			}
 			h2 {
 				color: $text-color;
 				background-color: transparent;
@@ -780,15 +755,17 @@ ul.social-links {
 	}
 }
 
-.entry-thumb-vox { 
+.entry-thumb-vox {
 	padding: 0 $spacer/2 $spacer $spacer/2;
-	.fa-play-circle-o, .fa-play-circle, .fa-play { display:none; }
+	.fa-play-circle-o, .fa-play-circle, .fa-play {
+		display: none;
+	}
 	.rva-article-image {
 		display: flex;
 		align-items: flex-end;
 		height: 200px;
 	}
-	
+
 	.article-title {
 		background-color: $black;
 		a {
@@ -805,9 +782,9 @@ ul.social-links {
 	}
 }
 
-.entry-thumb-cover { 
+.entry-thumb-cover {
 	padding: 0 $spacer/2 $spacer $spacer/2;
-	
+
 	.rva-article-image {
 		display: flex;
 		align-items: flex-end;
@@ -819,7 +796,6 @@ ul.social-links {
 		left: 0;
 	}
 	h2.article-title {
-		
 	}
 
 	h3.article-title {
@@ -829,7 +805,6 @@ ul.social-links {
 }
 
 .entry-thumb-video {
-
 	margin-top: $spacer;
 	padding: 0 $spacer/2 $spacer $spacer/2;
 
@@ -841,13 +816,13 @@ ul.social-links {
 
 	@include MQ(M) {
 	}
-	
+
 	a {
 		text-decoration: none;
 		color: $black;
 	}
 
-	.video-block { 
+	.video-block {
 		display: flex;
 		position: relative;
 		left: 10px;
@@ -910,10 +885,10 @@ ul.social-links {
 .event-list-date {
 	width: 100%;
 	text-align: left;
-	
+
 	.rva-accordian {
 		overflow: hidden;
-		transition: height .3s;
+		transition: height 0.3s;
 	}
 
 	.rva-event-group {
@@ -932,24 +907,22 @@ ul.social-links {
 	i {
 		font-size: 2rem;
 		//transform: rotate(90deg);
-		transition: transform .3s;
+		transition: transform 0.3s;
 		width: 13px;
 	}
 }
 
 .open {
-
 	.rva-event-group {
-
 	}
-	
+
 	& i {
 		transform: rotate(90deg);
 	}
 }
 
 article.entry-thumb-event {
-	display:flex;
+	display: flex;
 	width: 100%;
 	position: relative;
 	padding: 0 $spacer/2 $spacer $spacer/2;
@@ -987,7 +960,7 @@ article.entry-thumb-event {
 	.article-title, .rva-event-date {
 		font-size: 1.5rem;
 	}
-	
+
 	.rva-event-time, .rva-event-location, .rva-event-price {
 		font-size: 1rem;
 		padding: 0;
@@ -1008,7 +981,7 @@ article.entry-thumb-event {
 		.rva-event-date {
 			display: initial;
 		}
-		.rva-event-time{
+		.rva-event-time {
 			font-size: 1rem;
 		}
 	}
@@ -1016,7 +989,7 @@ article.entry-thumb-event {
 
 .rva-top-box {
 	display: flex;
-    flex-wrap: wrap;
+	flex-wrap: wrap;
 
 	& article {
 		width: 100%;
@@ -1025,17 +998,11 @@ article.entry-thumb-event {
 	}
 
 	//& article:nth-of-type(6),
-	& article:nth-of-type(7),
-	& article:nth-of-type(8),
-	& article:nth-of-type(9),
-	& article:nth-of-type(10),
-	& article:nth-of-type(11),
-	& article:nth-of-type(12){
-		display:none;
+	& article:nth-of-type(7), & article:nth-of-type(8), & article:nth-of-type(9), & article:nth-of-type(10), & article:nth-of-type(11), & article:nth-of-type(12) {
+		display: none;
 	}
-	
-	@include MQ(S) {
 
+	@include MQ(S) {
 		& article {
 			padding: 0 $spacer/2 $spacer $spacer/2;
 			float: left;
@@ -1045,19 +1012,14 @@ article.entry-thumb-event {
 			}
 			.article-title {
 				font-size: 1.4rem;
-    			line-height: 1.4rem;
+				line-height: 1.4rem;
 			}
 			.rva-article-image {
 				height: 325px;
 			}
 		}
 
-		& article:nth-of-type(5),
-		& article:nth-of-type(6) //,
-		// & article:nth-of-type(7),
-		// & article:nth-of-type(8),
-		// & article:nth-of-type(9)
-		{
+		& article:nth-of-type(5), & article:nth-of-type(6) {
 			display: initial;
 		}
 	}
@@ -1066,13 +1028,8 @@ article.entry-thumb-event {
 		& article {
 			width: 33.333%;
 		}
-		
-		& article:nth-of-type(5),
-		& article:nth-of-type(6),
-		& article:nth-of-type(7),
-		& article:nth-of-type(8),
-		& article:nth-of-type(9)
-		 {
+
+		& article:nth-of-type(5), & article:nth-of-type(6), & article:nth-of-type(7), & article:nth-of-type(8), & article:nth-of-type(9) {
 			display: initial;
 		}
 	}
@@ -1093,7 +1050,7 @@ article.entry-thumb-event {
 	}
 
 	text-align: left;
-	
+
 	.rva-read-more {
 		display: none;
 	}
@@ -1102,7 +1059,7 @@ article.entry-thumb-event {
 		font-size: 1.15rem;
 		margin: 1.5em 0;
 	}
-	
+
 	.entry-content {
 		font-size: 1.15rem;
 		& img {
@@ -1128,7 +1085,7 @@ article.entry-thumb-event {
 	h2 {
 		color: $black;
 	}
-	
+
 	table {
 		border-collapse: collapse;
 		width: 100%;
@@ -1138,21 +1095,20 @@ article.entry-thumb-event {
 		background-color: $yellow;
 		border: 2px solid $black;
 		text-align: center;
-		max-width: .1vw;
+		max-width: 0.1vw;
 		font-size: 1.5rem;
 		line-height: 1.4em;
 	}
 
-	td:nth-of-type(0n+2){
-		max-width:10vw;
+	td:nth-of-type(0n+2) {
+		max-width: 10vw;
 		overflow: hidden;
 		text-overflow: ellipsis;
-		white-space:nowrap;
+		white-space: nowrap;
 		padding-left: $spacer/2;
 		background-color: $grey;
 		text-align: left;
 	}
-
 }
 
 .rva-magazine-box {
@@ -1188,7 +1144,6 @@ article.entry-thumb-event {
 	h3 {
 		font-size: 1.2rem;
 	}
-
 }
 
 .rva-bigwrk-box {
@@ -1199,7 +1154,7 @@ article.entry-thumb-event {
 	background-repeat: no-repeat;
 	background-size: cover;
 	min-height: 280px;
-	
+
 	.rva-bigwrk-logo {
 		min-height: 100px;
 		background-color: $white;
@@ -1219,7 +1174,7 @@ article.entry-thumb-event {
 	& .rva-bigwrk-logo-mobile {
 		width: 100%;
 		height: 100px;
-    	align-self: center;
+		align-self: center;
 		background-repeat: no-repeat;
 		background-position: center;
 		background-color: $white;
@@ -1233,7 +1188,7 @@ article.entry-thumb-event {
 		min-height: 100px;
 		min-width: 100px;
 	}
-	
+
 	& div {
 		display: flex;
 		align-content: center;
@@ -1267,9 +1222,9 @@ article.entry-thumb-event {
 #rva-event-carousel {
 	width: 100%;
 	height: 400px;
-    display: flex;
+	display: flex;
 	justify-content: center;
-	
+
 	.slide-wrapper {
 		margin: $spacer;
 		outline: none;
@@ -1288,7 +1243,7 @@ article.entry-thumb-event {
 		justify-content: space-between;
 		height: 385px;
 		background-repeat: no-repeat;
-		
+
 		.event-date {
 			font-size: 1.5rem;
 			line-height: 1.6em;
@@ -1311,7 +1266,7 @@ article.entry-thumb-event {
 			width: 100%;
 			background: $black;
 		}
-		
+
 		img {
 			width: 100%;
 		}
@@ -1333,11 +1288,10 @@ article.entry-thumb-event {
 	.rva-prev-link {
 		left: 0;
 	}
-	
-	.rva-next-link {
-		right:0;
-	}
 
+	.rva-next-link {
+		right: 0;
+	}
 }
 
 .rva-advertizing-hero-box {
@@ -1353,8 +1307,8 @@ article.entry-thumb-event {
 	height: 557px;
 	display: block;
 	background-position: right bottom;
-	
-	.article-title{
+
+	.article-title {
 		padding: initial;
 	}
 	.title-block {
@@ -1363,13 +1317,13 @@ article.entry-thumb-event {
 		top: 10%;
 		padding-bottom: $spacer;
 	}
-	
+
 	h2 {
 		white-space: nowrap;
-		line-height: .8em;
+		line-height: 0.8em;
 		font-size: 1.7rem;
 
-		@include MQ(S){
+		@include MQ(S) {
 			font-size: 2.5rem;
 		}
 	}
@@ -1383,7 +1337,7 @@ article.entry-thumb-event {
 		}
 	}
 
-	a{
+	a {
 		font-weight: 800;
 	}
 }

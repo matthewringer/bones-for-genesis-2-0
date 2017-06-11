@@ -4,8 +4,7 @@
 %clearfix {
 	zoom: 1;			// For IE
 
-	&::before,
-	&::after {
+	&::before, &::after {
 		display: table;
 		content: '';
 	}
@@ -15,19 +14,6 @@
 	}
 }
 
-.author-box,
-.clearfix,
-.entry,
-.entry-content,
-.footer-widgets,
-.nav-primary,
-.nav-secondary,
-.pagination,
-.site-container,
-.site-footer,
-.site-header,
-.site-inner,
-.widget,
-.wrap {
+.author-box, .clearfix, .entry, .entry-content, .footer-widgets, .nav-primary, .nav-secondary, .pagination, .site-container, .site-footer, .site-header, .site-inner, .widget, .wrap {
 	@extend %clearfix;
 }

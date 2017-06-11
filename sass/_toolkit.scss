@@ -1,8 +1,8 @@
 // Use with @extend to make reponsive modules
 %wrap {
 	margin: 0 auto;
-	padding-right: .5em;
-	padding-left: .5em;
+	padding-right: 0.5em;
+	padding-left: 0.5em;
 	max-width: $site-width + 1px;
 	width: 100%;
 }
@@ -28,7 +28,7 @@
 
 %type {
 	margin-bottom: $spacer;
-	letter-spacing: .01rem;
+	letter-spacing: 0.01rem;
 	line-height: 1.5;
 
 	&:last-child {
