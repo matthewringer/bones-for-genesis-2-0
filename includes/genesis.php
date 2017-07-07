@@ -200,6 +200,9 @@ function bfg_maybe_disable_genesis_seo() {
 		add_action( 'genesis_title', 'seo_title_tag' );
 	}
 
+	add_filter('wp_title', function() {
+		return "RVA MAG | Richmond, VA";
+	} );
 }
 
 /*

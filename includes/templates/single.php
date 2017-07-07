@@ -162,6 +162,9 @@ function rva_entry_like_buttons() {
 
 } add_action( 'genesis_entry_footer', 'rva_entry_like_buttons' );
 
+/**
+ *
+ */
 function rva_entry_after_loop() {
 	echo do_shortcode(' 
 		[hr]
@@ -175,6 +178,7 @@ function rva_entry_after_loop() {
 	echo do_shortcode('
 	[rva_gutter_box class="flex-container padding-top margin-top"]
 	[fb_comments]
+	[rva_AdSense]
 	[/rva_gutter_box]
 	');
 

@@ -77,7 +77,7 @@ function rva_navigation($social_accounts) {
 
 		<div class="createsend-wrap" >
 			<?php echo $social_accounts; ?>
-			<script type="text/javascript" async="" src="http://btn.createsend1.com/js/sb.min.js?v=2" class="createsend-script"></script>
+			<script type="text/javascript" async="" src="https://btn.createsend1.com/js/sb.min.js?v=2" class="createsend-script"></script>
 			<div class="createsend-button" data-listid="r/1C/4D9/816/5081E2E96C3931C2"></div>
 		</div>
 	

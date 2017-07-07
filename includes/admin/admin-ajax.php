@@ -95,20 +95,16 @@ function rva_ajax_load_more() {
 } add_action( 'wp_ajax_rva_ajax_load_more', 'rva_ajax_load_more' );
   add_action( 'wp_ajax_nopriv_rva_ajax_load_more', 'rva_ajax_load_more' );
 
-
-// function rva_get_date_header($post) {
-
-// 	$meta_eventdate = get_post_meta($post->ID, 'wpcf-eventdate', true);
-// 	$date = date_create();
-// 	date_timestamp_set($date, $meta_eventdate);
-// 	return date_format($date, 'l, F d');
-
-// }
-
+/**
+ *
+ */
 function value_or_default($value, $default) {
 	return ( $value === '' || !isset($value) || is_null($value) ) ? $default : $value;
 }
 
+/**
+ *
+ */
 function rva_filter_event_thumbnail( $content ) {
 	global $post;
 
@@ -146,6 +142,9 @@ function rva_filter_event_thumbnail( $content ) {
 	return $content;
 }
 
+/**
+ *
+ */
 function rva_filter_magazine_thumbnail( $content ) {
 	global $post;
 

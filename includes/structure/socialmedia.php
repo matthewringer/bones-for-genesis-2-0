@@ -61,11 +61,11 @@ function facebook_comments( $atts ) {
 	$is_array = is_array($atts);
 	$num_posts = ($is_array && array_key_exists('num_posts', $atts)) ? $atts['num_posts'] : '5';
 	$post_id = ($is_array && array_key_exists('post_id', $atts)) ? $atts['post_id'] : $post->ID;
-
-	$permalink = 'http://rvamag.com' + $wpdb->get_var( "SELECT old_url FROM wp_fg_redirect  WHERE id = $post_id", 0, 0 );
+	$colorscheme = 'dark'; //dark|light
+	$permalink = 'https://rvamag.com' + $wpdb->get_var( "SELECT old_url FROM wp_fg_redirect  WHERE id = $post_id", 0, 0 );
 	if( $permalink == "" ) $permalink = get_permalink($post->ID); 
 
-	return vsprintf('<div id="comments" class="fb-comments" data-href="%s" data-colorscheme="dark" data-numposts="%s"></div>',[$url, $num_posts]);
+	return vsprintf('<div id="comments" class="fb-comments" data-href="%s" data-colorscheme="%s" data-numposts="%s"></div>',[$permalink, $colorscheme, $num_posts]);
 
 } add_shortcode('fb_comments', 'facebook_comments');
 
@@ -92,7 +92,7 @@ function rva_entry_share_links() {
 				</script>
 			</li>
 			<li class="btn-twitter">
-				<a id="share-twitter" href="http://twitter.com/share?text=Check%20this%20out%20on%20RVA%20Mag!"><i class="fa fa-twitter" ></i></a>
+				<a id="share-twitter" href="https://twitter.com/share?text=Check%20this%20out%20on%20RVA%20Mag!"><i class="fa fa-twitter" ></i></a>
 				<script>
 					//share_twitter_url
 					$('#share-twitter').click(function(event) {
@@ -154,7 +154,7 @@ function rva_social_sharing_buttons() {
 		?> 
 		<div class="ctsettings-fb-like ctsettings-social-share"> 
 			<div id="fb-root"></div>
-			<script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
+			<script src="https://connect.facebook.net/en_US/all.js#xfbml=1"></script>
 			<fb:like href="<?php echo $perm; ?>" send="false" layout="button_count" width="120" show_faces="false" action="like" font="lucida grande"></fb:like> 
 		</div>
 		<?php
@@ -162,7 +162,7 @@ function rva_social_sharing_buttons() {
 	if ( genesis_get_option( 'rva_twitter_tweet_btn', RVA_SETTINGS_FIELD ) ) {
 		//TODO: opens a new window, need to make it modal...
 		?>
-		<div class="ctsettings-tweet ctsettings-social-share"> <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-url="<?php echo  $perm ?>" data-text="<?php echo $title ?>">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script> </div>
+		<div class="ctsettings-tweet ctsettings-social-share"> <a href="https://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-url="<?php echo  $perm ?>" data-text="<?php echo $title ?>">Tweet</a><script type="text/javascript" src="https://platform.twitter.com/widgets.js"></script> </div>
 		<?php
 	}
 	if ( genesis_get_option( 'rva_google_plus_btn', RVA_SETTINGS_FIELD ) ) {

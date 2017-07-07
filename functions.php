@@ -7,7 +7,7 @@ require_once get_template_directory() . '/lib/init.php';
 
 // Child theme definitions
 define( 'CHILD_THEME_NAME', 'RVA Magazine' );
-define( 'CHILD_THEME_URL', 'http://rvamag.com/' );
+define( 'CHILD_THEME_URL', 'https://rvamag.com/' );
 define( 'CHILD_THEME_TEXT_DOMAIN', 'rva' );
 
 // Developer Tools

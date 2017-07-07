@@ -49,8 +49,8 @@ function rva_events_load_more_args() {
 		'events'
 	 );
 	 //TODO: figure out CDN stuff
-	 wp_enqueue_style('slick-css', 'http://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css');
-	 wp_enqueue_script('slick-js','http://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js');
+	 wp_enqueue_style('slick-css', 'https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css');
+	 wp_enqueue_script('slick-js','https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js');
 
 } add_action( 'wp_enqueue_scripts', 'rva_events_load_more_args' );
 remove_action( 'wp_enqueue_scripts', 'rva_load_more_args' );
