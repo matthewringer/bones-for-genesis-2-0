@@ -153,6 +153,11 @@ function rva_single_ad_big_boy_h0(){
 	<div class="">
 		<?php echo do_shortcode($shortcode); ?>
 	</div>
+	<div style="width:300px;" class="margin-top">
+		<?php 
+			$ID = get_the_ID();
+			echo do_shortcode("[rva_post_links ID={$ID}]"); ?>
+	</div>
 	<?php
 
 } add_action('genesis_sidebar', 'rva_single_ad_big_boy_h0', 5);

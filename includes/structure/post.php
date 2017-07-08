@@ -215,9 +215,9 @@ function rva_author_box($atts, $content=NULL, $tag='rva_author_box') {
 			</div>
 		</div>
 	</section>
-
-	<?php $content = ob_get_clean(); ?>
-	<?php
+	<?php 
+	$content = ob_get_clean();
+	wp_reset_postdata();
 	return $content;
 
 } add_shortcode( 'rva_author_box','rva_author_box' );
