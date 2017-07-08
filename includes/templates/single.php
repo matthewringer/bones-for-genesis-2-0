@@ -132,7 +132,11 @@ function rva_entry_header_hr() {
 	?>
 		<hr class="rva-content-horizon">
 	<?php
-
+	echo do_shortcode('
+		<div class="wrap ad-big-boy padding-bottom" style="margin-top: 40px;">
+			[rva_AdSense width="336px" height="280px"]
+		</div>
+	');
 } add_action('genesis_entry_header', 'rva_entry_header_hr', 14);
 
 /**
@@ -177,9 +181,23 @@ function rva_entry_after_loop() {
 
 	echo do_shortcode('
 	[rva_gutter_box class="flex-container padding-top margin-top"]
-	[fb_comments]
-	[rva_AdSense]
+		[notphone]
+			[fb_comments width="700px"]
+		[/notphone]
+		[phone]
+			[fb_comments width="300px"]
+		[/phone]
 	[/rva_gutter_box]
+	<div class="flex-container margin-top">
+	<div class="wrap ad-big-boy padding-top margin-top" >
+		[notphone]
+			[rva_AdSense]
+		[/notphone]
+		[phone]
+			[rva_AdSense width="320px" height="100px"]
+		[/phone]
+	</div>
+	</div>
 	');
 
 } add_action( 'genesis_after_content_sidebar_wrap', 'rva_entry_after_loop' ); //TODO: Defined elsewhere

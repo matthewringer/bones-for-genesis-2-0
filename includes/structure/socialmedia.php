@@ -55,18 +55,27 @@ function facebook_share_btn() {
 }
 
 function facebook_comments( $atts ) {
-
-	global $wpdb; //wp_fg_redirect;
+	global $wpdb;
 	global $post;
-	$is_array = is_array($atts);
-	$num_posts = ($is_array && array_key_exists('num_posts', $atts)) ? $atts['num_posts'] : '5';
-	$post_id = ($is_array && array_key_exists('post_id', $atts)) ? $atts['post_id'] : $post->ID;
-	$colorscheme = 'dark'; //dark|light
+	extract( shortcode_atts( [ 
+		'width' => '500px', 
+		'num_posts' => '5', 
+		'post_id' => $post->ID, 
+		'colorscheme' => 'dark', 
+		'mobile' => 'false' 
+	], $atts) );
+	
 	$permalink = 'https://rvamag.com' + $wpdb->get_var( "SELECT old_url FROM wp_fg_redirect  WHERE id = $post_id", 0, 0 );
 	if( $permalink == "" ) $permalink = get_permalink($post->ID); 
 
-	return vsprintf('<div id="comments" class="fb-comments" data-href="%s" data-colorscheme="%s" data-numposts="%s"></div>',[$permalink, $colorscheme, $num_posts]);
-
+	return vsprintf('<div id="comments" class="fb-comments" data-width="%s" data-mobile="%s" data-href="%s" data-colorscheme="%s" data-numposts="%s"></div>',
+	[
+		$width,
+		$mobile,
+		$permalink, 
+		$colorscheme, 
+		$num_posts
+	]);
 } add_shortcode('fb_comments', 'facebook_comments');
 
 /*
