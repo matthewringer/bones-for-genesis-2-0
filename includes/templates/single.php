@@ -156,7 +156,8 @@ function rva_single_ad_big_boy_h0(){
 	<div style="width:300px;" class="margin-top">
 		<?php 
 			$ID = get_the_ID();
-			echo do_shortcode("[rva_post_links ID={$ID}]"); ?>
+			echo do_shortcode("[rva_post_links ID={$ID}]");
+		?>
 	</div>
 	<?php
 
@@ -194,17 +195,19 @@ function rva_entry_after_loop() {
 		[/phone]
 	[/rva_gutter_box]
 	<div class="flex-container margin-top">
-	<div class="wrap ad-big-boy padding-top margin-top" >
-		[notphone]
-			[rva_AdSense]
-		[/notphone]
-		[phone]
-			[rva_AdSense width="320px" height="100px"]
-		[/phone]
+		<div class="wrap ad-big-boy padding-top margin-top" >
+			[notphone]
+				[rva_AdSense]
+			[/notphone]
+			[phone]
+				[rva_AdSense width="320px" height="100px"]
+			[/phone]
+		</div>
 	</div>
+	<div class="rva-gutter-box margin-top expand-s">
+		[rva_post_links]
 	</div>
 	');
-
 } add_action( 'genesis_after_content_sidebar_wrap', 'rva_entry_after_loop' ); //TODO: Defined elsewhere
 
 
