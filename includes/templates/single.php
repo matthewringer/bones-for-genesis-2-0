@@ -32,6 +32,13 @@ function single_scripts() {
 } add_action( 'wp_enqueue_scripts', 'single_scripts' );
 
 
+add_filter('wp_title', function($title) {
+	global $wp_query;
+	global $post;
+	return $title . ' | ' . strtoupper( $wp_query->query["category_name"] . ' | ' . get_the_title() );
+});
+
+
 /** 
 * Set page Layout Single Sidebar
 * 

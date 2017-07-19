@@ -976,6 +976,18 @@ article.entry-thumb-event {
 	}
 }
 
+.search-entry {
+	@extend article.entry-thumb-event;
+	.title-block {
+		width: 100%;
+		min-width: initial;
+	}
+
+	a {
+		color: $white;
+	}
+}
+
 .editors-picks {
 	article.entry-thumb-event {
 		.rva-event-date {
@@ -1073,6 +1085,17 @@ article.entry-thumb-event {
 
 	.pagination {
 		margin-top: 1.5rem;
+		font-size: 1.5rem;
+		font-weight: bold;
+
+		.page-numbers {
+			color: $white;
+		}
+
+		.current {
+			text-decoration: underline;
+			font-size: 2rem;
+		}
 	}
 }
 

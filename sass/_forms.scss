@@ -101,6 +101,25 @@ input[type='search'] {
 	input[type='search'] {
 		flex: 1 1 auto;
 	}
+
+	div {
+		width: 100%;
+	}
+
+	margin: $spacer 5%;
+	font-size: 1.5rem;
+	div {
+		display: flex;
+	}
+	& input {
+		border-radius: 0;
+		border: 0;
+		height: 50px;
+	}
+	& button {
+		border: 0;
+		background-color: $white;
+	}
 }
 
 .post-password-form {
@@ -183,24 +202,3 @@ input[type='search'] {
 		box-shadow: 0 0 6px rgba($black, 0.2);
 	}
 }
-
-// .rva-subscribe-block {
-
-// 	& div:nth-of-type(2).rva-subscribe-box {
-// 		@include MQ(S) {
-// 			padding-right: $spacer/2;
-// 		}
-// 		form {
-// 			margin: $spacer 0 0 0;
-// 		}
-// 	}
-
-// 	& div:nth-of-type(3).rva-subscribe-box {
-// 		@include MQ(S) {
-// 			padding-left: $spacer/2;
-// 		}
-// 		form {
-// 			margin: 0 0 $spacer 0;
-// 		}
-// 	}
-// }

@@ -7,13 +7,41 @@
 function facebook_og_meta() {
 	?>
 		<!-- Facebook Open Graph Tags -->
-		<meta property="og:url"           content="<?php echo get_current_page_url() ?>" />
-		<meta property="og:type"          content="website" />
-		<meta property="og:title"         content="<?php echo get_the_title(); ?>" />
-		<meta property="og:description"   content="<?php //echo get_the_excerpt(); ?>" />
-		<meta property="og:image"         content="<?php echo get_the_post_thumbnail_url(); ?>" />
+		<meta property="og:site_name"		content="" />
+		<meta property="og:url" 			content="<?php echo get_permalink() ?>" />
+		<meta property="og:type" 			content="article" />
+		<meta property="og:title" 			content="<?php echo get_the_title(); ?>" />
+		<meta property="og:description"		content="<?php echo rva_get_excerpt(500, 'content'); ?>" /> 
+		<meta property="og:image" 			content="<?php echo get_the_post_thumbnail_url(); ?>" />
+		<meta property="og:site_name"		content="RVA Magazine" />
+		<meta property="og:image:width"		content="" />
+		<meta property="og:image:height"	content="" />
+		<meta property="og:image:height"	content="" />
+		
+		<meta name="twitter:card" 			content="summary_large_image">
+		<meta name="twitter:image" 			content="<?php echo get_the_post_thumbnail_url(); ?>">
+		<meta name="twitter:site" 			content="<?php echo parse_twitter_handle(genesis_get_option( 'rva_socialmedia_twitter_url', RVA_SETTINGS_FIELD )); ?>"> <!-- site's twitter handle -->
+		<meta name="twitter:creator" 		content="<?php echo parse_twitter_handle(get_the_author_meta( 'twitter' ) ); ?> "> <!-- creator's twitter handle -->
+		<meta name="twitter:title" 			content="<?php echo get_the_title(); ?>"> 
+		<meta name="twitter:description" 	content="<?php echo wp_strip_all_tags(get_the_excerpt()); ?>">
+
+		<meta name="author" 				content="<?php echo get_the_author(); ?>">
+		<meta name="news_keywords" 			content="<?php $tags = array_slice(get_the_tags(), 0, 9); foreach ( $tags as $tag) { echo $tag->name.', Richmond VA'; } //todo ?>">
+		<meta name="keywords" 				content="<?php $tags = array_slice(get_the_tags(), 0, 9); foreach ($tags as $tag) { echo $tag->name.', Richmond VA'; } //todo ?>">
+		<meta name="thumbnail" 				content="<?php echo get_the_post_thumbnail_url(); ?>">
+		<meta name="description" 			content="<?php echo rva_get_excerpt(500, 'content'); ?>">
+		<meta name="title"					content="<?php echo get_the_title(); ?>">
+
 	<?php
 }
+
+//
+function parse_twitter_handle($url) {
+	$twitter_url = parse_url($url);
+	return str_replace('/', '@', $twitter_url['path']); 
+}
+
+
 
 /*
  * Facebook JS SDK
@@ -44,7 +72,7 @@ function facebook_share_btn() {
 	?>
 		<!-- Your share button code -->
 		<div class="fb-share-button" 
-			data-href="<?php echo get_current_page_url(); ?>" 
+			data-href="<?php echo get_permalink(); ?>" 
 			data-layout="button_count"
 			data-size="small" 
 			data-mobile-iframe="false"
@@ -95,7 +123,7 @@ function rva_entry_share_links() {
 							method: 'share',
 							display: 'iframe',
 							mobile_iframe: 'true',
-							href: '<?php echo get_current_page_url(); ?>',
+							href: '<?php echo get_permalink(); ?>',
 						}, function(response){});
 					}
 				</script>
@@ -121,7 +149,7 @@ function rva_entry_share_links() {
 				</script>
 			</li>
 			<li class="btn-linkedin">
-				<a id="share-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=<?php echo get_current_page_url(); ?>&title=<?php echo get_the_title(); ?>&summary=<?php echo urlencode(get_the_excerpt());?>&source=LinkedIn?>"><i class="fa fa-linkedin" ></i></a>
+				<a id="share-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=<?php echo get_permalink(); ?>&title=<?php echo get_the_title(); ?>&summary=<?php echo urlencode(rva_get_excerpt(100, 'content'));?>&source=LinkedIn?>"><i class="fa fa-linkedin" ></i></a>
 				<script>
 					$('#share-linkedin').click(function(event) {
 						var width  = 575,
@@ -159,20 +187,29 @@ function rva_social_sharing_buttons() {
 	$perm  = get_permalink();
 	$title = get_the_title();
 	?> <div class="rva-entry-like-btns" > <?php
-	if ( genesis_get_option( 'rva_facebook_like_btn', RVA_SETTINGS_FIELD ) ) {
-		?> 
-		<div class="ctsettings-fb-like ctsettings-social-share"> 
-			<div id="fb-root"></div>
-			<script src="https://connect.facebook.net/en_US/all.js#xfbml=1"></script>
-			<fb:like href="<?php echo $perm; ?>" send="false" layout="button_count" width="120" show_faces="false" action="like" font="lucida grande"></fb:like> 
-		</div>
-		<?php
-	}
 	if ( genesis_get_option( 'rva_twitter_tweet_btn', RVA_SETTINGS_FIELD ) ) {
-		//TODO: opens a new window, need to make it modal...
-		?>
-		<div class="ctsettings-tweet ctsettings-social-share"> <a href="https://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-url="<?php echo  $perm ?>" data-text="<?php echo $title ?>">Tweet</a><script type="text/javascript" src="https://platform.twitter.com/widgets.js"></script> </div>
-		<?php
+	?>
+		<div style="min-width:65px;" class="ctsettings-tweet ctsettings-social-share"> 
+			<a href="https://twitter.com/share" 
+				class="twitter-share-button" 
+				data-count="horizontal" 
+				data-url="<?php echo  $perm ?>" 
+				data-text="<?php echo $title ?>">Tweet</a>
+				<script type="text/javascript" src="https://platform.twitter.com/widgets.js"></script> </div>
+	<?php
+}
+	if ( genesis_get_option( 'rva_facebook_like_btn', RVA_SETTINGS_FIELD ) ) {
+			?>
+			<div class="ctsettings-fb-like ctsettings-social-share">
+				<div class="fb-like"
+				data-href="<?php echo $perm; ?>"
+				data-layout="button_count"
+				data-action="like"
+				data-colorscheme="dark"
+				data-show-faces="false">
+				</div>
+			</div>
+			<?php
 	}
 	if ( genesis_get_option( 'rva_google_plus_btn', RVA_SETTINGS_FIELD ) ) {
 		?> 

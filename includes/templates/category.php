@@ -15,6 +15,11 @@ function rva_load_more_args() {
 }
 add_action( 'wp_enqueue_scripts', 'rva_load_more_args' );
 
+add_filter('wp_title', function($title) {
+	global $wp_query;
+	return $title . ' | ' . strtoupper( $wp_query->query["category_name"] );
+});
+
 /**
  * Add spacer before page content to offset the fixed header and leaderboard ad unit.
  *
