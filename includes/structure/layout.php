@@ -181,17 +181,25 @@ function rva_post_thumbnail( $atts ) {
  */
 function top_box($atts, $content) {
 
-	$title = (array_key_exists('title',$atts))? $atts['title'] : '';
-	$count = (array_key_exists('count',$atts))? $atts['count'] : '9';
+	extract( shortcode_atts( [ 
+		'title' => '', 
+		'cats_not_in_slugs' => 'EVENTS',
+		'count' => '9',
+		 ], $atts ) );
+
+	$cats_not_in_slugs = explode(',', $cats_not_in_slugs);
+	foreach ( $cats_not_in_slugs as $slug )
+	{
+		$cat = get_category_by_slug( $slug );
+		$cat and $category__not_in[] = $cat->term_id;
+	}
+
 	$args = array(
 		'post_status'	=> 'publish',
 		'orderby'       => 'post_date',
 		'order'         => 'DESC',
 		'posts_per_page'=> $count,
-		// 'meta_query' => [[
-		// 	'key' => RVA_POST_FIELDS_FEATURED_POST,
-		// 	'compare' => 'NOT EXISTS'
-		// ]],
+		'category__not_in'=> $category__not_in
 	);
 
 	global $rva_displayed_posts;
