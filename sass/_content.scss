@@ -443,6 +443,7 @@ ul.social-links {
 	background-position: center;
 	background-size: cover;
 	width: 100%;
+	border-right: $spacer solid $background-color;
 	display: none;
 }
 
@@ -561,6 +562,10 @@ ul.social-links {
 	}
 
 	@include MQ(S) {
+		.rva-thumbnail-image {
+			display: inline-block;
+			height: 200px;
+		}
 		& article {
 			display: initial;
 			float: left;
@@ -656,6 +661,10 @@ ul.social-links {
 	}
 
 	@include MQ(S) {
+		.rva-thumbnail-image {
+			display: inline-block;
+			height: 200px;
+		}
 		& article {
 			display: initial;
 			float: left;
@@ -1026,7 +1035,6 @@ article.entry-thumb-event {
 	@include MQ(S) {
 		.rva-thumbnail-image {
 			display: inline-block;
-			border-right: $spacer solid $background-color;
 		}
 
 		& article {
@@ -1051,11 +1059,6 @@ article.entry-thumb-event {
 	}
 
 	@include MQ(M) {
-		.rva-thumbnail-image {
-			display: inline-block;
-			border-right: $spacer solid $background-color;
-		}
-
 		& article {
 			width: 33.333%;
 		}
