@@ -5,8 +5,9 @@ add_filter('404_template', function($template) {
 	// this filter will 301 redirect any requests for old pages that don't have the html suffix
 	// or pass to the 404 page if the page still is not found.
 	$string = trim($_SERVER['REQUEST_URI']);
+	$string = preg_replace('/\/$/', '', $string);
 	if(preg_match('/.html/', $string) == 0){
-		$location = $_SERVER['REQUEST_URI'].'.html';
+		$location = $string.'.html';
 		wp_redirect( $location, 301 );
 	}
 
@@ -18,7 +19,6 @@ add_filter('404_template', function($template) {
  * Set new locaiton for the single page template...
  */
 add_filter('single_template', function($template) {
-
 	// Add files to override the singlge template.
 	$category_templates = [
 		'photo' => 'includes/templates/single-photo.php',
@@ -54,7 +54,6 @@ add_filter('single_template', function($template) {
  * Set new locaiton for the single page template...
  */
 add_filter('category_template', function($template) {
-
 	// Add files to override the singlge template.
 	$category_templates = [
 		//slug  to  path

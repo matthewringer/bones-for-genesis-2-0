@@ -30,12 +30,10 @@ function bfg_gallery_style( $css ) {
  * @since 2.0.16
  */
 function bfg_more_tag_excerpt_link() {
-
 	return ' <a class="more-link" href="' . get_permalink() . '">' . __( 'READ MORE &rarr;', CHILD_THEME_TEXT_DOMAIN ) . '</a>';
-
 }
 
-add_filter( 'excerpt_more', 'bfg_truncated_excerpt_link' );
+//add_filter( 'excerpt_more', 'bfg_truncated_excerpt_link' );
 //add_filter( 'get_the_content_more_link', 'bfg_truncated_excerpt_link' );
 /**
  * Customize the excerpt text, when using automatic truncation.
@@ -46,7 +44,6 @@ add_filter( 'excerpt_more', 'bfg_truncated_excerpt_link' );
  */
 function bfg_truncated_excerpt_link() {
 	return '... <a class="rva-read-more" href="'.post_permalink().'" alt="'.the_title().'">READ MORE</a>';
-
 }
 
 //remove_action( 'genesis_entry_header', 'genesis_post_info', 12 );

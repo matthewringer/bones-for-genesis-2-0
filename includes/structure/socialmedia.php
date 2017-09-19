@@ -1,4 +1,13 @@
 <?php
+
+// Override for links links for posts before date
+add_filter('post_link', function ($permalink, $post, $leavename) {
+	if(get_the_date('Y-m-d') < '2017-09-19' ){
+		$permalink = preg_replace('/\.html$/', '/', $permalink);
+	} 
+	return $permalink;
+}, 10, 3);
+
 /**
  * Facebook Open Graph Meta
  *
