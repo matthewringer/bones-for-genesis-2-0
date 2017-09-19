@@ -39,7 +39,7 @@ function bfg_404() {
 					printf(
 						__( '<strong>Start over again</strong> at the <a href="%s">homepage</a> (and please contact us to say what went wrong, so we can fix it).', CHILD_THEME_TEXT_DOMAIN ),
 						get_bloginfo('url')
-					)
+					);
 					?>
 				</li>
 			</ul>

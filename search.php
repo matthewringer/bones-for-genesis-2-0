@@ -56,12 +56,12 @@ function search_content_loop() {
 						while ( have_posts() ) { $post = the_post(); ?>
 					<article class="search-entry">
 						<div class="title-block" >
-							<h2 class="article-title" > <a href="<?php echo get_permalink(); ?>"> <?php the_title();  ?> </a> <?php echo ' | ' . genesis_post_date_shortcode(); ?> </h2>
+							<h2 class="article-title" > <a href="<?php echo get_permalink(); ?>"> <?php the_title();  ?> </a> <?php echo ' | ' . genesis_post_date_shortcode([]); ?> </h2>
 							<p class="excerpt"> 
 							<?php
 								echo rva_get_excerpt(500, 'content');
 								?>
-							</p>
+							</p>:
 						</div>
 					</article>
 					<?php

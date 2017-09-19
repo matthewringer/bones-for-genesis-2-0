@@ -1,5 +1,19 @@
 <?php
 
+add_filter('404_template', function($template) {
+	// Patch to fix subcategory routes which require a file suffix in the permalink ie: /%category%/%postname%.html
+	// this filter will 301 redirect any requests for old pages that don't have the html suffix
+	// or pass to the 404 page if the page still is not found.
+	$string = trim($_SERVER['REQUEST_URI']);
+	if(preg_match('/.html/', $string) == 0){
+		$location = $_SERVER['REQUEST_URI'].'.html';
+		wp_redirect( $location, 301 );
+	}
+
+	$new_template = locate_template( '404.php');
+	return $new_template;
+});
+
 /**
  * Set new locaiton for the single page template...
  */

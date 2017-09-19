@@ -26,13 +26,24 @@ function facebook_og_meta() {
 		<meta name="twitter:description" 	content="<?php echo wp_strip_all_tags(get_the_excerpt()); ?>">
 
 		<meta name="author" 				content="<?php echo get_the_author(); ?>">
-		<meta name="news_keywords" 			content="<?php $tags = array_slice(get_the_tags(), 0, 9); foreach ( $tags as $tag) { echo $tag->name.', Richmond VA'; } //todo ?>">
-		<meta name="keywords" 				content="<?php $tags = array_slice(get_the_tags(), 0, 9); foreach ($tags as $tag) { echo $tag->name.', Richmond VA'; } //todo ?>">
+		<meta name="news_keywords" 			content="<?php echo_tags( ); ?>">
+		<meta name="keywords" 				content="<?php echo_tags( ); ?>">
 		<meta name="thumbnail" 				content="<?php echo get_the_post_thumbnail_url(); ?>">
 		<meta name="description" 			content="<?php echo rva_get_excerpt(500, 'content'); ?>">
 		<meta name="title"					content="<?php echo get_the_title(); ?>">
 
 	<?php
+}
+
+function echo_tags($count = 9 ) {
+	$tags = get_the_tags();
+	if(is_array($tags)){
+		$tags = array_slice($tags, 0, $count);
+		foreach ( $tags as $tag) { 
+			echo $tag->name.', '; 
+		}
+	}
+	echo 'Richmond VA';
 }
 
 //
