@@ -30,7 +30,7 @@ function rvamag_before_content() {
 	<div class="rva-category-before-content"></div>
 	<?php echo do_shortcode('
 		<div class="flex-container padding-top" >
-			[rva_ad name="Super_Billboard" class="ad-billboard"]
+			[rva_ad code="super_leaderboard" class="ad-billboard"]
 		</div>
 		<div class="padding-top expand-m" ></div>
 	'); ?>
@@ -59,7 +59,7 @@ add_action( 'genesis_loop', 'rvamag_categorypage_loop' );
 
 
 function rva_sidebar(){
-	echo do_shortcode('[rva_ad name="Big_Boy_H0" class="wrap ad-big-boy"]');
+	echo do_shortcode('[rva_ad code="Big_Boy_H0" class="wrap ad-big-boy"]');
 } add_action('genesis_sidebar', 'rva_sidebar', 5);
 
 function rva_fp_aftercontent() {

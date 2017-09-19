@@ -65,7 +65,7 @@ function rva_before_content() {
 
 	<?php echo do_shortcode('
 		<div class="flex-container padding-top padding-bottom" >
-			[rva_ad name="Super_Billboard" class="ad-billboard"]
+			[rva_ad code="super_leaderboard" class="ad-billboard"]
 		</div>
 	'); ?>
 
@@ -154,7 +154,7 @@ function rva_entry_header_hr() {
 */
 function rva_single_ad_big_boy_h0(){
 
-	$shortcode = '[rva_ad name="Big_Boy_H0" class="wrap ad-big-boy padding-bottom"]';
+	$shortcode = '[rva_ad code="Big_Boy_H0" class="wrap ad-big-boy padding-bottom"]';
 	$shortcode = apply_filters('rva_single_ad_big_boy_h0', $shortcode );
 	?>
 	<div class="">
@@ -186,9 +186,9 @@ function rva_entry_after_loop() {
 	echo do_shortcode(' 
 		[hr]
 		[rva_gutter_box class="flex-container padding-top margin-top"]
-			[rva_ad name="Big_Boy_H1" class="ad-big-boy"]
-			[rva_ad name="Big_Boy_H2" class="ad-big-boy collapse-s"]
-			[rva_ad name="Big_Boy_H3" class="ad-big-boy collapse-m"]
+			[rva_ad code="Big_Boy_H1" class="ad-big-boy"]
+			[rva_ad code="Big_Boy_H2" class="ad-big-boy collapse-s"]
+			[rva_ad code="Big_Boy_H3" class="ad-big-boy collapse-m"]
 		[/rva_gutter_box]
 		[hr]');
 

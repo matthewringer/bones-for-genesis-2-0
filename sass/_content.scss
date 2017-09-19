@@ -431,10 +431,19 @@ ul.social-links {
 }
 
 .rva-article-image {
-	//background-position: 0 25%; 
 	@extend .rva-center-img;
 	background-size: cover;
 	background-repeat: no-repeat;
+}
+
+.rva-thumbnail-image {
+	height: 130px;
+	position: absolute;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	width: 100%;
+	display: none;
 }
 
 // Structure
@@ -1015,6 +1024,11 @@ article.entry-thumb-event {
 	}
 
 	@include MQ(S) {
+		.rva-thumbnail-image {
+			display: inline-block;
+			border-right: $spacer solid $background-color;
+		}
+
 		& article {
 			padding: 0 $spacer/2 $spacer $spacer/2;
 			float: left;
@@ -1037,6 +1051,11 @@ article.entry-thumb-event {
 	}
 
 	@include MQ(M) {
+		.rva-thumbnail-image {
+			display: inline-block;
+			border-right: $spacer solid $background-color;
+		}
+
 		& article {
 			width: 33.333%;
 		}

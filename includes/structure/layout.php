@@ -149,8 +149,8 @@ function rva_post_thumbnail( $atts ) {
 				echo esc_html( $categories[0]->name );   
 			}
 		?></span>
-		<!--<a href=""><span class="rva-sponsored-by"> The National <i class="fa fa-external-link" aria-hidden="true"></i> </span></a>-->
 		<div class="rva-article-image" style="background-image:url(<?php echo get_the_post_thumbnail_url()?>);" >
+			<div class="rva-thumbnail-image" style="background-image:url(<?php echo get_the_post_thumbnail_url()?>);" ></div>
 			<div class="video-block" >
 				<div class="play-button">
 					<a href=" <?php echo get_the_permalink(); ?>"> <i class="fa fa-play" aria-hidden="true"></i> </a>

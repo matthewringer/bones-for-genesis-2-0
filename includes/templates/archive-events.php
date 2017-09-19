@@ -183,7 +183,7 @@ remove_action( 'genesis_loop', 'rvamag_categorypage_loop' );
 function rva_events_sidebar(){
 	//echo '<div class="post-listing rva-1x-box margin-top" ></div>';
 	echo '<div class="margin-top padding-top"></div>';
-	echo do_shortcode('[rva_ad name="Big_Boy_H0" class="margin-top wrap ad-big-boy"]');
+	echo do_shortcode('[rva_ad code="Big_Boy_H0" class="margin-top wrap ad-big-boy"]');
 } add_action('genesis_sidebar','rva_events_sidebar'); 
 remove_action('genesis_sidebar', 'rva_sidebar', 5);
 

@@ -68,7 +68,7 @@ function rvamag_before_content() {
 	?>
 	<div class="padding-top"></div>
 		<div class="flex-container padding-top padding-bottom margin-top">
-			[rva_ad name="Super_Billboard" class="ad-billboard"]
+			[rva_ad code="super_leaderboard" class="ad-billboard"]
 		</div>
 	<div class="section-title margin-top rva-site-margins">
 		<h2>LATEST</h2>
@@ -91,7 +91,7 @@ function rvamag_frontpage_loop() {
 		[rva_topbox title="LATEST" count="6"/]
 		
 		[rva_gutter_box class="flex-container padding-top margin-top expand-s"]
-			[rva_ad name="Big_Boy_H0" class="ad-big-boy"]
+			[rva_ad code="Big_Boy_H0" class="ad-big-boy"]
 		[/rva_gutter_box]
 	');
 
@@ -108,9 +108,9 @@ function rva_fp_aftercontent() {
 	$square_ads = '
 		[hr]
 		[rva_gutter_box class="flex-container padding-top margin-top margin-bottom"]
-			[rva_ad name="Big_Boy_H1" class="ad-big-boy"]
-			[rva_ad name="Big_Boy_H2" class="ad-big-boy collapse-s"]
-			[rva_ad name="Big_Boy_H3" class="ad-big-boy collapse-m"]
+			[rva_ad code="Big_Boy_H1" class="ad-big-boy"]
+			[rva_ad code="Big_Boy_H2" class="ad-big-boy collapse-s"]
+			[rva_ad code="Big_Boy_H3" class="ad-big-boy collapse-m"]
 		[/rva_gutter_box]
 	';
 
@@ -183,7 +183,7 @@ function rva_fp_aftercontent() {
  */
 function rva_frontpage_sidebar(){
 
-	echo do_shortcode('[rva_ad name="Big_Boy_H0" class="wrap ad-big-boy"]');
+	echo do_shortcode('[rva_ad code="Big_Boy_H0" class="wrap ad-big-boy"]');
 			//[rva_social_account_buttons]
 } add_action('genesis_sidebar', 'rva_frontpage_sidebar', 5);
 
