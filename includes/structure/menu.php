@@ -31,7 +31,7 @@ function rvamag_header_nav() {
 
 	?>
 		<div class="rva-title-bar" >
-			<a href="#0" class="rva-nav-trigger">Menu<span></span></a>
+			<a class="rva-nav-trigger">Menu<span></span></a>
 			<a class="rva-logo" href="<?php echo get_site_url(); ?>">
 				<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo.svg" alt="RVA Mag Logo" />
 			</a>
